@@ -1,0 +1,46 @@
+\hypertarget{classBitsery__TypeAbstractionAdapter}{}\doxysection{Bitsery\+\_\+\+Type\+Abstraction\+Adapter\texorpdfstring{$<$}{<} buffer\+\_\+t, input\+\_\+adapter\+\_\+t, output\+\_\+adapter\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classBitsery__TypeAbstractionAdapter}\index{Bitsery\_TypeAbstractionAdapter$<$ buffer\_t, input\_adapter\_t, output\_adapter\_t $>$@{Bitsery\_TypeAbstractionAdapter$<$ buffer\_t, input\_adapter\_t, output\_adapter\_t $>$}}
+
+
+data type abstraction using bitsery providing (de-\/)serialization  
+
+
+
+
+{\ttfamily \#include $<$type\+\_\+abstraction.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}\label{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}} 
+using {\bfseries abstract\+\_\+type} = buffer\+\_\+t
+\begin{DoxyCompactList}\small\item\em abstract type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBitsery__TypeAbstractionAdapter_ab76d04229530de5add9614514363bd45}\label{classBitsery__TypeAbstractionAdapter_ab76d04229530de5add9614514363bd45}} 
+{\footnotesize template$<$typename t $>$ }\\static \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{abstract\+\_\+type}} {\bfseries serialize} (t \&v)
+\begin{DoxyCompactList}\small\item\em serialization \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBitsery__TypeAbstractionAdapter_aee1cacc94c877f694630120c921cbd1f}\label{classBitsery__TypeAbstractionAdapter_aee1cacc94c877f694630120c921cbd1f}} 
+{\footnotesize template$<$typename t $>$ }\\static bool {\bfseries deserialize} (const \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{abstract\+\_\+type}} \&buffer, t \&result)
+\begin{DoxyCompactList}\small\item\em deserialization \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}\label{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}} 
+static const bool {\bfseries is\+\_\+\+Type\+Abstraction\+Adapter} = true
+\begin{DoxyCompactList}\small\item\em member used for static compile time polymorphism \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename buffer\+\_\+t, typename input\+\_\+adapter\+\_\+t, typename output\+\_\+adapter\+\_\+t$>$\newline
+class Bitsery\+\_\+\+Type\+Abstraction\+Adapter$<$ buffer\+\_\+t, input\+\_\+adapter\+\_\+t, output\+\_\+adapter\+\_\+t $>$}
+data type abstraction using bitsery providing (de-\/)serialization 
+
+Definition at line \mbox{\hyperlink{type__abstraction_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{type__abstraction_8hpp_source}{type\+\_\+abstraction.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/type\+\_\+abstraction.\+hpp\end{DoxyCompactItemize}

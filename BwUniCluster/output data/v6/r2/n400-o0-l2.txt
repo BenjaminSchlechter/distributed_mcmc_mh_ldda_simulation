@@ -1,0 +1,1218 @@
+c MPI Version 3.1
+cfg filename_cnf_formula: data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.cnf
+cfg filename_resolvents: data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.resolvents
+cfg data_directory: out/three_color_gnp_50vertices_p0.092_seed37_cnfgen/
+cfg num_markov_chains: 400
+cfg markov_chain_offset: 0
+cfg markov_chain_target_length: 2
+c parent node 31 / 40 has workgroup rank 31 / 40 in workgoup 1 / 1
+c parent node 33 / 40 has workgroup rank 33 / 40 in workgoup 1 / 1
+c parent node 1 / 40 has workgroup rank 1 / 40 in workgoup 1 / 1
+c parent node 10 / 40 has workgroup rank 10 / 40 in workgoup 1 / 1
+c parent node 17 / 40 has workgroup rank 17 / 40 in workgoup 1 / 1
+c parent node 19 / 40 has workgroup rank 19 / 40 in workgoup 1 / 1
+c parent node 5 / 40 has workgroup rank 5 / 40 in workgoup 1 / 1
+c parent node 9 / 40 has workgroup rank 9 / 40 in workgoup 1 / 1
+c parent node 25 / 40 has workgroup rank 25 / 40 in workgoup 1 / 1
+c parent node 32 / 40 has workgroup rank 32 / 40 in workgoup 1 / 1
+c parent node 3 / 40 has workgroup rank 3 / 40 in workgoup 1 / 1
+c parent node 8 / 40 has workgroup rank 8 / 40 in workgoup 1 / 1
+c parent node 11 / 40 has workgroup rank 11 / 40 in workgoup 1 / 1
+c parent node 12 / 40 has workgroup rank 12 / 40 in workgoup 1 / 1
+c parent node 13 / 40 has workgroup rank 13 / 40 in workgoup 1 / 1
+c parent node 14 / 40 has workgroup rank 14 / 40 in workgoup 1 / 1
+c parent node 15 / 40 has workgroup rank 15 / 40 in workgoup 1 / 1
+c parent node 16 / 40 has workgroup rank 16 / 40 in workgoup 1 / 1
+c parent node 18 / 40 has workgroup rank 18 / 40 in workgoup 1 / 1
+c parent node 20 / 40 has workgroup rank 20 / 40 in workgoup 1 / 1
+c parent node 21 / 40 has workgroup rank 21 / 40 in workgoup 1 / 1
+c parent node 23 / 40 has workgroup rank 23 / 40 in workgoup 1 / 1
+c parent node 26 / 40 has workgroup rank 26 / 40 in workgoup 1 / 1
+c parent node 27 / 40 has workgroup rank 27 / 40 in workgoup 1 / 1
+c parent node 29 / 40 has workgroup rank 29 / 40 in workgoup 1 / 1
+c parent node 30 / 40 has workgroup rank 30 / 40 in workgoup 1 / 1
+c parent node 34 / 40 has workgroup rank 34 / 40 in workgoup 1 / 1
+c parent node 35 / 40 has workgroup rank 35 / 40 in workgoup 1 / 1
+c parent node 36 / 40 has workgroup rank 36 / 40 in workgoup 1 / 1
+c parent node 37 / 40 has workgroup rank 37 / 40 in workgoup 1 / 1
+c parent node 38 / 40 has workgroup rank 38 / 40 in workgoup 1 / 1
+c parent node 39 / 40 has workgroup rank 39 / 40 in workgoup 1 / 1
+c parent node 40 / 40 has workgroup rank 40 / 40 in workgoup 1 / 1
+c parent node 2 / 40 has workgroup rank 2 / 40 in workgoup 1 / 1
+c parent node 6 / 40 has workgroup rank 6 / 40 in workgoup 1 / 1
+c parent node 7 / 40 has workgroup rank 7 / 40 in workgoup 1 / 1
+c parent node 24 / 40 has workgroup rank 24 / 40 in workgoup 1 / 1
+c parent node 28 / 40 has workgroup rank 28 / 40 in workgoup 1 / 1
+c parent node 4 / 40 has workgroup rank 4 / 40 in workgoup 1 / 1
+c parent node 22 / 40 has workgroup rank 22 / 40 in workgoup 1 / 1
+c reading seed
+c global seed: 2261783262...
+c work group 0 has 400 markov chains at id 0 (offset 0)
+c markov chain   0 with seed    3456462235...	(on workgroup 0)
+c markov chain   1 with seed    3273686477...	(on workgroup 0)
+c markov chain   2 with seed    3056390389...	(on workgroup 0)
+c markov chain   3 with seed    1453189013...	(on workgroup 0)
+c markov chain   4 with seed     755970239...	(on workgroup 0)
+c markov chain   5 with seed    3609100623...	(on workgroup 0)
+c markov chain   6 with seed    2322678292...	(on workgroup 0)
+c markov chain   7 with seed    2349585058...	(on workgroup 0)
+c markov chain   8 with seed    3563612299...	(on workgroup 0)
+c markov chain   9 with seed    2491653344...	(on workgroup 0)
+c markov chain  10 with seed    3136955422...	(on workgroup 0)
+c markov chain  11 with seed    3485113983...	(on workgroup 0)
+c markov chain  12 with seed    4147678720...	(on workgroup 0)
+c markov chain  13 with seed    1650998780...	(on workgroup 0)
+c markov chain  14 with seed      71694614...	(on workgroup 0)
+c markov chain  15 with seed    3671056556...	(on workgroup 0)
+c markov chain  16 with seed    4039425126...	(on workgroup 0)
+c markov chain  17 with seed    1700855380...	(on workgroup 0)
+c markov chain  18 with seed    4204820879...	(on workgroup 0)
+c markov chain  19 with seed    2375899276...	(on workgroup 0)
+c markov chain  20 with seed    2410668204...	(on workgroup 0)
+c markov chain  21 with seed    1590376030...	(on workgroup 0)
+c markov chain  22 with seed    1233141956...	(on workgroup 0)
+c markov chain  23 with seed    1774374993...	(on workgroup 0)
+c markov chain  24 with seed    3741023763...	(on workgroup 0)
+c markov chain  25 with seed    4029155614...	(on workgroup 0)
+c markov chain  26 with seed    3138922908...	(on workgroup 0)
+c markov chain  27 with seed    2389102025...	(on workgroup 0)
+c markov chain  28 with seed    1375990781...	(on workgroup 0)
+c markov chain  29 with seed    2083973877...	(on workgroup 0)
+c markov chain  30 with seed    4200323559...	(on workgroup 0)
+c markov chain  31 with seed    3924388349...	(on workgroup 0)
+c markov chain  32 with seed     456987528...	(on workgroup 0)
+c markov chain  33 with seed    4162491022...	(on workgroup 0)
+c markov chain  34 with seed    2761065894...	(on workgroup 0)
+c markov chain  35 with seed    3055318134...	(on workgroup 0)
+c markov chain  36 with seed    2336308082...	(on workgroup 0)
+c markov chain  37 with seed    3041388514...	(on workgroup 0)
+c markov chain  38 with seed    3543745784...	(on workgroup 0)
+c markov chain  39 with seed     488170396...	(on workgroup 0)
+c markov chain  40 with seed     204173864...	(on workgroup 0)
+c markov chain  41 with seed     344466935...	(on workgroup 0)
+c markov chain  42 with seed     381262262...	(on workgroup 0)
+c markov chain  43 with seed    3695173898...	(on workgroup 0)
+c markov chain  44 with seed    2678280685...	(on workgroup 0)
+c markov chain  45 with seed     682865935...	(on workgroup 0)
+c markov chain  46 with seed     518662559...	(on workgroup 0)
+c markov chain  47 with seed    3324601454...	(on workgroup 0)
+c markov chain  48 with seed    2878340239...	(on workgroup 0)
+c markov chain  49 with seed    1858483093...	(on workgroup 0)
+c markov chain  50 with seed    2173608456...	(on workgroup 0)
+c markov chain  51 with seed    4292122945...	(on workgroup 0)
+c markov chain  52 with seed     361880240...	(on workgroup 0)
+c markov chain  53 with seed    1829594901...	(on workgroup 0)
+c markov chain  54 with seed    2239680109...	(on workgroup 0)
+c markov chain  55 with seed    3406809817...	(on workgroup 0)
+c markov chain  56 with seed    1147288295...	(on workgroup 0)
+c markov chain  57 with seed    3842183748...	(on workgroup 0)
+c markov chain  58 with seed    1555013141...	(on workgroup 0)
+c markov chain  59 with seed    4233105361...	(on workgroup 0)
+c markov chain  60 with seed    1167559093...	(on workgroup 0)
+c markov chain  61 with seed     447339448...	(on workgroup 0)
+c markov chain  62 with seed    3280378330...	(on workgroup 0)
+c markov chain  63 with seed     240751577...	(on workgroup 0)
+c markov chain  64 with seed    3685877769...	(on workgroup 0)
+c markov chain  65 with seed    1808681821...	(on workgroup 0)
+c markov chain  66 with seed    3789130102...	(on workgroup 0)
+c markov chain  67 with seed    1020501913...	(on workgroup 0)
+c markov chain  68 with seed    3701788070...	(on workgroup 0)
+c markov chain  69 with seed    1262176580...	(on workgroup 0)
+c markov chain  70 with seed     388419833...	(on workgroup 0)
+c markov chain  71 with seed     156464709...	(on workgroup 0)
+c markov chain  72 with seed    2417733980...	(on workgroup 0)
+c markov chain  73 with seed    2072201018...	(on workgroup 0)
+c markov chain  74 with seed    2732194767...	(on workgroup 0)
+c markov chain  75 with seed    3885426922...	(on workgroup 0)
+c markov chain  76 with seed     219487228...	(on workgroup 0)
+c markov chain  77 with seed    1322921229...	(on workgroup 0)
+c markov chain  78 with seed    1373667485...	(on workgroup 0)
+c markov chain  79 with seed     974569092...	(on workgroup 0)
+c markov chain  80 with seed      59375203...	(on workgroup 0)
+c markov chain  81 with seed    2242899848...	(on workgroup 0)
+c markov chain  82 with seed    3391448574...	(on workgroup 0)
+c markov chain  83 with seed    1435422647...	(on workgroup 0)
+c markov chain  84 with seed     286858008...	(on workgroup 0)
+c markov chain  85 with seed    1603083542...	(on workgroup 0)
+c markov chain  86 with seed    1943225167...	(on workgroup 0)
+c markov chain  87 with seed    4237090288...	(on workgroup 0)
+c markov chain  88 with seed    4085828177...	(on workgroup 0)
+c markov chain  89 with seed    2144158455...	(on workgroup 0)
+c markov chain  90 with seed    3777466427...	(on workgroup 0)
+c markov chain  91 with seed    1181138023...	(on workgroup 0)
+c markov chain  92 with seed    2563864992...	(on workgroup 0)
+c markov chain  93 with seed     607163545...	(on workgroup 0)
+c markov chain  94 with seed     122921160...	(on workgroup 0)
+c markov chain  95 with seed    1515688624...	(on workgroup 0)
+c markov chain  96 with seed    3878907737...	(on workgroup 0)
+c markov chain  97 with seed    1970278902...	(on workgroup 0)
+c markov chain  98 with seed    3981123384...	(on workgroup 0)
+c markov chain  99 with seed    3596401430...	(on workgroup 0)
+c markov chain 100 with seed    1150661954...	(on workgroup 0)
+c markov chain 101 with seed    3824240912...	(on workgroup 0)
+c markov chain 102 with seed     871299920...	(on workgroup 0)
+c markov chain 103 with seed    1291486428...	(on workgroup 0)
+c markov chain 104 with seed    2938976239...	(on workgroup 0)
+c markov chain 105 with seed    1284190847...	(on workgroup 0)
+c markov chain 106 with seed    1967948957...	(on workgroup 0)
+c markov chain 107 with seed    1747343174...	(on workgroup 0)
+c markov chain 108 with seed    1726028612...	(on workgroup 0)
+c markov chain 109 with seed    1190192017...	(on workgroup 0)
+c markov chain 110 with seed    3715243408...	(on workgroup 0)
+c markov chain 111 with seed    2861559592...	(on workgroup 0)
+c markov chain 112 with seed    1334666602...	(on workgroup 0)
+c markov chain 113 with seed    1437484795...	(on workgroup 0)
+c markov chain 114 with seed     928972136...	(on workgroup 0)
+c markov chain 115 with seed    3904079906...	(on workgroup 0)
+c markov chain 116 with seed    1686827473...	(on workgroup 0)
+c markov chain 117 with seed    4201234953...	(on workgroup 0)
+c markov chain 118 with seed    3888208615...	(on workgroup 0)
+c markov chain 119 with seed    3994610317...	(on workgroup 0)
+c markov chain 120 with seed    2580582495...	(on workgroup 0)
+c markov chain 121 with seed    3494087526...	(on workgroup 0)
+c markov chain 122 with seed    4059579553...	(on workgroup 0)
+c markov chain 123 with seed    3175398378...	(on workgroup 0)
+c markov chain 124 with seed    2232252907...	(on workgroup 0)
+c markov chain 125 with seed    4189490362...	(on workgroup 0)
+c markov chain 126 with seed    1523428505...	(on workgroup 0)
+c markov chain 127 with seed    1879677663...	(on workgroup 0)
+c markov chain 128 with seed    1109177977...	(on workgroup 0)
+c markov chain 129 with seed    2363030383...	(on workgroup 0)
+c markov chain 130 with seed    3682282429...	(on workgroup 0)
+c markov chain 131 with seed     477510040...	(on workgroup 0)
+c markov chain 132 with seed     919861858...	(on workgroup 0)
+c markov chain 133 with seed    2069685530...	(on workgroup 0)
+c markov chain 134 with seed    4248842570...	(on workgroup 0)
+c markov chain 135 with seed     914451690...	(on workgroup 0)
+c markov chain 136 with seed      21334720...	(on workgroup 0)
+c markov chain 137 with seed    1910543951...	(on workgroup 0)
+c markov chain 138 with seed     208125254...	(on workgroup 0)
+c markov chain 139 with seed    2014167666...	(on workgroup 0)
+c markov chain 140 with seed    4059587358...	(on workgroup 0)
+c markov chain 141 with seed    2450731363...	(on workgroup 0)
+c markov chain 142 with seed    1930110009...	(on workgroup 0)
+c markov chain 143 with seed     814027414...	(on workgroup 0)
+c markov chain 144 with seed    2990350684...	(on workgroup 0)
+c markov chain 145 with seed    1837446350...	(on workgroup 0)
+c markov chain 146 with seed    1507576871...	(on workgroup 0)
+c markov chain 147 with seed    2375504102...	(on workgroup 0)
+c markov chain 148 with seed    2748320179...	(on workgroup 0)
+c markov chain 149 with seed    1358611407...	(on workgroup 0)
+c markov chain 150 with seed    3813858579...	(on workgroup 0)
+c markov chain 151 with seed    1543345407...	(on workgroup 0)
+c markov chain 152 with seed    3527325707...	(on workgroup 0)
+c markov chain 153 with seed     985993409...	(on workgroup 0)
+c markov chain 154 with seed    1702086490...	(on workgroup 0)
+c markov chain 155 with seed    4104344278...	(on workgroup 0)
+c markov chain 156 with seed    1572489649...	(on workgroup 0)
+c markov chain 157 with seed    1783298565...	(on workgroup 0)
+c markov chain 158 with seed    2972672072...	(on workgroup 0)
+c markov chain 159 with seed      15812969...	(on workgroup 0)
+c markov chain 160 with seed    3335723126...	(on workgroup 0)
+c markov chain 161 with seed    1110406914...	(on workgroup 0)
+c markov chain 162 with seed    3155511510...	(on workgroup 0)
+c markov chain 163 with seed    1888258842...	(on workgroup 0)
+c markov chain 164 with seed    1437492120...	(on workgroup 0)
+c markov chain 165 with seed     587534902...	(on workgroup 0)
+c markov chain 166 with seed    3829438292...	(on workgroup 0)
+c markov chain 167 with seed    1000688519...	(on workgroup 0)
+c markov chain 168 with seed    3647024712...	(on workgroup 0)
+c markov chain 169 with seed     186130522...	(on workgroup 0)
+c markov chain 170 with seed    2275735818...	(on workgroup 0)
+c markov chain 171 with seed    3660061714...	(on workgroup 0)
+c markov chain 172 with seed    4098524552...	(on workgroup 0)
+c markov chain 173 with seed      95162228...	(on workgroup 0)
+c markov chain 174 with seed    3747514432...	(on workgroup 0)
+c markov chain 175 with seed     690060230...	(on workgroup 0)
+c markov chain 176 with seed    1621934288...	(on workgroup 0)
+c markov chain 177 with seed     338735085...	(on workgroup 0)
+c markov chain 178 with seed    3110244492...	(on workgroup 0)
+c markov chain 179 with seed    3192992557...	(on workgroup 0)
+c markov chain 180 with seed    1046983022...	(on workgroup 0)
+c markov chain 181 with seed    3066632163...	(on workgroup 0)
+c markov chain 182 with seed    1531119199...	(on workgroup 0)
+c markov chain 183 with seed    2515366066...	(on workgroup 0)
+c markov chain 184 with seed    2743154891...	(on workgroup 0)
+c markov chain 185 with seed    2500859250...	(on workgroup 0)
+c markov chain 186 with seed    3641351847...	(on workgroup 0)
+c markov chain 187 with seed    1586341883...	(on workgroup 0)
+c markov chain 188 with seed    3912798098...	(on workgroup 0)
+c markov chain 189 with seed    3746669051...	(on workgroup 0)
+c markov chain 190 with seed    2668322290...	(on workgroup 0)
+c markov chain 191 with seed     880466180...	(on workgroup 0)
+c markov chain 192 with seed    1655081782...	(on workgroup 0)
+c markov chain 193 with seed    1568852264...	(on workgroup 0)
+c markov chain 194 with seed    2192283556...	(on workgroup 0)
+c markov chain 195 with seed     130713570...	(on workgroup 0)
+c markov chain 196 with seed    1850361488...	(on workgroup 0)
+c markov chain 197 with seed    4137266915...	(on workgroup 0)
+c markov chain 198 with seed    1434760372...	(on workgroup 0)
+c markov chain 199 with seed     911096753...	(on workgroup 0)
+c markov chain 200 with seed    3852610258...	(on workgroup 0)
+c markov chain 201 with seed    2733900924...	(on workgroup 0)
+c markov chain 202 with seed    2151906171...	(on workgroup 0)
+c markov chain 203 with seed     992359973...	(on workgroup 0)
+c markov chain 204 with seed     908244879...	(on workgroup 0)
+c markov chain 205 with seed    4116007921...	(on workgroup 0)
+c markov chain 206 with seed    2265233801...	(on workgroup 0)
+c markov chain 207 with seed    1152668319...	(on workgroup 0)
+c markov chain 208 with seed     558113012...	(on workgroup 0)
+c markov chain 209 with seed    2014573546...	(on workgroup 0)
+c markov chain 210 with seed    1324411685...	(on workgroup 0)
+c markov chain 211 with seed    1314872910...	(on workgroup 0)
+c markov chain 212 with seed    2688430016...	(on workgroup 0)
+c markov chain 213 with seed    2524155563...	(on workgroup 0)
+c markov chain 214 with seed    3726105139...	(on workgroup 0)
+c markov chain 215 with seed      70329314...	(on workgroup 0)
+c markov chain 216 with seed    1256780454...	(on workgroup 0)
+c markov chain 217 with seed    3716426496...	(on workgroup 0)
+c markov chain 218 with seed     241391734...	(on workgroup 0)
+c markov chain 219 with seed    3308629743...	(on workgroup 0)
+c markov chain 220 with seed    1412508078...	(on workgroup 0)
+c markov chain 221 with seed      53373145...	(on workgroup 0)
+c markov chain 222 with seed    1972186504...	(on workgroup 0)
+c markov chain 223 with seed    2303331008...	(on workgroup 0)
+c markov chain 224 with seed    1081241579...	(on workgroup 0)
+c markov chain 225 with seed    1496393093...	(on workgroup 0)
+c markov chain 226 with seed    2760731516...	(on workgroup 0)
+c markov chain 227 with seed    1119353341...	(on workgroup 0)
+c markov chain 228 with seed    2467527323...	(on workgroup 0)
+c markov chain 229 with seed    1429401151...	(on workgroup 0)
+c markov chain 230 with seed    3199406363...	(on workgroup 0)
+c markov chain 231 with seed     258767989...	(on workgroup 0)
+c markov chain 232 with seed    2817680789...	(on workgroup 0)
+c markov chain 233 with seed      33698543...	(on workgroup 0)
+c markov chain 234 with seed    1580911629...	(on workgroup 0)
+c markov chain 235 with seed    3911077354...	(on workgroup 0)
+c markov chain 236 with seed    1435486043...	(on workgroup 0)
+c markov chain 237 with seed    1447868244...	(on workgroup 0)
+c markov chain 238 with seed     760600899...	(on workgroup 0)
+c markov chain 239 with seed    3245062787...	(on workgroup 0)
+c markov chain 240 with seed    3211150503...	(on workgroup 0)
+c markov chain 241 with seed    4018227251...	(on workgroup 0)
+c markov chain 242 with seed    1678417306...	(on workgroup 0)
+c markov chain 243 with seed    3345709310...	(on workgroup 0)
+c markov chain 244 with seed    3385391114...	(on workgroup 0)
+c markov chain 245 with seed     241246305...	(on workgroup 0)
+c markov chain 246 with seed    3931969325...	(on workgroup 0)
+c markov chain 247 with seed    2604985262...	(on workgroup 0)
+c markov chain 248 with seed    4201834966...	(on workgroup 0)
+c markov chain 249 with seed    2105646607...	(on workgroup 0)
+c markov chain 250 with seed    2434573614...	(on workgroup 0)
+c markov chain 251 with seed    2239283371...	(on workgroup 0)
+c markov chain 252 with seed    3039990957...	(on workgroup 0)
+c markov chain 253 with seed    1633601100...	(on workgroup 0)
+c markov chain 254 with seed    3222722806...	(on workgroup 0)
+c markov chain 255 with seed    1628206427...	(on workgroup 0)
+c markov chain 256 with seed    1789541354...	(on workgroup 0)
+c markov chain 257 with seed     331225090...	(on workgroup 0)
+c markov chain 258 with seed      29349125...	(on workgroup 0)
+c markov chain 259 with seed    3750095468...	(on workgroup 0)
+c markov chain 260 with seed    2272730440...	(on workgroup 0)
+c markov chain 261 with seed    1876939871...	(on workgroup 0)
+c markov chain 262 with seed     200363728...	(on workgroup 0)
+c markov chain 263 with seed    3355174846...	(on workgroup 0)
+c markov chain 264 with seed    3611406255...	(on workgroup 0)
+c markov chain 265 with seed    2534786027...	(on workgroup 0)
+c markov chain 266 with seed     509223028...	(on workgroup 0)
+c markov chain 267 with seed    1771039133...	(on workgroup 0)
+c markov chain 268 with seed     964135050...	(on workgroup 0)
+c markov chain 269 with seed      99499998...	(on workgroup 0)
+c markov chain 270 with seed     996510411...	(on workgroup 0)
+c markov chain 271 with seed    2959413106...	(on workgroup 0)
+c markov chain 272 with seed     579982325...	(on workgroup 0)
+c markov chain 273 with seed    2800310177...	(on workgroup 0)
+c markov chain 274 with seed    1633079686...	(on workgroup 0)
+c markov chain 275 with seed    3755925149...	(on workgroup 0)
+c markov chain 276 with seed     145870655...	(on workgroup 0)
+c markov chain 277 with seed    2868081723...	(on workgroup 0)
+c markov chain 278 with seed    3836511170...	(on workgroup 0)
+c markov chain 279 with seed    1829807856...	(on workgroup 0)
+c markov chain 280 with seed     319132503...	(on workgroup 0)
+c markov chain 281 with seed    3315996561...	(on workgroup 0)
+c markov chain 282 with seed    1102691962...	(on workgroup 0)
+c markov chain 283 with seed    3939344204...	(on workgroup 0)
+c markov chain 284 with seed    3542926783...	(on workgroup 0)
+c markov chain 285 with seed     384154404...	(on workgroup 0)
+c markov chain 286 with seed     578732903...	(on workgroup 0)
+c markov chain 287 with seed     255583231...	(on workgroup 0)
+c markov chain 288 with seed    3246313501...	(on workgroup 0)
+c markov chain 289 with seed    4013061262...	(on workgroup 0)
+c markov chain 290 with seed     383418162...	(on workgroup 0)
+c markov chain 291 with seed    1203525291...	(on workgroup 0)
+c markov chain 292 with seed    3538150824...	(on workgroup 0)
+c markov chain 293 with seed    1193083299...	(on workgroup 0)
+c markov chain 294 with seed    4160629812...	(on workgroup 0)
+c markov chain 295 with seed    2056705356...	(on workgroup 0)
+c markov chain 296 with seed    2585486651...	(on workgroup 0)
+c markov chain 297 with seed     309462232...	(on workgroup 0)
+c markov chain 298 with seed    1266800155...	(on workgroup 0)
+c markov chain 299 with seed    2814803969...	(on workgroup 0)
+c markov chain 300 with seed      65311482...	(on workgroup 0)
+c markov chain 301 with seed     799741410...	(on workgroup 0)
+c markov chain 302 with seed    1521396832...	(on workgroup 0)
+c markov chain 303 with seed     894036693...	(on workgroup 0)
+c markov chain 304 with seed     268497538...	(on workgroup 0)
+c markov chain 305 with seed    1429958330...	(on workgroup 0)
+c markov chain 306 with seed    2890515129...	(on workgroup 0)
+c markov chain 307 with seed     409803590...	(on workgroup 0)
+c markov chain 308 with seed    3599563424...	(on workgroup 0)
+c markov chain 309 with seed    2535004046...	(on workgroup 0)
+c markov chain 310 with seed    1415751685...	(on workgroup 0)
+c markov chain 311 with seed    3712391963...	(on workgroup 0)
+c markov chain 312 with seed    1544163676...	(on workgroup 0)
+c markov chain 313 with seed     724687614...	(on workgroup 0)
+c markov chain 314 with seed    1317379011...	(on workgroup 0)
+c markov chain 315 with seed    3983026272...	(on workgroup 0)
+c markov chain 316 with seed     790166090...	(on workgroup 0)
+c markov chain 317 with seed    1145884725...	(on workgroup 0)
+c markov chain 318 with seed    1246017199...	(on workgroup 0)
+c markov chain 319 with seed    3769743727...	(on workgroup 0)
+c markov chain 320 with seed    2449386200...	(on workgroup 0)
+c markov chain 321 with seed    1334680993...	(on workgroup 0)
+c markov chain 322 with seed    1333237547...	(on workgroup 0)
+c markov chain 323 with seed    3811819310...	(on workgroup 0)
+c markov chain 324 with seed    1411017301...	(on workgroup 0)
+c markov chain 325 with seed    1188686075...	(on workgroup 0)
+c markov chain 326 with seed    3287981303...	(on workgroup 0)
+c markov chain 327 with seed    3037403993...	(on workgroup 0)
+c markov chain 328 with seed    1320714417...	(on workgroup 0)
+c markov chain 329 with seed    2436239819...	(on workgroup 0)
+c markov chain 330 with seed    3852803462...	(on workgroup 0)
+c markov chain 331 with seed    2173148104...	(on workgroup 0)
+c markov chain 332 with seed    1934755068...	(on workgroup 0)
+c markov chain 333 with seed    3443178362...	(on workgroup 0)
+c markov chain 334 with seed     669281573...	(on workgroup 0)
+c markov chain 335 with seed    2899292653...	(on workgroup 0)
+c markov chain 336 with seed     240148813...	(on workgroup 0)
+c markov chain 337 with seed    2339215034...	(on workgroup 0)
+c markov chain 338 with seed    2831765905...	(on workgroup 0)
+c markov chain 339 with seed    4048901529...	(on workgroup 0)
+c markov chain 340 with seed    2290915235...	(on workgroup 0)
+c markov chain 341 with seed    3741042184...	(on workgroup 0)
+c markov chain 342 with seed    1542008482...	(on workgroup 0)
+c markov chain 343 with seed    1394284210...	(on workgroup 0)
+c markov chain 344 with seed    3928958041...	(on workgroup 0)
+c markov chain 345 with seed    1144279130...	(on workgroup 0)
+c markov chain 346 with seed    3160561011...	(on workgroup 0)
+c markov chain 347 with seed    2367623482...	(on workgroup 0)
+c markov chain 348 with seed     440410893...	(on workgroup 0)
+c markov chain 349 with seed     231575015...	(on workgroup 0)
+c markov chain 350 with seed     700905303...	(on workgroup 0)
+c markov chain 351 with seed    3048953346...	(on workgroup 0)
+c markov chain 352 with seed     283701044...	(on workgroup 0)
+c markov chain 353 with seed    2414267009...	(on workgroup 0)
+c markov chain 354 with seed    4284710682...	(on workgroup 0)
+c markov chain 355 with seed    3268850934...	(on workgroup 0)
+c markov chain 356 with seed    1203549077...	(on workgroup 0)
+c markov chain 357 with seed      60304008...	(on workgroup 0)
+c markov chain 358 with seed     663360837...	(on workgroup 0)
+c markov chain 359 with seed    3565734889...	(on workgroup 0)
+c markov chain 360 with seed    1422612829...	(on workgroup 0)
+c markov chain 361 with seed    3504096226...	(on workgroup 0)
+c markov chain 362 with seed    3945486201...	(on workgroup 0)
+c markov chain 363 with seed    3009386296...	(on workgroup 0)
+c markov chain 364 with seed    2035959437...	(on workgroup 0)
+c markov chain 365 with seed    1378230455...	(on workgroup 0)
+c markov chain 366 with seed    1502542800...	(on workgroup 0)
+c markov chain 367 with seed    2293171149...	(on workgroup 0)
+c markov chain 368 with seed    1681502188...	(on workgroup 0)
+c markov chain 369 with seed    1649106246...	(on workgroup 0)
+c markov chain 370 with seed    1291806189...	(on workgroup 0)
+c markov chain 371 with seed     871604925...	(on workgroup 0)
+c markov chain 372 with seed     755811328...	(on workgroup 0)
+c markov chain 373 with seed    3328169004...	(on workgroup 0)
+c markov chain 374 with seed    2613845152...	(on workgroup 0)
+c markov chain 375 with seed    1519089924...	(on workgroup 0)
+c markov chain 376 with seed     482170203...	(on workgroup 0)
+c markov chain 377 with seed    1920785597...	(on workgroup 0)
+c markov chain 378 with seed    1177250709...	(on workgroup 0)
+c markov chain 379 with seed     809601215...	(on workgroup 0)
+c markov chain 380 with seed     792055831...	(on workgroup 0)
+c markov chain 381 with seed    3335240083...	(on workgroup 0)
+c markov chain 382 with seed    1508494862...	(on workgroup 0)
+c markov chain 383 with seed    3545858820...	(on workgroup 0)
+c markov chain 384 with seed    3234086947...	(on workgroup 0)
+c markov chain 385 with seed    3266850706...	(on workgroup 0)
+c markov chain 386 with seed     787256326...	(on workgroup 0)
+c markov chain 387 with seed    1158075300...	(on workgroup 0)
+c markov chain 388 with seed    3425229109...	(on workgroup 0)
+c markov chain 389 with seed    4126532542...	(on workgroup 0)
+c markov chain 390 with seed    1062442242...	(on workgroup 0)
+c markov chain 391 with seed    3462744438...	(on workgroup 0)
+c markov chain 392 with seed    2363148889...	(on workgroup 0)
+c markov chain 393 with seed    3276247924...	(on workgroup 0)
+c markov chain 394 with seed     561072801...	(on workgroup 0)
+c markov chain 395 with seed    2097204493...	(on workgroup 0)
+c markov chain 396 with seed     354465475...	(on workgroup 0)
+c markov chain 397 with seed    1390181318...	(on workgroup 0)
+c markov chain 398 with seed    1185566362...	(on workgroup 0)
+c markov chain 399 with seed    2788285389...	(on workgroup 0)
+mc 0 iteration 1 value 1303.6 accepted 1303.6
+mc 0 iteration 2 value 1323.83 accepted 1323.83
+mc 6 iteration 1 value 1320.22 accepted 1320.22
+mc 6 iteration 2 value 1313.51 accepted 1313.51
+mc 111 iteration 1 value 6965.11 accepted 6965.11
+mc 111 iteration 2 value 6689.69 accepted 6689.69
+mc 256 iteration 1 value 8657.2 accepted 8657.2
+mc 256 iteration 2 value 8657.2 declined 9027.83
+mc 192 iteration 1 value 3737.67 accepted 3737.67
+mc 192 iteration 2 value 3529.19 accepted 3529.19
+mc 208 iteration 1 value 4518.78 accepted 4518.78
+mc 208 iteration 2 value 4518.78 declined 4585.3
+mc 100 iteration 1 value 4096.27 accepted 4096.27
+mc 100 iteration 2 value 4064.13 accepted 4064.13
+mc 50 iteration 1 value 9498.55 accepted 9498.55
+mc 50 iteration 2 value 9343.91 accepted 9343.91
+mc 126 iteration 1 value 4841.62 accepted 4841.62
+mc 126 iteration 2 value 4841.62 declined 4933.94
+mc 255 iteration 1 value 4679.74 accepted 4679.74
+mc 255 iteration 2 value 4606.99 accepted 4606.99
+mc 23 iteration 1 value 11750.9 accepted 11750.9
+mc 23 iteration 2 value 11021.9 accepted 11021.9
+mc 201 iteration 1 value 13223.2 accepted 13223.2
+mc 201 iteration 2 value 12665.2 accepted 12665.2
+mc 396 iteration 1 value 7358.68 accepted 7358.68
+mc 396 iteration 2 value 7358.68 declined 7954.77
+mc 95 iteration 1 value 5016.55 accepted 5016.55
+mc 95 iteration 2 value 4961.34 accepted 4961.34
+mc 199 iteration 1 value 5239.77 accepted 5239.77
+mc 199 iteration 2 value 4754.94 accepted 4754.94
+mc 197 iteration 1 value 5168.01 accepted 5168.01
+mc 197 iteration 2 value 5122.3 accepted 5122.3
+mc 395 iteration 1 value 4867.93 accepted 4867.93
+mc 395 iteration 2 value 4582.59 accepted 4582.59
+mc 198 iteration 1 value 8660.39 accepted 8660.39
+mc 198 iteration 2 value 8660.39 declined 9775.2
+mc 394 iteration 1 value 6493.22 accepted 6493.22
+mc 394 iteration 2 value 6322.72 accepted 6322.72
+mc 391 iteration 1 value 6482.99 accepted 6482.99
+mc 391 iteration 2 value 5868.21 accepted 5868.21
+mc 392 iteration 1 value 5474.55 accepted 5474.55
+mc 392 iteration 2 value 5474.55 declined 5914.61
+mc 387 iteration 1 value 7376.14 accepted 7376.14
+mc 387 iteration 2 value 7003.68 accepted 7003.68
+mc 383 iteration 1 value 3862.99 accepted 3862.99
+mc 383 iteration 2 value 3738.18 accepted 3738.18
+mc 194 iteration 1 value 3937.4 accepted 3937.4
+mc 194 iteration 2 value 3578.66 accepted 3578.66
+mc 388 iteration 1 value 6654.86 accepted 6654.86
+mc 388 iteration 2 value 6654.86 declined 6997.3
+mc 193 iteration 1 value 3175.64 accepted 3175.64
+mc 193 iteration 2 value 3082.68 accepted 3082.68
+mc 127 iteration 1 value 4889.86 accepted 4889.86
+mc 127 iteration 2 value 4550.15 accepted 4550.15
+mc 22 iteration 1 value 6361.96 accepted 6361.96
+mc 22 iteration 2 value 5994.42 accepted 5994.42
+mc 10 iteration 1 value 4600.77 accepted 4600.77
+mc 10 iteration 2 value 4400.83 accepted 4400.83
+mc 379 iteration 1 value 7590.63 accepted 7590.63
+mc 379 iteration 2 value 7590.63 declined 8670.62
+mc 190 iteration 1 value 5196.36 accepted 5196.36
+mc 190 iteration 2 value 4960.25 accepted 4960.25
+mc 380 iteration 1 value 5704.08 accepted 5704.08
+mc 380 iteration 2 value 5704.08 declined 6009.54
+mc 189 iteration 1 value 2284.81 accepted 2284.81
+mc 189 iteration 2 value 2255.99 accepted 2255.99
+mc 91 iteration 1 value 5587.8 accepted 5587.8
+mc 91 iteration 2 value 5587.8 declined 6010.76
+mc 378 iteration 1 value 5576.47 accepted 5576.47
+mc 378 iteration 2 value 5576.47 declined 6228.29
+mc 375 iteration 1 value 4614.51 accepted 4614.51
+mc 375 iteration 2 value 4614.51 declined 4641.13
+mc 371 iteration 1 value 5710.71 accepted 5710.71
+mc 371 iteration 2 value 5710.71 declined 5820.05
+mc 376 iteration 1 value 8437.42 accepted 8437.42
+mc 376 iteration 2 value 8437.42 declined 8944.62
+mc 186 iteration 1 value 6620.34 accepted 6620.34
+mc 186 iteration 2 value 6620.34 declined 7016.69
+mc 21 iteration 1 value 4196.78 accepted 4196.78
+mc 21 iteration 2 value 4033.04 accepted 4033.04
+mc 372 iteration 1 value 5129.38 accepted 5129.38
+mc 372 iteration 2 value 4956.35 accepted 4956.35
+mc 185 iteration 1 value 6860.95 accepted 6860.95
+mc 185 iteration 2 value 6860.95 declined 7142
+mc 176 iteration 1 value 10694.7 accepted 10694.7
+mc 176 iteration 2 value 9863.9 accepted 9863.9
+mc 369 iteration 1 value 14308.3 accepted 14308.3
+mc 369 iteration 2 value 12736.5 accepted 12736.5
+mc 367 iteration 1 value 11492.7 accepted 11492.7
+mc 367 iteration 2 value 11492.7 declined 12091.3
+mc 363 iteration 1 value 2349.26 accepted 2349.26
+mc 363 iteration 2 value 2349.26 declined 2465.53
+mc 364 iteration 1 value 8777.1 accepted 8777.1
+mc 364 iteration 2 value 8336.05 accepted 8336.05
+mc 359 iteration 1 value 5514.86 accepted 5514.86
+mc 359 iteration 2 value 5514.86 declined 6384.81
+mc 182 iteration 1 value 30385 accepted 30385
+mc 182 iteration 2 value 27141.5 accepted 27141.5
+mc 181 iteration 1 value 4339.91 accepted 4339.91
+mc 181 iteration 2 value 4339.91 declined 4611.77
+mc 87 iteration 1 value 6566.75 accepted 6566.75
+mc 87 iteration 2 value 6566.75 declined 7022.17
+mc 178 iteration 1 value 3710.83 accepted 3710.83
+mc 178 iteration 2 value 3528.45 accepted 3528.45
+mc 362 iteration 1 value 7747.17 accepted 7747.17
+mc 362 iteration 2 value 7747.17 declined 8693.01
+mc 355 iteration 1 value 6718.79 accepted 6718.79
+mc 355 iteration 2 value 6718.79 declined 7066.4
+mc 360 iteration 1 value 18789.1 accepted 18789.1
+mc 360 iteration 2 value 16509.5 accepted 16509.5
+mc 9 iteration 1 value 1329.55 accepted 1329.55
+mc 9 iteration 2 value 1315.81 accepted 1315.81
+mc 356 iteration 1 value 8961.74 accepted 8961.74
+mc 356 iteration 2 value 8961.74 declined 9114.09
+mc 177 iteration 1 value 4718.12 accepted 4718.12
+mc 177 iteration 2 value 4718.12 declined 4902.32
+mc 322 iteration 1 value 4225.04 accepted 4225.04
+mc 322 iteration 2 value 4128.48 accepted 4128.48
+mc 175 iteration 1 value 6425.99 accepted 6425.99
+mc 175 iteration 2 value 6425.99 declined 7431.53
+mc 347 iteration 1 value 3067.14 accepted 3067.14
+mc 347 iteration 2 value 2981.75 accepted 2981.75
+mc 20 iteration 1 value 18720.7 accepted 18720.7
+mc 20 iteration 2 value 18720.7 declined 21221.3
+mc 174 iteration 1 value 8361.04 accepted 8361.04
+mc 174 iteration 2 value 8361.04 declined 9262.34
+mc 348 iteration 1 value 10549.9 accepted 10549.9
+mc 348 iteration 2 value 10549.9 declined 11169
+mc 173 iteration 1 value 8703.76 accepted 8703.76
+mc 173 iteration 2 value 8703.76 declined 8853.03
+mc 83 iteration 1 value 4754.94 accepted 4754.94
+mc 83 iteration 2 value 4754.94 declined 5362.05
+mc 343 iteration 1 value 11642.2 accepted 11642.2
+mc 343 iteration 2 value 11642.2 declined 12438.2
+mc 169 iteration 1 value 7444.49 accepted 7444.49
+mc 169 iteration 2 value 7189.45 accepted 7189.45
+mc 340 iteration 1 value 7385.84 accepted 7385.84
+mc 340 iteration 2 value 6985.39 accepted 6985.39
+mc 344 iteration 1 value 5933 accepted 5933
+mc 344 iteration 2 value 5934.67 accepted 5934.67
+mc 339 iteration 1 value 10416.8 accepted 10416.8
+mc 339 iteration 2 value 10416.8 declined 15904.1
+mc 346 iteration 1 value 44501.1 accepted 44501.1
+mc 346 iteration 2 value 40612 accepted 40612
+mc 170 iteration 1 value 6934.32 accepted 6934.32
+mc 170 iteration 2 value 6934.32 declined 7905.75
+mc 19 iteration 1 value 4231.95 accepted 4231.95
+mc 19 iteration 2 value 4231.95 declined 4393.8
+mc 160 iteration 1 value 6346.04 accepted 6346.04
+mc 160 iteration 2 value 6205.3 accepted 6205.3
+mc 335 iteration 1 value 10850.8 accepted 10850.8
+mc 335 iteration 2 value 10850.8 declined 11062.4
+mc 165 iteration 1 value 7147.74 accepted 7147.74
+mc 165 iteration 2 value 6931.09 accepted 6931.09
+mc 337 iteration 1 value 6405.88 accepted 6405.88
+mc 337 iteration 2 value 6405.88 declined 6524.76
+mc 331 iteration 1 value 15893.3 accepted 15893.3
+mc 331 iteration 2 value 15893.3 declined 17545.7
+mc 166 iteration 1 value 4962.9 accepted 4962.9
+mc 166 iteration 2 value 4716.08 accepted 4716.08
+mc 332 iteration 1 value 6925.75 accepted 6925.75
+mc 332 iteration 2 value 6149.39 accepted 6149.39
+mc 79 iteration 1 value 3902.3 accepted 3902.3
+mc 79 iteration 2 value 3901.97 accepted 3901.97
+mc 330 iteration 1 value 5317.99 accepted 5317.99
+mc 330 iteration 2 value 5317.99 declined 5493.13
+mc 257 iteration 1 value 4752.75 accepted 4752.75
+mc 257 iteration 2 value 4482.12 accepted 4482.12
+mc 327 iteration 1 value 6018.68 accepted 6018.68
+mc 327 iteration 2 value 6018.68 declined 6524.53
+mc 328 iteration 1 value 9062.15 accepted 9062.15
+mc 328 iteration 2 value 8861.06 accepted 8861.06
+mc 323 iteration 1 value 5981.03 accepted 5981.03
+mc 323 iteration 2 value 5981.03 declined 6066.63
+mc 162 iteration 1 value 5918.81 accepted 5918.81
+mc 162 iteration 2 value 5657.21 accepted 5657.21
+mc 324 iteration 1 value 7238.37 accepted 7238.37
+mc 324 iteration 2 value 7238.37 declined 7741.57
+mc 8 iteration 1 value 1331.95 accepted 1331.95
+mc 8 iteration 2 value 1304.18 accepted 1304.18
+mc 161 iteration 1 value 5389.28 accepted 5389.28
+mc 161 iteration 2 value 5331.08 accepted 5331.08
+mc 320 iteration 1 value 6944.13 accepted 6944.13
+mc 320 iteration 2 value 6325.95 accepted 6325.95
+mc 158 iteration 1 value 5248.17 accepted 5248.17
+mc 158 iteration 2 value 5248.17 declined 5865.99
+mc 18 iteration 1 value 4391.3 accepted 4391.3
+mc 18 iteration 2 value 4391.3 declined 4746.85
+mc 157 iteration 1 value 8927.83 accepted 8927.83
+mc 157 iteration 2 value 8927.83 declined 9347.58
+mc 315 iteration 1 value 7764.05 accepted 7764.05
+mc 315 iteration 2 value 7764.05 declined 10030.2
+mc 312 iteration 1 value 6715.3 accepted 6715.3
+mc 312 iteration 2 value 6112.54 accepted 6112.54
+mc 316 iteration 1 value 11766.6 accepted 11766.6
+mc 316 iteration 2 value 11766.6 declined 12355.4
+mc 75 iteration 1 value 4593.62 accepted 4593.62
+mc 75 iteration 2 value 4593.62 declined 4651.57
+mc 314 iteration 1 value 3174.04 accepted 3174.04
+mc 314 iteration 2 value 3174.04 declined 3345.42
+mc 311 iteration 1 value 5707.73 accepted 5707.73
+mc 311 iteration 2 value 4855.02 accepted 4855.02
+mc 307 iteration 1 value 4185.82 accepted 4185.82
+mc 307 iteration 2 value 4185.82 declined 4490.62
+mc 303 iteration 1 value 8001.84 accepted 8001.84
+mc 303 iteration 2 value 7443.57 accepted 7443.57
+mc 154 iteration 1 value 4319.01 accepted 4319.01
+mc 154 iteration 2 value 4319.01 declined 4616.6
+mc 308 iteration 1 value 7468.73 accepted 7468.73
+mc 308 iteration 2 value 7022.87 accepted 7022.87
+mc 153 iteration 1 value 9201.87 accepted 9201.87
+mc 153 iteration 2 value 9201.87 declined 9361.81
+mc 144 iteration 1 value 13145.1 accepted 13145.1
+mc 144 iteration 2 value 12528.8 accepted 12528.8
+mc 305 iteration 1 value 6319.94 accepted 6319.94
+mc 305 iteration 2 value 6098.78 accepted 6098.78
+mc 299 iteration 1 value 8808.07 accepted 8808.07
+mc 299 iteration 2 value 8628.2 accepted 8628.2
+mc 17 iteration 1 value 4506.69 accepted 4506.69
+mc 17 iteration 2 value 4362.86 accepted 4362.86
+mc 150 iteration 1 value 6495.73 accepted 6495.73
+mc 150 iteration 2 value 6129.07 accepted 6129.07
+mc 298 iteration 1 value 5961.46 accepted 5961.46
+mc 298 iteration 2 value 5961.46 declined 6296.66
+mc 71 iteration 1 value 4553.93 accepted 4553.93
+mc 71 iteration 2 value 4444.52 accepted 4444.52
+mc 146 iteration 1 value 5172.75 accepted 5172.75
+mc 146 iteration 2 value 4707.74 accepted 4707.74
+mc 296 iteration 1 value 4487.2 accepted 4487.2
+mc 296 iteration 2 value 4322.77 accepted 4322.77
+mc 300 iteration 1 value 7402.74 accepted 7402.74
+mc 300 iteration 2 value 7415.96 accepted 7415.96
+mc 149 iteration 1 value 5728.65 accepted 5728.65
+mc 149 iteration 2 value 5719.07 accepted 5719.07
+mc 295 iteration 1 value 17984.5 accepted 17984.5
+mc 295 iteration 2 value 16239.1 accepted 16239.1
+mc 7 iteration 1 value 1369.31 accepted 1369.31
+mc 7 iteration 2 value 1354.96 accepted 1354.96
+mc 291 iteration 1 value 12544.9 accepted 12544.9
+mc 291 iteration 2 value 12544.9 declined 13237.9
+mc 16 iteration 1 value 4605.53 accepted 4605.53
+mc 16 iteration 2 value 4340.64 accepted 4340.64
+mc 292 iteration 1 value 16538.7 accepted 16538.7
+mc 292 iteration 2 value 15249.2 accepted 15249.2
+mc 145 iteration 1 value 6021.53 accepted 6021.53
+mc 145 iteration 2 value 6021.53 declined 6881.63
+mc 258 iteration 1 value 4224.97 accepted 4224.97
+mc 258 iteration 2 value 4230.88 accepted 4230.88
+mc 283 iteration 1 value 8976.1 accepted 8976.1
+mc 283 iteration 2 value 8414.89 accepted 8414.89
+mc 143 iteration 1 value 3729.93 accepted 3729.93
+mc 143 iteration 2 value 3614.58 accepted 3614.58
+mc 282 iteration 1 value 11232.7 accepted 11232.7
+mc 282 iteration 2 value 10556.8 accepted 10556.8
+mc 142 iteration 1 value 22524.7 accepted 22524.7
+mc 142 iteration 2 value 19541.8 accepted 19541.8
+mc 280 iteration 1 value 5308.94 accepted 5308.94
+mc 280 iteration 2 value 5308.94 declined 5432.16
+mc 284 iteration 1 value 8066.36 accepted 8066.36
+mc 284 iteration 2 value 7332.26 accepted 7332.26
+mc 141 iteration 1 value 5587.13 accepted 5587.13
+mc 141 iteration 2 value 5116.71 accepted 5116.71
+mc 67 iteration 1 value 6573.57 accepted 6573.57
+mc 67 iteration 2 value 5197.38 accepted 5197.38
+mc 279 iteration 1 value 18378.8 accepted 18378.8
+mc 279 iteration 2 value 17511.2 accepted 17511.2
+mc 275 iteration 1 value 4522.37 accepted 4522.37
+mc 275 iteration 2 value 4324.94 accepted 4324.94
+mc 128 iteration 1 value 3634.74 accepted 3634.74
+mc 128 iteration 2 value 3348.05 accepted 3348.05
+mc 271 iteration 1 value 7652.11 accepted 7652.11
+mc 271 iteration 2 value 7652.11 declined 8820.42
+mc 138 iteration 1 value 4860.04 accepted 4860.04
+mc 138 iteration 2 value 4552.11 accepted 4552.11
+mc 276 iteration 1 value 5114.14 accepted 5114.14
+mc 276 iteration 2 value 4994.46 accepted 4994.46
+mc 137 iteration 1 value 9542 accepted 9542
+mc 137 iteration 2 value 9470.68 accepted 9470.68
+mc 273 iteration 1 value 12612.5 accepted 12612.5
+mc 273 iteration 2 value 12612.5 declined 13943.5
+mc 15 iteration 1 value 4840.29 accepted 4840.29
+mc 15 iteration 2 value 4707.29 accepted 4707.29
+mc 267 iteration 1 value 6695.61 accepted 6695.61
+mc 267 iteration 2 value 6695.61 declined 7364.34
+mc 133 iteration 1 value 5853.61 accepted 5853.61
+mc 133 iteration 2 value 5699.06 accepted 5699.06
+mc 63 iteration 1 value 5833.58 accepted 5833.58
+mc 63 iteration 2 value 5359.49 accepted 5359.49
+mc 134 iteration 1 value 4854.16 accepted 4854.16
+mc 134 iteration 2 value 4854.16 declined 5183.76
+mc 268 iteration 1 value 6603.64 accepted 6603.64
+mc 268 iteration 2 value 6051.71 accepted 6051.71
+mc 266 iteration 1 value 5582.34 accepted 5582.34
+mc 266 iteration 2 value 5582.34 declined 6279.97
+mc 2 iteration 1 value 1329.34 accepted 1329.34
+mc 2 iteration 2 value 1329.34 declined 1355.19
+mc 263 iteration 1 value 17370.5 accepted 17370.5
+mc 263 iteration 2 value 17370.5 declined 20666.3
+mc 264 iteration 1 value 4598.2 accepted 4598.2
+mc 264 iteration 2 value 4227.39 accepted 4227.39
+mc 259 iteration 1 value 6274.56 accepted 6274.56
+mc 259 iteration 2 value 5474.06 accepted 5474.06
+mc 130 iteration 1 value 4758.22 accepted 4758.22
+mc 130 iteration 2 value 4550.39 accepted 4550.39
+mc 260 iteration 1 value 4993.44 accepted 4993.44
+mc 260 iteration 2 value 4993.44 declined 5768.04
+mc 129 iteration 1 value 2908.75 accepted 2908.75
+mc 129 iteration 2 value 2903.04 accepted 2903.04
+mc 62 iteration 1 value 8968.25 accepted 8968.25
+mc 62 iteration 2 value 8472.58 accepted 8472.58
+mc 120 iteration 1 value 7410.46 accepted 7410.46
+mc 120 iteration 2 value 7410.46 declined 7660.22
+mc 30 iteration 1 value 27363 accepted 27363
+mc 30 iteration 2 value 27198.6 accepted 27198.6
+mc 61 iteration 1 value 5928.46 accepted 5928.46
+mc 61 iteration 2 value 5928.46 declined 6086.27
+mc 399 iteration 1 value 4851.51 accepted 4851.51
+mc 399 iteration 2 value 4851.51 declined 4968.54
+mc 251 iteration 1 value 3421.5 accepted 3421.5
+mc 251 iteration 2 value 3428.43 accepted 3428.43
+mc 252 iteration 1 value 7573.86 accepted 7573.86
+mc 252 iteration 2 value 7573.86 declined 7923.41
+mc 29 iteration 1 value 7417.29 accepted 7417.29
+mc 29 iteration 2 value 7417.29 declined 7533.37
+mc 249 iteration 1 value 7728.75 accepted 7728.75
+mc 249 iteration 2 value 7587.02 accepted 7587.02
+mc 119 iteration 1 value 6150.92 accepted 6150.92
+mc 119 iteration 2 value 5457.99 accepted 5457.99
+mc 247 iteration 1 value 7205.54 accepted 7205.54
+mc 247 iteration 2 value 7205.54 declined 7243.21
+mc 59 iteration 1 value 5705.23 accepted 5705.23
+mc 59 iteration 2 value 4930.97 accepted 4930.97
+mc 246 iteration 1 value 8195.02 accepted 8195.02
+mc 246 iteration 2 value 8195.02 declined 9455.97
+mc 243 iteration 1 value 10624.5 accepted 10624.5
+mc 243 iteration 2 value 10624.5 declined 10869.1
+mc 244 iteration 1 value 5243.03 accepted 5243.03
+mc 244 iteration 2 value 5201.64 accepted 5201.64
+mc 226 iteration 1 value 4602.68 accepted 4602.68
+mc 226 iteration 2 value 4602.68 declined 4809.75
+mc 13 iteration 1 value 4949.1 accepted 4949.1
+mc 13 iteration 2 value 4528.37 accepted 4528.37
+mc 28 iteration 1 value 5443.15 accepted 5443.15
+mc 28 iteration 2 value 5443.15 declined 5964.6
+mc 236 iteration 1 value 6516.42 accepted 6516.42
+mc 236 iteration 2 value 5573.34 accepted 5573.34
+mc 57 iteration 1 value 5236.33 accepted 5236.33
+mc 57 iteration 2 value 5193.67 accepted 5193.67
+mc 238 iteration 1 value 5890.96 accepted 5890.96
+mc 238 iteration 2 value 5721.04 accepted 5721.04
+mc 235 iteration 1 value 8231.06 accepted 8231.06
+mc 235 iteration 2 value 7574.03 accepted 7574.03
+mc 112 iteration 1 value 10087.2 accepted 10087.2
+mc 112 iteration 2 value 10087.2 declined 10417.6
+mc 55 iteration 1 value 5347.2 accepted 5347.2
+mc 55 iteration 2 value 5347.2 declined 5807.62
+mc 233 iteration 1 value 5673.05 accepted 5673.05
+mc 233 iteration 2 value 5119.11 accepted 5119.11
+mc 27 iteration 1 value 32098.2 accepted 32098.2
+mc 27 iteration 2 value 21538.5 accepted 21538.5
+mc 231 iteration 1 value 6127.9 accepted 6127.9
+mc 231 iteration 2 value 5479.08 accepted 5479.08
+mc 230 iteration 1 value 3618.2 accepted 3618.2
+mc 230 iteration 2 value 3473.47 accepted 3473.47
+mc 228 iteration 1 value 4451.67 accepted 4451.67
+mc 228 iteration 2 value 4378.96 accepted 4378.96
+mc 227 iteration 1 value 5830.07 accepted 5830.07
+mc 227 iteration 2 value 5286.87 accepted 5286.87
+mc 385 iteration 1 value 5521.54 accepted 5521.54
+mc 385 iteration 2 value 4932.51 accepted 4932.51
+mc 224 iteration 1 value 6345.28 accepted 6345.28
+mc 224 iteration 2 value 6345.28 declined 6525.13
+mc 26 iteration 1 value 6369.33 accepted 6369.33
+mc 26 iteration 2 value 6369.33 declined 7009.06
+mc 12 iteration 1 value 4514.28 accepted 4514.28
+mc 12 iteration 2 value 4357.03 accepted 4357.03
+mc 220 iteration 1 value 7306.29 accepted 7306.29
+mc 220 iteration 2 value 7189.48 accepted 7189.48
+mc 53 iteration 1 value 6768.72 accepted 6768.72
+mc 53 iteration 2 value 6768.72 declined 7021.49
+mc 222 iteration 1 value 6747.48 accepted 6747.48
+mc 222 iteration 2 value 6747.48 declined 7159.25
+mc 219 iteration 1 value 10064.9 accepted 10064.9
+mc 219 iteration 2 value 10064.9 declined 10611.7
+mc 212 iteration 1 value 3186.89 accepted 3186.89
+mc 212 iteration 2 value 3017.51 accepted 3017.51
+mc 104 iteration 1 value 12168.6 accepted 12168.6
+mc 104 iteration 2 value 11776 accepted 11776
+mc 217 iteration 1 value 7295.67 accepted 7295.67
+mc 217 iteration 2 value 7117.63 accepted 7117.63
+mc 25 iteration 1 value 5526.01 accepted 5526.01
+mc 25 iteration 2 value 4641.69 accepted 4641.69
+mc 211 iteration 1 value 5932.47 accepted 5932.47
+mc 211 iteration 2 value 5932.47 declined 6069.08
+mc 215 iteration 1 value 7023.78 accepted 7023.78
+mc 215 iteration 2 value 7023.78 declined 7819.36
+mc 51 iteration 1 value 5302.58 accepted 5302.58
+mc 51 iteration 2 value 5302.58 declined 5532.46
+mc 214 iteration 1 value 4254.69 accepted 4254.69
+mc 214 iteration 2 value 4179.53 accepted 4179.53
+mc 386 iteration 1 value 8909.81 accepted 8909.81
+mc 386 iteration 2 value 8418.63 accepted 8418.63
+mc 103 iteration 1 value 4208.54 accepted 4208.54
+mc 103 iteration 2 value 4208.54 declined 4804.45
+mc 24 iteration 1 value 10262.6 accepted 10262.6
+mc 24 iteration 2 value 10262.6 declined 10432.9
+mc 11 iteration 1 value 4561.74 accepted 4561.74
+mc 11 iteration 2 value 4376.64 accepted 4376.64
+mc 49 iteration 1 value 6624.49 accepted 6624.49
+mc 49 iteration 2 value 6624.49 declined 6932.56
+mc 206 iteration 1 value 7099.16 accepted 7099.16
+mc 206 iteration 2 value 7099.16 declined 7224.93
+mc 204 iteration 1 value 8967.12 accepted 8967.12
+mc 204 iteration 2 value 8401.58 accepted 8401.58
+mc 124 iteration 1 value 9497.84 accepted 9497.84
+mc 124 iteration 2 value 9322.24 accepted 9322.24
+mc 200 iteration 1 value 7629.56 accepted 7629.56
+mc 200 iteration 2 value 7629.56 declined 8293.45
+mc 397 iteration 1 value 9844.34 accepted 9844.34
+mc 397 iteration 2 value 9844.34 declined 10024.9
+mc 97 iteration 1 value 9263.61 accepted 9263.61
+mc 97 iteration 2 value 9263.61 declined 9848.6
+mc 398 iteration 1 value 2611.1 accepted 2611.1
+mc 398 iteration 2 value 2611.1 declined 2662.35
+mc 390 iteration 1 value 3161.24 accepted 3161.24
+mc 390 iteration 2 value 3161.24 declined 3243.16
+mc 47 iteration 1 value 10674.3 accepted 10674.3
+mc 47 iteration 2 value 9435.26 accepted 9435.26
+mc 195 iteration 1 value 6068.74 accepted 6068.74
+mc 195 iteration 2 value 6068.74 declined 6643.62
+mc 389 iteration 1 value 21433.5 accepted 21433.5
+mc 389 iteration 2 value 19008.1 accepted 19008.1
+mc 321 iteration 1 value 6251.79 accepted 6251.79
+mc 321 iteration 2 value 5980.78 accepted 5980.78
+mc 4 iteration 1 value 1332.69 accepted 1332.69
+mc 4 iteration 2 value 1332.11 accepted 1332.11
+mc 382 iteration 1 value 19712.9 accepted 19712.9
+mc 382 iteration 2 value 19747.6 accepted 19747.6
+mc 381 iteration 1 value 7127.11 accepted 7127.11
+mc 381 iteration 2 value 7127.11 declined 7354.72
+mc 45 iteration 1 value 8326.89 accepted 8326.89
+mc 45 iteration 2 value 8433.37 accepted 8433.37
+mc 187 iteration 1 value 4761.77 accepted 4761.77
+mc 187 iteration 2 value 4404.45 accepted 4404.45
+mc 374 iteration 1 value 5049.64 accepted 5049.64
+mc 374 iteration 2 value 4435.84 accepted 4435.84
+mc 373 iteration 1 value 11346.8 accepted 11346.8
+mc 373 iteration 2 value 11346.8 declined 11611.4
+mc 43 iteration 1 value 6948.93 accepted 6948.93
+mc 43 iteration 2 value 6948.93 declined 7156.34
+mc 179 iteration 1 value 3597.64 accepted 3597.64
+mc 179 iteration 2 value 3565.67 accepted 3565.67
+mc 89 iteration 1 value 7079.42 accepted 7079.42
+mc 89 iteration 2 value 6807.66 accepted 6807.66
+mc 368 iteration 1 value 4841.13 accepted 4841.13
+mc 368 iteration 2 value 4841.13 declined 5190
+mc 358 iteration 1 value 11357 accepted 11357
+mc 358 iteration 2 value 11357 declined 11991.4
+mc 366 iteration 1 value 4529.46 accepted 4529.46
+mc 366 iteration 2 value 4219.43 accepted 4219.43
+mc 365 iteration 1 value 5924.48 accepted 5924.48
+mc 365 iteration 2 value 5912.14 accepted 5912.14
+mc 357 iteration 1 value 4245.4 accepted 4245.4
+mc 357 iteration 2 value 3717.78 accepted 3717.78
+mc 168 iteration 1 value 6789.42 accepted 6789.42
+mc 168 iteration 2 value 6690.16 accepted 6690.16
+mc 351 iteration 1 value 6883.44 accepted 6883.44
+mc 351 iteration 2 value 6331.52 accepted 6331.52
+mc 350 iteration 1 value 8894.43 accepted 8894.43
+mc 350 iteration 2 value 8176.41 accepted 8176.41
+mc 349 iteration 1 value 7446.75 accepted 7446.75
+mc 349 iteration 2 value 7446.75 declined 7765.01
+mc 41 iteration 1 value 5306.52 accepted 5306.52
+mc 41 iteration 2 value 5024.08 accepted 5024.08
+mc 171 iteration 1 value 5194.28 accepted 5194.28
+mc 171 iteration 2 value 5194.28 declined 5417.72
+mc 342 iteration 1 value 6226.99 accepted 6226.99
+mc 342 iteration 2 value 6226.99 declined 6625.09
+mc 341 iteration 1 value 3006.41 accepted 3006.41
+mc 341 iteration 2 value 3006.41 declined 3231.52
+mc 163 iteration 1 value 6965.39 accepted 6965.39
+mc 163 iteration 2 value 6965.39 declined 7959.81
+mc 81 iteration 1 value 7420.85 accepted 7420.85
+mc 81 iteration 2 value 6304.23 accepted 6304.23
+mc 336 iteration 1 value 6219.7 accepted 6219.7
+mc 336 iteration 2 value 6218.84 accepted 6218.84
+mc 334 iteration 1 value 7865.46 accepted 7865.46
+mc 334 iteration 2 value 7644.07 accepted 7644.07
+mc 333 iteration 1 value 2741.7 accepted 2741.7
+mc 333 iteration 2 value 2441.01 accepted 2441.01
+mc 39 iteration 1 value 13212.8 accepted 13212.8
+mc 39 iteration 2 value 13212.8 declined 14740.6
+mc 3 iteration 1 value 1321.11 accepted 1321.11
+mc 3 iteration 2 value 1321.11 declined 1361.41
+mc 326 iteration 1 value 10978.6 accepted 10978.6
+mc 326 iteration 2 value 10968.7 accepted 10968.7
+mc 325 iteration 1 value 6268.42 accepted 6268.42
+mc 325 iteration 2 value 6250.35 accepted 6250.35
+mc 290 iteration 1 value 5414.31 accepted 5414.31
+mc 290 iteration 2 value 5414.31 declined 5494.05
+mc 318 iteration 1 value 3893.38 accepted 3893.38
+mc 318 iteration 2 value 3874.45 accepted 3874.45
+mc 317 iteration 1 value 6882.93 accepted 6882.93
+mc 317 iteration 2 value 5970.03 accepted 5970.03
+mc 37 iteration 1 value 9105.2 accepted 9105.2
+mc 37 iteration 2 value 9105.2 declined 9666.35
+mc 155 iteration 1 value 9860.99 accepted 9860.99
+mc 155 iteration 2 value 9860.99 declined 10827
+mc 310 iteration 1 value 5014.06 accepted 5014.06
+mc 310 iteration 2 value 5006.89 accepted 5006.89
+mc 309 iteration 1 value 8725.54 accepted 8725.54
+mc 309 iteration 2 value 8725.54 declined 8865.97
+mc 73 iteration 1 value 7682.68 accepted 7682.68
+mc 73 iteration 2 value 7682.68 declined 8381.46
+mc 304 iteration 1 value 9939.01 accepted 9939.01
+mc 304 iteration 2 value 9939.01 declined 10551.4
+mc 302 iteration 1 value 6366.5 accepted 6366.5
+mc 302 iteration 2 value 5727.09 accepted 5727.09
+mc 301 iteration 1 value 4576.49 accepted 4576.49
+mc 301 iteration 2 value 4576.49 declined 4787.42
+mc 35 iteration 1 value 6492.12 accepted 6492.12
+mc 35 iteration 2 value 6492.12 declined 7069.55
+mc 294 iteration 1 value 2914.66 accepted 2914.66
+mc 294 iteration 2 value 2835.4 accepted 2835.4
+mc 147 iteration 1 value 7453.44 accepted 7453.44
+mc 147 iteration 2 value 7453.44 declined 9745.83
+mc 293 iteration 1 value 8253.53 accepted 8253.53
+mc 293 iteration 2 value 8253.53 declined 8767.21
+mc 136 iteration 1 value 5831.42 accepted 5831.42
+mc 136 iteration 2 value 5485.16 accepted 5485.16
+mc 287 iteration 1 value 6265.45 accepted 6265.45
+mc 287 iteration 2 value 6032.89 accepted 6032.89
+mc 139 iteration 1 value 5222.37 accepted 5222.37
+mc 139 iteration 2 value 4867.74 accepted 4867.74
+mc 286 iteration 1 value 4328.02 accepted 4328.02
+mc 286 iteration 2 value 4328.02 declined 4425.86
+mc 65 iteration 1 value 7617.45 accepted 7617.45
+mc 65 iteration 2 value 7617.45 declined 8672.16
+mc 285 iteration 1 value 6906.07 accepted 6906.07
+mc 285 iteration 2 value 6906.07 declined 6961.64
+mc 33 iteration 1 value 8655.93 accepted 8655.93
+mc 33 iteration 2 value 7706.15 accepted 7706.15
+mc 269 iteration 1 value 3005.64 accepted 3005.64
+mc 269 iteration 2 value 2934.09 accepted 2934.09
+mc 278 iteration 1 value 6084.59 accepted 6084.59
+mc 278 iteration 2 value 6084.59 declined 6237.35
+mc 277 iteration 1 value 7532.66 accepted 7532.66
+mc 277 iteration 2 value 6950.71 accepted 6950.71
+mc 272 iteration 1 value 6276.87 accepted 6276.87
+mc 272 iteration 2 value 6332.47 accepted 6332.47
+mc 270 iteration 1 value 8466.22 accepted 8466.22
+mc 270 iteration 2 value 8466.22 declined 9900.36
+mc 31 iteration 1 value 7449.75 accepted 7449.75
+mc 31 iteration 2 value 7449.75 declined 8417.87
+mc 261 iteration 1 value 3847.6 accepted 3847.6
+mc 261 iteration 2 value 3847.6 declined 4134.83
+mc 131 iteration 1 value 4997.52 accepted 4997.52
+mc 131 iteration 2 value 4848.35 accepted 4848.35
+mc 262 iteration 1 value 5469.74 accepted 5469.74
+mc 262 iteration 2 value 5348.44 accepted 5348.44
+mc 14 iteration 1 value 4338.81 accepted 4338.81
+mc 14 iteration 2 value 4338.81 declined 4475.65
+mc 125 iteration 1 value 6902.04 accepted 6902.04
+mc 125 iteration 2 value 6902.04 declined 7121.3
+mc 253 iteration 1 value 5140.97 accepted 5140.97
+mc 253 iteration 2 value 4801.57 accepted 4801.57
+mc 116 iteration 1 value 5532.24 accepted 5532.24
+mc 116 iteration 2 value 5074.08 accepted 5074.08
+mc 248 iteration 1 value 5183.91 accepted 5183.91
+mc 248 iteration 2 value 4778.66 accepted 4778.66
+mc 60 iteration 1 value 5355 accepted 5355
+mc 60 iteration 2 value 5355 declined 5481.24
+mc 245 iteration 1 value 4519.53 accepted 4519.53
+mc 245 iteration 2 value 4519.53 declined 5125.68
+mc 121 iteration 1 value 6166.19 accepted 6166.19
+mc 121 iteration 2 value 5885.86 accepted 5885.86
+mc 239 iteration 1 value 6302.17 accepted 6302.17
+mc 239 iteration 2 value 5604.15 accepted 5604.15
+mc 56 iteration 1 value 7678.6 accepted 7678.6
+mc 56 iteration 2 value 7678.6 declined 8414.28
+mc 237 iteration 1 value 8075.55 accepted 8075.55
+mc 237 iteration 2 value 8075.55 declined 8580.94
+mc 117 iteration 1 value 10228.2 accepted 10228.2
+mc 117 iteration 2 value 10228.2 declined 11536.3
+mc 232 iteration 1 value 5458.87 accepted 5458.87
+mc 232 iteration 2 value 5458.87 declined 5729.76
+mc 229 iteration 1 value 11821 accepted 11821
+mc 229 iteration 2 value 11821 declined 11969.5
+mc 113 iteration 1 value 6751.74 accepted 6751.74
+mc 113 iteration 2 value 6408.32 accepted 6408.32
+mc 210 iteration 1 value 4524.35 accepted 4524.35
+mc 210 iteration 2 value 4524.35 declined 4613.49
+mc 5 iteration 1 value 1318.4 accepted 1318.4
+mc 5 iteration 2 value 1318.4 declined 1341.71
+mc 213 iteration 1 value 5628.67 accepted 5628.67
+mc 213 iteration 2 value 5628.67 declined 6251.54
+mc 221 iteration 1 value 8363.03 accepted 8363.03
+mc 221 iteration 2 value 7284.33 accepted 7284.33
+mc 109 iteration 1 value 6671.08 accepted 6671.08
+mc 109 iteration 2 value 6082.99 accepted 6082.99
+mc 52 iteration 1 value 6403.06 accepted 6403.06
+mc 52 iteration 2 value 6403.06 declined 7037.92
+mc 216 iteration 1 value 6748.51 accepted 6748.51
+mc 216 iteration 2 value 6748.51 declined 7274.14
+mc 105 iteration 1 value 5257.49 accepted 5257.49
+mc 105 iteration 2 value 4813.51 accepted 4813.51
+mc 203 iteration 1 value 4525.1 accepted 4525.1
+mc 203 iteration 2 value 4231.77 accepted 4231.77
+mc 207 iteration 1 value 6385.01 accepted 6385.01
+mc 207 iteration 2 value 6385.01 declined 7034.42
+mc 205 iteration 1 value 12448 accepted 12448
+mc 205 iteration 2 value 12448 declined 12900.5
+mc 242 iteration 1 value 10934.3 accepted 10934.3
+mc 242 iteration 2 value 10934.3 declined 11882.9
+mc 48 iteration 1 value 10257.2 accepted 10257.2
+mc 48 iteration 2 value 10257.2 declined 10348.7
+mc 98 iteration 1 value 8679.19 accepted 8679.19
+mc 98 iteration 2 value 8265.7 accepted 8265.7
+mc 96 iteration 1 value 7385.71 accepted 7385.71
+mc 96 iteration 2 value 7385.71 declined 8063.77
+mc 393 iteration 1 value 15172.2 accepted 15172.2
+mc 393 iteration 2 value 15033.3 accepted 15033.3
+mc 354 iteration 1 value 5413.91 accepted 5413.91
+mc 354 iteration 2 value 5413.91 declined 6167.61
+mc 377 iteration 1 value 7773.71 accepted 7773.71
+mc 377 iteration 2 value 7773.71 declined 8000.77
+mc 94 iteration 1 value 8389.77 accepted 8389.77
+mc 94 iteration 2 value 8389.77 declined 8786.12
+mc 92 iteration 1 value 6715.29 accepted 6715.29
+mc 92 iteration 2 value 6658.82 accepted 6658.82
+mc 44 iteration 1 value 5531.8 accepted 5531.8
+mc 44 iteration 2 value 4775.97 accepted 4775.97
+mc 361 iteration 1 value 6459.18 accepted 6459.18
+mc 361 iteration 2 value 6459.18 declined 6758.67
+mc 90 iteration 1 value 4247.33 accepted 4247.33
+mc 90 iteration 2 value 3835.83 accepted 3835.83
+mc 88 iteration 1 value 4183.72 accepted 4183.72
+mc 88 iteration 2 value 4183.72 declined 4730.46
+mc 85 iteration 1 value 9732.81 accepted 9732.81
+mc 85 iteration 2 value 9458.78 accepted 9458.78
+mc 345 iteration 1 value 7647.35 accepted 7647.35
+mc 345 iteration 2 value 7580.48 accepted 7580.48
+mc 86 iteration 1 value 9260.45 accepted 9260.45
+mc 86 iteration 2 value 9260.45 declined 9867.93
+mc 152 iteration 1 value 3582.76 accepted 3582.76
+mc 152 iteration 2 value 3582.76 declined 3811.53
+mc 84 iteration 1 value 16017.3 accepted 16017.3
+mc 84 iteration 2 value 15151.9 accepted 15151.9
+mc 40 iteration 1 value 4140.03 accepted 4140.03
+mc 40 iteration 2 value 4140.03 declined 4270.13
+mc 82 iteration 1 value 4463.36 accepted 4463.36
+mc 82 iteration 2 value 4463.36 declined 4555.16
+mc 329 iteration 1 value 6405.51 accepted 6405.51
+mc 329 iteration 2 value 6390.67 accepted 6390.67
+mc 80 iteration 1 value 6291.41 accepted 6291.41
+mc 80 iteration 2 value 6291.41 declined 6962.38
+mc 78 iteration 1 value 6292.1 accepted 6292.1
+mc 78 iteration 2 value 6292.1 declined 6719.04
+mc 313 iteration 1 value 10153.9 accepted 10153.9
+mc 313 iteration 2 value 10153.9 declined 11534.6
+mc 76 iteration 1 value 6194.66 accepted 6194.66
+mc 76 iteration 2 value 6194.66 declined 7075.75
+mc 36 iteration 1 value 4223.8 accepted 4223.8
+mc 36 iteration 2 value 3910.61 accepted 3910.61
+mc 74 iteration 1 value 8269.9 accepted 8269.9
+mc 74 iteration 2 value 7613.78 accepted 7613.78
+mc 297 iteration 1 value 4911.68 accepted 4911.68
+mc 297 iteration 2 value 4911.68 declined 5004.92
+mc 72 iteration 1 value 5267.73 accepted 5267.73
+mc 72 iteration 2 value 5267.73 declined 5747.76
+mc 69 iteration 1 value 3104.75 accepted 3104.75
+mc 69 iteration 2 value 3104.75 declined 3363.98
+mc 68 iteration 1 value 7789.97 accepted 7789.97
+mc 68 iteration 2 value 7789.97 declined 7890.93
+mc 70 iteration 1 value 4755.48 accepted 4755.48
+mc 70 iteration 2 value 4755.48 declined 5075.97
+mc 281 iteration 1 value 15192.5 accepted 15192.5
+mc 281 iteration 2 value 15192.5 declined 16476.2
+mc 254 iteration 1 value 8586.72 accepted 8586.72
+mc 254 iteration 2 value 7944.99 accepted 7944.99
+mc 32 iteration 1 value 5638.63 accepted 5638.63
+mc 32 iteration 2 value 5399.68 accepted 5399.68
+mc 66 iteration 1 value 7218.26 accepted 7218.26
+mc 66 iteration 2 value 7218.26 declined 8302.06
+mc 265 iteration 1 value 4976.29 accepted 4976.29
+mc 265 iteration 2 value 4946.69 accepted 4946.69
+mc 64 iteration 1 value 4830.78 accepted 4830.78
+mc 64 iteration 2 value 4419.83 accepted 4419.83
+mc 115 iteration 1 value 4927.63 accepted 4927.63
+mc 115 iteration 2 value 4927.63 declined 5188.86
+mc 58 iteration 1 value 2453.45 accepted 2453.45
+mc 58 iteration 2 value 2357.66 accepted 2357.66
+mc 123 iteration 1 value 5384.71 accepted 5384.71
+mc 123 iteration 2 value 4792.6 accepted 4792.6
+mc 122 iteration 1 value 5760.04 accepted 5760.04
+mc 122 iteration 2 value 5760.04 declined 6649.62
+mc 114 iteration 1 value 10343.3 accepted 10343.3
+mc 114 iteration 2 value 10262.9 accepted 10262.9
+mc 118 iteration 1 value 5510.97 accepted 5510.97
+mc 118 iteration 2 value 5510.97 declined 5582.32
+mc 107 iteration 1 value 8024.86 accepted 8024.86
+mc 107 iteration 2 value 8024.86 declined 8262.03
+mc 108 iteration 1 value 7929.24 accepted 7929.24
+mc 108 iteration 2 value 7929.24 declined 8647.34
+mc 110 iteration 1 value 7200.65 accepted 7200.65
+mc 110 iteration 2 value 7200.65 declined 7374.72
+mc 106 iteration 1 value 4182.34 accepted 4182.34
+mc 106 iteration 2 value 4182.34 declined 4354.65
+mc 196 iteration 1 value 3146.85 accepted 3146.85
+mc 196 iteration 2 value 3146.85 declined 3384.13
+mc 101 iteration 1 value 6531.01 accepted 6531.01
+mc 101 iteration 2 value 6531.01 declined 6552.98
+mc 225 iteration 1 value 5278.62 accepted 5278.62
+mc 225 iteration 2 value 5278.62 declined 5367.39
+mc 188 iteration 1 value 3040.34 accepted 3040.34
+mc 188 iteration 2 value 3040.34 declined 3274.04
+mc 99 iteration 1 value 8347.38 accepted 8347.38
+mc 99 iteration 2 value 8347.38 declined 8951.89
+mc 184 iteration 1 value 9340.43 accepted 9340.43
+mc 184 iteration 2 value 9340.43 declined 9617.93
+mc 167 iteration 1 value 4990.79 accepted 4990.79
+mc 167 iteration 2 value 4769.96 accepted 4769.96
+mc 183 iteration 1 value 3519.19 accepted 3519.19
+mc 183 iteration 2 value 3519.19 declined 3536.44
+mc 180 iteration 1 value 6461.37 accepted 6461.37
+mc 180 iteration 2 value 6461.37 declined 6670.3
+mc 42 iteration 1 value 10056.1 accepted 10056.1
+mc 42 iteration 2 value 10056.1 declined 11097.6
+mc 172 iteration 1 value 13785.9 accepted 13785.9
+mc 172 iteration 2 value 13785.9 declined 14765.5
+mc 164 iteration 1 value 4728.54 accepted 4728.54
+mc 164 iteration 2 value 4728.54 declined 4743.09
+mc 77 iteration 1 value 6022.33 accepted 6022.33
+mc 77 iteration 2 value 5749.11 accepted 5749.11
+mc 156 iteration 1 value 9181.51 accepted 9181.51
+mc 156 iteration 2 value 9181.51 declined 10321.2
+mc 151 iteration 1 value 10532.2 accepted 10532.2
+mc 151 iteration 2 value 10330.4 accepted 10330.4
+mc 148 iteration 1 value 4842.44 accepted 4842.44
+mc 148 iteration 2 value 4884.32 accepted 4884.32
+mc 34 iteration 1 value 7288.88 accepted 7288.88
+mc 34 iteration 2 value 6345.05 accepted 6345.05
+mc 140 iteration 1 value 5801.71 accepted 5801.71
+mc 140 iteration 2 value 5348.2 accepted 5348.2
+mc 250 iteration 1 value 7359.19 accepted 7359.19
+mc 250 iteration 2 value 7251.04 accepted 7251.04
+mc 135 iteration 1 value 6040.81 accepted 6040.81
+mc 135 iteration 2 value 6040.81 declined 6395.9
+mc 132 iteration 1 value 7778.3 accepted 7778.3
+mc 132 iteration 2 value 7778.3 declined 8722.97
+mc 240 iteration 1 value 6179.29 accepted 6179.29
+mc 240 iteration 2 value 6017.34 accepted 6017.34
+mc 234 iteration 1 value 3546.19 accepted 3546.19
+mc 234 iteration 2 value 3546.19 declined 3654.53
+mc 191 iteration 1 value 5244.68 accepted 5244.68
+mc 191 iteration 2 value 4926.31 accepted 4926.31
+mc 54 iteration 1 value 11717.3 accepted 11717.3
+mc 54 iteration 2 value 11717.3 declined 13925.1
+mc 218 iteration 1 value 8365.11 accepted 8365.11
+mc 218 iteration 2 value 8365.11 declined 8876.97
+mc 202 iteration 1 value 4374.44 accepted 4374.44
+mc 202 iteration 2 value 4374.44 declined 4575.85
+mc 352 iteration 1 value 6565.34 accepted 6565.34
+mc 352 iteration 2 value 6565.34 declined 6893.29
+mc 93 iteration 1 value 7674.99 accepted 7674.99
+mc 93 iteration 2 value 7674.99 declined 8123.4
+mc 370 iteration 1 value 5080.95 accepted 5080.95
+mc 370 iteration 2 value 4892.18 accepted 4892.18

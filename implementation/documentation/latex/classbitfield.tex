@@ -1,0 +1,193 @@
+\hypertarget{classbitfield}{}\doxysection{bitfield\texorpdfstring{$<$}{<} length\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classbitfield}\index{bitfield$<$ length\_t $>$@{bitfield$<$ length\_t $>$}}
+
+
+bitfield to represent a bitvector compact  
+
+
+
+
+{\ttfamily \#include $<$bitfield.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbitfield_a5af6221d2287cb628ed15e80bd5a56d3}\label{classbitfield_a5af6221d2287cb628ed15e80bd5a56d3}} 
+{\bfseries bitfield} ()
+\begin{DoxyCompactList}\small\item\em default constructor, empty bitvector of size 0 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a5b6059befa8e108ec5d7868af751de1f}\label{classbitfield_a5b6059befa8e108ec5d7868af751de1f}} 
+{\bfseries bitfield} (length\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em constructor for bitvectors of size n \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a6829eea3f0395c0bb0c65294d2b2b415}\label{classbitfield_a6829eea3f0395c0bb0c65294d2b2b415}} 
+{\bfseries bitfield} (const \mbox{\hyperlink{classbitfield}{bitfield}} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_aff2a821798b5fba3f154b0e8a184f7ba}\label{classbitfield_aff2a821798b5fba3f154b0e8a184f7ba}} 
+{\bfseries $\sim$bitfield} ()
+\begin{DoxyCompactList}\small\item\em deconstructor (is freeing memory) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a44c74430ffc6697325ff2c04be9152b0}\label{classbitfield_a44c74430ffc6697325ff2c04be9152b0}} 
+{\bfseries bitfield} (\mbox{\hyperlink{classbitfield}{bitfield}} \&\&other)
+\begin{DoxyCompactList}\small\item\em move semantics by using swap \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a1352a01d15a683882fb8f0d0702a7aeb}\label{classbitfield_a1352a01d15a683882fb8f0d0702a7aeb}} 
+\mbox{\hyperlink{classbitfield}{bitfield}} \& {\bfseries operator=} (\mbox{\hyperlink{classbitfield}{bitfield}} other)
+\begin{DoxyCompactList}\small\item\em assignment operator by using swap \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbitfield_afde704b85a1a2f3b583085307c63fb5d}{resize}} (length\+\_\+t new\+\_\+length)
+\begin{DoxyCompactList}\small\item\em resize bitvector length \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_ab88121663c8025ec22b9f7a34fde4e42}\label{classbitfield_ab88121663c8025ec22b9f7a34fde4e42}} 
+length\+\_\+t {\bfseries get\+\_\+bytelength} () const
+\begin{DoxyCompactList}\small\item\em get amount of bytes required to store {\itshape current} length bits \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a8311dabbec73dc399714e26a02f71d53}\label{classbitfield_a8311dabbec73dc399714e26a02f71d53}} 
+uint8\+\_\+t $\ast$ {\bfseries data} ()
+\begin{DoxyCompactList}\small\item\em get raw pointer to the array of bits \end{DoxyCompactList}\item 
+bool \& \mbox{\hyperlink{classbitfield_aa7e6b1703b750f19da997e22e81ac9bc}{operator\mbox{[}$\,$\mbox{]}}} (const length\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em access position index by returning a boolean reference \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a49c39611d7f1dfac32faca5b1636ee2a}\label{classbitfield_a49c39611d7f1dfac32faca5b1636ee2a}} 
+bool {\bfseries operator\mbox{[}$\,$\mbox{]}} (const length\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em return value at position index as bool \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_ad67ab98fcae88e62d0f89975f6981b7b}\label{classbitfield_ad67ab98fcae88e62d0f89975f6981b7b}} 
+length\+\_\+t {\bfseries size} () const
+\begin{DoxyCompactList}\small\item\em get the number of bits which can be stored \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a195cd7e6dc27490dc84577648a177e22}\label{classbitfield_a195cd7e6dc27490dc84577648a177e22}} 
+std\+::ostream \& {\bfseries print} (std\+::ostream \&os, const char $\ast$separator=\char`\"{} \char`\"{})
+\begin{DoxyCompactList}\small\item\em print the bitvector to std\+::ostream \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbitfield_a1e55e60163694f844257fb92c7186ba4}\label{classbitfield_a1e55e60163694f844257fb92c7186ba4}} 
+bool {\bfseries get} (const length\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get bit at position index as bool \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a972161138087d106e74a0a76da49c2a2}\label{classbitfield_a972161138087d106e74a0a76da49c2a2}} 
+void {\bfseries set} (const length\+\_\+t index, const bool value)
+\begin{DoxyCompactList}\small\item\em set bit at position index to value (bool) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}\label{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}} 
+static length\+\_\+t {\bfseries to\+\_\+bytelength} (const length\+\_\+t l)
+\begin{DoxyCompactList}\small\item\em compute number of bytes required to store l bits \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbitfield_af88ce289df543dbce1dca2f88b95da13}\label{classbitfield_af88ce289df543dbce1dca2f88b95da13}} 
+length\+\_\+t {\bfseries length}
+\begin{DoxyCompactList}\small\item\em number of bits \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a08a074464775c512155fcdeb95ec849c}\label{classbitfield_a08a074464775c512155fcdeb95ec849c}} 
+length\+\_\+t {\bfseries last\+\_\+mod\+\_\+index}
+\begin{DoxyCompactList}\small\item\em used internally for returning a reference (see update function) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_acea69ff9f8de90407fe78247e90775e4}\label{classbitfield_acea69ff9f8de90407fe78247e90775e4}} 
+bool {\bfseries last\+\_\+mod\+\_\+value}
+\begin{DoxyCompactList}\small\item\em used internally for returning a reference (see update function) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbitfield_a31296cdfecc43a53b34f09afe28402f5}\label{classbitfield_a31296cdfecc43a53b34f09afe28402f5}} 
+uint8\+\_\+t $\ast$ {\bfseries array}
+\begin{DoxyCompactList}\small\item\em pointer to the actual data \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbitfield_ab796f895ecec185247bffa29a42ea42f}\label{classbitfield_ab796f895ecec185247bffa29a42ea42f}} 
+void {\bfseries swap} (\mbox{\hyperlink{classbitfield}{bitfield}} \&a, \mbox{\hyperlink{classbitfield}{bitfield}} \&b) noexcept(std\+::is\+\_\+nothrow\+\_\+swappable\+\_\+v$<$ length\+\_\+t $>$ \&\&std\+::is\+\_\+nothrow\+\_\+swappable\+\_\+v$<$ bool $>$ \&\&std\+::is\+\_\+nothrow\+\_\+swappable\+\_\+v$<$ uint8\+\_\+t $\ast$ $>$)
+\begin{DoxyCompactList}\small\item\em swap implementation for copy \& swap idiom \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename length\+\_\+t$>$\newline
+class bitfield$<$ length\+\_\+t $>$}
+bitfield to represent a bitvector compact 
+
+The configuration vector can be stored in a compact bitvector 
+
+Definition at line \mbox{\hyperlink{bitfield_8hpp_source_l00014}{14}} of file \mbox{\hyperlink{bitfield_8hpp_source}{bitfield.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbitfield_aa7e6b1703b750f19da997e22e81ac9bc}\label{classbitfield_aa7e6b1703b750f19da997e22e81ac9bc}} 
+\index{bitfield$<$ length\_t $>$@{bitfield$<$ length\_t $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!bitfield$<$ length\_t $>$@{bitfield$<$ length\_t $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename length\+\_\+t $>$ \\
+bool \& \mbox{\hyperlink{classbitfield}{bitfield}}$<$ length\+\_\+t $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const length\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+access position index by returning a boolean reference 
+
+access position index by returning a boolean reference to a class member. changes are applied later when using other functions. WARNING\+: may cause trouble when used for multiple indices at once as references cant be invalidated! 
+
+Definition at line \mbox{\hyperlink{bitfield_8hpp_source_l00197}{197}} of file \mbox{\hyperlink{bitfield_8hpp_source}{bitfield.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00198}00198         \{}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00199}00199             update();}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{classbitfield_l00201}00201 \textcolor{preprocessor}{            \#if DEBUG\_ASSERTIONS}}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00202}00202             assert(index < \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}});}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00203}00203 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{classbitfield_l00205}00205             \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}} = index;}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00206}00206             \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}} = \mbox{\hyperlink{classbitfield_a1e55e60163694f844257fb92c7186ba4}{get}}(index);}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00207}00207             \textcolor{keywordflow}{return} \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}};}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00208}00208         \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{classbitfield_aa7e6b1703b750f19da997e22e81ac9bc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbitfield_afde704b85a1a2f3b583085307c63fb5d}\label{classbitfield_afde704b85a1a2f3b583085307c63fb5d}} 
+\index{bitfield$<$ length\_t $>$@{bitfield$<$ length\_t $>$}!resize@{resize}}
+\index{resize@{resize}!bitfield$<$ length\_t $>$@{bitfield$<$ length\_t $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily template$<$typename length\+\_\+t $>$ \\
+void \mbox{\hyperlink{classbitfield}{bitfield}}$<$ length\+\_\+t $>$\+::resize (\begin{DoxyParamCaption}\item[{length\+\_\+t}]{new\+\_\+length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+resize bitvector length 
+
+resize bitvector length only reallocates memory if new space requirement is larger than the current allocated memory 
+
+Definition at line \mbox{\hyperlink{bitfield_8hpp_source_l00153}{153}} of file \mbox{\hyperlink{bitfield_8hpp_source}{bitfield.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00154}00154         \{}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00155}00155             update();}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{classbitfield_l00157}00157             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(new\_length) > \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}})) \{}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00158}00158                 assert(0 < \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(new\_length));}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{classbitfield_l00160}00160                 uint8\_t *old\_array = \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}};}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{classbitfield_l00162}00162                 \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}} = \textcolor{keyword}{new} uint8\_t[\mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(new\_length)];}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00163}00163                 }
+\DoxyCodeLine{\Hypertarget{classbitfield_l00164}00164                 \textcolor{keywordflow}{for} (length\_t i = 0; i < \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}); i++) \{}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00165}00165                     \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}[i] = old\_array[i];}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00166}00166                 \}}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{classbitfield_l00168}00168                 \textcolor{keywordflow}{if} (old\_array) \{}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00169}00169                     \textcolor{keyword}{delete}[] old\_array;}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00170}00170                 \}}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00171}00171             \}}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{classbitfield_l00173}00173             \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}} = new\_length;}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00174}00174             \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}} = \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}};}
+\DoxyCodeLine{\Hypertarget{classbitfield_l00175}00175         \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classbitfield_afde704b85a1a2f3b583085307c63fb5d_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+util/bitfield.\+hpp\end{DoxyCompactItemize}

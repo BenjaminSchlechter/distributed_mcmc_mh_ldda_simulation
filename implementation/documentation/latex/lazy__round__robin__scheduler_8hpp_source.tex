@@ -1,0 +1,106 @@
+\hypertarget{lazy__round__robin__scheduler_8hpp_source}{}\doxysection{lazy\+\_\+round\+\_\+robin\+\_\+scheduler.\+hpp}
+\label{lazy__round__robin__scheduler_8hpp_source}\index{distributed\_computation/lazy\_round\_robin\_scheduler.hpp@{distributed\_computation/lazy\_round\_robin\_scheduler.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef LAZY\_ROUND\_ROBIN\_SCHEDULER\_HPP}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define LAZY\_ROUND\_ROBIN\_SCHEDULER\_HPP}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00010}00010 \textcolor{keyword}{template}<std::\textcolor{keywordtype}{size\_t} workload\_capacity>}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00011}\mbox{\hyperlink{classlazy__round__robin__scheduler}{00011}} \textcolor{keyword}{class }\mbox{\hyperlink{classlazy__round__robin__scheduler}{lazy\_round\_robin\_scheduler}}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00012}00012 \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00013}00013     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00015}\mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{00015}}         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}};}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00018}\mbox{\hyperlink{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}{00018}}         std::vector<std::size\_t> \mbox{\hyperlink{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}{num\_tasks\_scheduled}};}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00021}\mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{00021}}         std::multimap<std::size\_t, int> \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}};}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00023}00023     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00026}\mbox{\hyperlink{classlazy__round__robin__scheduler_a5eb246478b6c9a111f1dd48fd755f30d}{00026}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classlazy__round__robin__scheduler_a5eb246478b6c9a111f1dd48fd755f30d}{is\_process\_without\_work}}()}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00027}00027         \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00028}00028             \textcolor{keywordflow}{if} (0 >= \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}) \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00030}00030             \textcolor{keyword}{auto} first\_it = \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.begin();}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00031}00031             \textcolor{keywordflow}{return} (0 == first\_it-\/>first);}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00032}00032         \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00035}\mbox{\hyperlink{classlazy__round__robin__scheduler_aac1f227f113cffdb3d76919be0f7d3c6}{00035}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classlazy__round__robin__scheduler_aac1f227f113cffdb3d76919be0f7d3c6}{worker\_available}}()}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00036}00036         \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00037}00037             \textcolor{keywordflow}{if} (0 >= \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}) \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00039}00039             \textcolor{keyword}{auto} first\_it = \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.begin();}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00040}00040             \textcolor{keywordflow}{return} (workload\_capacity > first\_it-\/>first);}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00041}00041         \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00044}\mbox{\hyperlink{classlazy__round__robin__scheduler_a2e533d06918ff59efde00fc5b6ffc18b}{00044}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classlazy__round__robin__scheduler_a2e533d06918ff59efde00fc5b6ffc18b}{get\_id\_to\_schedule\_task\_on}}()}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00045}00045         \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00046}00046             \textcolor{keywordflow}{if} (0 >= \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}) \{ \textcolor{keywordflow}{return} -\/1; \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00048}00048             \textcolor{keyword}{auto} first\_it = \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.begin();}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00049}00049             \textcolor{keywordflow}{if} (workload\_capacity == first\_it-\/>first) \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00050}00050                 \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00051}00051             \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00053}00053             \textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = first\_it-\/>second;}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00054}00054             \textcolor{keyword}{const} std::size\_t num\_scheduled\_old =}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00055}00055                 \mbox{\hyperlink{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}{num\_tasks\_scheduled}}[id]++;}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00056}00056             assert(first\_it-\/>first == num\_scheduled\_old);}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00058}00058             \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.erase(first\_it);}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00059}00059             \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.emplace(num\_scheduled\_old + 1, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00061}00061             \textcolor{comment}{// std::cout << "{}get\_id\_to\_schedule\_task\_on: "{}}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00062}00062                 \textcolor{comment}{// << id << "{} is now busy with "{}}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00063}00063                 \textcolor{comment}{// << (num\_scheduled\_old+1) << "{} tasks"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00065}00065             \textcolor{keywordflow}{return} id;}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00066}00066         \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00069}\mbox{\hyperlink{classlazy__round__robin__scheduler_afba4b5f2dd40945018c9b80d7ce289f6}{00069}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classlazy__round__robin__scheduler_afba4b5f2dd40945018c9b80d7ce289f6}{task\_finished}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00070}00070         \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00071}00071             \textcolor{keywordflow}{if} (0 >= \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}) \{ \textcolor{keywordflow}{return}; \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00073}00073             assert(0 <= \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00074}00074             assert(\textcolor{keywordtype}{id} < \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}});}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00076}00076             \textcolor{comment}{// std::cout << "{}worker "{} << id}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00077}00077                 \textcolor{comment}{// << "{} with "{} << num\_tasks\_scheduled[id]}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00078}00078                 \textcolor{comment}{// << "{} tasks finished one"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00080}00080             std::size\_t num\_scheduled\_old = \mbox{\hyperlink{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}{num\_tasks\_scheduled}}[id]-\/-\/;}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00081}00081             assert(0 < num\_scheduled\_old);}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00083}00083             \textcolor{keyword}{auto} it = \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.equal\_range(num\_scheduled\_old);}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00085}00085             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = it.first; i != it.second; i++) \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00086}00086                 \textcolor{keywordflow}{if} (i-\/>second == \textcolor{keywordtype}{id}) \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00087}00087                     \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.erase(i);}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00088}00088                     \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.emplace(num\_scheduled\_old -\/ 1, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00089}00089                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00090}00090                 \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00091}00091             \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00093}00093             assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00094}00094         \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00095}00095         }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00097}\mbox{\hyperlink{classlazy__round__robin__scheduler_a1084ba6b271de250e945d460419a4a05}{00097}}         \mbox{\hyperlink{classlazy__round__robin__scheduler_a1084ba6b271de250e945d460419a4a05}{lazy\_round\_robin\_scheduler}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}) :}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00098}00098             \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}(\mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}), \mbox{\hyperlink{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}{num\_tasks\_scheduled}}(\mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}), \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}()}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00099}00099         \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00100}00100             \textcolor{keyword}{static\_assert}(0 < workload\_capacity);}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00101}00101             \mbox{\hyperlink{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}{num\_tasks\_scheduled}}.resize(\mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}});}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00102}00102             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = 0; \textcolor{keywordtype}{id} < \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}}; \textcolor{keywordtype}{id}++) \{}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00103}00103                 \mbox{\hyperlink{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}{num\_tasks\_scheduled}}[id] = 0;}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00104}00104                 \mbox{\hyperlink{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}{ids\_for\_scheduled}}.emplace(0, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00105}00105             \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00106}00106         \}}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00107}00107 \};}
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{lazy__round__robin__scheduler_8hpp_source_l00109}00109 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

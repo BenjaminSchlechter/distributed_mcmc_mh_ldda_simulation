@@ -1,0 +1,4 @@
+<map id="bitfield::resize" name="bitfield::resize">
+<area shape="rect" id="node1" title="resize bitvector length" alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node2" href="$classbitfield.html#a82b4ea3d411a50a4eaa38e7166eb9afd" title="compute number of bytes required to store l bits" alt="" coords="168,5,333,32"/>
+</map>

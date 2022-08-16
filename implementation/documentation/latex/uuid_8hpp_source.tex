@@ -1,0 +1,58 @@
+\hypertarget{uuid_8hpp_source}{}\doxysection{uuid.\+hpp}
+\label{uuid_8hpp_source}\index{util/uuid.hpp@{util/uuid.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef UUID\_HPP}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define UUID\_HPP}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00014}00014 \textcolor{keyword}{template}<\textcolor{keyword}{class} crtp, \textcolor{keyword}{typename} uu\textcolor{keywordtype}{id}\_type = std::\textcolor{keywordtype}{size\_t}, uu\textcolor{keywordtype}{id}\_type reserved\_\textcolor{keywordtype}{id}s = 1>}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00015}\mbox{\hyperlink{classuuid}{00015}} \textcolor{keyword}{class }\mbox{\hyperlink{classuuid}{uuid}}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00016}00016 \{}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00017}00017     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00019}\mbox{\hyperlink{classuuid_a37e80333bea8510d6a332597137838c7}{00019}}         \textcolor{keyword}{static} uuid\_type \mbox{\hyperlink{classuuid_a37e80333bea8510d6a332597137838c7}{new\_uuid}};}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00022}00022         \textcolor{keyword}{static} std::vector<uuid\_type>}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00023}\mbox{\hyperlink{classuuid_a27b62ddc05866739c8b81deaa4344a65}{00023}}             \mbox{\hyperlink{classuuid_a27b62ddc05866739c8b81deaa4344a65}{unused}};}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00025}00025     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00026}00026         \mbox{\hyperlink{classuuid}{uuid}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00027}00027         }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00029}\mbox{\hyperlink{classuuid_aa7dcfe752d4170da027b0f25527ca071}{00029}}         \textcolor{keyword}{static} uuid\_type \mbox{\hyperlink{classuuid_aa7dcfe752d4170da027b0f25527ca071}{get}}()}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00030}00030         \{}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00031}00031             uuid\_type id;}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00033}00033             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classuuid_a27b62ddc05866739c8b81deaa4344a65}{unused}}.empty()) \{}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00034}00034                 \textcolor{keywordtype}{id} = \mbox{\hyperlink{classuuid_a37e80333bea8510d6a332597137838c7}{new\_uuid}};}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00035}00035                 \mbox{\hyperlink{classuuid_a37e80333bea8510d6a332597137838c7}{new\_uuid}}++;}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00036}00036                 assert(0 != \mbox{\hyperlink{classuuid_a37e80333bea8510d6a332597137838c7}{new\_uuid}} + reserved\_ids);}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00037}00037             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00038}00038                 \textcolor{keywordtype}{id} = \mbox{\hyperlink{classuuid_a27b62ddc05866739c8b81deaa4344a65}{unused}}.back();}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00039}00039                 \mbox{\hyperlink{classuuid_a27b62ddc05866739c8b81deaa4344a65}{unused}}.pop\_back();}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00040}00040             \}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00042}00042             \textcolor{comment}{// std::cout << "{}get "{} << id << std::endl;}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00044}00044             \textcolor{keywordflow}{return} id;}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00045}00045         \}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00048}\mbox{\hyperlink{classuuid_ae013a096324ec389a86d3960faaaaa3c}{00048}}         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classuuid_ae013a096324ec389a86d3960faaaaa3c}{free}}(\textcolor{keyword}{const} uuid\_type \textcolor{keywordtype}{id}) \{}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00049}00049             \textcolor{comment}{// std::cout << "{}free "{} << id << std::endl;}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00050}00050             \mbox{\hyperlink{classuuid_a27b62ddc05866739c8b81deaa4344a65}{unused}}.push\_back(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00051}00051         \}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00052}00052 \};}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00054}00054 \textcolor{comment}{// static parameter initialization}}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00056}00056 \textcolor{keyword}{template}<\textcolor{keyword}{class} crtp, \textcolor{keyword}{typename} uu\textcolor{keywordtype}{id}\_type, uu\textcolor{keywordtype}{id}\_type reserved\_\textcolor{keywordtype}{id}s>}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00057}00057 uuid\_type \mbox{\hyperlink{classuuid}{uuid<crtp, uuid\_type, reserved\_ids>::new\_uuid}} = 0;}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00059}00059 \textcolor{keyword}{template}<\textcolor{keyword}{class} crtp, \textcolor{keyword}{typename} uu\textcolor{keywordtype}{id}\_type, uu\textcolor{keywordtype}{id}\_type reserved\_\textcolor{keywordtype}{id}s>}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00060}00060 std::vector<uuid\_type> \mbox{\hyperlink{classuuid}{uuid<crtp, uuid\_type, reserved\_ids>::unused}};}
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{uuid_8hpp_source_l00062}00062 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

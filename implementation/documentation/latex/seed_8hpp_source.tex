@@ -1,0 +1,170 @@
+\hypertarget{seed_8hpp_source}{}\doxysection{seed.\+hpp}
+\label{seed_8hpp_source}\index{util/seed.hpp@{util/seed.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef SEED\_HPP}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define SEED\_HPP}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <iterator>}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00014}00014 \textcolor{keyword}{template}<\textcolor{keyword}{typename} base\_type>}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00015}\mbox{\hyperlink{structseed__type__generator}{00015}} \textcolor{keyword}{struct }\mbox{\hyperlink{structseed__type__generator}{seed\_type\_generator}}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00016}00016 \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00018}\mbox{\hyperlink{structseed__type__generator_a47e34bda065bf209e3e3f18af3dd089a}{00018}}     std::uniform\_int\_distribution<base\_type> \mbox{\hyperlink{structseed__type__generator_a47e34bda065bf209e3e3f18af3dd089a}{dist}};}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00019}00019     }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00021}\mbox{\hyperlink{structseed__type__generator_a4d0c32c2ea42effb96b467548c3510f8}{00021}}     \mbox{\hyperlink{structseed__type__generator_a4d0c32c2ea42effb96b467548c3510f8}{seed\_type\_generator}}() :}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00022}00022         \mbox{\hyperlink{structseed__type__generator_a47e34bda065bf209e3e3f18af3dd089a}{dist}}(}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00023}00023             std::numeric\_limits<base\_type>::min(),}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00024}00024             std::numeric\_limits<base\_type>::max()}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00025}00025         )}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00026}00026     \{\}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00027}00027 \};}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00031}00031 \textcolor{keyword}{template}<std::\textcolor{keywordtype}{size\_t} size, \textcolor{keyword}{typename} base\_type>}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00032}\mbox{\hyperlink{classseed__type}{00032}} \textcolor{keyword}{class }\mbox{\hyperlink{classseed__type}{seed\_type}}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00034}00034     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00036}00036         \textcolor{keyword}{template}<\textcolor{keyword}{typename} rdev\_t>}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00037}\mbox{\hyperlink{classseed__type_aee023445691947cb95f68036048716de}{00037}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classseed__type_aee023445691947cb95f68036048716de}{init}}(}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00038}00038             rdev\_t \&rng\_dev,}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00039}00039             \mbox{\hyperlink{structseed__type__generator}{seed\_type\_generator<base\_type>}} *sgen\_ptr = \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00040}00040         \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00041}00041             \mbox{\hyperlink{structseed__type__generator}{seed\_type\_generator<base\_type>}} sgen;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00042}00042             sgen\_ptr = sgen\_ptr ? sgen\_ptr : \&sgen;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00043}00043             \textcolor{keywordflow}{for} (std::size\_t i = 0; i < \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00044}00044                 \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}[i] = sgen.\mbox{\hyperlink{structseed__type__generator_a47e34bda065bf209e3e3f18af3dd089a}{dist}}(rng\_dev);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00045}00045             \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00046}00046         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00048}00048     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00050}\mbox{\hyperlink{classseed__type_add86c1fa38a1f3a6710250454237942b}{00050}}         \textcolor{keyword}{using} \mbox{\hyperlink{classseed__type_add86c1fa38a1f3a6710250454237942b}{base\_t}} = base\_type;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00053}\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{00053}}         std::array<base\_type, size> \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}};}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00056}\mbox{\hyperlink{classseed__type_aba29070bb9849a8003a5f7ba46ed67dd}{00056}}         \textcolor{keyword}{inline} \textcolor{keyword}{auto} \mbox{\hyperlink{classseed__type_aba29070bb9849a8003a5f7ba46ed67dd}{get\_seed\_seq}}() \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00057}00057             \textcolor{keywordflow}{return} std::seed\_seq(}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00058}00058                 std::begin(\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}), std::end(\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}));}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00059}00059         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00062}\mbox{\hyperlink{classseed__type_a249d28c5f26bec0f40e58167112ea42f}{00062}}         \mbox{\hyperlink{classseed__type_a249d28c5f26bec0f40e58167112ea42f}{seed\_type}}(\textcolor{keywordtype}{bool} generate\_random\_seed = \textcolor{keyword}{false}) : \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}()}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00063}00063         \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00064}00064             \textcolor{keywordflow}{if} (generate\_random\_seed) \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00065}00065                 std::random\_device rdev;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00066}00066                 \mbox{\hyperlink{classseed__type_aee023445691947cb95f68036048716de}{init}}(rdev);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00067}00067             \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00068}00068         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00069}00069         }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00071}\mbox{\hyperlink{classseed__type_a15de8d319e0f1547e32d18d050b9c6ff}{00071}}         \mbox{\hyperlink{classseed__type_a249d28c5f26bec0f40e58167112ea42f}{seed\_type}}(std::string seed\_str) : \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}() \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00072}00072             std::stringstream sstr(seed\_str);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00073}00073             sstr >> *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00077}00077         \textcolor{keyword}{template}<\textcolor{keyword}{typename} rdev\_t> \textcolor{keyword}{requires} \textcolor{comment}{// hack to check for RNG:}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00078}00078             (!std::is\_same<void, typename rdev\_t::result\_type>::value)}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00079}00079         \mbox{\hyperlink{classseed__type_a249d28c5f26bec0f40e58167112ea42f}{seed\_type}}(}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00080}00080             rdev\_t \&rng\_dev,}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00081}00081             \mbox{\hyperlink{structseed__type__generator}{seed\_type\_generator<base\_type>}} *sgen = \textcolor{keyword}{nullptr}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00082}00082         ) :}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00083}00083             \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}()}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00084}00084         \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00085}00085             \mbox{\hyperlink{classseed__type_aee023445691947cb95f68036048716de}{init}}(rng\_dev, sgen);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00086}00086         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00089}\mbox{\hyperlink{classseed__type_a4679e7057900c71f246c7eb2e4791d81}{00089}}         base\_type \mbox{\hyperlink{classseed__type_a4679e7057900c71f246c7eb2e4791d81}{short\_rep}}() \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00090}00090             \textcolor{keywordflow}{return} \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}[0];}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00091}00091         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00094}\mbox{\hyperlink{classseed__type_ace47292a8dc4b8bf2508b2f0d20bdb09}{00094}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classseed__type_ace47292a8dc4b8bf2508b2f0d20bdb09}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classseed__type}{seed\_type<size, base\_type>}} \&rhs)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00095}00095             \textcolor{keywordflow}{return} \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}} == rhs.\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}};}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00096}00096         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00099}\mbox{\hyperlink{classseed__type_a55e0bb4218979bd4f43d9610f7c37ecd}{00099}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classseed__type_a55e0bb4218979bd4f43d9610f7c37ecd}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classseed__type}{seed\_type<size, base\_type>}} \&rhs)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00100}00100             \textcolor{keywordflow}{return} \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}} != rhs.\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}};}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00101}00101         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00104}\mbox{\hyperlink{classseed__type_a3e4f29db74b71a8604af32f7b07f282d}{00104}}         \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{classseed__type_a3e4f29db74b71a8604af32f7b07f282d}{operator<<}}(}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00105}00105             std::ostream \&os, \textcolor{keyword}{const} \mbox{\hyperlink{classseed__type}{seed\_type}} \&st)}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00106}00106         \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00107}00107             std::copy(}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00108}00108                 st.\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}.begin(),}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00109}00109                 st.\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}.end(),}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00110}00110                 std::ostream\_iterator<base\_type>(os, \textcolor{stringliteral}{"{} "{}}));}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00111}00111             \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00112}00112         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00115}\mbox{\hyperlink{classseed__type_a08db778a6e83d4fb4453ee86e8d2ea25}{00115}}         \textcolor{keyword}{friend} std::istream \&\mbox{\hyperlink{classseed__type_a08db778a6e83d4fb4453ee86e8d2ea25}{operator>>}}(std::istream \&is, \mbox{\hyperlink{classseed__type}{seed\_type}} \&st)}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00116}00116         \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00117}00117             \textcolor{keywordflow}{for} (std::size\_t i = 0; i < st.\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00118}00118                 base\_type v;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00119}00119                 is >> v;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00120}00120                 st.\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}[i] = v;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00121}00121             \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00123}00123             \textcolor{keywordflow}{return} is;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00124}00124         \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00125}00125 \};}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00129}00129 \textcolor{keyword}{template} <\textcolor{keyword}{typename} S, std::\textcolor{keywordtype}{size\_t} size, \textcolor{keyword}{typename} base\_type>}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00130}00130 \textcolor{keywordtype}{void} serialize(S\& s, \mbox{\hyperlink{classseed__type}{seed\_type<size, base\_type>}} \&seed)}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00131}00131 \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00132}00132     std::size\_t sz = size;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00133}00133     std::size\_t bts = \textcolor{keyword}{sizeof}(base\_type);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00135}00135     \textcolor{keyword}{static\_assert}(8 == \textcolor{keyword}{sizeof}(std::size\_t));}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00137}00137     s.value8b(sz);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00138}00138     s.value8b(bts);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00139}00139     s.container(seed.\mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\_data}}, size);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00141}00141     assert(size == sz);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00142}00142     assert(\textcolor{keyword}{sizeof}(base\_type) == bts);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00143}00143 \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00147}00147 \textcolor{keyword}{template}<\textcolor{keyword}{typename} seed\_t>}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00148}00148 \textcolor{keyword}{auto} get\_persistent\_global\_seed(std::string seed\_filename)}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00149}00149 \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00150}00150     std::fstream seed\_file(}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00151}00151         seed\_filename, std::ios::in | std::ios::out | std::ios::app);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00152}00152     assert(seed\_file.is\_open());}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00154}00154     seed\_file.seekp(0, seed\_file.end);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00155}00155     \textcolor{keyword}{const} \textcolor{keyword}{auto} fsize = seed\_file.tellp();}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00157}00157     \textcolor{comment}{// generate a random seed}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00158}00158     \mbox{\hyperlink{classseed__type}{seed\_t}} global\_seed = \mbox{\hyperlink{classseed__type}{seed\_t}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00160}00160     \textcolor{keywordflow}{if} (0 == fsize) \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00161}00161         \textcolor{comment}{// and save it if none was available}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00162}00162         std::cout << \textcolor{stringliteral}{"{}c writing seed"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00163}00163         seed\_file << global\_seed;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00164}00164         seed\_file.flush();}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00165}00165         assert(seed\_file.good());}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00166}00166     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00167}00167         \textcolor{comment}{// or load if one had been saved before}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00168}00168         seed\_file.seekg(0, seed\_file.beg);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00169}00169         std::cout << \textcolor{stringliteral}{"{}c reading seed"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00170}00170         seed\_file >> global\_seed;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00171}00171         \textcolor{comment}{// assert(seed\_file.eof());}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00172}00172         assert(seed\_file.tellg() + 1 == fsize);}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00173}00173     \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00175}00175     assert(!seed\_file.bad());}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00176}00176     seed\_file.close();}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00178}00178     \textcolor{keywordflow}{return} global\_seed;}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00179}00179 \}}
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{seed_8hpp_source_l00182}00182 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

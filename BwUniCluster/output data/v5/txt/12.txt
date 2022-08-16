@@ -1,0 +1,104 @@
+c MPI Version 3.1
+c parent node 1 / 12 has workgroup rank 1 / 12 in workgoup 1 / 1
+c parent node 5 / 12 has workgroup rank 5 / 12 in workgoup 1 / 1
+c parent node 7 / 12 has workgroup rank 7 / 12 in workgoup 1 / 1
+c parent node 11 / 12 has workgroup rank 11 / 12 in workgoup 1 / 1
+c parent node 9 / 12 has workgroup rank 9 / 12 in workgoup 1 / 1
+c parent node 3 / 12 has workgroup rank 3 / 12 in workgoup 1 / 1
+c reading seed
+c global seed: 2261783262...
+c work group 0 has 16 markov chains at id 0 (offset 0)
+c markov chain  0 with seed    3456462235...	(on workgroup 0)
+c markov chain  1 with seed    3273686477...	(on workgroup 0)
+c markov chain  2 with seed    3056390389...	(on workgroup 0)
+c markov chain  3 with seed    1453189013...	(on workgroup 0)
+c markov chain  4 with seed     755970239...	(on workgroup 0)
+c parent node 10 / 12 has workgroup rank 10 / 12 in workgoup 1 / 1
+c parent node 12 / 12 has workgroup rank 12 / 12 in workgoup 1 / 1
+c parent node 2 / 12 has workgroup rank 2 / 12 in workgoup 1 / 1
+c parent node 4 / 12 has workgroup rank 4 / 12 in workgoup 1 / 1
+c parent node 6 / 12 has workgroup rank 6 / 12 in workgoup 1 / 1
+c parent node 8 / 12 has workgroup rank 8 / 12 in workgoup 1 / 1
+c markov chain  5 with seed    3609100623...	(on workgroup 0)
+c markov chain  6 with seed    2322678292...	(on workgroup 0)
+c markov chain  7 with seed    2349585058...	(on workgroup 0)
+c markov chain  8 with seed    3563612299...	(on workgroup 0)
+c markov chain  9 with seed    2491653344...	(on workgroup 0)
+c markov chain 10 with seed    3136955422...	(on workgroup 0)
+c markov chain 11 with seed    3485113983...	(on workgroup 0)
+c markov chain 12 with seed    4147678720...	(on workgroup 0)
+c markov chain 13 with seed    1650998780...	(on workgroup 0)
+c markov chain 14 with seed      71694614...	(on workgroup 0)
+c markov chain 15 with seed    3671056556...	(on workgroup 0)
+accepted (0)
+clear decline (0.956769)
+not accepted (1332.81)
+clear decline (0.377815)
+not accepted (1438.85)
+clear accept (0.891715)
+accepted (1171.29)
+clear decline (0.168383)
+not accepted (1279.03)
+clear accept (0.0119813)
+accepted (1232.93)
+clear accept (0.886302)
+accepted (1195.11)
+clear decline (0.433775)
+not accepted (1417.66)
+clear accept (0.681841)
+accepted (1262.88)
+clear accept (0.224278)
+accepted (1274.05)
+clear decline (0.855554)
+not accepted (1577.7)
+clear accept (0.664538)
+accepted (1254.67)
+clear accept (0.283696)
+accepted (1266.28)
+clear accept (0.494242)
+accepted (1284.58)
+clear decline (0.647062)
+not accepted (1472.5)
+clear accept (0.854975)
+accepted (1230.83)
+clear decline (0.801369)
+not accepted (1332.59)
+clear accept (0.618074)
+accepted (1127.27)
+clear decline (0.680017)
+not accepted (1341.86)
+max iterations reached (0.0355386)
+not accepted (1359.78)
+max iterations reached (0.56384)
+not accepted (1314.06)
+clear decline (0.684448)
+not accepted (1354.63)
+clear decline (0.437209)
+not accepted (1445.09)
+clear decline (0.303086)
+not accepted (1465.13)
+clear accept (0.800023)
+accepted (1354.99)
+clear accept (0.909873)
+accepted (1281.32)
+clear accept (0.184353)
+accepted (1283.32)
+clear accept (0.938619)
+accepted (1307.66)
+max iterations reached (0.742381)
+not accepted (1302.45)
+max iterations reached (0.0899256)
+not accepted (1320.46)
+done: 23600 executions (23600 successfull, 0 max flips reached, 0 terminated by timeout, 0 with errors)
+c duration: 13467 milliseconds
+c duration: 13457 milliseconds
+c duration: 13454 milliseconds
+c duration: 13468 milliseconds
+c duration: 13463 milliseconds
+c duration: 13459 milliseconds
+c duration: 13468 milliseconds
+c duration: 13462 milliseconds
+c duration: 13467 milliseconds
+c duration: 13467 milliseconds
+c duration: 13475 milliseconds
+c duration: 13470 milliseconds

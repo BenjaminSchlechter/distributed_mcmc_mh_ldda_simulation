@@ -1,0 +1,51 @@
+\hypertarget{classmodell}{}\doxysection{modell\texorpdfstring{$<$}{<} cfg\+\_\+vector\+\_\+t, prec\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classmodell}\index{modell$<$ cfg\_vector\_t, prec\_t $>$@{modell$<$ cfg\_vector\_t, prec\_t $>$}}
+
+
+a modell with exponential falloff as probsat substitution for simulation  
+
+
+
+
+{\ttfamily \#include $<$modell.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmodell_1_1prepared__computation}{prepared\+\_\+computation}}
+\begin{DoxyCompactList}\small\item\em represents a prepared computation for a given configuration \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmodell_a21ab3727ef7fc5d599f923461f508b5e}\label{classmodell_a21ab3727ef7fc5d599f923461f508b5e}} 
+{\bfseries modell} (prec\+\_\+t s\+\_\+)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmodell_a529bd117ed32569d6ff33a3498d71031}\label{classmodell_a529bd117ed32569d6ff33a3498d71031}} 
+void {\bfseries prepare\+\_\+computation\+\_\+with\+\_\+cfg\+\_\+vector} (const \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} \&v, \mbox{\hyperlink{structmodell_1_1prepared__computation}{prepared\+\_\+computation}} \&pcom)
+\begin{DoxyCompactList}\small\item\em prepare computation for a given config vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmodell_a230ec3194409cf654943a583c3101847}\label{classmodell_a230ec3194409cf654943a583c3101847}} 
+{\footnotesize template$<$typename prng\+\_\+t , typename rpmanager\+\_\+t $>$ }\\auto {\bfseries operator()} (prng\+\_\+t \&prng, rpmanager\+\_\+t \&rpmanager, \mbox{\hyperlink{structmodell_1_1prepared__computation}{prepared\+\_\+computation}} \&pcom) const
+\begin{DoxyCompactList}\small\item\em create a remote function call for one execution \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmodell_ae9c28bfe4ac48dccfc0cb7dc28c1d1e4}\label{classmodell_ae9c28bfe4ac48dccfc0cb7dc28c1d1e4}} 
+void {\bfseries finish\+\_\+computation} (\mbox{\hyperlink{structmodell_1_1prepared__computation}{prepared\+\_\+computation}} \&pcom)
+\begin{DoxyCompactList}\small\item\em finish a given computation (dummy) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}\label{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}} 
+const prec\+\_\+t {\bfseries s}
+\begin{DoxyCompactList}\small\item\em slope factor \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}, typename prec\+\_\+t$>$\newline
+class modell$<$ cfg\+\_\+vector\+\_\+t, prec\+\_\+t $>$}
+a modell with exponential falloff as probsat substitution for simulation 
+
+Definition at line \mbox{\hyperlink{modell_8hpp_source_l00112}{112}} of file \mbox{\hyperlink{modell_8hpp_source}{modell.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/value\+\_\+computation/modell.\+hpp\end{DoxyCompactItemize}

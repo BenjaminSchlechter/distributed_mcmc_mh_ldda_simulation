@@ -1,0 +1,4 @@
+<map id="async_comm_out" name="async_comm_out">
+<area shape="rect" id="node1" title="derived helper class providing async message sending" alt="" coords="5,80,141,107"/>
+<area shape="rect" id="node2" href="$classasync__comm.html" title="base helper class for async MPI communcation" alt="" coords="19,5,127,32"/>
+</map>

@@ -1,0 +1,88 @@
+\hypertarget{structbinary__configuration__vector}{}\doxysection{binary\+\_\+configuration\+\_\+vector\texorpdfstring{$<$}{<} use\+\_\+bitfield \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structbinary__configuration__vector}\index{binary\_configuration\_vector$<$ use\_bitfield $>$@{binary\_configuration\_vector$<$ use\_bitfield $>$}}
+
+
+wrapper for a binary configuration vector used in the MCMC simulation  
+
+
+
+
+{\ttfamily \#include $<$configuration\+\_\+vector.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}\label{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}} 
+using {\bfseries value\+\_\+type} = bool
+\begin{DoxyCompactList}\small\item\em value type \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_a29e6339578ae8317e71c8c629d5c0215}\label{structbinary__configuration__vector_a29e6339578ae8317e71c8c629d5c0215}} 
+using {\bfseries vector\+\_\+type} = std\+::conditional$<$ use\+\_\+bitfield, \mbox{\hyperlink{classbitfield}{bitfield}}$<$ std\+::size\+\_\+t $>$, std\+::vector$<$ \mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{value\+\_\+type}} $>$ $>$\+::type
+\begin{DoxyCompactList}\small\item\em type of the vector representation (bitfield or std\+::vector) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}\label{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}} 
+using {\bfseries size\+\_\+type} = decltype(\mbox{\hyperlink{structbinary__configuration__vector_a29e6339578ae8317e71c8c629d5c0215}{vector\+\_\+type}}().size())
+\begin{DoxyCompactList}\small\item\em size type of the configuration vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_aa0d30ad7cd74736f6b1616aa46107129}\label{structbinary__configuration__vector_aa0d30ad7cd74736f6b1616aa46107129}} 
+{\bfseries binary\+\_\+configuration\+\_\+vector} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_a9fc12cc16091dfc399d0aa2f2e7e7839}\label{structbinary__configuration__vector_a9fc12cc16091dfc399d0aa2f2e7e7839}} 
+{\bfseries binary\+\_\+configuration\+\_\+vector} (\mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{size\+\_\+type}} length)
+\begin{DoxyCompactList}\small\item\em construct binary config vector of size length \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_ab32cdb93215020b39fa01eaa75ec85fe}\label{structbinary__configuration__vector_ab32cdb93215020b39fa01eaa75ec85fe}} 
+{\bfseries binary\+\_\+configuration\+\_\+vector} (const \mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_ac6b31f0157b9dddd41d941a3d4bf1c97}\label{structbinary__configuration__vector_ac6b31f0157b9dddd41d941a3d4bf1c97}} 
+\mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}} \& {\bfseries operator=} (const \mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}}$<$ use\+\_\+bitfield $>$ \&other)
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_a78157785857e272dc9e2509be33902f8}\label{structbinary__configuration__vector_a78157785857e272dc9e2509be33902f8}} 
+{\bfseries binary\+\_\+configuration\+\_\+vector} (\mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}} \&\&other)
+\begin{DoxyCompactList}\small\item\em move semantics by using swap \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_a66c03c4541d36ac4fbe77d9c040dad6c}\label{structbinary__configuration__vector_a66c03c4541d36ac4fbe77d9c040dad6c}} 
+std\+::size\+\_\+t {\bfseries count\+\_\+ones} () const
+\begin{DoxyCompactList}\small\item\em count number of ones in config vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_af8a9506a83edfe7bb4eaf1f74b76cf65}\label{structbinary__configuration__vector_af8a9506a83edfe7bb4eaf1f74b76cf65}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}}$<$ use\+\_\+bitfield $>$ \&rhs) const
+\begin{DoxyCompactList}\small\item\em test for equality of binary config vectors \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_ae626703adc969074c41f8c5c1287ba76}\label{structbinary__configuration__vector_ae626703adc969074c41f8c5c1287ba76}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}}$<$ use\+\_\+bitfield $>$ \&rhs) const
+\begin{DoxyCompactList}\small\item\em test for inequality of binary config vectors \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}\label{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}} 
+\mbox{\hyperlink{structbinary__configuration__vector_a29e6339578ae8317e71c8c629d5c0215}{vector\+\_\+type}} {\bfseries data}
+\begin{DoxyCompactList}\small\item\em configuration vector data \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_af1720c1598dc0e47f1e54554e300715f}\label{structbinary__configuration__vector_af1720c1598dc0e47f1e54554e300715f}} 
+static constexpr \mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{value\+\_\+type}} {\bfseries min\+\_\+value} = false
+\begin{DoxyCompactList}\small\item\em value range\+: minimum \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_a6a89955592dbe58c3bca419657242909}\label{structbinary__configuration__vector_a6a89955592dbe58c3bca419657242909}} 
+static constexpr \mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{value\+\_\+type}} {\bfseries max\+\_\+value} = true
+\begin{DoxyCompactList}\small\item\em value range\+: maximum \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_aeac3996db3dfc3cf3ab600cf20cf84b6}\label{structbinary__configuration__vector_aeac3996db3dfc3cf3ab600cf20cf84b6}} 
+void {\bfseries swap} (\mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}}$<$ use\+\_\+bitfield $>$ \&l, \mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}}$<$ use\+\_\+bitfield $>$ \&r)
+\begin{DoxyCompactList}\small\item\em swap function for copy and swap idiom \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structbinary__configuration__vector_a106665bf72dcf440f589f4fa443008d1}\label{structbinary__configuration__vector_a106665bf72dcf440f589f4fa443008d1}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}}$<$ use\+\_\+bitfield $>$ \&bf)
+\begin{DoxyCompactList}\small\item\em stream operator to print binary config vector to std\+::ostream \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$bool use\+\_\+bitfield = false$>$\newline
+struct binary\+\_\+configuration\+\_\+vector$<$ use\+\_\+bitfield $>$}
+wrapper for a binary configuration vector used in the MCMC simulation 
+
+Definition at line \mbox{\hyperlink{configuration__vector_8hpp_source_l00014}{14}} of file \mbox{\hyperlink{configuration__vector_8hpp_source}{configuration\+\_\+vector.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/configuration/configuration\+\_\+vector.\+hpp\end{DoxyCompactItemize}

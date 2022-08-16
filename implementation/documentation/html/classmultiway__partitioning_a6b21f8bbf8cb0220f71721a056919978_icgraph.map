@@ -1,0 +1,4 @@
+<map id="multiway_partitioning::iterate" name="multiway_partitioning::iterate">
+<area shape="rect" id="node1" title="execute one step of the largest differencing method" alt="" coords="219,5,384,47"/>
+<area shape="rect" id="node2" href="$classmultiway__partitioning.html#a5bbd1f46f7d8c5ecf5ddcf45fb13c959" title="execute the largest differencing method by iterating until done" alt="" coords="5,5,171,47"/>
+</map>

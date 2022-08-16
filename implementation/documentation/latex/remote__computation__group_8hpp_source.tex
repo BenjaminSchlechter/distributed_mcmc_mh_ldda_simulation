@@ -1,0 +1,237 @@
+\hypertarget{remote__computation__group_8hpp_source}{}\doxysection{remote\+\_\+computation\+\_\+group.\+hpp}
+\label{remote__computation__group_8hpp_source}\index{distributed\_computation/remote\_computation\_group.hpp@{distributed\_computation/remote\_computation\_group.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef REMOTE\_COMPUTATION\_GROUP}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define REMOTE\_COMPUTATION\_GROUP}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <deque>}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <mpi.h>}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include "{}../util/mpi/mpi\_util.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}../util/mpi/mpi\_async\_communication.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00015}00015 \textcolor{keyword}{template}<}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00016}00016     \textcolor{keyword}{typename} \mbox{\hyperlink{classremote__execution__context}{remote\_execution\_context\_t}},}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00017}00017     \textcolor{keyword}{class }\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00018}00018         = \mbox{\hyperlink{classremote__execution__context_afeca01b55eefcd45323ef8519082f271}{remote\_execution\_context\_t::type\_abstraction\_adapter\_t}}>}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00019}00019 \textcolor{keyword}{requires} (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\_abstraction\_adapter\_t::is\_TypeAbstractionAdapter}})}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00020}\mbox{\hyperlink{classremote__computation__group}{00020}} \textcolor{keyword}{class} \mbox{\hyperlink{classremote__computation__group}{remote\_computation\_group}}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00022}00022     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00024}\mbox{\hyperlink{classremote__computation__group_a27bc3a10678ac36aec68bfae92b2b12d}{00024}}         \textcolor{keyword}{using} \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} = \mbox{\hyperlink{classremote__execution__context_a0c4faddd4beacda59e7cf8fe828f8055}{remote\_execution\_context\_t::rpc\_message\_t}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00027}\mbox{\hyperlink{classremote__computation__group_ad3939cf342208e62e85db0ad26f037fd}{00027}}         \textcolor{keyword}{using} \mbox{\hyperlink{classremote__computation__group_ad3939cf342208e62e85db0ad26f037fd}{buffer\_t}} = \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\_abstraction\_adapter\_t::abstract\_type}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00029}00029     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00032}\mbox{\hyperlink{classremote__computation__group_ae142cbc0b1002271a02bdb4e50af9389}{00032}}         std::deque<std::pair<int, rpc\_message\_t>> \mbox{\hyperlink{classremote__computation__group_ae142cbc0b1002271a02bdb4e50af9389}{tasks}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00035}\mbox{\hyperlink{classremote__computation__group_a1f5c0a1a4242dbfb06121430eac84226}{00035}}         \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}} \mbox{\hyperlink{classremote__computation__group_a1f5c0a1a4242dbfb06121430eac84226}{taa}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00038}\mbox{\hyperlink{classremote__computation__group_a45385004447630133853bb984382a556}{00038}}         std::size\_t \mbox{\hyperlink{classremote__computation__group_a45385004447630133853bb984382a556}{num\_waiting\_for\_reply}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00041}\mbox{\hyperlink{classremote__computation__group_a17f56027745754f2aa9902c70c63a6da}{00041}}         \mbox{\hyperlink{classasync__comm__out}{async\_comm\_out}} \mbox{\hyperlink{classremote__computation__group_a17f56027745754f2aa9902c70c63a6da}{background\_comm}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00042}00042         \textcolor{comment}{// fake\_async\_comm\_out background\_comm;}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00046}\mbox{\hyperlink{classremote__computation__group_a136fa691e94ca364271eecea92b4e8ce}{00046}}         std::pair<int, rpc\_message\_t> \mbox{\hyperlink{classremote__computation__group_a136fa691e94ca364271eecea92b4e8ce}{get\_msg}}(MPI\_Status \&status)}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00047}00047         \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00048}00048             \mbox{\hyperlink{classremote__computation__group_ad3939cf342208e62e85db0ad26f037fd}{buffer\_t}} b;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00049}00049             get\_message(env\_comm, \&status, b);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00050}00050             \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} msg;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00051}00051             assert(0 < b.size());}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00052}00052             assert(taa.\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_aee1cacc94c877f694630120c921cbd1f}{deserialize}}(b, msg));}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00054}00054             assert(msg.\mbox{\hyperlink{classrpc__message_acf6309b12a6bf7325196849c37f9d9e0}{check\_crc}}());}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00055}00055             \textcolor{keywordflow}{return} std::make\_pair(status.MPI\_SOURCE, msg);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00056}00056         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00060}\mbox{\hyperlink{classremote__computation__group_a04bfa08e8eb0c3a9112d48531a5b2c52}{00060}}         std::pair<int, rpc\_message\_t> \mbox{\hyperlink{classremote__computation__group_a04bfa08e8eb0c3a9112d48531a5b2c52}{wait\_for\_msg}}()}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00061}00061         \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00062}00062             assert(0 != env\_comm\_id);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00063}00063             MPI\_Status status;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00064}00064             \textcolor{keywordflow}{while} (1) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00065}00065                 wait\_for\_message(env\_comm, \&status, mpi\_tag);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00066}00066                 \textcolor{keywordflow}{if} (0 == get\_message\_size(\&status)) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00067}00067                     num\_waiting\_for\_reply-\/-\/;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00068}00068                 \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00069}00069                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00070}00070                 \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00071}00071             \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00072}00072             }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00073}00073             \textcolor{comment}{// std::cout << "{}wait\_for\_msg"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00074}00074             \textcolor{keywordflow}{return} get\_msg(status);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00075}00075         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00079}\mbox{\hyperlink{classremote__computation__group_a73d2dd6183b302c2567aeafdda752c8f}{00079}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classremote__computation__group_a73d2dd6183b302c2567aeafdda752c8f}{execute}}(\textcolor{keyword}{const} std::pair<int, rpc\_message\_t> \&task)}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00080}00080         \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00081}00081             \textcolor{keyword}{const} \textcolor{keywordtype}{int} origin = task.first;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00082}00082             \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} msg = task.second;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00083}00083             \textcolor{comment}{// std::cout << "{}executing "{} << msg.function\_name}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00084}00084                 \textcolor{comment}{// << "{} (id: "{} << msg.id << "{}) with"{}}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00085}00085                 \textcolor{comment}{// << (msg.answer\_required ? "{}"{} : "{}out"{})}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00086}00086                 \textcolor{comment}{// << "{} reply and arg size "{} << msg.data.size()}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00087}00087                 \textcolor{comment}{// << "{} on "{} << env\_comm\_id << std::endl;}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00089}00089             assert(msg.\mbox{\hyperlink{classrpc__message_acf6309b12a6bf7325196849c37f9d9e0}{check\_crc}}());}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00091}00091             \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} result = rec.execute\_rpc(msg);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00092}00092             assert(!result.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}});}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00094}00094             \textcolor{keywordflow}{if} (msg.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00095}00095                 result.\mbox{\hyperlink{classrpc__message_ad2ab845f684b67538794d407f720c7b6}{compute\_crc}}();}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00096}00096             \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00098}00098             \textcolor{keywordflow}{if} (origin == env\_comm\_id) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00099}00099                 \textcolor{keywordflow}{if} (msg.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00100}00100                     rec.execute\_rpc(result);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00101}00101                 \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00102}00102             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00103}00103                 \textcolor{keywordflow}{if} (msg.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00104}00104                     \mbox{\hyperlink{classremote__computation__group_ad3939cf342208e62e85db0ad26f037fd}{buffer\_t}} b = taa.\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_ab76d04229530de5add9614514363bd45}{serialize}}(result);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00105}00105                     background\_comm.\mbox{\hyperlink{classasync__comm__out_a5b942bd597c82f9f8fa5e7ba1ef6e71c}{send\_message}}(}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00106}00106                         env\_comm, origin, mpi\_tag, std::move(b));}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00107}00107                     \textcolor{comment}{// print\_vector("{}execute\_send\_reply:"{}, b);}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00108}00108                 \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00109}00109                     \textcolor{comment}{// std::cout << "{}ping "{} << origin << std::endl;}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00110}00110                     ping(env\_comm, origin, mpi\_tag);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00111}00111                 \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00112}00112             \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00113}00113         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00116}00116     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00118}\mbox{\hyperlink{classremote__computation__group_aaf606f2a001d6bcbf205ea6a5f3accb1}{00118}}         MPI\_Comm \mbox{\hyperlink{classremote__computation__group_aaf606f2a001d6bcbf205ea6a5f3accb1}{env\_comm}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00121}\mbox{\hyperlink{classremote__computation__group_ac689e22d15bebdf9a0cee0d8dc7681a1}{00121}}         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classremote__computation__group_ac689e22d15bebdf9a0cee0d8dc7681a1}{env\_comm\_id}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00124}\mbox{\hyperlink{classremote__computation__group_adad1a1ffaed2166370868703311a0fa3}{00124}}         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classremote__computation__group_adad1a1ffaed2166370868703311a0fa3}{env\_comm\_size}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00127}\mbox{\hyperlink{classremote__computation__group_a6d897a0da3dbbcf1ccdbeca870857b02}{00127}}         \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classremote__computation__group_a6d897a0da3dbbcf1ccdbeca870857b02}{mpi\_tag}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00131}\mbox{\hyperlink{classremote__computation__group_a3994750389269106124c5133cf927ebc}{00131}}         \mbox{\hyperlink{classremote__execution__context}{remote\_execution\_context\_t}} \&\mbox{\hyperlink{classremote__computation__group_a3994750389269106124c5133cf927ebc}{rec}};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00136}\mbox{\hyperlink{classremote__computation__group_ae58da9dcdbbbe407f1450b093304b634}{00136}}         \mbox{\hyperlink{classremote__computation__group_ae58da9dcdbbbe407f1450b093304b634}{remote\_computation\_group}}(}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00137}00137             MPI\_Comm env\_comm,}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00138}00138             \textcolor{keywordtype}{int} mpi\_tag,}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00139}00139             \mbox{\hyperlink{classremote__execution__context}{remote\_execution\_context\_t}} \&rec}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00140}00140         ) :}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00141}00141             tasks(),}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00142}00142             taa(),}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00143}00143             num\_waiting\_for\_reply(0),}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00144}00144             background\_comm(),}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00145}00145             env\_comm(env\_comm),}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00146}00146             env\_comm\_id(mpi\_get\_comm\_rank(env\_comm)),}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00147}00147             env\_comm\_size(mpi\_get\_comm\_size(env\_comm)),}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00148}00148             mpi\_tag(mpi\_tag),}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00149}00149             rec(rec)}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00150}00150         \{\}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00154}\mbox{\hyperlink{classremote__computation__group_a6322258c439082bb9de7fb2c42f8b7cb}{00154}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classremote__computation__group_a6322258c439082bb9de7fb2c42f8b7cb}{schedule}}(\textcolor{keyword}{auto} task, \textcolor{keywordtype}{int} target\_id)}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00155}00155         \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00156}00156             \textcolor{comment}{// std::cout << "{}scheduling "{} << task.function\_name}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00157}00157                 \textcolor{comment}{// << "{} (id: "{} << task.id << "{}) with"{}}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00158}00158                 \textcolor{comment}{// << (task.answer\_required ? "{}"{} : "{}out"{})}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00159}00159                 \textcolor{comment}{// << "{} reply and arg size "{} << task.data.size()}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00160}00160                 \textcolor{comment}{// << "{} on "{} << target\_id << "{} by "{}}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00161}00161                 \textcolor{comment}{// << env\_comm\_id << std::endl;}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00163}00163             task.compute\_crc();}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00164}00164 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00165}00165             \textcolor{keywordflow}{if} (env\_comm\_id == target\_id) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00166}00166                 tasks.push\_back(std::make\_pair(target\_id, task));}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00167}00167             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00168}00168                 \mbox{\hyperlink{classremote__computation__group_ad3939cf342208e62e85db0ad26f037fd}{buffer\_t}} b = taa.\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_ab76d04229530de5add9614514363bd45}{serialize}}(task);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00169}00169                 \textcolor{comment}{// int bcrc = crc8((uint8\_t *) b.data(), b.size());}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00170}00170                 \textcolor{comment}{// std::cout << "{}CCC schedule bcrc: "{} << bcrc << std::endl;}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00171}00171                 \textcolor{comment}{// print\_vector("{}CCC get\_msg:"{}, b);}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00172}00172                 background\_comm.\mbox{\hyperlink{classasync__comm__out_a5b942bd597c82f9f8fa5e7ba1ef6e71c}{send\_message}}(}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00173}00173                     env\_comm, target\_id, mpi\_tag, std::move(b));}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00174}00174                 num\_waiting\_for\_reply++;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00175}00175                 \textcolor{comment}{// std::cout << "{}num\_waiting\_for\_reply increased to: "{}}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00176}00176                     \textcolor{comment}{// << num\_waiting\_for\_reply << std::endl;}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00177}00177             \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00178}00178         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00182}\mbox{\hyperlink{classremote__computation__group_a26541a3fcd9803d951d826c6a8061a2d}{00182}}         std::size\_t \mbox{\hyperlink{classremote__computation__group_a26541a3fcd9803d951d826c6a8061a2d}{num\_tasks\_waiting}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00183}00183             \textcolor{keywordflow}{return} tasks.size();}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00184}00184         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00188}\mbox{\hyperlink{classremote__computation__group_adbe191ab5f97779d34c043e7c94c85f9}{00188}}         std::size\_t \mbox{\hyperlink{classremote__computation__group_adbe191ab5f97779d34c043e7c94c85f9}{num\_tasks\_pending}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00189}00189             \textcolor{keywordflow}{return} num\_waiting\_for\_reply;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00190}00190         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00194}\mbox{\hyperlink{classremote__computation__group_a2824d99aed2a1368b11b1bcea94f9558}{00194}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classremote__computation__group_a2824d99aed2a1368b11b1bcea94f9558}{is\_work\_outstanding}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00195}00195             \textcolor{keywordflow}{return} ((0 < num\_tasks\_pending())}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00196}00196                 || (0 < num\_tasks\_waiting()))}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00197}00197                 || !background\_comm.\mbox{\hyperlink{classasync__comm_afac3f9e2ad35148b627958ba5860f79a}{communication\_is\_done}}();}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00198}00198         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00199}00199 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00202}\mbox{\hyperlink{classremote__computation__group_a4a92b64f41a4a762067439c07c2b53d5}{00202}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classremote__computation__group_a4a92b64f41a4a762067439c07c2b53d5}{do\_work}}(\textcolor{keywordtype}{bool} wait\_for\_work = \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00203}00203         \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00204}00204             MPI\_Status status;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00205}00205             \textcolor{keywordflow}{while} (is\_message\_available(env\_comm, \&status, mpi\_tag)) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00206}00206                 \textcolor{keywordflow}{if} (0 == get\_message\_size(\&status)) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00207}00207                     accept\_ping(env\_comm, \&status);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00208}00208                     num\_waiting\_for\_reply-\/-\/;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00209}00209                 \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00210}00210                     tasks.push\_back(get\_msg(status));}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00211}00211                 \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00212}00212             \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00214}00214             background\_comm.\mbox{\hyperlink{classasync__comm_a9c10468e193957872c33fdf4266c7ec2}{test\_for\_messages}}();}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00215}00215 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00216}00216             \textcolor{keywordflow}{if} (wait\_for\_work \&\& (1 < env\_comm\_size)) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00217}00217                 \textcolor{keywordflow}{if} (!background\_comm.\mbox{\hyperlink{classasync__comm_afac3f9e2ad35148b627958ba5860f79a}{communication\_is\_done}}()) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00218}00218                     \textcolor{keywordflow}{while} (tasks.empty()) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00219}00219                         \textcolor{keywordflow}{if} (is\_message\_available(}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00220}00220                             env\_comm, \&status, mpi\_tag))}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00221}00221                         \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00222}00222                             \textcolor{keywordflow}{if} (0 == get\_message\_size(\&status)) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00223}00223                                 accept\_ping(env\_comm, \&status);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00224}00224                                 num\_waiting\_for\_reply-\/-\/;}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00225}00225                             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00226}00226                                 tasks.push\_back(get\_msg(status));}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00227}00227                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00228}00228                             \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00229}00229                         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00231}00231                         background\_comm.\mbox{\hyperlink{classasync__comm_a5e74e9f1a8323d3e30bef4314ee58b01}{test\_for\_one\_message}}();}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00232}00232                         \textcolor{keywordflow}{if} (background\_comm.\mbox{\hyperlink{classasync__comm_afac3f9e2ad35148b627958ba5860f79a}{communication\_is\_done}}()) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00233}00233                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00234}00234                         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00235}00235                     \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00236}00236                 \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00237}00237                 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00238}00238                 \textcolor{keywordflow}{if} (tasks.empty()) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00239}00239                     tasks.push\_back(wait\_for\_msg());}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00240}00240                 \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00241}00241             \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00242}00242 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00243}00243             \textcolor{keywordflow}{if} (!tasks.empty()) \{}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00244}00244                 std::pair<int, rpc\_message\_t> p = tasks.front();}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00245}00245                 execute(p);}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00246}00246                 tasks.pop\_front();}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00247}00247             \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00248}00248         \}}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00249}00249 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00250}00250 \};}
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00251}00251 }
+\DoxyCodeLine{\Hypertarget{remote__computation__group_8hpp_source_l00252}00252 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,76 @@
+\hypertarget{classasync__comm}{}\doxysection{async\+\_\+comm Class Reference}
+\label{classasync__comm}\index{async\_comm@{async\_comm}}
+
+
+base helper class for async MPI communcation  
+
+
+
+
+{\ttfamily \#include $<$mpi\+\_\+async\+\_\+communication.\+hpp$>$}
+
+
+
+Inheritance diagram for async\+\_\+comm\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classasync__comm__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classasync__comm_afb5c3b686560341e4013a20ecbd3d9b7}\label{classasync__comm_afb5c3b686560341e4013a20ecbd3d9b7}} 
+void {\bfseries wait\+\_\+for\+\_\+one\+\_\+message} ()
+\begin{DoxyCompactList}\small\item\em wait until one open message transfer is completed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classasync__comm_a5d3e6058ca6a2d285c01bc251e1db1d8}\label{classasync__comm_a5d3e6058ca6a2d285c01bc251e1db1d8}} 
+void {\bfseries wait\+\_\+for\+\_\+all\+\_\+messages} ()
+\begin{DoxyCompactList}\small\item\em wait until all open message transfers are completed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classasync__comm_a3651921f09630c6c9297cc83daea026d}\label{classasync__comm_a3651921f09630c6c9297cc83daea026d}} 
+void {\bfseries wait\+\_\+for\+\_\+some\+\_\+messages} ()
+\begin{DoxyCompactList}\small\item\em wait until one ore more open message transfers completed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classasync__comm_a5e74e9f1a8323d3e30bef4314ee58b01}\label{classasync__comm_a5e74e9f1a8323d3e30bef4314ee58b01}} 
+void {\bfseries test\+\_\+for\+\_\+one\+\_\+message} ()
+\begin{DoxyCompactList}\small\item\em poll and complete one open message transfer if possible \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classasync__comm_a9c10468e193957872c33fdf4266c7ec2}\label{classasync__comm_a9c10468e193957872c33fdf4266c7ec2}} 
+void {\bfseries test\+\_\+for\+\_\+messages} ()
+\begin{DoxyCompactList}\small\item\em poll to complete all open transfers which finished \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classasync__comm_abdcc2ff2de2e58044e2812d24c49c404}\label{classasync__comm_abdcc2ff2de2e58044e2812d24c49c404}} 
+auto {\bfseries communications\+\_\+in\+\_\+queue} () const
+\begin{DoxyCompactList}\small\item\em number of open transfers \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classasync__comm_afac3f9e2ad35148b627958ba5860f79a}\label{classasync__comm_afac3f9e2ad35148b627958ba5860f79a}} 
+bool {\bfseries communication\+\_\+is\+\_\+done} () const
+\begin{DoxyCompactList}\small\item\em check if no transfer which has to complete is left \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classasync__comm_a86bcaae93c2766519136fc958cd494e6}\label{classasync__comm_a86bcaae93c2766519136fc958cd494e6}} 
+{\bfseries $\sim$async\+\_\+comm} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classasync__comm_ac43d3f2e34c40de6c97eb2ca9bd2bb8d}\label{classasync__comm_ac43d3f2e34c40de6c97eb2ca9bd2bb8d}} 
+using {\bfseries data\+\_\+t} = std\+::vector$<$ uint8\+\_\+t $>$
+\begin{DoxyCompactList}\small\item\em message data type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classasync__comm_a7fe5250c825d71ceb9e79175109eb7be}\label{classasync__comm_a7fe5250c825d71ceb9e79175109eb7be}} 
+std\+::vector$<$ MPI\+\_\+\+Request $>$ {\bfseries outstanding\+\_\+requests}
+\begin{DoxyCompactList}\small\item\em open transfers \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classasync__comm_a25838c52dfc12875957906a52c08f2a5}\label{classasync__comm_a25838c52dfc12875957906a52c08f2a5}} 
+std\+::vector$<$ \mbox{\hyperlink{classasync__comm_ac43d3f2e34c40de6c97eb2ca9bd2bb8d}{data\+\_\+t}} $>$ {\bfseries outstanding\+\_\+data}
+\begin{DoxyCompactList}\small\item\em data of incomplete transfers \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+base helper class for async MPI communcation 
+
+Definition at line \mbox{\hyperlink{mpi__async__communication_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{mpi__async__communication_8hpp_source}{mpi\+\_\+async\+\_\+communication.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+util/mpi/mpi\+\_\+async\+\_\+communication.\+hpp\item 
+util/mpi/mpi\+\_\+async\+\_\+communication.\+cpp\end{DoxyCompactItemize}

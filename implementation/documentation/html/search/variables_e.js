@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['s_0',['s',['../classmodell.html#a1b8e1d937e6af72ac869b9a85a2c7f97',1,'modell']]],
+  ['schedule_5fcomputation_1',['schedule_computation',['../classstatistical__acceptance__computation.html#a1d7c9fc40e8cce56ab08fd311a098447',1,'statistical_acceptance_computation']]],
+  ['scheduler_2',['scheduler',['../classon__demand__scheduler.html#a32dd6a651bb6d3a1f2061fa6f241bdc6',1,'on_demand_scheduler']]],
+  ['score_3',['score',['../structmultiway__partitioning_1_1entry__t.html#a7132295b99466f25a1930c73ec21cf03',1,'multiway_partitioning::entry_t']]],
+  ['seed_5fdata_4',['seed_data',['../classseed__type.html#a9fb7697913b9dd9265333a5332d124e6',1,'seed_type']]],
+  ['seed_5fdistr_5',['seed_distr',['../structprobsat__resolvents_1_1prepared__computation.html#a02fc809e9b35ac5bb899a52218413b6c',1,'probsat_resolvents::prepared_computation']]],
+  ['size_6',['size',['../classlazy__round__robin__scheduler.html#a6cf0c17907216fb76c0135aebea227b0',1,'lazy_round_robin_scheduler']]],
+  ['sort_5ffunc_7',['sort_func',['../classmultiway__partitioning.html#a6bc947e60c56181d1936558d960d454d',1,'multiway_partitioning']]],
+  ['state_5fdata_8',['state_data',['../classsimple__acceptance__computation.html#a38f62093f9f26ca107957643d415cd2c',1,'simple_acceptance_computation::state_data()'],['../classstatistical__acceptance__computation.html#afb5bac16db083bc831523361841287d7',1,'statistical_acceptance_computation::state_data()']]],
+  ['statistics_9',['statistics',['../structstatistical__acceptance__computation_1_1state__data__t.html#a9a63d7c1d5481b8b949e8c3fef53d0c6',1,'statistical_acceptance_computation::state_data_t']]],
+  ['stddev_10',['stddev',['../classbasic__statistical__metrics.html#abd02bad75d1ae7d321554b044ce7d85c',1,'basic_statistical_metrics']]],
+  ['stmpfile_11',['stmpfile',['../structprobsat__resolvents_1_1prepared__computation.html#a6efc929368fa7ddc52034faacfff926e',1,'probsat_resolvents::prepared_computation']]],
+  ['subsets_12',['subsets',['../structmultiway__partitioning_1_1partitioning__t.html#a780f99a0af0b3d745bc5af057693ef87',1,'multiway_partitioning::partitioning_t']]],
+  ['sum_13',['sum',['../structmultiway__partitioning_1_1subset__t.html#a70b9335cd624da3f6d3e343483b7c35b',1,'multiway_partitioning::subset_t']]],
+  ['sum_5fxi_14',['sum_xi',['../classbasic__statistical__metrics.html#ad5684aebbacbf42183ce76cb2e75f890',1,'basic_statistical_metrics']]],
+  ['sum_5fxi_5fsq_15',['sum_xi_sq',['../classbasic__statistical__metrics.html#acc9790889db131dca732f3c6877a7b7f',1,'basic_statistical_metrics']]]
+];

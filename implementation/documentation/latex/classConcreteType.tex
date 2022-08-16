@@ -1,0 +1,82 @@
+\hypertarget{classConcreteType}{}\doxysection{Concrete\+Type\texorpdfstring{$<$}{<} type\+\_\+abstraction\+\_\+adapter\+\_\+t, arg\+\_\+types \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classConcreteType}\index{ConcreteType$<$ type\_abstraction\_adapter\_t, arg\_types $>$@{ConcreteType$<$ type\_abstraction\_adapter\_t, arg\_types $>$}}
+
+
+a concrete tuple of arbitrary types  
+
+
+
+
+{\ttfamily \#include $<$rtti.\+hpp$>$}
+
+
+
+Inheritance diagram for Concrete\+Type\texorpdfstring{$<$}{<} type\+\_\+abstraction\+\_\+adapter\+\_\+t, arg\+\_\+types \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{classConcreteType__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Concrete\+Type\texorpdfstring{$<$}{<} type\+\_\+abstraction\+\_\+adapter\+\_\+t, arg\+\_\+types \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{classConcreteType__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConcreteType_a67040b4ca9b948a4e248dfd971432449}\label{classConcreteType_a67040b4ca9b948a4e248dfd971432449}} 
+using {\bfseries tuple\+\_\+t} = std\+::tuple$<$ arg\+\_\+types ... $>$
+\begin{DoxyCompactList}\small\item\em tuple data type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConcreteType_a019b9955df6b29becd7084cd68928e00}\label{classConcreteType_a019b9955df6b29becd7084cd68928e00}} 
+{\bfseries Concrete\+Type} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConcreteType_a89aa41cd8d4c5fbbf3f8133acd774d0b}\label{classConcreteType_a89aa41cd8d4c5fbbf3f8133acd774d0b}} 
+{\bfseries Concrete\+Type} (arg\+\_\+types... args, bool use\+\_\+value\+\_\+constructor=true)
+\begin{DoxyCompactList}\small\item\em constructor variant with additional value to resolve ambiguous calls \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConcreteType_a239da147ec3eb32d83d55cba58ebf41b}\label{classConcreteType_a239da147ec3eb32d83d55cba58ebf41b}} 
+{\bfseries Concrete\+Type} (std\+::tuple$<$ arg\+\_\+types ... $>$ \&\mbox{\hyperlink{classConcreteType_a862f881b7627c49eb1e6a7f2f5ee7a4e}{values}})
+\begin{DoxyCompactList}\small\item\em normal constructor passing values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConcreteType_a4b66af2bb43874659204cf40b85bf16c}\label{classConcreteType_a4b66af2bb43874659204cf40b85bf16c}} 
+{\bfseries Concrete\+Type} (const \mbox{\hyperlink{classConcreteType}{Concrete\+Type}} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConcreteType_a9db25efcda4eea5c935eb1058cfd9bfa}\label{classConcreteType_a9db25efcda4eea5c935eb1058cfd9bfa}} 
+{\footnotesize template$<$typename other\+\_\+type\+\_\+abstraction\+\_\+adapter\+\_\+t $>$ }\\{\bfseries operator Concrete\+Type$<$ other\+\_\+type\+\_\+abstraction\+\_\+adapter\+\_\+t, arg\+\_\+types... $>$} () const
+\begin{DoxyCompactList}\small\item\em type conversion to differen type abstraction adapters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConcreteType_aaf94113b522b8bd451bce7b766a1cdeb}\label{classConcreteType_aaf94113b522b8bd451bce7b766a1cdeb}} 
+virtual \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::abstract\+\_\+type}} {\bfseries serialize} (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} \&adapter) const override
+\begin{DoxyCompactList}\small\item\em serialization of values using the type abstraction adapter \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConcreteType_aac7e3274b5147275797134ee59c93186}\label{classConcreteType_aac7e3274b5147275797134ee59c93186}} 
+virtual bool {\bfseries deserialize} (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} \&adapter, const \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::abstract\+\_\+type}} \&v) override
+\begin{DoxyCompactList}\small\item\em deserialization of values using the type abstraction adapter \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConcreteType_a862f881b7627c49eb1e6a7f2f5ee7a4e}\label{classConcreteType_a862f881b7627c49eb1e6a7f2f5ee7a4e}} 
+\mbox{\hyperlink{classConcreteType_a67040b4ca9b948a4e248dfd971432449}{tuple\+\_\+t}} {\bfseries values}
+\begin{DoxyCompactList}\small\item\em tuple with values \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}}, typename... arg\+\_\+types$>$\newline
+requires (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::is\+\_\+\+Type\+Abstraction\+Adapter}})\newline
+class Concrete\+Type$<$ type\+\_\+abstraction\+\_\+adapter\+\_\+t, arg\+\_\+types $>$}
+a concrete tuple of arbitrary types 
+
+Definition at line \mbox{\hyperlink{rtti_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{rtti_8hpp_source}{rtti.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/rtti.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,265 @@
+c MPI Version 3.1
+cfg filename_cnf_formula: data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.cnf
+cfg filename_resolvents: data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.resolvents
+cfg data_directory: out/three_color_gnp_50vertices_p0.092_seed37_cnfgen/
+cfg num_markov_chains: 20
+cfg markov_chain_offset: 20
+cfg markov_chain_target_length: 5
+c parent node 39 / 40 has workgroup rank 39 / 40 in workgoup 1 / 1
+c parent node 1 / 40 has workgroup rank 1 / 40 in workgoup 1 / 1
+c parent node 6 / 40 has workgroup rank 6 / 40 in workgoup 1 / 1
+c parent node 17 / 40 has workgroup rank 17 / 40 in workgoup 1 / 1
+c parent node 38 / 40 has workgroup rank 38 / 40 in workgoup 1 / 1
+c parent node 33 / 40 has workgroup rank 33 / 40 in workgoup 1 / 1
+c parent node 3 / 40 has workgroup rank 3 / 40 in workgoup 1 / 1
+c parent node 18 / 40 has workgroup rank 18 / 40 in workgoup 1 / 1
+c parent node 19 / 40 has workgroup rank 19 / 40 in workgoup 1 / 1
+c parent node 21 / 40 has workgroup rank 21 / 40 in workgoup 1 / 1
+c parent node 25 / 40 has workgroup rank 25 / 40 in workgoup 1 / 1
+c parent node 35 / 40 has workgroup rank 35 / 40 in workgoup 1 / 1
+c parent node 36 / 40 has workgroup rank 36 / 40 in workgoup 1 / 1
+c parent node 13 / 40 has workgroup rank 13 / 40 in workgoup 1 / 1
+c parent node 14 / 40 has workgroup rank 14 / 40 in workgoup 1 / 1
+c parent node 16 / 40 has workgroup rank 16 / 40 in workgoup 1 / 1
+c parent node 20 / 40 has workgroup rank 20 / 40 in workgoup 1 / 1
+c parent node 22 / 40 has workgroup rank 22 / 40 in workgoup 1 / 1
+c parent node 23 / 40 has workgroup rank 23 / 40 in workgoup 1 / 1
+c parent node 24 / 40 has workgroup rank 24 / 40 in workgoup 1 / 1
+c parent node 26 / 40 has workgroup rank 26 / 40 in workgoup 1 / 1
+c parent node 27 / 40 has workgroup rank 27 / 40 in workgoup 1 / 1
+c parent node 29 / 40 has workgroup rank 29 / 40 in workgoup 1 / 1
+c parent node 30 / 40 has workgroup rank 30 / 40 in workgoup 1 / 1
+c parent node 31 / 40 has workgroup rank 31 / 40 in workgoup 1 / 1
+c parent node 32 / 40 has workgroup rank 32 / 40 in workgoup 1 / 1
+c parent node 34 / 40 has workgroup rank 34 / 40 in workgoup 1 / 1
+c parent node 37 / 40 has workgroup rank 37 / 40 in workgoup 1 / 1
+c parent node 40 / 40 has workgroup rank 40 / 40 in workgoup 1 / 1
+c parent node 2 / 40 has workgroup rank 2 / 40 in workgoup 1 / 1
+c parent node 5 / 40 has workgroup rank 5 / 40 in workgoup 1 / 1
+c parent node 7 / 40 has workgroup rank 7 / 40 in workgoup 1 / 1
+c parent node 8 / 40 has workgroup rank 8 / 40 in workgoup 1 / 1
+c parent node 9 / 40 has workgroup rank 9 / 40 in workgoup 1 / 1
+c parent node 10 / 40 has workgroup rank 10 / 40 in workgoup 1 / 1
+c parent node 11 / 40 has workgroup rank 11 / 40 in workgoup 1 / 1
+c parent node 12 / 40 has workgroup rank 12 / 40 in workgoup 1 / 1
+c parent node 28 / 40 has workgroup rank 28 / 40 in workgoup 1 / 1
+c parent node 4 / 40 has workgroup rank 4 / 40 in workgoup 1 / 1
+c parent node 15 / 40 has workgroup rank 15 / 40 in workgoup 1 / 1
+c reading seed
+c global seed: 2261783262...
+c work group 0 has 20 markov chains at id 0 (offset 20)
+c markov chain 20 with seed    2410668204...	(on workgroup 0)
+c markov chain 21 with seed    1590376030...	(on workgroup 0)
+c markov chain 22 with seed    1233141956...	(on workgroup 0)
+c markov chain 23 with seed    1774374993...	(on workgroup 0)
+c markov chain 24 with seed    3741023763...	(on workgroup 0)
+c markov chain 25 with seed    4029155614...	(on workgroup 0)
+c markov chain 26 with seed    3138922908...	(on workgroup 0)
+c markov chain 27 with seed    2389102025...	(on workgroup 0)
+c markov chain 28 with seed    1375990781...	(on workgroup 0)
+c markov chain 29 with seed    2083973877...	(on workgroup 0)
+c markov chain 30 with seed    4200323559...	(on workgroup 0)
+c markov chain 31 with seed    3924388349...	(on workgroup 0)
+c markov chain 32 with seed     456987528...	(on workgroup 0)
+c markov chain 33 with seed    4162491022...	(on workgroup 0)
+c markov chain 34 with seed    2761065894...	(on workgroup 0)
+c markov chain 35 with seed    3055318134...	(on workgroup 0)
+c markov chain 36 with seed    2336308082...	(on workgroup 0)
+c markov chain 37 with seed    3041388514...	(on workgroup 0)
+c markov chain 38 with seed    3543745784...	(on workgroup 0)
+c markov chain 39 with seed     488170396...	(on workgroup 0)
+mc 26 iteration 1 value 6369.33 accepted 6369.33
+mc 26 iteration 2 value 6369.33 declined 7009.06
+mc 25 iteration 1 value 5526.01 accepted 5526.01
+mc 25 iteration 2 value 4641.69 accepted 4641.69
+mc 36 iteration 1 value 4223.8 accepted 4223.8
+mc 36 iteration 2 value 3910.61 accepted 3910.61
+mc 31 iteration 1 value 7449.75 accepted 7449.75
+mc 31 iteration 2 value 7449.75 declined 8417.87
+mc 35 iteration 1 value 6492.12 accepted 6492.12
+mc 35 iteration 2 value 6492.12 declined 7069.55
+mc 22 iteration 1 value 6361.96 accepted 6361.96
+mc 22 iteration 2 value 5994.42 accepted 5994.42
+mc 34 iteration 1 value 7288.88 accepted 7288.88
+mc 34 iteration 2 value 6345.05 accepted 6345.05
+mc 33 iteration 1 value 8655.93 accepted 8655.93
+mc 33 iteration 2 value 7706.15 accepted 7706.15
+mc 39 iteration 1 value 13212.8 accepted 13212.8
+mc 39 iteration 2 value 13212.8 declined 14740.6
+mc 21 iteration 1 value 4196.78 accepted 4196.78
+mc 21 iteration 2 value 4033.04 accepted 4033.04
+mc 32 iteration 1 value 5638.63 accepted 5638.63
+mc 32 iteration 2 value 5399.68 accepted 5399.68
+mc 20 iteration 1 value 18720.7 accepted 18720.7
+mc 20 iteration 2 value 18720.7 declined 21221.3
+mc 27 iteration 1 value 32098.2 accepted 32098.2
+mc 27 iteration 2 value 21538.5 accepted 21538.5
+mc 29 iteration 1 value 7417.29 accepted 7417.29
+mc 29 iteration 2 value 7417.29 declined 7533.37
+mc 24 iteration 1 value 10262.6 accepted 10262.6
+mc 24 iteration 2 value 10262.6 declined 10432.9
+mc 37 iteration 1 value 9105.2 accepted 9105.2
+mc 37 iteration 2 value 9105.2 declined 9666.35
+mc 30 iteration 1 value 27363 accepted 27363
+mc 30 iteration 2 value 27198.6 accepted 27198.6
+mc 23 iteration 1 value 11750.9 accepted 11750.9
+mc 23 iteration 2 value 11021.9 accepted 11021.9
+mc 38 iteration 1 value 6268.45 accepted 6268.45
+mc 38 iteration 2 value 5814.18 accepted 5814.18
+mc 28 iteration 1 value 5443.15 accepted 5443.15
+mc 28 iteration 2 value 5443.15 declined 5964.6
+mc 33 iteration 3 value 7972.58 declined 8431.11
+mc 28 iteration 3 value 5180.34 accepted 5180.34
+mc 38 iteration 3 value 5347.83 accepted 5347.83
+mc 23 iteration 3 value 11633.2 declined 12146.6
+mc 39 iteration 3 value 12392.7 accepted 12392.7
+mc 25 iteration 3 value 4479.33 accepted 4479.33
+mc 22 iteration 3 value 5846.25 declined 6126.17
+mc 31 iteration 3 value 7449.75 declined 7669.48
+mc 35 iteration 3 value 6492.12 declined 6547.18
+mc 34 iteration 3 value 6345.05 declined 6702.05
+mc 36 iteration 3 value 3910.61 declined 3976.92
+mc 21 iteration 3 value 3518.12 accepted 3518.12
+mc 26 iteration 3 value 6369.33 declined 6927.07
+mc 32 iteration 3 value 5399.76 accepted 5399.76
+mc 30 iteration 3 value 24526.3 accepted 24526.3
+mc 27 iteration 3 value 21538.5 declined 22791.4
+mc 29 iteration 3 value 7597.66 declined 7829.96
+mc 20 iteration 3 value 18720.7 declined 22538.4
+mc 37 iteration 3 value 9105.2 declined 9407.47
+mc 24 iteration 3 value 10470.4 declined 11376.2
+mc 31 iteration 4 value 6290.47 accepted 6290.47
+mc 37 iteration 4 value 8601.25 declined 8933.48
+mc 24 iteration 4 value 10561 declined 10906.8
+mc 28 iteration 4 value 4947.15 declined 5265.78
+mc 35 iteration 4 value 6474.77 accepted 6474.77
+mc 20 iteration 4 value 18720.7 declined 18833
+mc 25 iteration 4 value 4479.33 declined 4802.96
+mc 23 iteration 4 value 11633.2 declined 13660.8
+mc 22 iteration 4 value 6093.72 declined 6446.29
+mc 34 iteration 4 value 6263.18 accepted 6263.18
+mc 38 iteration 4 value 5376.66 declined 5654.53
+mc 39 iteration 4 value 12392.7 declined 14251.3
+mc 33 iteration 4 value 7706.15 declined 8477.89
+mc 36 iteration 4 value 3720.61 accepted 3720.61
+mc 26 iteration 4 value 6369.33 declined 6892.37
+mc 29 iteration 4 value 7597.66 declined 8078.85
+mc 32 iteration 4 value 5292.68 accepted 5292.68
+mc 21 iteration 4 value 3518.12 declined 3996.86
+mc 30 iteration 4 value 24526.3 declined 26955
+mc 27 iteration 4 value 21538.5 declined 28030.6
+mc 22 iteration 5 value 5976.24 declined 6546.04
+mc 21 iteration 5 value 3518.12 declined 3908.28
+mc 34 iteration 5 value 6216.04 declined 6862.09
+mc 31 iteration 5 value 7032.81 declined 7330.62
+mc 27 iteration 5 value 20169 accepted 20169
+mc 26 iteration 5 value 6007.69 declined 6242.59
+mc 32 iteration 5 value 5059.1 accepted 5059.1
+mc 39 iteration 5 value 11298.5 accepted 11298.5
+mc 29 iteration 5 value 7597.66 declined 7973.77
+mc 37 iteration 5 value 9105.2 declined 9251.16
+mc 35 iteration 5 value 6183.91 accepted 6183.91
+mc 23 iteration 5 value 11115.3 accepted 11115.3
+mc 20 iteration 5 value 18720.7 declined 21345.3
+mc 24 iteration 5 value 10262.6 declined 10359.6
+mc 33 iteration 5 value 7706.15 declined 8092.81
+mc 36 iteration 5 value 3720.61 declined 4293.88
+mc 28 iteration 5 value 5270.31 declined 5686.52
+mc 25 iteration 5 value 4196.94 accepted 4196.94
+mc 30 iteration 5 value 23603.5 accepted 23603.5
+mc 38 iteration 5 value 5347.83 declined 5693.88
+wg 0 is done running
+c duration: 250454 milliseconds
+c init: 2555 ms, work: 247899 ms with 95.07 % efficiency
+c duration: 250452 milliseconds
+c init: 2532 ms, work: 247920 ms with 94.61 % efficiency
+c duration: 250450 milliseconds
+c init: 2561 ms, work: 247889 ms with 94.79 % efficiency
+c duration: 250449 milliseconds
+c init: 2543 ms, work: 247906 ms with 94.61 % efficiency
+c duration: 250456 milliseconds
+c init: 2536 ms, work: 247920 ms with 94.85 % efficiency
+c duration: 250446 milliseconds
+c init: 2541 ms, work: 247905 ms with 94.59 % efficiency
+c duration: 250447 milliseconds
+c duration: 250443 milliseconds
+c duration: 250439 milliseconds
+c init: 2519 ms, work: 247920 ms with 94.69 % efficiency
+c duration: 250438 milliseconds
+c duration: 250452 milliseconds
+c init: 2553 ms, work: 247899 ms with 94.67 % efficiency
+c duration: 250437 milliseconds
+c duration: 250435 milliseconds
+c init: 2553 ms, work: 247882 ms with 94.69 % efficiency
+c duration: 250438 milliseconds
+c duration: 250434 milliseconds
+c init: 2514 ms, work: 247920 ms with 94.79 % efficiency
+c duration: 250430 milliseconds
+c init: 2510 ms, work: 247920 ms with 94.86 % efficiency
+c duration: 250447 milliseconds
+c init: 2564 ms, work: 247883 ms with 94.90 % efficiency
+c duration: 250432 milliseconds
+c init: 2529 ms, work: 247903 ms with 94.59 % efficiency
+c duration: 250457 milliseconds
+c duration: 250456 milliseconds
+c init: 2536 ms, work: 247920 ms with 94.90 % efficiency
+c init: 2518 ms, work: 247920 ms with 94.86 % efficiency
+c duration: 250438 milliseconds
+c init: 2518 ms, work: 247920 ms with 94.47 % efficiency
+c duration: 250436 milliseconds
+c init: 2554 ms, work: 247882 ms with 94.59 % efficiency
+c duration: 250435 milliseconds
+c init: 2530 ms, work: 247905 ms with 94.78 % efficiency
+c duration: 250433 milliseconds
+c init: 2513 ms, work: 247920 ms with 94.60 % efficiency
+c init: 2532 ms, work: 247905 ms with 94.46 % efficiency
+c init: 2538 ms, work: 247900 ms with 94.65 % efficiency
+c duration: 250433 milliseconds
+c init: 2513 ms, work: 247920 ms with 94.47 % efficiency
+c duration: 250432 milliseconds
+c init: 2529 ms, work: 247903 ms with 94.76 % efficiency
+c duration: 250434 milliseconds
+c init: 2533 ms, work: 247901 ms with 94.36 % efficiency
+c duration: 250437 milliseconds
+c init: 2537 ms, work: 247900 ms with 94.56 % efficiency
+c duration: 250457 milliseconds
+c init: 2550 ms, work: 247907 ms with 94.47 % efficiency
+c duration: 250448 milliseconds
+c init: 2541 ms, work: 247907 ms with 94.77 % efficiency
+c duration: 250457 milliseconds
+c init: 2557 ms, work: 247900 ms with 94.66 % efficiency
+c duration: 250455 milliseconds
+c init: 2555 ms, work: 247900 ms with 94.86 % efficiency
+c duration: 250454 milliseconds
+c init: 2534 ms, work: 247920 ms with 94.62 % efficiency
+c duration: 250433 milliseconds
+c init: 2532 ms, work: 247901 ms with 94.72 % efficiency
+c duration: 250457 milliseconds
+c init: 2573 ms, work: 247884 ms with 95.22 % efficiency
+c duration: 250457 milliseconds
+c init: 2550 ms, work: 247907 ms with 94.62 % efficiency
+c duration: 250445 milliseconds
+c init: 2540 ms, work: 247905 ms with 94.64 % efficiency
+c init: 2558 ms, work: 247889 ms with 95.06 % efficiency
+c duration: 250439 milliseconds
+c init: 2519 ms, work: 247920 ms with 94.72 % efficiency
+c init: 2560 ms, work: 247883 ms with 95.16 % efficiency
+c duration: 250439 milliseconds
+c init: 2540 ms, work: 247899 ms with 94.72 % efficiency
+c duration: 250439 milliseconds
+c init: 2540 ms, work: 247899 ms with 94.68 % efficiency
+*** The MPI_Waitall() function was called after MPI_FINALIZE was invoked.
+*** This is disallowed by the MPI standard.
+*** Your MPI job will now abort.
+[uc2n361.localdomain:555210] Local abort after MPI_FINALIZE started completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[57150,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

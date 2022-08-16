@@ -1,0 +1,126 @@
+\hypertarget{classshared__tmpfile}{}\doxysection{shared\+\_\+tmpfile Class Reference}
+\label{classshared__tmpfile}\index{shared\_tmpfile@{shared\_tmpfile}}
+
+
+temporary file implementation  
+
+
+
+
+{\ttfamily \#include $<$shared\+\_\+tmpfile.\+hpp$>$}
+
+
+
+Collaboration diagram for shared\+\_\+tmpfile\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classshared__tmpfile__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classshared__tmpfile_a0527925b2822016b9fa438f8836332ba}\label{classshared__tmpfile_a0527925b2822016b9fa438f8836332ba}} 
+{\bfseries shared\+\_\+tmpfile} ()
+\begin{DoxyCompactList}\small\item\em dummy default constructor, does not provide any file access \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classshared__tmpfile_a894fb900fb337be77d5b885b80aaf7f5}{shared\+\_\+tmpfile}} (std\+::string purpose)
+\begin{DoxyCompactList}\small\item\em create a temporary file for purpose (string) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classshared__tmpfile_a70bf2edb448db268c12635a0bc3f6d19}\label{classshared__tmpfile_a70bf2edb448db268c12635a0bc3f6d19}} 
+{\bfseries shared\+\_\+tmpfile} (const \mbox{\hyperlink{classshared__tmpfile}{shared\+\_\+tmpfile}} \&other)=delete
+\begin{DoxyCompactList}\small\item\em disable copy constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classshared__tmpfile_afade670f9900bbfbe5af44545a47533f}\label{classshared__tmpfile_afade670f9900bbfbe5af44545a47533f}} 
+{\bfseries shared\+\_\+tmpfile} (\mbox{\hyperlink{classshared__tmpfile}{shared\+\_\+tmpfile}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em move constructor by using swap \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classshared__tmpfile_a898e66761c1b54b20ea0eea2b3bba116}\label{classshared__tmpfile_a898e66761c1b54b20ea0eea2b3bba116}} 
+\mbox{\hyperlink{classshared__tmpfile}{shared\+\_\+tmpfile}} \& {\bfseries operator=} (\mbox{\hyperlink{classshared__tmpfile}{shared\+\_\+tmpfile}} other)
+\begin{DoxyCompactList}\small\item\em assignment operator by using swap \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classshared__tmpfile_a13a20a183f546e60c505473cc98121d8}\label{classshared__tmpfile_a13a20a183f546e60c505473cc98121d8}} 
+void {\bfseries remove} ()
+\begin{DoxyCompactList}\small\item\em remove the tmp file manually \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classshared__tmpfile_a08e06b1cd95fac78ad5e807beeb11f62}\label{classshared__tmpfile_a08e06b1cd95fac78ad5e807beeb11f62}} 
+{\bfseries $\sim$shared\+\_\+tmpfile} ()
+\begin{DoxyCompactList}\small\item\em deconstructor, removes the tmp file if required \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classshared__tmpfile_ad8cd6d95bd4fa150f7f381f59f39ed3e}\label{classshared__tmpfile_ad8cd6d95bd4fa150f7f381f59f39ed3e}} 
+std\+::string {\bfseries fname}
+\begin{DoxyCompactList}\small\item\em name of tmp file \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}\label{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}} 
+FILE $\ast$ {\bfseries fptr}
+\begin{DoxyCompactList}\small\item\em FILE $\ast$ pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classshared__tmpfile_a778a36a3f6068937c834bb1989a619f8}\label{classshared__tmpfile_a778a36a3f6068937c834bb1989a619f8}} 
+std\+::size\+\_\+t {\bfseries id}
+\begin{DoxyCompactList}\small\item\em tmpfile id \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classshared__tmpfile_af19c039626eab57c4ac8bce50cb798b6}\label{classshared__tmpfile_af19c039626eab57c4ac8bce50cb798b6}} 
+void {\bfseries swap} (\mbox{\hyperlink{classshared__tmpfile}{shared\+\_\+tmpfile}} \&a, \mbox{\hyperlink{classshared__tmpfile}{shared\+\_\+tmpfile}} \&b)
+\begin{DoxyCompactList}\small\item\em swap implementation for copy \& swap idiom \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+temporary file implementation 
+
+provides temporary files identified by an uuid and purpose string which can therefore be reused. 
+
+Definition at line \mbox{\hyperlink{shared__tmpfile_8hpp_source_l00013}{13}} of file \mbox{\hyperlink{shared__tmpfile_8hpp_source}{shared\+\_\+tmpfile.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classshared__tmpfile_a894fb900fb337be77d5b885b80aaf7f5}\label{classshared__tmpfile_a894fb900fb337be77d5b885b80aaf7f5}} 
+\index{shared\_tmpfile@{shared\_tmpfile}!shared\_tmpfile@{shared\_tmpfile}}
+\index{shared\_tmpfile@{shared\_tmpfile}!shared\_tmpfile@{shared\_tmpfile}}
+\doxysubsubsection{\texorpdfstring{shared\_tmpfile()}{shared\_tmpfile()}}
+{\footnotesize\ttfamily shared\+\_\+tmpfile\+::shared\+\_\+tmpfile (\begin{DoxyParamCaption}\item[{std\+::string}]{purpose }\end{DoxyParamCaption})}
+
+
+
+create a temporary file for purpose (string) 
+
+the temporary file opened will contain an uuid and the purpose string and therefore can be reused by the application 
+
+Definition at line \mbox{\hyperlink{shared__tmpfile_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{shared__tmpfile_8cpp_source}{shared\+\_\+tmpfile.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00011}00011                                                 :}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00012}00012     \mbox{\hyperlink{classshared__tmpfile_a778a36a3f6068937c834bb1989a619f8}{id}}(\mbox{\hyperlink{classuuid}{uuid<shared\_tmpfile>::get}}()+1),}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00013}00013     \mbox{\hyperlink{classshared__tmpfile_ad8cd6d95bd4fa150f7f381f59f39ed3e}{fname}}(),}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00014}00014     \mbox{\hyperlink{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}{fptr}}(\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00016}00016     std::string tmp\_path = std::filesystem::temp\_directory\_path();}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00017}00017     \mbox{\hyperlink{classshared__tmpfile_ad8cd6d95bd4fa150f7f381f59f39ed3e}{fname}} = tmp\_path + \textcolor{stringliteral}{"{}/tmpfile-\/"{}} + purpose + \textcolor{stringliteral}{"{}\_"{}} + std::to\_string(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00019}00019     \textcolor{comment}{// std::cout << "{}created shared\_tmpfile: "{} << fname << std::endl;}}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00020}00020     \mbox{\hyperlink{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}{fptr}} = fopen(\mbox{\hyperlink{classshared__tmpfile_ad8cd6d95bd4fa150f7f381f59f39ed3e}{fname}}.c\_str(), \textcolor{stringliteral}{"{}wbx+"{}});}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00021}00021     \textcolor{keywordflow}{if} (\textcolor{keyword}{nullptr} == \mbox{\hyperlink{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}{fptr}}) \{}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00022}00022         std::string errmsg = \textcolor{stringliteral}{"{}fopen error (shared\_tmpfile "{}}}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00023}00023             + std::to\_string(\textcolor{keywordtype}{id}) + \textcolor{stringliteral}{"{}):"{}};}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00024}00024         perror(errmsg.c\_str());}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00025}00025         }
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00026}00026         \textcolor{keywordflow}{if} (\textcolor{keyword}{false}) \{}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00027}00027             \mbox{\hyperlink{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}{fptr}} = fopen(\mbox{\hyperlink{classshared__tmpfile_ad8cd6d95bd4fa150f7f381f59f39ed3e}{fname}}.c\_str(), \textcolor{stringliteral}{"{}wb+"{}});}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00028}00028             assert(\mbox{\hyperlink{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}{fptr}});}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00029}00029             std::cerr}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00030}00030                 << \textcolor{stringliteral}{"{}note: recovered by reopening with wb+"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00031}00031         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00032}00032             assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00033}00033         \}}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00034}00034     \}}
+\DoxyCodeLine{\Hypertarget{classshared__tmpfile_l00035}00035 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+util/shared\+\_\+tmpfile.\+hpp\item 
+util/shared\+\_\+tmpfile.\+cpp\end{DoxyCompactItemize}

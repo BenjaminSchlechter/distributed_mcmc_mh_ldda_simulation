@@ -1,0 +1,58 @@
+\hypertarget{classinaccurate__modell}{}\doxysection{inaccurate\+\_\+modell\texorpdfstring{$<$}{<} modell\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classinaccurate__modell}\index{inaccurate\_modell$<$ modell\_t $>$@{inaccurate\_modell$<$ modell\_t $>$}}
+
+
+an enhanced modell with added irregularities for probsat simulation  
+
+
+
+
+{\ttfamily \#include $<$modell.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{prepared\+\_\+computation}}
+\begin{DoxyCompactList}\small\item\em represents a prepared computation for a given configuration \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classinaccurate__modell_ae0837d2469b66e3e8ec557af4b4ec2af}\label{classinaccurate__modell_ae0837d2469b66e3e8ec557af4b4ec2af}} 
+{\bfseries inaccurate\+\_\+modell} (modell\+\_\+t \&\mbox{\hyperlink{classinaccurate__modell_aa2feccdcea9b1527bd99c8b37308e46d}{modell\+\_\+}}, prec\+\_\+t error\+\_\+strength\+\_\+)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinaccurate__modell_a351ad72be02a8470df72bbdaca04d988}\label{classinaccurate__modell_a351ad72be02a8470df72bbdaca04d988}} 
+void {\bfseries prepare\+\_\+computation\+\_\+with\+\_\+cfg\+\_\+vector} (const cfg\+\_\+vector\+\_\+t \&v, \mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{prepared\+\_\+computation}} \&pcom)
+\begin{DoxyCompactList}\small\item\em prepare computation for a given config vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinaccurate__modell_a152ea4dfba469e3f2fc3d152c5ed874d}\label{classinaccurate__modell_a152ea4dfba469e3f2fc3d152c5ed874d}} 
+{\footnotesize template$<$typename prng\+\_\+t , typename rpmanager\+\_\+t $>$ }\\auto {\bfseries operator()} (prng\+\_\+t \&prng, rpmanager\+\_\+t \&rpmanager, \mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{prepared\+\_\+computation}} \&pcom) const
+\begin{DoxyCompactList}\small\item\em create a remote function call for one execution \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinaccurate__modell_a6bac5a05ebe48e07174509ce741ce6c9}\label{classinaccurate__modell_a6bac5a05ebe48e07174509ce741ce6c9}} 
+void {\bfseries finish\+\_\+computation} (\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{prepared\+\_\+computation}} \&pcom)
+\begin{DoxyCompactList}\small\item\em finish a given computation \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classinaccurate__modell_aa2feccdcea9b1527bd99c8b37308e46d}\label{classinaccurate__modell_aa2feccdcea9b1527bd99c8b37308e46d}} 
+modell\+\_\+t {\bfseries modell\+\_\+}
+\begin{DoxyCompactList}\small\item\em using the accurate modell internally \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinaccurate__modell_af6fa462103aa06c850f0cae3d156305b}\label{classinaccurate__modell_af6fa462103aa06c850f0cae3d156305b}} 
+const prec\+\_\+t {\bfseries error\+\_\+strength}
+\begin{DoxyCompactList}\small\item\em error strength to apply (errors follow a lognormal distribution with sigma error\+\_\+strength and mu 0) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinaccurate__modell_ac0547f34483607c40d2c2674d30489ca}\label{classinaccurate__modell_ac0547f34483607c40d2c2674d30489ca}} 
+const prec\+\_\+t {\bfseries error\+\_\+offset}
+\begin{DoxyCompactList}\small\item\em error offset to correct = exp(mu + sigma$\ast$$\ast$2 /2) -\/ 1 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename modell\+\_\+t$>$\newline
+requires (modell\+\_\+t\+::is\+\_\+value\+\_\+computation\+\_\+implementation)\newline
+class inaccurate\+\_\+modell$<$ modell\+\_\+t $>$}
+an enhanced modell with added irregularities for probsat simulation 
+
+Definition at line \mbox{\hyperlink{modell_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{modell_8hpp_source}{modell.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/value\+\_\+computation/modell.\+hpp\end{DoxyCompactItemize}

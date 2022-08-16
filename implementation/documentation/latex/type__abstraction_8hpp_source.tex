@@ -1,0 +1,79 @@
+\hypertarget{type__abstraction_8hpp_source}{}\doxysection{type\+\_\+abstraction.\+hpp}
+\label{type__abstraction_8hpp_source}\index{distributed\_computation/type\_abstraction.hpp@{distributed\_computation/type\_abstraction.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef TYPE\_ABSTRACTION\_HPP}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define TYPE\_ABSTRACTION\_HPP}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <any>}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}../util/include\_bitsery.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00009}\mbox{\hyperlink{classAny__TypeAbstractionAdapter}{00009}} \textcolor{keyword}{class }\mbox{\hyperlink{classAny__TypeAbstractionAdapter}{Any\_TypeAbstractionAdapter}}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00011}00011     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00014}\mbox{\hyperlink{classAny__TypeAbstractionAdapter_ad0bb34f3063860c5fd2518d8a0539cf9}{00014}}         \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAny__TypeAbstractionAdapter_ad0bb34f3063860c5fd2518d8a0539cf9}{is\_TypeAbstractionAdapter}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00015}00015         }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00017}\mbox{\hyperlink{classAny__TypeAbstractionAdapter_a5c316b93f7319a30101f601c5ed149ec}{00017}}         \textcolor{keyword}{using} \mbox{\hyperlink{classAny__TypeAbstractionAdapter_a5c316b93f7319a30101f601c5ed149ec}{abstract\_type}} = std::any;}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00020}00020         \textcolor{keyword}{template}<\textcolor{keyword}{typename} t>}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00021}\mbox{\hyperlink{classAny__TypeAbstractionAdapter_ad85a641a459691a727b1cc70be3a96dd}{00021}}         \textcolor{keyword}{static} \mbox{\hyperlink{classAny__TypeAbstractionAdapter_a5c316b93f7319a30101f601c5ed149ec}{abstract\_type}} \mbox{\hyperlink{classAny__TypeAbstractionAdapter_ad85a641a459691a727b1cc70be3a96dd}{serialize}}(t \&v) \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00022}00022             \textcolor{keywordflow}{return} v;}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00023}00023         \}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00026}00026         \textcolor{keyword}{template}<\textcolor{keyword}{typename} t>}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00027}\mbox{\hyperlink{classAny__TypeAbstractionAdapter_a098ad4ff5896b5a8a2e73f76f8e7afc0}{00027}}         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAny__TypeAbstractionAdapter_a098ad4ff5896b5a8a2e73f76f8e7afc0}{deserialize}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAny__TypeAbstractionAdapter_a5c316b93f7319a30101f601c5ed149ec}{abstract\_type}} \&v, t \&result) \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00028}00028             \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00029}00029                 result = std::any\_cast<t>(v);}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00030}00030                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00031}00031             \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00032}00032                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00033}00033             \}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00034}00034         \}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00035}00035 \};}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00038}00038 \textcolor{keyword}{template}<}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00039}00039     \textcolor{keyword}{typename} buffer\_t,}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00040}00040     \textcolor{keyword}{typename} input\_adapter\_t,}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00041}00041     \textcolor{keyword}{typename} output\_adapter\_t}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00042}00042 >}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00043}\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{00043}} \textcolor{keyword}{class }\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{Bitsery\_TypeAbstractionAdapter}}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00044}00044 \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00045}00045     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00048}\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{00048}}         \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{is\_TypeAbstractionAdapter}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00051}\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{00051}}         \textcolor{keyword}{using} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{abstract\_type}} = buffer\_t;}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00054}00054         \textcolor{keyword}{template}<\textcolor{keyword}{typename} t>}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00055}\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_ab76d04229530de5add9614514363bd45}{00055}}         \textcolor{keyword}{static} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{abstract\_type}} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_ab76d04229530de5add9614514363bd45}{serialize}}(t \&v)}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00056}00056         \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00057}00057             buffer\_t buffer;}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00058}00058             \textcolor{keyword}{auto} length = bitsery::quickSerialization(}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00059}00059                 std::move(output\_adapter\_t\{buffer\}), v);}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00060}00060             buffer.resize(length);}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00061}00061             \textcolor{keywordflow}{return} buffer;}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00062}00062         \}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00065}00065         \textcolor{keyword}{template}<\textcolor{keyword}{typename} t>}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00066}\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_aee1cacc94c877f694630120c921cbd1f}{00066}}         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_aee1cacc94c877f694630120c921cbd1f}{deserialize}}(\textcolor{keyword}{const} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{abstract\_type}} \&buffer, t \&result)}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00067}00067         \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00068}00068             \textcolor{keyword}{auto} state = bitsery::quickDeserialization(}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00069}00069                 std::move(input\_adapter\_t\{buffer.begin(), buffer.size()\}),}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00070}00070                 result);}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00072}00072             \textcolor{keywordflow}{if} ((state.first != bitsery::ReaderError::NoError)}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00073}00073                 || (\textcolor{keyword}{false} == state.second))}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00074}00074             \{}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00075}00075                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00076}00076             \}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00078}00078             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00079}00079         \}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00080}00080 \};}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00082}00082 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{type__abstraction_8hpp_source_l00083}00083 }
+
+\end{DoxyCode}

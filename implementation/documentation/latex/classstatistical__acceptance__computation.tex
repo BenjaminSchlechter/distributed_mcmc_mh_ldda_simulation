@@ -1,0 +1,190 @@
+\hypertarget{classstatistical__acceptance__computation}{}\doxysection{statistical\+\_\+acceptance\+\_\+computation\texorpdfstring{$<$}{<} prng\+\_\+t, cfg\+\_\+vector\+\_\+t, prec\+\_\+t, value\+\_\+comp\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classstatistical__acceptance__computation}\index{statistical\_acceptance\_computation$<$ prng\_t, cfg\_vector\_t, prec\_t, value\_comp\_t, acc\_prob\_comp\_t $>$@{statistical\_acceptance\_computation$<$ prng\_t, cfg\_vector\_t, prec\_t, value\_comp\_t, acc\_prob\_comp\_t $>$}}
+
+
+decides over acceptance of a new markov chain state based on a coincidence intervall  
+
+
+
+
+{\ttfamily \#include $<$statistical\+\_\+acceptance\+\_\+computation.\+hpp$>$}
+
+
+
+Collaboration diagram for statistical\+\_\+acceptance\+\_\+computation\texorpdfstring{$<$}{<} prng\+\_\+t, cfg\+\_\+vector\+\_\+t, prec\+\_\+t, value\+\_\+comp\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classstatistical__acceptance__computation__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstatistical__acceptance__computation_1_1state__data__t}{state\+\_\+data\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em compute a state of a markov chain \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a4e863c346610d14bafef8fbe31fe28e2}\label{classstatistical__acceptance__computation_a4e863c346610d14bafef8fbe31fe28e2}} 
+{\bfseries statistical\+\_\+acceptance\+\_\+computation} (double \mbox{\hyperlink{classstatistical__acceptance__computation_aafaed8da47fc91fad5723a755e6e6bda}{coincidence\+\_\+interval\+\_\+factor}}=cfg\+\_\+sac\+\_\+confidence\+\_\+interval\+\_\+scaling\+\_\+factor, double \mbox{\hyperlink{classstatistical__acceptance__computation_a5bf148d69e51d6141378883740687073}{testniveau}}=cfg\+\_\+sac\+\_\+testniveau, std\+::size\+\_\+t \mbox{\hyperlink{classstatistical__acceptance__computation_a4a82d56467a5273f0660aaf7e7cd37c0}{values\+\_\+per\+\_\+iteration}}=cfg\+\_\+sac\+\_\+num\+\_\+additional\+\_\+values\+\_\+per\+\_\+iteration, std\+::size\+\_\+t \mbox{\hyperlink{classstatistical__acceptance__computation_a09e3352726a06037d30b753382c1003a}{max\+\_\+iterations}}=cfg\+\_\+sac\+\_\+max\+\_\+iterations, std\+::size\+\_\+t \mbox{\hyperlink{classstatistical__acceptance__computation_ae35ad3f0d2ccba3643e6624100908ebb}{values\+\_\+required}}=cfg\+\_\+sac\+\_\+num\+\_\+initial\+\_\+values)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a3232a9c24c1a72140abf02b22e1256bf}\label{classstatistical__acceptance__computation_a3232a9c24c1a72140abf02b22e1256bf}} 
+void {\bfseries skip\+\_\+computation} (prng\+\_\+t \&main\+\_\+prng)
+\begin{DoxyCompactList}\small\item\em skip one step for fast state recovery of random number generator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a83f02ce6be1e17f1fe16037fb256c028}\label{classstatistical__acceptance__computation_a83f02ce6be1e17f1fe16037fb256c028}} 
+{\footnotesize template$<$typename scheduler\+\_\+t , typename result\+\_\+projection\+\_\+t  = std\+::identity, typename result\+\_\+function\+\_\+t  = std\+::function$<$void(prec\+\_\+t)$>$$>$ }\\void {\bfseries start\+\_\+computation} (prng\+\_\+t \&main\+\_\+prng, const \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} \&v, scheduler\+\_\+t \&scheduler, value\+\_\+comp\+\_\+t \&value\+\_\+comp, result\+\_\+projection\+\_\+t \&result\+\_\+projection=\{\})
+\begin{DoxyCompactList}\small\item\em setup computation of new state values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a89ead8437b07ff620b173b6c23c5eb5c}\label{classstatistical__acceptance__computation_a89ead8437b07ff620b173b6c23c5eb5c}} 
+bool {\bfseries still\+\_\+waiting\+\_\+for\+\_\+computation} ()
+\begin{DoxyCompactList}\small\item\em check if all scheduled value computations finished \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_ade1821c2d1c5ea4c1a4aa1c34c0224f7}\label{classstatistical__acceptance__computation_ade1821c2d1c5ea4c1a4aa1c34c0224f7}} 
+{\footnotesize template$<$typename scheduler\+\_\+t $>$ }\\bool {\bfseries continue\+\_\+computation} (scheduler\+\_\+t \&scheduler, value\+\_\+comp\+\_\+t \&value\+\_\+comp, \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} \&acc\+\_\+prob\+\_\+fct)
+\begin{DoxyCompactList}\small\item\em compute values until decision is clear (recall until it returns true) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classstatistical__acceptance__computation_a1f58aaf97fc5115ec181810cd62784e5}{finish\+\_\+computation}} (value\+\_\+comp\+\_\+t \&value\+\_\+comp, \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} \&acc\+\_\+prob\+\_\+fct)
+\begin{DoxyCompactList}\small\item\em get result of wheter to accept the new state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_ad9f8323bd26b489b77cd7995c47788e2}\label{classstatistical__acceptance__computation_ad9f8323bd26b489b77cd7995c47788e2}} 
+void {\bfseries cleanup} (value\+\_\+comp\+\_\+t \&value\+\_\+comp)
+\begin{DoxyCompactList}\small\item\em cleanup any unfinished computation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a3c2e9df91460c03ba698a78b3234a8df}\label{classstatistical__acceptance__computation_a3c2e9df91460c03ba698a78b3234a8df}} 
+prec\+\_\+t {\bfseries get\+\_\+current\+\_\+value} ()
+\begin{DoxyCompactList}\small\item\em get the value of the current state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a12ffea4f98f7bf19dc9fab67f93affbc}\label{classstatistical__acceptance__computation_a12ffea4f98f7bf19dc9fab67f93affbc}} 
+prec\+\_\+t {\bfseries get\+\_\+last\+\_\+computed\+\_\+value} ()
+\begin{DoxyCompactList}\small\item\em get the value of the last computed state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a9ba79956e683e36367d8b8177ff9bc51}\label{classstatistical__acceptance__computation_a9ba79956e683e36367d8b8177ff9bc51}} 
+prec\+\_\+t {\bfseries get\+\_\+previous\+\_\+computed\+\_\+value} ()
+\begin{DoxyCompactList}\small\item\em get the value of the previous state \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a3968166f4de395e11cbce8bbbefe9313}\label{classstatistical__acceptance__computation_a3968166f4de395e11cbce8bbbefe9313}} 
+auto {\bfseries derive\+\_\+prng} (prng\+\_\+t \&main\+\_\+prng)
+\begin{DoxyCompactList}\small\item\em derive a pseudo random number generator for each step \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a3e202e40a5cde2e7124277ef9edb0b1d}\label{classstatistical__acceptance__computation_a3e202e40a5cde2e7124277ef9edb0b1d}} 
+std\+::uniform\+\_\+real\+\_\+distribution$<$ prec\+\_\+t $>$ {\bfseries prob\+\_\+distribution}
+\begin{DoxyCompactList}\small\item\em probability distribution to get cutoff values for acceptance \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a00dc92ba41c1aa0b98ac9abf46ba6a06}\label{classstatistical__acceptance__computation_a00dc92ba41c1aa0b98ac9abf46ba6a06}} 
+prec\+\_\+t {\bfseries nextz}
+\begin{DoxyCompactList}\small\item\em next acceptance probability cutoff value \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a2fc3bde3fe8967c219a2be2eedfbb96e}\label{classstatistical__acceptance__computation_a2fc3bde3fe8967c219a2be2eedfbb96e}} 
+prec\+\_\+t {\bfseries z}
+\begin{DoxyCompactList}\small\item\em acceptance probability cutoff value \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_afb5bac16db083bc831523361841287d7}\label{classstatistical__acceptance__computation_afb5bac16db083bc831523361841287d7}} 
+\mbox{\hyperlink{structstatistical__acceptance__computation_1_1state__data__t}{state\+\_\+data\+\_\+t}} {\bfseries state\+\_\+data} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em markov chain state information of current and next state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_ab10f2bf45d7ef858998272989f32c45c}\label{classstatistical__acceptance__computation_ab10f2bf45d7ef858998272989f32c45c}} 
+bool {\bfseries is\+\_\+first\+\_\+cfg\+\_\+vector}
+\begin{DoxyCompactList}\small\item\em application state to accept the first state anyway \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a34048fcd73ff948d39cfbb0612c5e36a}\label{classstatistical__acceptance__computation_a34048fcd73ff948d39cfbb0612c5e36a}} 
+bool {\bfseries accept}
+\begin{DoxyCompactList}\small\item\em last result \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_ac5de6c6e7d6874464fbbe1230af75b4e}\label{classstatistical__acceptance__computation_ac5de6c6e7d6874464fbbe1230af75b4e}} 
+uint8\+\_\+t {\bfseries new\+\_\+index}
+\begin{DoxyCompactList}\small\item\em index into state\+\_\+data of the next/new state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a8011f19e7077a560a5c71c587df29e7e}\label{classstatistical__acceptance__computation_a8011f19e7077a560a5c71c587df29e7e}} 
+bool {\bfseries computation\+\_\+scheduled\+\_\+state}
+\begin{DoxyCompactList}\small\item\em application state whether a value computation is scheduled \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a1eb3008887d2eb5365894e17bce8522d}\label{classstatistical__acceptance__computation_a1eb3008887d2eb5365894e17bce8522d}} 
+std\+::size\+\_\+t {\bfseries remaining\+\_\+computations}
+\begin{DoxyCompactList}\small\item\em number of remaining computations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_aafaed8da47fc91fad5723a755e6e6bda}\label{classstatistical__acceptance__computation_aafaed8da47fc91fad5723a755e6e6bda}} 
+double {\bfseries coincidence\+\_\+interval\+\_\+factor}
+\begin{DoxyCompactList}\small\item\em sigma factor for confidence \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a5bf148d69e51d6141378883740687073}\label{classstatistical__acceptance__computation_a5bf148d69e51d6141378883740687073}} 
+double {\bfseries testniveau}
+\begin{DoxyCompactList}\small\item\em probability cutoff off small coincidence intervalls to use average instead \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a4a82d56467a5273f0660aaf7e7cd37c0}\label{classstatistical__acceptance__computation_a4a82d56467a5273f0660aaf7e7cd37c0}} 
+std\+::size\+\_\+t {\bfseries values\+\_\+per\+\_\+iteration}
+\begin{DoxyCompactList}\small\item\em number of values to add in each iteration \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a09e3352726a06037d30b753382c1003a}\label{classstatistical__acceptance__computation_a09e3352726a06037d30b753382c1003a}} 
+std\+::size\+\_\+t {\bfseries max\+\_\+iterations}
+\begin{DoxyCompactList}\small\item\em maximum number of iterations until average is used \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_ae35ad3f0d2ccba3643e6624100908ebb}\label{classstatistical__acceptance__computation_ae35ad3f0d2ccba3643e6624100908ebb}} 
+std\+::size\+\_\+t {\bfseries values\+\_\+required}
+\begin{DoxyCompactList}\small\item\em minimum number of initial values required for decision \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a1d7c9fc40e8cce56ab08fd311a098447}\label{classstatistical__acceptance__computation_a1d7c9fc40e8cce56ab08fd311a098447}} 
+std\+::function$<$ void(void $\ast$scheduler\+\_\+ptr, std\+::size\+\_\+t i, uint8\+\_\+t index) $>$ {\bfseries schedule\+\_\+computation}
+\begin{DoxyCompactList}\small\item\em internally used function to schedule computations \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename prng\+\_\+t, typename \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}, typename prec\+\_\+t, typename value\+\_\+comp\+\_\+t, typename \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} = exponential\+\_\+acceptance\+\_\+probability$<$prec\+\_\+t$>$$>$\newline
+requires ( value\+\_\+comp\+\_\+t\+::is\+\_\+value\+\_\+computation\+\_\+implementation \&\& acc\+\_\+prob\+\_\+comp\+\_\+t\+::is\+\_\+acceptance\+\_\+probability\+\_\+implementation )\newline
+class statistical\+\_\+acceptance\+\_\+computation$<$ prng\+\_\+t, cfg\+\_\+vector\+\_\+t, prec\+\_\+t, value\+\_\+comp\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t $>$}
+decides over acceptance of a new markov chain state based on a coincidence intervall 
+
+Definition at line \mbox{\hyperlink{statistical__acceptance__computation_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{statistical__acceptance__computation_8hpp_source}{statistical\+\_\+acceptance\+\_\+computation.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classstatistical__acceptance__computation_a1f58aaf97fc5115ec181810cd62784e5}\label{classstatistical__acceptance__computation_a1f58aaf97fc5115ec181810cd62784e5}} 
+\index{statistical\_acceptance\_computation$<$ prng\_t, cfg\_vector\_t, prec\_t, value\_comp\_t, acc\_prob\_comp\_t $>$@{statistical\_acceptance\_computation$<$ prng\_t, cfg\_vector\_t, prec\_t, value\_comp\_t, acc\_prob\_comp\_t $>$}!finish\_computation@{finish\_computation}}
+\index{finish\_computation@{finish\_computation}!statistical\_acceptance\_computation$<$ prng\_t, cfg\_vector\_t, prec\_t, value\_comp\_t, acc\_prob\_comp\_t $>$@{statistical\_acceptance\_computation$<$ prng\_t, cfg\_vector\_t, prec\_t, value\_comp\_t, acc\_prob\_comp\_t $>$}}
+\doxysubsubsection{\texorpdfstring{finish\_computation()}{finish\_computation()}}
+{\footnotesize\ttfamily template$<$typename prng\+\_\+t , typename \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} , typename prec\+\_\+t , typename value\+\_\+comp\+\_\+t , typename \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}}  = exponential\+\_\+acceptance\+\_\+probability$<$prec\+\_\+t$>$$>$ \\
+bool \mbox{\hyperlink{classstatistical__acceptance__computation}{statistical\+\_\+acceptance\+\_\+computation}}$<$ prng\+\_\+t, \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}, prec\+\_\+t, value\+\_\+comp\+\_\+t, \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} $>$\+::finish\+\_\+computation (\begin{DoxyParamCaption}\item[{value\+\_\+comp\+\_\+t \&}]{value\+\_\+comp,  }\item[{\mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} \&}]{acc\+\_\+prob\+\_\+fct }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get result of wheter to accept the new state 
+
+won\textquotesingle{}t cleanup computation of accepted state, as it may be required to continue with it in the next iteration 
+
+Definition at line \mbox{\hyperlink{statistical__acceptance__computation_8hpp_source_l00468}{468}} of file \mbox{\hyperlink{statistical__acceptance__computation_8hpp_source}{statistical\+\_\+acceptance\+\_\+computation.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00470}00470         \{}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00471}00471             assert(0 == \mbox{\hyperlink{classstatistical__acceptance__computation_a1eb3008887d2eb5365894e17bce8522d}{remaining\_computations}});}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00472}00472             assert(\mbox{\hyperlink{classstatistical__acceptance__computation_a8011f19e7077a560a5c71c587df29e7e}{computation\_scheduled\_state}});}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00473}00473             \mbox{\hyperlink{classstatistical__acceptance__computation_a8011f19e7077a560a5c71c587df29e7e}{computation\_scheduled\_state}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00474}00474 }
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00475}00475             ignore(\&acc\_prob\_fct);}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00476}00476 }
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00477}00477             uint8\_t old\_index = 1 -\/ \mbox{\hyperlink{classstatistical__acceptance__computation_ac5de6c6e7d6874464fbbe1230af75b4e}{new\_index}};}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00478}00478             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classstatistical__acceptance__computation_ab10f2bf45d7ef858998272989f32c45c}{is\_first\_cfg\_vector}}) \{}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00479}00479                 \mbox{\hyperlink{classstatistical__acceptance__computation_ab10f2bf45d7ef858998272989f32c45c}{is\_first\_cfg\_vector}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00480}00480                 \mbox{\hyperlink{classstatistical__acceptance__computation_ac5de6c6e7d6874464fbbe1230af75b4e}{new\_index}} = old\_index;}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00481}00481                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00482}00482             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00483}00483                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{classstatistical__acceptance__computation_a34048fcd73ff948d39cfbb0612c5e36a}{accept}}) \{}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00484}00484                     \textcolor{comment}{// std::cout << "{}accept "{}}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00485}00485                         \textcolor{comment}{// << state\_data[new\_index].statistics.average}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00486}00486                         \textcolor{comment}{// << std::endl;}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00487}00487                     value\_comp.finish\_computation(}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00488}00488                         \mbox{\hyperlink{classstatistical__acceptance__computation_afb5bac16db083bc831523361841287d7}{state\_data}}[old\_index].pcom);}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00489}00489                     \mbox{\hyperlink{classstatistical__acceptance__computation_ac5de6c6e7d6874464fbbe1230af75b4e}{new\_index}} = old\_index;}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00490}00490                 \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00491}00491                     \textcolor{comment}{// std::cout << "{}decline "{}}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00492}00492                         \textcolor{comment}{// << state\_data[new\_index].statistics.average}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00493}00493                         \textcolor{comment}{// << std::endl;}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00494}00494                     \textcolor{comment}{// std::cout << "{}keep value "{}}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00495}00495                         \textcolor{comment}{// << state\_data[old\_index].statistics.average}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00496}00496                         \textcolor{comment}{// << std::endl;}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00497}00497                     value\_comp.finish\_computation(}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00498}00498                         \mbox{\hyperlink{classstatistical__acceptance__computation_afb5bac16db083bc831523361841287d7}{state\_data}}[\mbox{\hyperlink{classstatistical__acceptance__computation_ac5de6c6e7d6874464fbbe1230af75b4e}{new\_index}}].pcom);}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00499}00499                 \}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00500}00500                 \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatistical__acceptance__computation_a34048fcd73ff948d39cfbb0612c5e36a}{accept}};}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00501}00501             \}}
+\DoxyCodeLine{\Hypertarget{classstatistical__acceptance__computation_l00502}00502         \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classstatistical__acceptance__computation_a1f58aaf97fc5115ec181810cd62784e5_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/acceptance\+\_\+computation/statistical\+\_\+acceptance\+\_\+computation.\+hpp\end{DoxyCompactItemize}

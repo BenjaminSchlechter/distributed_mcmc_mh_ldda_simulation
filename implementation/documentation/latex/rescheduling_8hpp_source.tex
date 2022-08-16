@@ -1,0 +1,199 @@
+\hypertarget{rescheduling_8hpp_source}{}\doxysection{rescheduling.\+hpp}
+\label{rescheduling_8hpp_source}\index{distributed\_computation/rescheduling.hpp@{distributed\_computation/rescheduling.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef RESCHEDULING\_HPP}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define RESCHEDULING\_HPP}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include "{}../util/util.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}multiway\_partitioning.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00014}\mbox{\hyperlink{classrescheduling__manager}{00014}} \textcolor{keyword}{class }\mbox{\hyperlink{classrescheduling__manager}{rescheduling\_manager}}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00016}00016     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00018}\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{00018}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00021}\mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{00021}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00024}\mbox{\hyperlink{classrescheduling__manager_ac53c9132a498af4b0e11625aea00ab57}{00024}}         std::size\_t \mbox{\hyperlink{classrescheduling__manager_ac53c9132a498af4b0e11625aea00ab57}{number\_of\_active\_mcs}};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00026}00026         std::function<bool(std::size\_t, std::size\_t)> sort\_func;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00029}00029         \mbox{\hyperlink{classmultiway__partitioning}{multiway\_partitioning}}<}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00030}00030             std::pair<std::size\_t, int>,}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00031}00031             std::size\_t,}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00032}\mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{00032}}             std::function<bool(std::size\_t, std::size\_t)>> \mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00035}\mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{00035}}         std::vector<std::size\_t> \mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00037}00037     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00039}\mbox{\hyperlink{classrescheduling__manager_ac623e70790a1b353526b45061e24e931}{00039}}         \mbox{\hyperlink{classrescheduling__manager_ac623e70790a1b353526b45061e24e931}{rescheduling\_manager}}(}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00040}00040             \textcolor{keywordtype}{int} \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}},}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00041}00041             std::size\_t num\_mcs,}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00042}00042             \textcolor{keywordtype}{bool} use\_mc\_limit,}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00043}00043             \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}} = \textcolor{keyword}{false}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00044}00044         ) :}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00045}00045             \mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}}(\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}}),}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00046}00046             \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}}(\mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}}),}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00047}00047             \mbox{\hyperlink{classrescheduling__manager_ac53c9132a498af4b0e11625aea00ab57}{number\_of\_active\_mcs}}(num\_mcs),}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00048}00048             sort\_func(std::less<std::size\_t>()),}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00049}00049             \mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}}(\mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}}, sort\_func),}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00050}00050             \mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}}(\mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}})}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00051}00051         \{ assert(0 < \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}}); ignore(use\_mc\_limit); \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00055}\mbox{\hyperlink{classrescheduling__manager_ad05615fcdd4c8af99efe22192b7a0b77}{00055}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrescheduling__manager_ad05615fcdd4c8af99efe22192b7a0b77}{start\_rescheduling}}()}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00056}00056         \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00057}00057             assert(!\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00059}00059             \mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}}.reset(\mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00061}00061             \mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}}.reserve(\mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00062}00062             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00063}00063                 \mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}}[i] = 0;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00064}00064             \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00066}00066             \mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00067}00067         \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00071}\mbox{\hyperlink{classrescheduling__manager_a6c11a00548145f93a4607cf27a42c21a}{00071}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrescheduling__manager_a6c11a00548145f93a4607cf27a42c21a}{is\_rescheduling\_in\_progress}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00072}00072 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00073}00073             \textcolor{keywordflow}{return} \mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00078}\mbox{\hyperlink{classrescheduling__manager_a803a527ae1c9665d21a6515780fb3424}{00078}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrescheduling__manager_a803a527ae1c9665d21a6515780fb3424}{add\_progress\_for\_id}}(}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00079}00079             std::size\_t \textcolor{keywordtype}{id}, std::size\_t progress, \textcolor{keywordtype}{int} wg\_id)}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00080}00080         \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00081}00081             assert(\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00082}00082             assert(0 <= wg\_id);}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00084}00084             std::cout << \textcolor{stringliteral}{"{}adding reschedule progress "{}} << progress}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00085}00085                 << \textcolor{stringliteral}{"{} for "{}} << \textcolor{keywordtype}{id} << \textcolor{stringliteral}{"{} on "{}} << wg\_id << std::endl;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00087}00087             \textcolor{comment}{// progress\_list.insert(id, std::make\_pair(progress, wg\_id));}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00088}00088             \mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}}.add(progress, std::make\_pair(\textcolor{keywordtype}{id}, wg\_id));}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00090}00090             \mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}}[wg\_id] += progress;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00091}00091         \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00095}\mbox{\hyperlink{classrescheduling__manager_a7e553f6705b5ae0315aa1f6ebcf0a01a}{00095}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrescheduling__manager_a7e553f6705b5ae0315aa1f6ebcf0a01a}{remove\_mc}}(std::size\_t \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00096}00096         \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00097}00097             assert(\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00099}00099             ignore(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00100}00100             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}}) \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00101}00101                 \mbox{\hyperlink{classrescheduling__manager_ac53c9132a498af4b0e11625aea00ab57}{number\_of\_active\_mcs}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00102}00102             \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00103}00103         \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00106}\mbox{\hyperlink{classrescheduling__manager_a67dc3e1bd57c4b78c5e322ee9e798005}{00106}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrescheduling__manager_a67dc3e1bd57c4b78c5e322ee9e798005}{information\_complete}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00107}00107 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00108}00108             assert(\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00109}00109             \textcolor{keywordflow}{return} \mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}}.dataset.size() >= \mbox{\hyperlink{classrescheduling__manager_ac53c9132a498af4b0e11625aea00ab57}{number\_of\_active\_mcs}};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00110}00110         \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00113}\mbox{\hyperlink{classrescheduling__manager_a66d1464a91bcd84a34793539f0ac351a}{00113}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrescheduling__manager_a66d1464a91bcd84a34793539f0ac351a}{is\_rescheduling\_unnecessary}}(}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00114}00114             std::size\_t reschedule\_requires\_absolute\_difference)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00115}00115 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00116}00116             assert(\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00117}00117             assert(\mbox{\hyperlink{classrescheduling__manager_a67dc3e1bd57c4b78c5e322ee9e798005}{information\_complete}}());}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00119}00119             \textcolor{keyword}{auto} [min, max] =}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00120}00120                 std::minmax\_element(begin(\mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}}), end(\mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}}));}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00122}00122             std::size\_t diff = max -\/ min;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00123}00123             \textcolor{keywordtype}{bool} got\_required\_abs\_diff =}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00124}00124                 diff >= reschedule\_requires\_absolute\_difference;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00126}00126             \textcolor{keywordflow}{return} !got\_required\_abs\_diff;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00127}00127         \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00130}\mbox{\hyperlink{classrescheduling__manager_adca53c1e04aa3ccc2a8a429953872eb4}{00130}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrescheduling__manager_adca53c1e04aa3ccc2a8a429953872eb4}{cancel\_rescheduling}}(\textcolor{keyword}{auto} do\_rescheduling)}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00131}00131         \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00132}00132             \textcolor{comment}{// assert(rescheduling\_required);}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00133}00133             \textcolor{comment}{// assert(information\_complete());}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00134}00134             \mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00135}00135             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} target\_wg = 0;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00136}00136                 target\_wg < \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}}; target\_wg++)}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00137}00137             \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00138}00138                 do\_rescheduling(0, target\_wg, target\_wg);}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00139}00139             \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00140}00140         \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00143}\mbox{\hyperlink{classrescheduling__manager_a5dcad50146c2004f65f81c4c2cb60190}{00143}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classrescheduling__manager_a5dcad50146c2004f65f81c4c2cb60190}{reschedule}}(\textcolor{keyword}{auto} do\_rescheduling)}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00144}00144         \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00145}00145             assert(\mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00146}00146             \textcolor{comment}{// assert(progress\_list.size() == number\_of\_active\_mcs);}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00147}00147             assert(\mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}}.dataset.size() == \mbox{\hyperlink{classrescheduling__manager_ac53c9132a498af4b0e11625aea00ab57}{number\_of\_active\_mcs}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00149}00149             \textcolor{comment}{// std::cout << "{}before rescheduling:\(\backslash\)n"{} << mwpart;}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00151}00151             \mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}}.sort();}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00152}00152             \mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}}.partitionate();}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00153}00153             \textcolor{keyword}{auto} result = \mbox{\hyperlink{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}{mwpart}}.result();}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00154}00154             \textcolor{comment}{// result.sort(sort\_t());}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00155}00155             \textcolor{comment}{// todo: improve? (i.e. with complete Karmarkar–Karp algorithm)}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00156}00156             \textcolor{comment}{// an anytime algorithm would be possible as well}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00157}00157             result.final\_sort(sort\_func);}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00159}00159             \textcolor{comment}{// todo: find optimal mapping}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00161}00161             \textcolor{comment}{// std::cout << "{}after rescheduling:\(\backslash\)n"{} << mwpart;}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00163}00163             \mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\_required}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00164}00164 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00165}00165             \textcolor{keyword}{const} \textcolor{keyword}{auto} [min, max] =}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00166}00166                 std::minmax\_element(begin(\mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}}), end(\mbox{\hyperlink{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}{workload}}));}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00167}00167             std::size\_t original\_diff = *max -\/ *min;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00169}00169             \textcolor{comment}{// std::cout << "{}rescheduling from diff: "{}}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00170}00170                 \textcolor{comment}{// << original\_diff << "{} ["{} << *min << "{}, "{} << *max << "{}] "{}}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00171}00171                 \textcolor{comment}{// << "{} to "{} << result.difference(num\_workgroups)}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00172}00172                 \textcolor{comment}{// << "{} ["{} << result.min\_sum << "{}, "{}}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00173}00173                 \textcolor{comment}{// << result.max\_sum << "{}]"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00175}00175             \textcolor{keywordflow}{if} (result.difference(\mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}}) >= original\_diff) \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00176}00176                 \textcolor{comment}{// std::cout << "{}rescheduling probably unnecessary!"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00177}00177                 \mbox{\hyperlink{classrescheduling__manager_adca53c1e04aa3ccc2a8a429953872eb4}{cancel\_rescheduling}}(do\_rescheduling);}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00178}00178                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00179}00179             \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00181}00181             assert(result.subsets.size() == (std::size\_t) \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}});}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00182}00182             \textcolor{keyword}{auto} it = result.subsets.begin();}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00183}00183             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} target\_wg = 0;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00184}00184                 target\_wg < \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\_workgroups}}; target\_wg++)}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00185}00185             \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00186}00186                 std::size\_t mcs\_to\_get = 0;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00187}00187                 \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} entry : it-\/>elements) \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00188}00188                     \textcolor{keywordflow}{if} (entry.data.second != target\_wg) \{}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00189}00189                         std::size\_t \textcolor{keywordtype}{id} = entry.data.first;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00190}00190                         \textcolor{keywordtype}{int} original\_wg = entry.data.second;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00191}00191                         \textcolor{comment}{// std::cout << "{}move mc "{} << id}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00192}00192                             \textcolor{comment}{// << "{} with progress "{} << entry.score}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00193}00193                             \textcolor{comment}{// << "{} from workgroup "{} << original\_wg}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00194}00194                             \textcolor{comment}{// << "{} to "{} << target\_wg << std::endl;}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00195}00195                         do\_rescheduling(\textcolor{keywordtype}{id}, original\_wg, target\_wg);}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00196}00196                         mcs\_to\_get++;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00197}00197                     \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00198}00198                 \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00199}00199 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00200}00200                 do\_rescheduling(mcs\_to\_get, target\_wg, target\_wg);}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00201}00201                 it++;}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00202}00202             \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00203}00203             assert(it == result.subsets.end());}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00204}00204         \}}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00205}00205 \};}
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00207}00207 }
+\DoxyCodeLine{\Hypertarget{rescheduling_8hpp_source_l00208}00208 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

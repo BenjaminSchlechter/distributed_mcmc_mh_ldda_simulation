@@ -1,0 +1,561 @@
+c MPI Version 3.1
+cfg filename_cnf_formula: data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.cnf
+cfg filename_resolvents: data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.resolvents
+cfg data_directory: out/three_color_gnp_50vertices_p0.092_seed37_cnfgen/
+cfg num_markov_chains: 10
+cfg markov_chain_offset: 0
+cfg markov_chain_target_length: 40
+c parent node 1 / 40 has workgroup rank 1 / 40 in workgoup 1 / 1
+c parent node 17 / 40 has workgroup rank 17 / 40 in workgoup 1 / 1
+c parent node 20 / 40 has workgroup rank 20 / 40 in workgoup 1 / 1
+c parent node 9 / 40 has workgroup rank 9 / 40 in workgoup 1 / 1
+c parent node 19 / 40 has workgroup rank 19 / 40 in workgoup 1 / 1
+c parent node 33 / 40 has workgroup rank 33 / 40 in workgoup 1 / 1
+c parent node 34 / 40 has workgroup rank 34 / 40 in workgoup 1 / 1
+c parent node 18 / 40 has workgroup rank 18 / 40 in workgoup 1 / 1
+c parent node 21 / 40 has workgroup rank 21 / 40 in workgoup 1 / 1
+c parent node 25 / 40 has workgroup rank 25 / 40 in workgoup 1 / 1
+c parent node 29 / 40 has workgroup rank 29 / 40 in workgoup 1 / 1
+c parent node 35 / 40 has workgroup rank 35 / 40 in workgoup 1 / 1
+c parent node 10 / 40 has workgroup rank 10 / 40 in workgoup 1 / 1
+c parent node 11 / 40 has workgroup rank 11 / 40 in workgoup 1 / 1
+c parent node 13 / 40 has workgroup rank 13 / 40 in workgoup 1 / 1
+c parent node 14 / 40 has workgroup rank 14 / 40 in workgoup 1 / 1
+c parent node 15 / 40 has workgroup rank 15 / 40 in workgoup 1 / 1
+c parent node 16 / 40 has workgroup rank 16 / 40 in workgoup 1 / 1
+c parent node 22 / 40 has workgroup rank 22 / 40 in workgoup 1 / 1
+c parent node 24 / 40 has workgroup rank 24 / 40 in workgoup 1 / 1
+c parent node 27 / 40 has workgroup rank 27 / 40 in workgoup 1 / 1
+c parent node 30 / 40 has workgroup rank 30 / 40 in workgoup 1 / 1
+c parent node 37 / 40 has workgroup rank 37 / 40 in workgoup 1 / 1
+c parent node 40 / 40 has workgroup rank 40 / 40 in workgoup 1 / 1
+c parent node 3 / 40 has workgroup rank 3 / 40 in workgoup 1 / 1
+c parent node 4 / 40 has workgroup rank 4 / 40 in workgoup 1 / 1
+c parent node 5 / 40 has workgroup rank 5 / 40 in workgoup 1 / 1
+c parent node 23 / 40 has workgroup rank 23 / 40 in workgoup 1 / 1
+c parent node 28 / 40 has workgroup rank 28 / 40 in workgoup 1 / 1
+c parent node 7 / 40 has workgroup rank 7 / 40 in workgoup 1 / 1
+c parent node 36 / 40 has workgroup rank 36 / 40 in workgoup 1 / 1
+c parent node 38 / 40 has workgroup rank 38 / 40 in workgoup 1 / 1
+c parent node 39 / 40 has workgroup rank 39 / 40 in workgoup 1 / 1
+c parent node 2 / 40 has workgroup rank 2 / 40 in workgoup 1 / 1
+c parent node 8 / 40 has workgroup rank 8 / 40 in workgoup 1 / 1
+c parent node 12 / 40 has workgroup rank 12 / 40 in workgoup 1 / 1
+c parent node 26 / 40 has workgroup rank 26 / 40 in workgoup 1 / 1
+c parent node 31 / 40 has workgroup rank 31 / 40 in workgoup 1 / 1
+c parent node 32 / 40 has workgroup rank 32 / 40 in workgoup 1 / 1
+c parent node 6 / 40 has workgroup rank 6 / 40 in workgoup 1 / 1
+c reading seed
+c global seed: 2261783262...
+c work group 0 has 10 markov chains at id 0 (offset 0)
+c markov chain  0 with seed    3456462235...	(on workgroup 0)
+c markov chain  1 with seed    3273686477...	(on workgroup 0)
+c markov chain  2 with seed    3056390389...	(on workgroup 0)
+c markov chain  3 with seed    1453189013...	(on workgroup 0)
+c markov chain  4 with seed     755970239...	(on workgroup 0)
+c markov chain  5 with seed    3609100623...	(on workgroup 0)
+c markov chain  6 with seed    2322678292...	(on workgroup 0)
+c markov chain  7 with seed    2349585058...	(on workgroup 0)
+c markov chain  8 with seed    3563612299...	(on workgroup 0)
+c markov chain  9 with seed    2491653344...	(on workgroup 0)
+mc 0 iteration 1 value 1303.6 accepted 1303.6
+mc 0 iteration 2 value 1323.83 accepted 1323.83
+mc 6 iteration 1 value 1320.22 accepted 1320.22
+mc 6 iteration 2 value 1313.51 accepted 1313.51
+mc 8 iteration 1 value 1331.95 accepted 1331.95
+mc 8 iteration 2 value 1304.18 accepted 1304.18
+mc 7 iteration 1 value 1369.31 accepted 1369.31
+mc 7 iteration 2 value 1354.96 accepted 1354.96
+mc 9 iteration 1 value 1329.55 accepted 1329.55
+mc 9 iteration 2 value 1315.81 accepted 1315.81
+mc 3 iteration 1 value 1321.11 accepted 1321.11
+mc 3 iteration 2 value 1321.11 declined 1361.41
+mc 2 iteration 1 value 1329.34 accepted 1329.34
+mc 2 iteration 2 value 1329.34 declined 1355.19
+mc 1 iteration 1 value 1297.45 accepted 1297.45
+mc 1 iteration 2 value 1289.59 accepted 1289.59
+mc 4 iteration 1 value 1332.69 accepted 1332.69
+mc 4 iteration 2 value 1332.11 accepted 1332.11
+mc 5 iteration 1 value 1318.4 accepted 1318.4
+mc 5 iteration 2 value 1318.4 declined 1341.71
+mc 8 iteration 3 value 1322.64 accepted 1322.64
+mc 4 iteration 3 value 1320.39 accepted 1320.39
+mc 0 iteration 3 value 1308.29 declined 1351.78
+mc 7 iteration 3 value 1306.56 accepted 1306.56
+mc 5 iteration 3 value 1315.83 accepted 1315.83
+mc 6 iteration 3 value 1340.51 accepted 1340.51
+mc 9 iteration 3 value 1340.02 accepted 1340.02
+mc 1 iteration 3 value 1326.74 accepted 1326.74
+mc 2 iteration 3 value 1316.22 declined 1380.22
+mc 3 iteration 3 value 1349.79 accepted 1349.79
+mc 2 iteration 4 value 1316.22 declined 1371.57
+mc 7 iteration 4 value 1306.56 declined 1337.24
+mc 3 iteration 4 value 1305.72 accepted 1305.72
+mc 1 iteration 4 value 1355.55 accepted 1355.55
+mc 0 iteration 4 value 1324.61 accepted 1324.61
+mc 4 iteration 4 value 1330.14 accepted 1330.14
+mc 8 iteration 4 value 1341.34 accepted 1341.34
+mc 5 iteration 4 value 1358.76 accepted 1358.76
+mc 9 iteration 4 value 1357.48 accepted 1357.48
+mc 6 iteration 4 value 1320.68 accepted 1320.68
+mc 9 iteration 5 value 1331.57 accepted 1331.57
+mc 5 iteration 5 value 1310.01 accepted 1310.01
+mc 1 iteration 5 value 1314.34 accepted 1314.34
+mc 3 iteration 5 value 1321.89 accepted 1321.89
+mc 7 iteration 5 value 1310.46 declined 1336.73
+mc 6 iteration 5 value 1320.68 declined 1331.49
+mc 2 iteration 5 value 1327.06 accepted 1327.06
+mc 0 iteration 5 value 1311.82 accepted 1311.82
+mc 4 iteration 5 value 1336.98 accepted 1336.98
+mc 8 iteration 5 value 1331.14 accepted 1331.14
+mc 1 iteration 6 value 1334.99 accepted 1334.99
+mc 0 iteration 6 value 1272.21 accepted 1272.21
+mc 8 iteration 6 value 1305.14 accepted 1305.14
+mc 3 iteration 6 value 1331.37 accepted 1331.37
+mc 4 iteration 6 value 1324.66 accepted 1324.66
+mc 5 iteration 6 value 1314.43 declined 1381.96
+mc 9 iteration 6 value 1333.03 accepted 1333.03
+mc 7 iteration 6 value 1318.27 accepted 1318.27
+mc 2 iteration 6 value 1299.56 accepted 1299.56
+mc 6 iteration 6 value 1298.09 accepted 1298.09
+mc 1 iteration 7 value 1309.13 accepted 1309.13
+mc 6 iteration 7 value 1309.01 declined 1369.94
+mc 3 iteration 7 value 1354.11 accepted 1354.11
+mc 8 iteration 7 value 1292.1 accepted 1292.1
+mc 0 iteration 7 value 1332.62 accepted 1332.62
+mc 7 iteration 7 value 1286.22 accepted 1286.22
+mc 4 iteration 7 value 1308.29 accepted 1308.29
+mc 9 iteration 7 value 1335.08 accepted 1335.08
+mc 2 iteration 7 value 1323.78 accepted 1323.78
+mc 5 iteration 7 value 1318.33 declined 1375.84
+mc 1 iteration 8 value 1298.18 accepted 1298.18
+mc 5 iteration 8 value 1310.01 declined 1341.6
+mc 9 iteration 8 value 1345.25 accepted 1345.25
+mc 8 iteration 8 value 1300.34 accepted 1300.34
+mc 6 iteration 8 value 1344.83 accepted 1344.83
+mc 2 iteration 8 value 1330.75 accepted 1330.75
+mc 3 iteration 8 value 1325.67 accepted 1325.67
+mc 0 iteration 8 value 1261.64 accepted 1261.64
+mc 4 iteration 8 value 1341.66 accepted 1341.66
+mc 7 iteration 8 value 1324.23 declined 1363.07
+mc 1 iteration 9 value 1300.07 accepted 1300.07
+mc 9 iteration 9 value 1338.96 accepted 1338.96
+mc 4 iteration 9 value 1342.28 accepted 1342.28
+mc 5 iteration 9 value 1324.37 accepted 1324.37
+mc 8 iteration 9 value 1334.46 accepted 1334.46
+mc 0 iteration 9 value 1261.64 declined 1321.85
+mc 7 iteration 9 value 1334.86 accepted 1334.86
+mc 3 iteration 9 value 1254.48 accepted 1254.48
+mc 6 iteration 9 value 1322.87 declined 1339.67
+mc 2 iteration 9 value 1296.72 accepted 1296.72
+mc 5 iteration 10 value 1333.38 accepted 1333.38
+mc 1 iteration 10 value 1277.13 accepted 1277.13
+mc 4 iteration 10 value 1315.48 accepted 1315.48
+mc 2 iteration 10 value 1281.46 accepted 1281.46
+mc 3 iteration 10 value 1254.48 declined 1323.1
+mc 6 iteration 10 value 1348.84 accepted 1348.84
+mc 9 iteration 10 value 1340.09 declined 1344.99
+mc 8 iteration 10 value 1357.35 accepted 1357.35
+mc 7 iteration 10 value 1314.12 accepted 1314.12
+mc 0 iteration 10 value 1315.47 accepted 1315.47
+mc 7 iteration 11 value 1314.12 declined 1356.96
+mc 0 iteration 11 value 1293.66 accepted 1293.66
+mc 8 iteration 11 value 1323.56 accepted 1323.56
+mc 2 iteration 11 value 1287.44 declined 1308.78
+mc 4 iteration 11 value 1370.24 accepted 1370.24
+mc 1 iteration 11 value 1322.64 accepted 1322.64
+mc 5 iteration 11 value 1327.69 declined 1347.61
+mc 3 iteration 11 value 1291.66 declined 1316.91
+mc 6 iteration 11 value 1329.97 accepted 1329.97
+mc 9 iteration 11 value 1322.74 accepted 1322.74
+mc 8 iteration 12 value 1277.61 accepted 1277.61
+mc 9 iteration 12 value 1322.74 declined 1345.35
+mc 0 iteration 12 value 1293.66 declined 1353.5
+mc 6 iteration 12 value 1334.15 accepted 1334.15
+mc 3 iteration 12 value 1291.66 declined 1326.73
+mc 4 iteration 12 value 1322.93 accepted 1322.93
+mc 2 iteration 12 value 1305.22 accepted 1305.22
+mc 7 iteration 12 value 1313.71 accepted 1313.71
+mc 5 iteration 12 value 1298.32 accepted 1298.32
+mc 1 iteration 12 value 1321.05 accepted 1321.05
+mc 1 iteration 13 value 1304.01 accepted 1304.01
+mc 5 iteration 13 value 1333.31 accepted 1333.31
+mc 9 iteration 13 value 1318.54 accepted 1318.54
+mc 7 iteration 13 value 1343.13 accepted 1343.13
+mc 6 iteration 13 value 1334.15 declined 1369.68
+mc 3 iteration 13 value 1294.28 accepted 1294.28
+mc 8 iteration 13 value 1312.12 accepted 1312.12
+mc 0 iteration 13 value 1324.28 accepted 1324.28
+mc 2 iteration 13 value 1307.28 declined 1341.63
+mc 4 iteration 13 value 1314.25 declined 1354.44
+mc 0 iteration 14 value 1323.67 accepted 1323.67
+mc 7 iteration 14 value 1325.07 accepted 1325.07
+mc 1 iteration 14 value 1304.01 declined 1352.25
+mc 4 iteration 14 value 1318.88 accepted 1318.88
+mc 5 iteration 14 value 1304.94 accepted 1304.94
+mc 9 iteration 14 value 1342.85 accepted 1342.85
+mc 6 iteration 14 value 1319.01 accepted 1319.01
+mc 2 iteration 14 value 1316.7 accepted 1316.7
+mc 8 iteration 14 value 1326.99 accepted 1326.99
+mc 3 iteration 14 value 1318.24 accepted 1318.24
+mc 4 iteration 15 value 1282.5 accepted 1282.5
+mc 0 iteration 15 value 1348.61 accepted 1348.61
+mc 1 iteration 15 value 1316.36 accepted 1316.36
+mc 3 iteration 15 value 1319.06 accepted 1319.06
+mc 7 iteration 15 value 1325.07 declined 1340.02
+mc 8 iteration 15 value 1341.81 accepted 1341.81
+mc 2 iteration 15 value 1312.06 accepted 1312.06
+mc 9 iteration 15 value 1311.44 accepted 1311.44
+mc 5 iteration 15 value 1312.88 declined 1333.45
+mc 6 iteration 15 value 1326.69 declined 1366.16
+mc 3 iteration 16 value 1313.07 accepted 1313.07
+mc 6 iteration 16 value 1307.15 accepted 1307.15
+mc 9 iteration 16 value 1314.76 accepted 1314.76
+mc 5 iteration 16 value 1320.29 accepted 1320.29
+mc 0 iteration 16 value 1310.57 accepted 1310.57
+mc 1 iteration 16 value 1316.36 declined 1351.48
+mc 7 iteration 16 value 1317.48 accepted 1317.48
+mc 4 iteration 16 value 1309.06 accepted 1309.06
+mc 2 iteration 16 value 1324.9 accepted 1324.9
+mc 8 iteration 16 value 1343.19 accepted 1343.19
+mc 8 iteration 17 value 1305.99 accepted 1305.99
+mc 3 iteration 17 value 1331.92 declined 1356.37
+mc 2 iteration 17 value 1318.4 accepted 1318.4
+mc 9 iteration 17 value 1324.98 declined 1347.54
+mc 5 iteration 17 value 1298.62 accepted 1298.62
+mc 4 iteration 17 value 1299.25 accepted 1299.25
+mc 6 iteration 17 value 1329.25 accepted 1329.25
+mc 0 iteration 17 value 1305.67 accepted 1305.67
+mc 7 iteration 17 value 1324.1 declined 1351.75
+mc 1 iteration 17 value 1324.89 accepted 1324.89
+mc 2 iteration 18 value 1329.18 accepted 1329.18
+mc 0 iteration 18 value 1311.91 accepted 1311.91
+mc 1 iteration 18 value 1299.15 accepted 1299.15
+mc 7 iteration 18 value 1323 accepted 1323
+mc 8 iteration 18 value 1293.67 accepted 1293.67
+mc 9 iteration 18 value 1320.72 accepted 1320.72
+mc 3 iteration 18 value 1325.63 accepted 1325.63
+mc 5 iteration 18 value 1292.7 accepted 1292.7
+mc 6 iteration 18 value 1317.41 accepted 1317.41
+mc 4 iteration 18 value 1335.66 accepted 1335.66
+mc 1 iteration 19 value 1283 accepted 1283
+mc 6 iteration 19 value 1324.49 accepted 1324.49
+mc 2 iteration 19 value 1321.27 accepted 1321.27
+mc 4 iteration 19 value 1329.25 accepted 1329.25
+mc 7 iteration 19 value 1331.01 declined 1352.25
+mc 5 iteration 19 value 1281.81 declined 1306.55
+mc 0 iteration 19 value 1319 accepted 1319
+mc 8 iteration 19 value 1278.31 declined 1302.27
+mc 3 iteration 19 value 1340 accepted 1340
+mc 9 iteration 19 value 1334.72 accepted 1334.72
+mc 3 iteration 20 value 1295.81 accepted 1295.81
+mc 4 iteration 20 value 1305.15 accepted 1305.15
+mc 8 iteration 20 value 1278.31 declined 1299.35
+mc 9 iteration 20 value 1339.73 declined 1349.41
+mc 6 iteration 20 value 1299.46 accepted 1299.46
+mc 1 iteration 20 value 1283 declined 1319.4
+mc 7 iteration 20 value 1341.59 declined 1362.5
+mc 0 iteration 20 value 1282.44 accepted 1282.44
+mc 2 iteration 20 value 1346.1 accepted 1346.1
+mc 5 iteration 20 value 1297.83 accepted 1297.83
+mc 0 iteration 21 value 1282.44 declined 1325.58
+mc 2 iteration 21 value 1337.9 accepted 1337.9
+mc 8 iteration 21 value 1282.41 declined 1309.4
+mc 5 iteration 21 value 1297.83 declined 1309.89
+mc 3 iteration 21 value 1295.81 declined 1390.77
+mc 4 iteration 21 value 1316.41 accepted 1316.41
+mc 7 iteration 21 value 1331.01 declined 1357.41
+mc 9 iteration 21 value 1334.72 declined 1359.4
+mc 6 iteration 21 value 1319.16 declined 1331.81
+mc 1 iteration 21 value 1304.4 accepted 1304.4
+mc 6 iteration 22 value 1299.46 declined 1386.3
+mc 2 iteration 22 value 1359.06 accepted 1359.06
+mc 9 iteration 22 value 1327.67 accepted 1327.67
+mc 5 iteration 22 value 1297.83 declined 1319.33
+mc 1 iteration 22 value 1282.93 declined 1313.12
+mc 8 iteration 22 value 1283.98 accepted 1283.98
+mc 7 iteration 22 value 1331.01 declined 1340.24
+mc 0 iteration 22 value 1277.99 declined 1298.85
+mc 3 iteration 22 value 1289.57 declined 1322.48
+mc 4 iteration 22 value 1318.79 accepted 1318.79
+mc 0 iteration 23 value 1327.31 accepted 1327.31
+mc 4 iteration 23 value 1271.01 accepted 1271.01
+mc 3 iteration 23 value 1279.86 declined 1330.73
+mc 9 iteration 23 value 1324.22 accepted 1324.22
+mc 2 iteration 23 value 1328.29 accepted 1328.29
+mc 5 iteration 23 value 1276.18 accepted 1276.18
+mc 7 iteration 23 value 1348.69 accepted 1348.69
+mc 6 iteration 23 value 1319.16 declined 1370.09
+mc 8 iteration 23 value 1270.07 declined 1292.19
+mc 1 iteration 23 value 1282.93 declined 1321.06
+mc 1 iteration 24 value 1268.68 accepted 1268.68
+mc 9 iteration 24 value 1314.47 accepted 1314.47
+mc 6 iteration 24 value 1320.21 accepted 1320.21
+mc 0 iteration 24 value 1322.48 accepted 1322.48
+mc 4 iteration 24 value 1263.08 accepted 1263.08
+mc 8 iteration 24 value 1321.61 accepted 1321.61
+mc 3 iteration 24 value 1295.81 declined 1320.61
+mc 2 iteration 24 value 1314.36 accepted 1314.36
+mc 7 iteration 24 value 1311.43 accepted 1311.43
+mc 5 iteration 24 value 1279.87 declined 1298.89
+mc 0 iteration 25 value 1294.3 accepted 1294.3
+mc 5 iteration 25 value 1331.99 accepted 1331.99
+mc 6 iteration 25 value 1343.09 accepted 1343.09
+mc 1 iteration 25 value 1308.31 accepted 1308.31
+mc 2 iteration 25 value 1263.31 accepted 1263.31
+mc 9 iteration 25 value 1332.92 accepted 1332.92
+mc 7 iteration 25 value 1303.67 declined 1347.16
+mc 4 iteration 25 value 1284.72 declined 1308.99
+mc 8 iteration 25 value 1308.15 accepted 1308.15
+mc 3 iteration 25 value 1344.52 accepted 1344.52
+mc 8 iteration 26 value 1291.04 accepted 1291.04
+mc 4 iteration 26 value 1292.58 declined 1324.08
+mc 3 iteration 26 value 1327.07 accepted 1327.07
+mc 5 iteration 26 value 1327.38 accepted 1327.38
+mc 6 iteration 26 value 1330.92 accepted 1330.92
+mc 0 iteration 26 value 1278.38 accepted 1278.38
+mc 1 iteration 26 value 1336.04 accepted 1336.04
+mc 2 iteration 26 value 1263.31 declined 1315.56
+mc 7 iteration 26 value 1311.43 declined 1355.86
+mc 9 iteration 26 value 1334.28 declined 1355.47
+mc 3 iteration 27 value 1312.93 accepted 1312.93
+mc 9 iteration 27 value 1318.65 accepted 1318.65
+mc 2 iteration 27 value 1270.52 declined 1285.73
+mc 7 iteration 27 value 1326.04 declined 1346.52
+mc 5 iteration 27 value 1282.99 accepted 1282.99
+mc 8 iteration 27 value 1283.51 declined 1305.35
+mc 4 iteration 27 value 1258.89 declined 1306.93
+mc 6 iteration 27 value 1325.49 accepted 1325.49
+mc 1 iteration 27 value 1303.2 accepted 1303.2
+mc 0 iteration 27 value 1326.16 accepted 1326.16
+mc 1 iteration 28 value 1289.8 accepted 1289.8
+mc 7 iteration 28 value 1295.48 accepted 1295.48
+mc 0 iteration 28 value 1287.86 accepted 1287.86
+mc 6 iteration 28 value 1306.56 accepted 1306.56
+mc 3 iteration 28 value 1302.54 declined 1310.38
+mc 9 iteration 28 value 1322.39 accepted 1322.39
+mc 2 iteration 28 value 1323.91 accepted 1323.91
+mc 5 iteration 28 value 1324.16 accepted 1324.16
+mc 8 iteration 28 value 1285.55 accepted 1285.55
+mc 4 iteration 28 value 1263.08 declined 1287.81
+mc 5 iteration 29 value 1305.01 accepted 1305.01
+mc 6 iteration 29 value 1320.2 accepted 1320.2
+mc 1 iteration 29 value 1316.94 accepted 1316.94
+mc 4 iteration 29 value 1263.08 declined 1290.54
+mc 7 iteration 29 value 1313.66 accepted 1313.66
+mc 8 iteration 29 value 1299.36 accepted 1299.36
+mc 0 iteration 29 value 1287.86 declined 1327.15
+mc 9 iteration 29 value 1341.73 accepted 1341.73
+mc 3 iteration 29 value 1302.34 accepted 1302.34
+mc 2 iteration 29 value 1323.91 declined 1346.45
+mc 1 iteration 30 value 1281.38 accepted 1281.38
+mc 5 iteration 30 value 1312.28 declined 1347.28
+mc 4 iteration 30 value 1263.08 declined 1292.68
+mc 2 iteration 30 value 1317.22 declined 1343.86
+mc 6 iteration 30 value 1330.66 accepted 1330.66
+mc 9 iteration 30 value 1345.44 accepted 1345.44
+mc 0 iteration 30 value 1296.87 accepted 1296.87
+mc 7 iteration 30 value 1332.79 accepted 1332.79
+mc 3 iteration 30 value 1321.65 accepted 1321.65
+mc 8 iteration 30 value 1281.48 accepted 1281.48
+mc 3 iteration 31 value 1324.2 accepted 1324.2
+mc 7 iteration 31 value 1307.2 declined 1318.39
+mc 5 iteration 31 value 1311.67 accepted 1311.67
+mc 2 iteration 31 value 1341.56 accepted 1341.56
+mc 8 iteration 31 value 1293.76 declined 1308.19
+mc 1 iteration 31 value 1306.55 accepted 1306.55
+mc 6 iteration 31 value 1301.5 accepted 1301.5
+mc 4 iteration 31 value 1258.89 declined 1304.48
+mc 0 iteration 31 value 1295.8 accepted 1295.8
+mc 9 iteration 31 value 1331.43 declined 1364.61
+mc 3 iteration 32 value 1316.34 accepted 1316.34
+mc 9 iteration 32 value 1325.32 accepted 1325.32
+mc 2 iteration 32 value 1346.63 declined 1385.52
+mc 7 iteration 32 value 1317.23 accepted 1317.23
+mc 0 iteration 32 value 1286.22 accepted 1286.22
+mc 5 iteration 32 value 1313.81 accepted 1313.81
+mc 4 iteration 32 value 1263.08 declined 1298.68
+mc 8 iteration 32 value 1272.52 accepted 1272.52
+mc 6 iteration 32 value 1301.5 declined 1341.17
+mc 1 iteration 32 value 1309.82 declined 1333.89
+mc 6 iteration 33 value 1316.07 accepted 1316.07
+mc 7 iteration 33 value 1313.3 accepted 1313.3
+mc 1 iteration 33 value 1308.84 accepted 1308.84
+mc 8 iteration 33 value 1272.49 accepted 1272.49
+mc 2 iteration 33 value 1347.68 accepted 1347.68
+mc 3 iteration 33 value 1302.84 accepted 1302.84
+mc 9 iteration 33 value 1360.82 accepted 1360.82
+mc 4 iteration 33 value 1318.72 accepted 1318.72
+mc 0 iteration 33 value 1299.71 accepted 1299.71
+mc 5 iteration 33 value 1308.37 accepted 1308.37
+mc 8 iteration 34 value 1238.43 accepted 1238.43
+mc 5 iteration 34 value 1294.77 accepted 1294.77
+mc 6 iteration 34 value 1325.43 declined 1356.61
+mc 1 iteration 34 value 1334 accepted 1334
+mc 7 iteration 34 value 1313.88 accepted 1313.88
+mc 0 iteration 34 value 1322.83 accepted 1322.83
+mc 2 iteration 34 value 1342.08 accepted 1342.08
+mc 4 iteration 34 value 1302.82 accepted 1302.82
+mc 9 iteration 34 value 1324.14 accepted 1324.14
+mc 3 iteration 34 value 1292.15 accepted 1292.15
+mc 1 iteration 35 value 1337.37 accepted 1337.37
+mc 8 iteration 35 value 1234.08 accepted 1234.08
+mc 3 iteration 35 value 1279.41 accepted 1279.41
+mc 6 iteration 35 value 1323.06 accepted 1323.06
+mc 9 iteration 35 value 1335.33 accepted 1335.33
+mc 4 iteration 35 value 1297.94 accepted 1297.94
+mc 5 iteration 35 value 1327.05 accepted 1327.05
+mc 2 iteration 35 value 1335.64 accepted 1335.64
+mc 7 iteration 35 value 1311 accepted 1311
+mc 0 iteration 35 value 1300.59 accepted 1300.59
+mc 1 iteration 36 value 1318.97 accepted 1318.97
+mc 7 iteration 36 value 1299.18 accepted 1299.18
+mc 3 iteration 36 value 1281.43 accepted 1281.43
+mc 8 iteration 36 value 1253.64 accepted 1253.64
+mc 6 iteration 36 value 1373.33 accepted 1373.33
+mc 0 iteration 36 value 1322.75 accepted 1322.75
+mc 2 iteration 36 value 1358.9 accepted 1358.9
+mc 5 iteration 36 value 1308.12 accepted 1308.12
+mc 9 iteration 36 value 1357.8 accepted 1357.8
+mc 4 iteration 36 value 1302.95 accepted 1302.95
+mc 5 iteration 37 value 1313.3 accepted 1313.3
+mc 4 iteration 37 value 1271.03 accepted 1271.03
+mc 3 iteration 37 value 1276.56 accepted 1276.56
+mc 9 iteration 37 value 1373.05 accepted 1373.05
+mc 8 iteration 37 value 1246.25 declined 1278.31
+mc 7 iteration 37 value 1329.54 accepted 1329.54
+mc 6 iteration 37 value 1356.77 accepted 1356.77
+mc 1 iteration 37 value 1329.6 accepted 1329.6
+mc 2 iteration 37 value 1346.31 accepted 1346.31
+mc 0 iteration 37 value 1288.54 accepted 1288.54
+mc 9 iteration 38 value 1384.3 accepted 1384.3
+mc 5 iteration 38 value 1309.18 accepted 1309.18
+mc 0 iteration 38 value 1293.18 accepted 1293.18
+mc 1 iteration 38 value 1313.61 accepted 1313.61
+mc 3 iteration 38 value 1250.43 accepted 1250.43
+mc 4 iteration 38 value 1281.32 accepted 1281.32
+mc 8 iteration 38 value 1251.84 accepted 1251.84
+mc 2 iteration 38 value 1330.52 declined 1375.69
+mc 6 iteration 38 value 1343.36 accepted 1343.36
+mc 7 iteration 38 value 1333.49 declined 1349.08
+mc 0 iteration 39 value 1298.4 accepted 1298.4
+mc 6 iteration 39 value 1298.2 accepted 1298.2
+mc 2 iteration 39 value 1311.94 accepted 1311.94
+mc 7 iteration 39 value 1302.84 accepted 1302.84
+mc 5 iteration 39 value 1307.87 accepted 1307.87
+mc 9 iteration 39 value 1378.75 accepted 1378.75
+mc 1 iteration 39 value 1328.51 accepted 1328.51
+mc 8 iteration 39 value 1216.4 accepted 1216.4
+mc 4 iteration 39 value 1275.32 declined 1308.58
+mc 3 iteration 39 value 1308.19 accepted 1308.19
+mc 3 iteration 40 value 1306.53 declined 1334.8
+mc 4 iteration 40 value 1294.59 accepted 1294.59
+mc 2 iteration 40 value 1360.28 accepted 1360.28
+mc 9 iteration 40 value 1367.72 accepted 1367.72
+mc 0 iteration 40 value 1302.59 declined 1331.49
+mc 1 iteration 40 value 1321.45 declined 1370.5
+mc 5 iteration 40 value 1277.57 accepted 1277.57
+mc 6 iteration 40 value 1349.59 accepted 1349.59
+mc 7 iteration 40 value 1302.84 declined 1338.63
+mc 8 iteration 40 value 1242.03 declined 1265.63
+wg 0 is done running
+c duration: 685233 milliseconds
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.66 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.58 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.59 % efficiency
+c duration: 685233 milliseconds
+c init: 3602 ms, work: 681631 ms with 96.68 % efficiency
+c duration: 685233 milliseconds
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.68 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.62 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.58 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.58 % efficiency
+c init: 3565 ms, work: 681668 ms with 96.57 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.55 % efficiency
+c duration: 685233 milliseconds
+c init: 3602 ms, work: 681631 ms with 96.57 % efficiency
+c duration: 685233 milliseconds
+c init: 3602 ms, work: 681631 ms with 96.65 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.77 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.49 % efficiency
+c duration: 685233 milliseconds
+c init: 3602 ms, work: 681631 ms with 96.52 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.59 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.57 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.58 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.61 % efficiency
+c duration: 685233 milliseconds
+c init: 3602 ms, work: 681631 ms with 96.66 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.52 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.51 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.52 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.60 % efficiency
+main: util/mpi_util.hpp:325: async_comm::~async_comm(): Assertion `communication_is_done()' failed.
+[uc2n362:3885132] *** Process received signal ***
+[uc2n362:3885132] Signal: Aborted (6)
+[uc2n362:3885132] Signal code:  (-6)
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.50 % efficiency
+c duration: 685233 milliseconds
+c init: 3602 ms, work: 681631 ms with 96.54 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.59 % efficiency
+c duration: 685233 milliseconds
+c init: 3602 ms, work: 681631 ms with 96.66 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.55 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.57 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.76 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.55 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.75 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.59 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.62 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.68 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.68 % efficiency
+c duration: 685233 milliseconds
+c init: 3565 ms, work: 681668 ms with 96.53 % efficiency
+c duration: 685233 milliseconds
+c init: 3582 ms, work: 681651 ms with 96.58 % efficiency
+[uc2n362:3885132] [ 0] /usr/lib64/libpthread.so.0(+0x12dd0)[0x153e2a4e6dd0]
+[uc2n362:3885132] [ 1] /usr/lib64/libc.so.6(gsignal+0x10f)[0x153e2a14970f]
+[uc2n362:3885132] [ 2] /usr/lib64/libc.so.6(abort+0x127)[0x153e2a133b25]
+[uc2n362:3885132] [ 3] /usr/lib64/libc.so.6(+0x219f9)[0x153e2a1339f9]
+[uc2n362:3885132] [ 4] /usr/lib64/libc.so.6(+0x2fcc6)[0x153e2a141cc6]
+[uc2n362:3885132] [ 5] main[0x412857]
+[uc2n362:3885132] [ 6] main[0x406b14]
+[uc2n362:3885132] [ 7] /usr/lib64/libc.so.6(__libc_start_main+0xf3)[0x153e2a1356a3]
+[uc2n362:3885132] [ 8] main[0x409f8e]
+[uc2n362:3885132] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 3885132 on node uc2n362 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

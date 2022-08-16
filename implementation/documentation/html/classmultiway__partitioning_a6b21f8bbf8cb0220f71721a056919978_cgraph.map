@@ -1,0 +1,5 @@
+<map id="multiway_partitioning::iterate" name="multiway_partitioning::iterate">
+<area shape="rect" id="node1" title="execute one step of the largest differencing method" alt="" coords="5,39,171,80"/>
+<area shape="rect" id="node2" href="$classmultiway__partitioning.html#a6a3c0f9fdc3dde72d4e10a38de711325" title="returns true if only one partition is left" alt="" coords="239,5,405,47"/>
+<area shape="rect" id="node3" href="$structmultiway__partitioning_1_1partitioning__t.html#ad0812145a00a8b64a236e3227f7a7231" title="merge two partitions" alt="" coords="219,71,425,112"/>
+</map>

@@ -1,0 +1,4 @@
+sbatch -t 30 --partition=dev_single run.sh r2/n400-o0-l2.txt -n 400 -o 0 -l 2
+
+seq 0 19 |parallel echo "sbatch -t 30 --partition=dev_single run.sh r2/log-n5-of{}-l160.txt -n 5 -of {} -l 160"
+

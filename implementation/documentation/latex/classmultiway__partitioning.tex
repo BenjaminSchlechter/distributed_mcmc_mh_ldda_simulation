@@ -1,0 +1,146 @@
+\hypertarget{classmultiway__partitioning}{}\doxysection{multiway\+\_\+partitioning\texorpdfstring{$<$}{<} data\+\_\+t, score\+\_\+t, sort\+\_\+func\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classmultiway__partitioning}\index{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$@{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$}}
+
+
+class to solve the multiway number partitioning problem  
+
+
+
+
+{\ttfamily \#include $<$multiway\+\_\+partitioning.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmultiway__partitioning_1_1entry__t}{entry\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em single entry associating a score with some data \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em a simple partition containing multiple subsets \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em subset of a partition \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmultiway__partitioning_aea32551bd6b86d43c0a29f5a8e64ad92}\label{classmultiway__partitioning_aea32551bd6b86d43c0a29f5a8e64ad92}} 
+{\bfseries multiway\+\_\+partitioning} (std\+::size\+\_\+t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\+\_\+partitions}}, auto \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\+\_\+func}}=std\+::greater$<$ score\+\_\+t $>$())
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmultiway__partitioning_a218865d6ef3f0648b7760a92f959ea84}\label{classmultiway__partitioning_a218865d6ef3f0648b7760a92f959ea84}} 
+void {\bfseries reset} (std\+::size\+\_\+t n\+\_\+partitions)
+\begin{DoxyCompactList}\small\item\em reset object to initial state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmultiway__partitioning_acf8333cb2916d8cd1ac1cab4e1346dc9}\label{classmultiway__partitioning_acf8333cb2916d8cd1ac1cab4e1346dc9}} 
+void {\bfseries add} (auto score, auto data)
+\begin{DoxyCompactList}\small\item\em add an element \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmultiway__partitioning_af5edd535aa8780729463ed68bdee89cc}\label{classmultiway__partitioning_af5edd535aa8780729463ed68bdee89cc}} 
+void {\bfseries sort} ()
+\begin{DoxyCompactList}\small\item\em sort datasets (initial step after dataset is complete) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmultiway__partitioning_a6a3c0f9fdc3dde72d4e10a38de711325}\label{classmultiway__partitioning_a6a3c0f9fdc3dde72d4e10a38de711325}} 
+bool {\bfseries is\+\_\+finished} ()
+\begin{DoxyCompactList}\small\item\em returns true if only one partition is left \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classmultiway__partitioning_a6b21f8bbf8cb0220f71721a056919978}{iterate}} ()
+\begin{DoxyCompactList}\small\item\em execute one step of the largest differencing method \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmultiway__partitioning_a5bbd1f46f7d8c5ecf5ddcf45fb13c959}\label{classmultiway__partitioning_a5bbd1f46f7d8c5ecf5ddcf45fb13c959}} 
+void {\bfseries partitionate} ()
+\begin{DoxyCompactList}\small\item\em execute the largest differencing method by iterating until done \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmultiway__partitioning_a193820becbf10a5ff1987ba9522b0ebe}\label{classmultiway__partitioning_a193820becbf10a5ff1987ba9522b0ebe}} 
+auto {\bfseries result} ()
+\begin{DoxyCompactList}\small\item\em returns the resulting partition \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}\label{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}} 
+std\+::list$<$ \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\+\_\+t}} $>$ {\bfseries dataset}
+\begin{DoxyCompactList}\small\item\em list of partitionings for the largest differencing method \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}\label{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}} 
+std\+::size\+\_\+t {\bfseries num\+\_\+partitions}
+\begin{DoxyCompactList}\small\item\em number of target partitions \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}\label{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}} 
+sort\+\_\+func\+\_\+t {\bfseries sort\+\_\+func}
+\begin{DoxyCompactList}\small\item\em function to compare scores \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmultiway__partitioning_a3b6cab159090a1070637d5384d7205d7}\label{classmultiway__partitioning_a3b6cab159090a1070637d5384d7205d7}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classmultiway__partitioning}{multiway\+\_\+partitioning}} \&mp)
+\begin{DoxyCompactList}\small\item\em print all partitionings for debugging purpose \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename data\+\_\+t, typename score\+\_\+t = std\+::size\+\_\+t, class sort\+\_\+func\+\_\+t = std\+::greater$<$score\+\_\+t$>$$>$\newline
+class multiway\+\_\+partitioning$<$ data\+\_\+t, score\+\_\+t, sort\+\_\+func\+\_\+t $>$}
+class to solve the multiway number partitioning problem 
+
+Multi-\/way partitioning using the largest differencing method. This is an efficient approximation with statistically better results than a greedy algorithm. Implementation based upon\+: \href{https://en.wikipedia.org/wiki/Largest_differencing_method}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Largest\+\_\+differencing\+\_\+method}} \href{https://en.wikipedia.org/wiki/Multiway_number_partitioning}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Multiway\+\_\+number\+\_\+partitioning}} 
+
+Definition at line \mbox{\hyperlink{multiway__partitioning_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{multiway__partitioning_8hpp_source}{multiway\+\_\+partitioning.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmultiway__partitioning_a6b21f8bbf8cb0220f71721a056919978}\label{classmultiway__partitioning_a6b21f8bbf8cb0220f71721a056919978}} 
+\index{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$@{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$}!iterate@{iterate}}
+\index{iterate@{iterate}!multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$@{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$}}
+\doxysubsubsection{\texorpdfstring{iterate()}{iterate()}}
+{\footnotesize\ttfamily template$<$typename data\+\_\+t , typename score\+\_\+t  = std\+::size\+\_\+t, class sort\+\_\+func\+\_\+t  = std\+::greater$<$score\+\_\+t$>$$>$ \\
+bool \mbox{\hyperlink{classmultiway__partitioning}{multiway\+\_\+partitioning}}$<$ data\+\_\+t, score\+\_\+t, sort\+\_\+func\+\_\+t $>$\+::iterate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+execute one step of the largest differencing method 
+
+each iteration fuses two partitions in the dataset until one partition is left. 
+
+Definition at line \mbox{\hyperlink{multiway__partitioning_8hpp_source_l00289}{289}} of file \mbox{\hyperlink{multiway__partitioning_8hpp_source}{multiway\+\_\+partitioning.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00290}00290         \{}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00291}00291             \textcolor{keywordflow}{if} (1 < \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.size()) \{}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00292}00292                 partitioning\_t s1 = \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.front();}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00293}00293                 \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.pop\_front();}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00294}00294                 partitioning\_t s2 = \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.front();}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00295}00295                 \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.pop\_front();}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00296}00296 }
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00297}00297                 \textcolor{keyword}{auto} cmp\_entry\_f =}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00298}00298                     [\textcolor{keyword}{this}](\textcolor{keyword}{const} entry\_t \&l, \textcolor{keyword}{const} entry\_t \&r)}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00299}00299                 \{}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00300}00300                     \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}(l.score, r.score);}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00301}00301                 \};}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00303}00303                 s1.merge\_parts(s2, \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}, cmp\_entry\_f);}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00304}00304                 std::list<partitioning\_t> nel = \{ s1 \};}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00305}00305 }
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00306}00306                 \textcolor{keyword}{auto} cmp\_f =}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00307}00307                 [\textcolor{keyword}{this}](\textcolor{keyword}{const} partitioning\_t \&l, \textcolor{keyword}{const} partitioning\_t \&r)}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00308}00308                 \{}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00309}00309                     \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}(}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00310}00310                         l.difference(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}),}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00311}00311                         r.difference(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}));}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00312}00312                 \};}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00313}00313                 \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.merge(nel, cmp\_f);}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00314}00314             \}}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00315}00315 }
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00316}00316             \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6a3c0f9fdc3dde72d4e10a38de711325}{is\_finished}}();}
+\DoxyCodeLine{\Hypertarget{classmultiway__partitioning_l00317}00317         \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmultiway__partitioning_a6b21f8bbf8cb0220f71721a056919978_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmultiway__partitioning_a6b21f8bbf8cb0220f71721a056919978_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/multiway\+\_\+partitioning.\+hpp\end{DoxyCompactItemize}

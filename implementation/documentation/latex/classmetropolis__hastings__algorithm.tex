@@ -1,0 +1,113 @@
+\hypertarget{classmetropolis__hastings__algorithm}{}\doxysection{metropolis\+\_\+hastings\+\_\+algorithm\texorpdfstring{$<$}{<} marcov\+\_\+chain\+\_\+state\+\_\+t, change\+\_\+generator\+\_\+t, acceptance\+\_\+computation\+\_\+t, computation\+\_\+modell\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t, result\+\_\+statistics\+\_\+t, result\+\_\+function\+\_\+t, enforce\+\_\+change, skip\+\_\+unchanged\+\_\+vectors \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classmetropolis__hastings__algorithm}\index{metropolis\_hastings\_algorithm$<$ marcov\_chain\_state\_t, change\_generator\_t, acceptance\_computation\_t, computation\_modell\_t, acc\_prob\_comp\_t, result\_statistics\_t, result\_function\_t, enforce\_change, skip\_unchanged\_vectors $>$@{metropolis\_hastings\_algorithm$<$ marcov\_chain\_state\_t, change\_generator\_t, acceptance\_computation\_t, computation\_modell\_t, acc\_prob\_comp\_t, result\_statistics\_t, result\_function\_t, enforce\_change, skip\_unchanged\_vectors $>$}}
+
+
+generic implementation of the metropolis hastings algorithm for one markov chain  
+
+
+
+
+{\ttfamily \#include $<$algorithm.\+hpp$>$}
+
+
+
+Collaboration diagram for metropolis\+\_\+hastings\+\_\+algorithm\texorpdfstring{$<$}{<} marcov\+\_\+chain\+\_\+state\+\_\+t, change\+\_\+generator\+\_\+t, acceptance\+\_\+computation\+\_\+t, computation\+\_\+modell\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t, result\+\_\+statistics\+\_\+t, result\+\_\+function\+\_\+t, enforce\+\_\+change, skip\+\_\+unchanged\+\_\+vectors \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmetropolis__hastings__algorithm__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_acae76933ffec478aa1b6430cf9d0ce60}\label{classmetropolis__hastings__algorithm_acae76933ffec478aa1b6430cf9d0ce60}} 
+{\bfseries metropolis\+\_\+hastings\+\_\+algorithm} (std\+::size\+\_\+t \mbox{\hyperlink{classmetropolis__hastings__algorithm_a681e8bdc267d6e36fbaf66ec745837a7}{id}}, auto mc\+\_\+state\+\_\+, \mbox{\hyperlink{classprobsat__resolvents}{computation\+\_\+modell\+\_\+t}} \&\mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\+\_\+modell}}, \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} \&\mbox{\hyperlink{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}{acc\+\_\+prob\+\_\+fct}})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a2dfa1e7b3e7e220e4238f56b5cd8ae57}\label{classmetropolis__hastings__algorithm_a2dfa1e7b3e7e220e4238f56b5cd8ae57}} 
+\mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state\+\_\+t}} {\bfseries get\+\_\+last\+\_\+state} ()
+\begin{DoxyCompactList}\small\item\em get snapshot of last state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a3df57961d68afc331943308afd843549}\label{classmetropolis__hastings__algorithm_a3df57961d68afc331943308afd843549}} 
+{\footnotesize template$<$typename scheduler\+\_\+t $>$ }\\void {\bfseries prepare\+\_\+iteration} (scheduler\+\_\+t \&scheduler)
+\begin{DoxyCompactList}\small\item\em prepare an iteration \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_aa75437f694766b38a5f9c3350aa9a241}\label{classmetropolis__hastings__algorithm_aa75437f694766b38a5f9c3350aa9a241}} 
+bool {\bfseries still\+\_\+waiting\+\_\+for\+\_\+computation} ()
+\begin{DoxyCompactList}\small\item\em check if still waiting or progress can be made \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_ab516401b65af4615e7146afbef6eb116}\label{classmetropolis__hastings__algorithm_ab516401b65af4615e7146afbef6eb116}} 
+{\footnotesize template$<$typename scheduler\+\_\+t $>$ }\\bool {\bfseries continue\+\_\+iteration} (scheduler\+\_\+t \&scheduler)
+\begin{DoxyCompactList}\small\item\em continue an iteration \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_ac855cda69eded775e9d77f3a735b136f}\label{classmetropolis__hastings__algorithm_ac855cda69eded775e9d77f3a735b136f}} 
+void {\bfseries finish\+\_\+iteration} (bool last\+\_\+iteration=false)
+\begin{DoxyCompactList}\small\item\em finish an iteration \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a6f0fb13072dfa7e97772d0506ffd7319}\label{classmetropolis__hastings__algorithm_a6f0fb13072dfa7e97772d0506ffd7319}} 
+void {\bfseries skip\+\_\+computation} (bool accept)
+\begin{DoxyCompactList}\small\item\em skip one step for fast forwarding \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_ab3e09f57b874a8e26b3d86edcda776ca}\label{classmetropolis__hastings__algorithm_ab3e09f57b874a8e26b3d86edcda776ca}} 
+void {\bfseries cleanup} ()
+\begin{DoxyCompactList}\small\item\em cleanup of unfinished computations to end markov chain \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_ab7027f56b2b1c2cc7de1a52f169d4457}\label{classmetropolis__hastings__algorithm_ab7027f56b2b1c2cc7de1a52f169d4457}} 
+bool {\bfseries can\+\_\+start\+\_\+next\+\_\+iteration} () const
+\begin{DoxyCompactList}\small\item\em check if iteration was finished and next can be started \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_ac66eeff82adc983b4dcdc094681039b0}\label{classmetropolis__hastings__algorithm_ac66eeff82adc983b4dcdc094681039b0}} 
+std\+::size\+\_\+t {\bfseries get\+\_\+iteration} () const
+\begin{DoxyCompactList}\small\item\em get current iteration \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_ae5b83797a4fb3f2eb54fe428d19920b7}\label{classmetropolis__hastings__algorithm_ae5b83797a4fb3f2eb54fe428d19920b7}} 
+void {\bfseries print\+\_\+execution\+\_\+statistic} ()
+\begin{DoxyCompactList}\small\item\em print statistics \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a376e17d9b18cbb66546d57bbf1912e4f}\label{classmetropolis__hastings__algorithm_a376e17d9b18cbb66546d57bbf1912e4f}} 
+{\footnotesize template$<$typename scheduler\+\_\+t $>$ }\\std\+::size\+\_\+t {\bfseries operator()} (scheduler\+\_\+t \&scheduler, bool last\+\_\+iteration=false)
+\begin{DoxyCompactList}\small\item\em automate iteration calls to make progress \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a88619660f0b20b785a7444ca1b69fdbd}\label{classmetropolis__hastings__algorithm_a88619660f0b20b785a7444ca1b69fdbd}} 
+void {\bfseries generate\+\_\+next\+\_\+cfg\+\_\+vector} ()
+\begin{DoxyCompactList}\small\item\em generate the next config vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a681e8bdc267d6e36fbaf66ec745837a7}\label{classmetropolis__hastings__algorithm_a681e8bdc267d6e36fbaf66ec745837a7}} 
+std\+::size\+\_\+t {\bfseries id}
+\begin{DoxyCompactList}\small\item\em id of the markov chain (for output) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}\label{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}} 
+\mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state\+\_\+t}} {\bfseries mc\+\_\+state}
+\begin{DoxyCompactList}\small\item\em current state of the markov chain \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_ae48cbc67bb5ba61b107e032647b439fb}\label{classmetropolis__hastings__algorithm_ae48cbc67bb5ba61b107e032647b439fb}} 
+decltype(mc\+\_\+state.\+prn\+\_\+engine) {\bfseries last\+\_\+prng}
+\begin{DoxyCompactList}\small\item\em pseudo random number generator of last state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a267f23eb3a183cffb57d88183630700c}\label{classmetropolis__hastings__algorithm_a267f23eb3a183cffb57d88183630700c}} 
+\mbox{\hyperlink{classsimple__change__generator}{change\+\_\+generator\+\_\+t}} {\bfseries change\+\_\+gen}
+\begin{DoxyCompactList}\small\item\em change generator for the config vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}\label{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}} 
+\mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} {\bfseries next\+\_\+cfg\+\_\+vector}
+\begin{DoxyCompactList}\small\item\em next config vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}\label{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}} 
+\mbox{\hyperlink{classstatistical__acceptance__computation}{acceptance\+\_\+computation\+\_\+t}} {\bfseries acc\+\_\+computation}
+\begin{DoxyCompactList}\small\item\em acceptance computation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}\label{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}} 
+bool {\bfseries is\+\_\+processing}
+\begin{DoxyCompactList}\small\item\em internal computation state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}\label{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}} 
+\mbox{\hyperlink{classprobsat__resolvents}{computation\+\_\+modell\+\_\+t}} \& {\bfseries computation\+\_\+modell}
+\begin{DoxyCompactList}\small\item\em computation modell (i.\+e. probsat) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}\label{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}} 
+\mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} \& {\bfseries acc\+\_\+prob\+\_\+fct}
+\begin{DoxyCompactList}\small\item\em acceptance function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmetropolis__hastings__algorithm_a5823f17a44538eb7c9fd4a5453065c0a}\label{classmetropolis__hastings__algorithm_a5823f17a44538eb7c9fd4a5453065c0a}} 
+result\+\_\+statistics\+\_\+t {\bfseries execution\+\_\+statistics}
+\begin{DoxyCompactList}\small\item\em execution statistics of computation modell \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state\+\_\+t}}, typename \mbox{\hyperlink{classsimple__change__generator}{change\+\_\+generator\+\_\+t}}, typename \mbox{\hyperlink{classstatistical__acceptance__computation}{acceptance\+\_\+computation\+\_\+t}}, typename \mbox{\hyperlink{classprobsat__resolvents}{computation\+\_\+modell\+\_\+t}}, typename \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}}, typename result\+\_\+statistics\+\_\+t, typename result\+\_\+function\+\_\+t, const bool enforce\+\_\+change, const bool skip\+\_\+unchanged\+\_\+vectors$>$\newline
+class metropolis\+\_\+hastings\+\_\+algorithm$<$ marcov\+\_\+chain\+\_\+state\+\_\+t, change\+\_\+generator\+\_\+t, acceptance\+\_\+computation\+\_\+t, computation\+\_\+modell\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t, result\+\_\+statistics\+\_\+t, result\+\_\+function\+\_\+t, enforce\+\_\+change, skip\+\_\+unchanged\+\_\+vectors $>$}
+generic implementation of the metropolis hastings algorithm for one markov chain 
+
+Definition at line \mbox{\hyperlink{algorithm_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{algorithm_8hpp_source}{algorithm.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/algorithm.\+hpp\end{DoxyCompactItemize}

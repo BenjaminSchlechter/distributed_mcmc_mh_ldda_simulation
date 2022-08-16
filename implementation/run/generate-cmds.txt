@@ -1,0 +1,3 @@
+seq 0 19 |parallel echo "sbatch -t 300 --partition=single run.sh r1/log-{}.txt -n 10 -of {} -l 800"
+
+

@@ -1,0 +1,226 @@
+\hypertarget{rpc_8hpp_source}{}\doxysection{rpc.\+hpp}
+\label{rpc_8hpp_source}\index{distributed\_computation/rpc.hpp@{distributed\_computation/rpc.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef RPC\_HPP}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define RPC\_HPP}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <limits>}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <type\_traits>}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}../util/util.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}../util/basic\_serialization.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}type\_abstraction.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}rtti.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}function\_abstraction.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00021}00021 \textcolor{keyword}{const} std::string FCT\_NAME\_RESULT\_TAG = \textcolor{stringliteral}{"{}\_\_result"{}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00025}00025 \textcolor{keyword}{template}<\textcolor{keyword}{typename} data\_t = std::vector<u\textcolor{keywordtype}{int}8\_t>>}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00026}\mbox{\hyperlink{classrpc__message}{00026}} \textcolor{keyword}{class }\mbox{\hyperlink{classrpc__message}{rpc\_message}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00027}00027 \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00028}00028     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00030}\mbox{\hyperlink{classrpc__message_a484da6faecd011879623568675d898eb}{00030}}         \textcolor{keyword}{using} \mbox{\hyperlink{classrpc__message_a484da6faecd011879623568675d898eb}{data\_type}} = data\_t;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00033}\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{00033}}         std::size\_t \mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00036}\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{00036}}         std::string \mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00039}\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{00039}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00042}\mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{00042}}         data\_t \mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00045}\mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{00045}}         uint8\_t \mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00049}\mbox{\hyperlink{classrpc__message_ad57ccce5a26ac8436fc3b821f5b862f2}{00049}}         \mbox{\hyperlink{classrpc__message_ad57ccce5a26ac8436fc3b821f5b862f2}{rpc\_message}}() :}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00050}00050             \mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}}(std::numeric\_limits<std::size\_t>::max()),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00051}00051             \mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}}(),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00052}00052             \mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}(false),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00053}00053             \mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}}(),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00054}00054             \mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}}(0)}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00055}00055         \{\}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00058}\mbox{\hyperlink{classrpc__message_a6c1ed437bb36638989dca3517dc99c4b}{00058}}         \mbox{\hyperlink{classrpc__message_a6c1ed437bb36638989dca3517dc99c4b}{rpc\_message}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpc__message}{rpc\_message}} \&other) :}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00059}00059             \mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}}(other.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}}),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00060}00060             \mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}}(other.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}}),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00061}00061             \mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}(other.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00062}00062             \mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}}(other.\mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}}),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00063}00063             \mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}}(other.\mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}})}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00064}00064         \{\}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00067}\mbox{\hyperlink{classrpc__message_aba18c9c1cd3d4b2b3c607bd3832bf01f}{00067}}         \textcolor{keyword}{friend} \textcolor{keywordtype}{void} \mbox{\hyperlink{classrpc__message_aba18c9c1cd3d4b2b3c607bd3832bf01f}{swap}}(\mbox{\hyperlink{classrpc__message}{rpc\_message}} \&l, \mbox{\hyperlink{classrpc__message}{rpc\_message}} \&r)}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00068}00068         \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00069}00069             std::swap(l.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}}, r.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00070}00070             std::swap(l.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}}, r.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00071}00071             std::swap(l.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}, r.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00072}00072             std::swap(l.\mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}}, r.\mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00073}00073             std::swap(l.\mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}}, r.\mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00078}\mbox{\hyperlink{classrpc__message_ab30cdf4a4a313ec297a095c10aaeb8d0}{00078}}         \mbox{\hyperlink{classrpc__message}{rpc\_message}} \&\mbox{\hyperlink{classrpc__message_ab30cdf4a4a313ec297a095c10aaeb8d0}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpc__message}{rpc\_message}} \&other) \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00079}00079             \textcolor{keywordtype}{id} = other.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00080}00080             \mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} = other.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00081}00081             \mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}} = other.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00082}00082             \mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}} = other.\mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00083}00083             \mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}} = other.\mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00084}00084             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00085}00085         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00087}00087 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00089}00089 \textcolor{comment}{        rpc\_message \&operator=(const rpc\_message \&other) \{}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00090}00090 \textcolor{comment}{            swap(*this, other);}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00091}00091 \textcolor{comment}{            return *this;}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00092}00092 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00093}00093 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00096}\mbox{\hyperlink{classrpc__message_af729a60b8abb46a6761e2086517b0ef8}{00096}}         \mbox{\hyperlink{classrpc__message_af729a60b8abb46a6761e2086517b0ef8}{rpc\_message}}(\mbox{\hyperlink{classrpc__message}{rpc\_message}} \&\&other) \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00097}00097             \mbox{\hyperlink{classrpc__message_aba18c9c1cd3d4b2b3c607bd3832bf01f}{swap}}(*\textcolor{keyword}{this}, other);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00098}00098         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00101}00101     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00103}\mbox{\hyperlink{classrpc__message_a564955932a640c4218fe7df8fc9b8515}{00103}}         uint8\_t \mbox{\hyperlink{classrpc__message_a564955932a640c4218fe7df8fc9b8515}{compute\_crc\_}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00104}00104 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00105}00105             \textcolor{keyword}{decltype}(\mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}}) crc\_;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00106}00106             crc\_ = crc8((uint8\_t *) \&\textcolor{keywordtype}{id}, \textcolor{keyword}{sizeof}(\textcolor{keyword}{decltype}(\textcolor{keywordtype}{id})));}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00107}00107             crc\_ = crc8((uint8\_t *) \mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}}.c\_str(),}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00108}00108                 \mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}}.length(), crc\_);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00109}00109             crc\_ = crc8((uint8\_t *) \&\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}, 1, crc\_);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00110}00110             crc\_ = crc8((uint8\_t *) \mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}}.data(), \mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}}.size(), crc\_);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00111}00111             \textcolor{keywordflow}{return} crc\_;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00112}00112         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00114}00114     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00115}00115         \textcolor{comment}{// optional crc functionality}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00116}00116         }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00118}\mbox{\hyperlink{classrpc__message_ad2ab845f684b67538794d407f720c7b6}{00118}}         uint8\_t \mbox{\hyperlink{classrpc__message_ad2ab845f684b67538794d407f720c7b6}{compute\_crc}}() \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00119}00119             \mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}} = \mbox{\hyperlink{classrpc__message_a564955932a640c4218fe7df8fc9b8515}{compute\_crc\_}}();}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00120}00120             \textcolor{keywordflow}{return} \mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00121}00121         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00124}\mbox{\hyperlink{classrpc__message_acf6309b12a6bf7325196849c37f9d9e0}{00124}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classrpc__message_acf6309b12a6bf7325196849c37f9d9e0}{check\_crc}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00125}00125             \textcolor{keywordflow}{return} (\mbox{\hyperlink{classrpc__message_a564955932a640c4218fe7df8fc9b8515}{compute\_crc\_}}() == \mbox{\hyperlink{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}{crc}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00126}00126         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00127}00127 \};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00131}00131 \textcolor{keyword}{template}<\textcolor{keyword}{typename} S>}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00132}00132 \textcolor{keywordtype}{void} serialize(S \&s, \mbox{\hyperlink{classrpc__message}{rpc\_message}}<std::vector<uint8\_t>> \&v) \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00133}00133     std::size\_t data\_len = v.data.size();}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00134}00134     generic\_serialize(s,}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00135}00135         v.id, v.function\_name, v.answer\_required, data\_len);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00136}00136     v.data.resize(data\_len);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00137}00137     s.container1b(v.data, data\_len);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00138}00138     assert(v.data.size() == data\_len);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00139}00139     generic\_serialize(s, v.crc);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00140}00140 \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00144}00144 \textcolor{keyword}{template}<\textcolor{keyword}{typename} type\_abstraction\_adapter\_t>}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00145}00145     \textcolor{keyword}{requires} (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\_abstraction\_adapter\_t::is\_TypeAbstractionAdapter}})}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00146}\mbox{\hyperlink{classremote__procedure__manager}{00146}} \textcolor{keyword}{class} \mbox{\hyperlink{classremote__procedure__manager}{remote\_procedure\_manager}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00147}00147 \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00148}00148     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00151}\mbox{\hyperlink{classremote__procedure__manager_a9b65c36dddb5d99cbc52ce654a778aef}{00151}}         \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}} \mbox{\hyperlink{classremote__procedure__manager_a9b65c36dddb5d99cbc52ce654a778aef}{type\_abstraction}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00154}\mbox{\hyperlink{classremote__procedure__manager_af9c23aeaf2fc517b7a4e7d1416d5c0c8}{00154}}         \textcolor{keyword}{using} \mbox{\hyperlink{classAbstractFunction}{abstract\_function\_t}} =}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00155}00155             \mbox{\hyperlink{classAbstractFunction}{AbstractFunction<type\_abstraction\_adapter\_t>}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00157}00157     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00160}\mbox{\hyperlink{classremote__procedure__manager_a2565e46173caccc6f82ac2333697ace6}{00160}}         \textcolor{keyword}{using} \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} =}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00161}00161             \mbox{\hyperlink{classrpc__message}{rpc\_message<typename type\_abstraction\_adapter\_t::abstract\_type>}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00162}00162     }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00164}00164         std::map<std::string, std::unique\_ptr<abstract\_function\_t>>}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00165}\mbox{\hyperlink{classremote__procedure__manager_af5575e76575079b46b6d2478e87036af}{00165}}             \mbox{\hyperlink{classremote__procedure__manager_af5575e76575079b46b6d2478e87036af}{function\_map}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00169}00169         \textcolor{keyword}{template}<\textcolor{keyword}{typename} function\_t>}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00170}\mbox{\hyperlink{classremote__procedure__manager_aab60d6fc1fc8adc06d00b58d071975ed}{00170}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classremote__procedure__manager_aab60d6fc1fc8adc06d00b58d071975ed}{add\_function}}(std::string name, function\_t \textcolor{keyword}{function})}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00171}00171         \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00172}00172             assert(!name.empty());}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00174}00174             \mbox{\hyperlink{classAbstractFunction}{AbstractFunction<type\_abstraction\_adapter\_t>}} *afptr}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00175}00175                 = getAbstractFunctionFor<}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00176}00176                     \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}},}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00177}00177                     function\_t> (\textcolor{keyword}{function});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00178}00178             assert(afptr);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00180}00180             \textcolor{keyword}{auto} result = function\_map.try\_emplace(}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00181}00181                 name,}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00182}00182                 std::unique\_ptr<abstract\_function\_t>(afptr)}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00183}00183             );}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00184}00184             assert(result.second \&\&}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00185}00185                 \textcolor{stringliteral}{"{}there is already a function with this name registered!"{}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00186}00186         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00189}00189         \textcolor{keyword}{template}<\textcolor{keyword}{typename}... param\_types>}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00190}\mbox{\hyperlink{classremote__procedure__manager_a25eec272d68e59fa5743db57ccaf044b}{00190}}         \textcolor{keyword}{auto} \mbox{\hyperlink{classremote__procedure__manager_a25eec272d68e59fa5743db57ccaf044b}{prepare\_call}}(std::string name, param\_types... params)}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00191}00191         \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00192}00192             assert(!name.empty());}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00194}00194             \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} msg;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00195}00195             msg.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}} = 0;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00196}00196             msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} = name;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00197}00197             msg.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00199}00199             \mbox{\hyperlink{classConcreteType}{ConcreteType}}<\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}}, param\_types...>}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00200}00200                 param\_container = \{params..., \textcolor{keyword}{true}\};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00201}00201 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00202}00202             msg.\mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}} = param\_container.serialize(type\_abstraction);}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00203}00203             \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00204}00204         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00207}\mbox{\hyperlink{classremote__procedure__manager_aa5a75e06647427766e1cbd8ea7ae50a0}{00207}}         \textcolor{keyword}{auto} \mbox{\hyperlink{classremote__procedure__manager_aa5a75e06647427766e1cbd8ea7ae50a0}{execute\_rpc}}(\textcolor{keyword}{const} \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} \&msg)}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00208}00208         \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00209}00209             \textcolor{comment}{// std::cout << "{}execute\_rpc: "{} <<}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00210}00210                 \textcolor{comment}{// msg.function\_name << std::endl;}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00212}00212             assert(!msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}}.empty());}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00214}00214             \textcolor{keyword}{auto} fsearch = function\_map.find(msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00215}00215             \textcolor{keywordflow}{if} (function\_map.end() == fsearch) \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00216}00216                 std::cerr << \textcolor{stringliteral}{"{}Unknown remote procedure call: "{}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00217}00217                     << msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00218}00218                 assert(\textcolor{keyword}{false} \&\& \textcolor{stringliteral}{"{}Unknown remote procedure call!"{}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00219}00219             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00220}00220                 \textcolor{comment}{// std::cout << "{}rpc executing: "{}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00221}00221                     \textcolor{comment}{// << msg.function\_name << std::endl;}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00222}00222             \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00224}00224             \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} result\_msg;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00225}00225             result\_msg.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}} = msg.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00226}00226             result\_msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} =}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00227}00227                 msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} + FCT\_NAME\_RESULT\_TAG;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00228}00228             result\_msg.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00229}00229 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00230}00230             \mbox{\hyperlink{classAbstractFunction}{abstract\_function\_t}} *fptr = (fsearch-\/>second).get();}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00232}00232             \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00233}00233                 result\_msg.\mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}} =}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00234}00234                     fptr-\/>\mbox{\hyperlink{classAbstractFunction_ad3a540ca0bb4b949b0389895e9ca915e}{execute}}(type\_abstraction, msg.\mbox{\hyperlink{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}{data}});}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00235}00235             \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00236}00236                 std::cout << \textcolor{stringliteral}{"{}exception executing function: "{}}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00237}00237                     << result\_msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00238}00238                 abort();}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00239}00239             \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00240}00240 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00241}00241             \textcolor{keywordflow}{return} result\_msg;}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00242}00242         \}}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00243}00243 \};}
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00244}00244 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{rpc_8hpp_source_l00246}00246 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

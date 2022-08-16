@@ -1,0 +1,151 @@
+\hypertarget{modell_8hpp_source}{}\doxysection{modell.\+hpp}
+\label{modell_8hpp_source}\index{metropolis\_hastings/value\_computation/modell.hpp@{metropolis\_hastings/value\_computation/modell.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef MODELL\_HPP}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define MODELL\_HPP}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00009}00009 \textcolor{keyword}{template}<\textcolor{keyword}{typename} prec\_t>}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00010}00010 prec\_t modell\_identity(prec\_t p) \{ \textcolor{keywordflow}{return} p; \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00014}00014 \textcolor{keyword}{template}<\textcolor{keyword}{typename} prec\_t>}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00015}00015 prec\_t modell\_multiply(prec\_t a, prec\_t b) \{ \textcolor{keywordflow}{return} a*b; \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00019}00019 \textcolor{keyword}{template}<\textcolor{keyword}{typename} cfg\_vector\_t, \textcolor{keyword}{typename} prec\_t>}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00020}00020 \textcolor{keyword}{static} prec\_t bitvector\_to\_num(\textcolor{keyword}{const} \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} \&v)}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00022}00022     prec\_t r = 0.0;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00023}00023     \textcolor{keyword}{using} size\_type = \mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{cfg\_vector\_t::size\_type}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00024}00024     \textcolor{keywordflow}{for} (size\_type i = 0; i < v.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00025}00025         r *= 2.0;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00026}00026         r += v[i];}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00027}00027     \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00028}00028     }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00029}00029     \textcolor{keywordflow}{return} r / powl(2.0, v.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size());}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00034}00034 \textcolor{keyword}{template}<\textcolor{keyword}{typename} modell\_t>}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00035}00035 \textcolor{keyword}{requires} (modell\_t::is\_value\_computation\_implementation)}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00036}\mbox{\hyperlink{classinaccurate__modell}{00036}} \textcolor{keyword}{class} \mbox{\hyperlink{classinaccurate__modell}{inaccurate\_modell}}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00038}00038     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00039}00039         \textcolor{keyword}{using} cfg\_vector\_t = modell\_t::cfg\_vector\_type;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00040}00040         \textcolor{keyword}{using} prec\_type = modell\_t::prec\_type;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00041}00041         \textcolor{keyword}{using} prec\_t = prec\_type;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00042}00042         \textcolor{keyword}{constexpr} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} is\_value\_computation\_implementation}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00043}00043             = modell\_t::is\_value\_computation\_implementation;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00046}\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{00046}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00048}\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a4ec3156487bf36fc8c8994b651c25542}{00048}}             modell\_t::prepared\_computation \mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a4ec3156487bf36fc8c8994b651c25542}{pcom}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00051}\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a54fca27e6935e574b4c719aca3798f9a}{00051}}             std::lognormal\_distribution<prec\_t> \mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a54fca27e6935e574b4c719aca3798f9a}{error\_distr}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00052}00052         \} \mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{prepared\_computation}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00054}00054     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00056}\mbox{\hyperlink{classinaccurate__modell_aa2feccdcea9b1527bd99c8b37308e46d}{00056}}         modell\_t \mbox{\hyperlink{classinaccurate__modell_aa2feccdcea9b1527bd99c8b37308e46d}{modell\_}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00058}00058         \textcolor{comment}{// lognormal distributed errors}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00059}00059         \textcolor{comment}{// std::lognormal\_distribution<prec\_t> error\_distr; // (mu, sigma)}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00064}\mbox{\hyperlink{classinaccurate__modell_af6fa462103aa06c850f0cae3d156305b}{00064}}         \textcolor{keyword}{const} prec\_t \mbox{\hyperlink{classinaccurate__modell_af6fa462103aa06c850f0cae3d156305b}{error\_strength}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00067}\mbox{\hyperlink{classinaccurate__modell_ac0547f34483607c40d2c2674d30489ca}{00067}}         \textcolor{keyword}{const} prec\_t \mbox{\hyperlink{classinaccurate__modell_ac0547f34483607c40d2c2674d30489ca}{error\_offset}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00069}00069     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00070}00070     }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00072}\mbox{\hyperlink{classinaccurate__modell_ae0837d2469b66e3e8ec557af4b4ec2af}{00072}}         \mbox{\hyperlink{classinaccurate__modell_ae0837d2469b66e3e8ec557af4b4ec2af}{inaccurate\_modell}}(modell\_t \&modell\_, prec\_t error\_strength\_) :}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00073}00073             modell\_(modell\_),}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00074}00074             error\_strength(error\_strength\_),}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00075}00075             \textcolor{comment}{// error\_distr(0, error\_strength\_),}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00076}00076             error\_offset(exp(error\_strength\_*error\_strength\_/2) -\/ 1)}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00077}00077         \{\}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00080}\mbox{\hyperlink{classinaccurate__modell_a351ad72be02a8470df72bbdaca04d988}{00080}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classinaccurate__modell_a351ad72be02a8470df72bbdaca04d988}{prepare\_computation\_with\_cfg\_vector}}(}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00081}00081             \textcolor{keyword}{const} cfg\_vector\_t \&v, \mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{prepared\_computation}} \&pcom)}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00082}00082         \{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00083}00083             modell\_.prepare\_computation\_with\_cfg\_vector(v, pcom.\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a4ec3156487bf36fc8c8994b651c25542}{pcom}});}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00084}00084             pcom.\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a54fca27e6935e574b4c719aca3798f9a}{error\_distr}} =}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00085}00085                 std::lognormal\_distribution<prec\_t>(0, error\_strength);}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00086}00086         \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00089}00089         \textcolor{keyword}{template}<\textcolor{keyword}{typename} prng\_t, \textcolor{keyword}{typename} rpmanager\_t>}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00090}\mbox{\hyperlink{classinaccurate__modell_a152ea4dfba469e3f2fc3d152c5ed874d}{00090}}         \textcolor{keyword}{auto} \mbox{\hyperlink{classinaccurate__modell_a152ea4dfba469e3f2fc3d152c5ed874d}{operator()}}(}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00091}00091             prng\_t \&prng,}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00092}00092             rpmanager\_t \&rpmanager,}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00093}00093             \mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{prepared\_computation}} \&pcom)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00094}00094 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00095}00095             \textcolor{comment}{// rpmanager.execute\_rpc(modell\_(prng, rpmanager, pcom.pcom))}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00097}00097             prec\_t f = pcom.\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a4ec3156487bf36fc8c8994b651c25542}{pcom}}.f;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00098}00098             prec\_t errf = pcom.\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a54fca27e6935e574b4c719aca3798f9a}{error\_distr}}(prng) -\/ error\_offset;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00100}00100             \textcolor{keywordflow}{return} rpmanager.prepare\_call(\textcolor{stringliteral}{"{}modell\_multiply"{}}, f, errf);}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00101}00101         \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00104}\mbox{\hyperlink{classinaccurate__modell_a6bac5a05ebe48e07174509ce741ce6c9}{00104}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classinaccurate__modell_a6bac5a05ebe48e07174509ce741ce6c9}{finish\_computation}}(\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation}{prepared\_computation}} \&pcom) \{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00105}00105             modell\_.finish\_computation(pcom.\mbox{\hyperlink{structinaccurate__modell_1_1prepared__computation_a4ec3156487bf36fc8c8994b651c25542}{pcom}});}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00106}00106         \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00107}00107 \};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00111}00111 \textcolor{keyword}{template}<\textcolor{keyword}{typename} cfg\_vector\_t, \textcolor{keyword}{typename} prec\_t>}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00112}\mbox{\hyperlink{classmodell}{00112}} \textcolor{keyword}{class }\mbox{\hyperlink{classmodell}{modell}}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00113}00113 \{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00114}00114     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00115}00115         \textcolor{keyword}{using} prec\_type = prec\_t;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00116}00116         \textcolor{keyword}{using} \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_type}} = \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00117}00117         \textcolor{keyword}{constexpr} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} is\_value\_computation\_implementation = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00120}\mbox{\hyperlink{structmodell_1_1prepared__computation}{00120}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00122}\mbox{\hyperlink{structmodell_1_1prepared__computation_a84014e2af090d29f82eebf3095010946}{00122}}             prec\_t \mbox{\hyperlink{structmodell_1_1prepared__computation_a84014e2af090d29f82eebf3095010946}{f}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00123}00123         \} \mbox{\hyperlink{structmodell_1_1prepared__computation}{prepared\_computation}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00125}00125     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00127}\mbox{\hyperlink{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}{00127}}         \textcolor{keyword}{const} prec\_t \mbox{\hyperlink{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}{s}};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00129}00129         \textcolor{keyword}{friend} \mbox{\hyperlink{classinaccurate__modell}{inaccurate\_modell<modell<cfg\_vector\_t, prec\_t>}}>;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00131}00131     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00133}\mbox{\hyperlink{classmodell_a21ab3727ef7fc5d599f923461f508b5e}{00133}}         \mbox{\hyperlink{classmodell_a21ab3727ef7fc5d599f923461f508b5e}{modell}}(prec\_t s\_) : \mbox{\hyperlink{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}{s}}(s\_) \{\}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00137}\mbox{\hyperlink{classmodell_a529bd117ed32569d6ff33a3498d71031}{00137}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodell_a529bd117ed32569d6ff33a3498d71031}{prepare\_computation\_with\_cfg\_vector}}(}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00138}00138             \textcolor{keyword}{const} \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} \&v, \mbox{\hyperlink{structmodell_1_1prepared__computation}{prepared\_computation}} \&pcom)}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00139}00139         \{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00140}00140             prec\_t x = bitvector\_to\_num<cfg\_vector\_t, prec\_t>(v);}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00141}00141             assert(0 <= x);}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00142}00142             assert(x <= 1);}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00144}00144             \textcolor{keyword}{static} \textcolor{keyword}{const} prec\_t nf = (cosh(\mbox{\hyperlink{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}{s}}) -\/ 3.*sinh(\mbox{\hyperlink{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}{s}}) -\/ 1);}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00145}00145             pcom.\mbox{\hyperlink{structmodell_1_1prepared__computation_a84014e2af090d29f82eebf3095010946}{f}} = 1./2. + sinh(\mbox{\hyperlink{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}{s}} -\/ 2.*\mbox{\hyperlink{classmodell_a1b8e1d937e6af72ac869b9a85a2c7f97}{s}}*x) / nf;}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00146}00146         \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00149}00149         \textcolor{keyword}{template}<\textcolor{keyword}{typename} prng\_t, \textcolor{keyword}{typename} rpmanager\_t>}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00150}\mbox{\hyperlink{classmodell_a230ec3194409cf654943a583c3101847}{00150}}         \textcolor{keyword}{auto} \mbox{\hyperlink{classmodell_a230ec3194409cf654943a583c3101847}{operator()}}(}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00151}00151             prng\_t \&prng,}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00152}00152             rpmanager\_t \&rpmanager,}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00153}00153             \mbox{\hyperlink{structmodell_1_1prepared__computation}{prepared\_computation}} \&pcom)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00154}00154 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00155}00155             ignore(prng);}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00157}00157             \textcolor{keywordflow}{return} rpmanager.prepare\_call(\textcolor{stringliteral}{"{}modell\_identity"{}}, pcom.\mbox{\hyperlink{structmodell_1_1prepared__computation_a84014e2af090d29f82eebf3095010946}{f}});}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00158}00158         \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00161}\mbox{\hyperlink{classmodell_ae9c28bfe4ac48dccfc0cb7dc28c1d1e4}{00161}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodell_ae9c28bfe4ac48dccfc0cb7dc28c1d1e4}{finish\_computation}}(\mbox{\hyperlink{structmodell_1_1prepared__computation}{prepared\_computation}} \&pcom) \{}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00162}00162             ignore(pcom);}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00163}00163         \}}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00164}00164 \};}
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{modell_8hpp_source_l00169}00169 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\hypertarget{classsimple__change__generator}{}\doxysection{simple\+\_\+change\+\_\+generator\texorpdfstring{$<$}{<} cfg\+\_\+vector\+\_\+t, enforce\+\_\+change, value\+\_\+t, value\+\_\+distr\+\_\+type, value\+\_\+distr\+\_\+minv, value\+\_\+distr\+\_\+maxv \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classsimple__change__generator}\index{simple\_change\_generator$<$ cfg\_vector\_t, enforce\_change, value\_t, value\_distr\_type, value\_distr\_minv, value\_distr\_maxv $>$@{simple\_change\_generator$<$ cfg\_vector\_t, enforce\_change, value\_t, value\_distr\_type, value\_distr\_minv, value\_distr\_maxv $>$}}
+
+
+class to generate changes in config vectors  
+
+
+
+
+{\ttfamily \#include $<$change\+\_\+generator.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsimple__change__generator_a1e1b50e86e18464c7b396e5316563801}\label{classsimple__change__generator_a1e1b50e86e18464c7b396e5316563801}} 
+{\bfseries simple\+\_\+change\+\_\+generator} (const \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} \&v)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__change__generator_aef041b2fc87b9e7b4e5515b91a15a6bf}\label{classsimple__change__generator_aef041b2fc87b9e7b4e5515b91a15a6bf}} 
+auto {\bfseries operator()} (auto \&prng, const \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} \&v)
+\begin{DoxyCompactList}\small\item\em create change for a given config vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsimple__change__generator_a2dcffacf8c06cc4a98935129b3ab6a02}\label{classsimple__change__generator_a2dcffacf8c06cc4a98935129b3ab6a02}} 
+std\+::uniform\+\_\+int\+\_\+distribution$<$ index\+\_\+t $>$ {\bfseries index\+\_\+distr}
+\begin{DoxyCompactList}\small\item\em index distribution \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__change__generator_af01aec977be46e04c977ee02d1c22139}\label{classsimple__change__generator_af01aec977be46e04c977ee02d1c22139}} 
+value\+\_\+distr\+\_\+type {\bfseries value\+\_\+distr}
+\begin{DoxyCompactList}\small\item\em value distribution \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}, bool enforce\+\_\+change, typename value\+\_\+t = std\+::conditional$<$  std\+::is\+\_\+same$<$bool, typename cfg\+\_\+vector\+\_\+t\+::value\+\_\+type$>$\+::value,  short,  typename cfg\+\_\+vector\+\_\+t\+::value\+\_\+type $>$\+::type, typename value\+\_\+distr\+\_\+type = std\+::uniform\+\_\+int\+\_\+distribution$<$value\+\_\+t$>$, decltype(value\+\_\+distr\+\_\+type().min()) value\+\_\+distr\+\_\+minv = cfg\+\_\+vector\+\_\+t\+::min\+\_\+value, decltype(value\+\_\+distr\+\_\+type().max()) value\+\_\+distr\+\_\+maxv = enforce\+\_\+change ? cfg\+\_\+vector\+\_\+t\+::max\+\_\+value -\/ 1 \+: cfg\+\_\+vector\+\_\+t\+::max\+\_\+value$>$\newline
+class simple\+\_\+change\+\_\+generator$<$ cfg\+\_\+vector\+\_\+t, enforce\+\_\+change, value\+\_\+t, value\+\_\+distr\+\_\+type, value\+\_\+distr\+\_\+minv, value\+\_\+distr\+\_\+maxv $>$}
+class to generate changes in config vectors 
+
+Definition at line \mbox{\hyperlink{change__generator_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{change__generator_8hpp_source}{change\+\_\+generator.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/configuration/change\+\_\+generator.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,354 @@
+\hypertarget{mcmc_8hpp_source}{}\doxysection{mcmc.\+hpp}
+\label{mcmc_8hpp_source}\index{metropolis\_hastings/mcmc.hpp@{metropolis\_hastings/mcmc.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef MCMC\_HPP}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define MCMC\_HPP}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}../config.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include "{}../util/basic\_serialization.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00014}00014 \textcolor{keyword}{template}<\textcolor{keyword}{typename} cfg\_vector\_t>}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00015}\mbox{\hyperlink{classmarcov__chain__state}{00015}} \textcolor{keyword}{class }\mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00016}00016 \{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00017}00017     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00019}\mbox{\hyperlink{classmarcov__chain__state_add183fa45895a753c6022b2719015552}{00019}}         \textcolor{keyword}{using} \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_type}} = \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00022}\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{00022}}         std::size\_t \mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00025}\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{00025}}         \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} \mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00028}\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{00028}}         prn\_engine\_t \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00032}\mbox{\hyperlink{classmarcov__chain__state_a0f476344fe1092c81b91bbdd89e495fd}{00032}}         \mbox{\hyperlink{classmarcov__chain__state_a0f476344fe1092c81b91bbdd89e495fd}{marcov\_chain\_state}}(std::size\_t cfg\_vector\_length = 0) :}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00033}00033             \mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}(std::numeric\_limits<std::size\_t>::max()),}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00034}00034             \mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}(cfg\_vector\_length),}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00035}00035             \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}() \{\}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00038}\mbox{\hyperlink{classmarcov__chain__state_a50432859cc717b0d138cefac41581c8d}{00038}}         \mbox{\hyperlink{classmarcov__chain__state_a50432859cc717b0d138cefac41581c8d}{marcov\_chain\_state}}(}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00039}00039             std::size\_t cfg\_vector\_length,}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00040}00040             \textcolor{keyword}{auto} \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00041}00041         ) :}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00042}00042             \mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}(0),}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00043}00043             \mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}(cfg\_vector\_length),}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00044}00044             \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}(\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}})}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00045}00045         \{\}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00048}\mbox{\hyperlink{classmarcov__chain__state_a2c576942b6c679ba97c4ba5e85ac9cb7}{00048}}         \mbox{\hyperlink{classmarcov__chain__state_a2c576942b6c679ba97c4ba5e85ac9cb7}{marcov\_chain\_state}}(}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00049}00049             std::size\_t \mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}},}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00050}00050             \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} \&\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}},}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00051}00051             prn\_engine\_t \&\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00052}00052         ) :}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00053}00053             \mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}(\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}),}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00054}00054             \mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}(\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}),}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00055}00055             \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}(\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}) \{\}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00056}00056         }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00058}\mbox{\hyperlink{classmarcov__chain__state_a827e5fd3b2a123d24f6571c94f023730}{00058}}         \mbox{\hyperlink{classmarcov__chain__state_a827e5fd3b2a123d24f6571c94f023730}{marcov\_chain\_state}}(\textcolor{keyword}{const} \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state}} \&other) :}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00059}00059             \mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}(other.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}),}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00060}00060             \mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}(other.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}),}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00061}00061             \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}(other.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}) \{\}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00064}\mbox{\hyperlink{classmarcov__chain__state_a8cde904bc87e829a6583f77bd0c5cad9}{00064}}         \mbox{\hyperlink{classmarcov__chain__state_a8cde904bc87e829a6583f77bd0c5cad9}{marcov\_chain\_state}}(\mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state}} \&\&other) \{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00065}00065             \mbox{\hyperlink{classmarcov__chain__state_ac9493fa3f37bfd6ab0a8a6e993af273d}{swap}}(*\textcolor{keyword}{this}, other);}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00066}00066         \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00067}00067         }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00069}\mbox{\hyperlink{classmarcov__chain__state_a54c7dcc8a347fe86282de842da25aaf8}{00069}}         \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state}} \&\mbox{\hyperlink{classmarcov__chain__state_a54c7dcc8a347fe86282de842da25aaf8}{operator=}}(}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00070}00070             \textcolor{keyword}{const} \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state<cfg\_vector\_t>}} \&other)}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00071}00071         \{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00072}00072             \mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}} = other.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00073}00073             \mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}} = other.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00074}00074             \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}} = other.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00075}00075             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00076}00076         \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00079}\mbox{\hyperlink{classmarcov__chain__state_ac9493fa3f37bfd6ab0a8a6e993af273d}{00079}}         \textcolor{keyword}{friend} \textcolor{keywordtype}{void} \mbox{\hyperlink{classmarcov__chain__state_ac9493fa3f37bfd6ab0a8a6e993af273d}{swap}}(}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00080}00080             \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state<cfg\_vector\_t>}} \&l,}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00081}00081             \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state<cfg\_vector\_t>}} \&r)}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00082}00082         \{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00083}00083             std::swap(l.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}, r.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}});}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00084}00084             std::swap(l.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}, r.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}});}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00085}00085             std::swap(l.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}, r.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}});}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00086}00086         \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00089}\mbox{\hyperlink{classmarcov__chain__state_ad918acfa400cd30d51d431f285e9efb8}{00089}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmarcov__chain__state_ad918acfa400cd30d51d431f285e9efb8}{operator==}}(}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00090}00090             \textcolor{keyword}{const} \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state<cfg\_vector\_t>}} \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00091}00091 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00092}00092             \textcolor{keywordflow}{return} (\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}} == rhs.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}})}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00093}00093                 \&\& (\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}} == rhs.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}})}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00094}00094                 \&\& (\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}} == rhs.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}});}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00095}00095         \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00098}\mbox{\hyperlink{classmarcov__chain__state_a8682255f1a8d4f736f07f8708b7dca40}{00098}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmarcov__chain__state_a8682255f1a8d4f736f07f8708b7dca40}{operator!=}}(}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00099}00099             \textcolor{keyword}{const} \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state<cfg\_vector\_t>}} \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00100}00100 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00101}00101             \textcolor{keywordflow}{return} !(*\textcolor{keyword}{this} == rhs);}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00102}00102         \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00105}\mbox{\hyperlink{classmarcov__chain__state_a96bb3b32f0a68442862dc09095701f17}{00105}}         \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{classmarcov__chain__state_a96bb3b32f0a68442862dc09095701f17}{operator<<}}(}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00106}00106             std::ostream \&os,}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00107}00107             \textcolor{keyword}{const} \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state<cfg\_vector\_t>}} \&mcs)}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00108}00108         \{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00109}00109             os  << \textcolor{stringliteral}{"{}state of iteration "{}} << mcs.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}} << \textcolor{stringliteral}{"{}:\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00110}00110                 << mcs.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}} << \textcolor{stringliteral}{"{}\(\backslash\)n"{}} << mcs.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00111}00111             \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00112}00112         \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00115}\mbox{\hyperlink{classmarcov__chain__state_a09602b3bda1b008ca4e1a008e2c63cde}{00115}}         std::string \mbox{\hyperlink{classmarcov__chain__state_a09602b3bda1b008ca4e1a008e2c63cde}{get\_prn\_engine\_as\_string}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00116}00116             std::stringstream isstr;}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00117}00117             isstr << \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00118}00118             assert(!isstr.fail());}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00119}00119             \textcolor{keywordflow}{return} isstr.str();}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00120}00120         \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00123}\mbox{\hyperlink{classmarcov__chain__state_a48cd3148382a06dc1e4da53c0526ad33}{00123}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmarcov__chain__state_a48cd3148382a06dc1e4da53c0526ad33}{set\_prn\_engine\_from\_string}}(\textcolor{keyword}{auto} prn\_state) \{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00124}00124             std::stringstream osstr(prn\_state);}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00125}00125             osstr >> \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00126}00126             assert(!osstr.fail());}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00127}00127             assert(osstr.eof());}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00128}00128         \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00129}00129 \};}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00133}00133 \textcolor{keyword}{template}<\textcolor{keyword}{typename} S, \textcolor{keyword}{typename} cfg\_vector\_t>}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00134}00134 \textcolor{keywordtype}{void} serialize(S \&s, \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state<cfg\_vector\_t>}} \&mc)}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00135}00135 \{}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00136}00136     std::string prn\_state = mc.\mbox{\hyperlink{classmarcov__chain__state_a09602b3bda1b008ca4e1a008e2c63cde}{get\_prn\_engine\_as\_string}}();}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00138}00138     \textcolor{comment}{// serialize\_marker(s, "{}ms1"{}, 4);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00139}00139     serialize\_basic\_type<S, \textcolor{keyword}{decltype}(mc.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}})>(s, mc.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}});}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00141}00141     \textcolor{comment}{// serialize\_marker(s, "{}ms2"{}, 4);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00142}00142     serialize(s, mc.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}});}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00144}00144     \textcolor{comment}{// serialize\_marker(s, "{}ms3"{}, 4);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00145}00145     generic\_serialize(s, prn\_state);}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00146}00146     mc.\mbox{\hyperlink{classmarcov__chain__state_a48cd3148382a06dc1e4da53c0526ad33}{set\_prn\_engine\_from\_string}}(prn\_state);}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00148}00148     \textcolor{comment}{// serialize\_marker(s, "{}ms4"{}, 4);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00149}00149 \}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00151}00151 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00152}00152 \textcolor{comment}{template<typename S, typename cfg\_vector\_t>}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00153}00153 \textcolor{comment}{void serialize(S \&s, marcov\_chain\_state<cfg\_vector\_t> \&mc)}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00154}00154 \textcolor{comment}{\{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00155}00155 \textcolor{comment}{    std::cout << "{}start"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00156}00156 \textcolor{comment}{    std::string prn\_state;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00157}00157 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00158}00158 \textcolor{comment}{    std::stringstream isstr;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00159}00159 \textcolor{comment}{    isstr << mc.prn\_engine;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00160}00160 \textcolor{comment}{    prn\_state = isstr.str();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00161}00161 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00162}00162 \textcolor{comment}{    // generic\_serialize(s, mc.iteration, mc.cfg\_vector, prn\_state);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00163}00163 \textcolor{comment}{    // generic\_serialize(s, mc.iteration);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00164}00164 \textcolor{comment}{    s.value8b(mc.iteration);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00165}00165 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00166}00166 \textcolor{comment}{    // if (mc.cfg\_vector.data.length()}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00167}00167 \textcolor{comment}{    // cfg\_vector(cfg\_vector\_length)}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00168}00168 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00169}00169 \textcolor{comment}{    // std::cout << "{}mc.cfg\_vector size a: "{} << mc.cfg\_vector.data.size() << std::endl;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00170}00170 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00171}00171 \textcolor{comment}{    serialize(s, mc.cfg\_vector);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00172}00172 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00173}00173 \textcolor{comment}{    // std::cout << "{}mc.cfg\_vector size b: "{} << mc.cfg\_vector.data.size() << std::endl;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00174}00174 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00175}00175 \textcolor{comment}{    std::string marker1 = "{}m42"{};}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00176}00176 \textcolor{comment}{    s.text1b(marker1, 4);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00177}00177 \textcolor{comment}{    assert(std::string("{}m42"{}) == marker1);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00178}00178 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00179}00179 \textcolor{comment}{    std::size\_t strlength = prn\_state.size();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00180}00180 \textcolor{comment}{    generic\_serialize(s, strlength);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00181}00181 \textcolor{comment}{    prn\_state.reserve(strlength);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00182}00182 \textcolor{comment}{    s.text1b(prn\_state, strlength);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00183}00183 \textcolor{comment}{    assert((prn\_state.size() == strlength) || print\_trace());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00184}00184 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00185}00185 \textcolor{comment}{    std::string marker2 = "{}fm!"{};}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00186}00186 \textcolor{comment}{    s.text1b(marker2, 4);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00187}00187 \textcolor{comment}{    assert(std::string("{}fm!"{}) == marker2);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00188}00188 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00189}00189 \textcolor{comment}{    std::stringstream osstr(prn\_state);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00190}00190 \textcolor{comment}{    osstr >> mc.prn\_engine;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00191}00191 \textcolor{comment}{    }}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00192}00192 \textcolor{comment}{    std::cout << "{}ok"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00193}00193 \textcolor{comment}{\}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00194}00194 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00196}00196 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00197}00197 \textcolor{comment}{// output statistic}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00198}00198 \textcolor{comment}{class mcmc\_statistic}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00199}00199 \textcolor{comment}{\{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00200}00200 \textcolor{comment}{    private:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00201}00201 \textcolor{comment}{        std::size\_t mc\_id;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00202}00202 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00203}00203 \textcolor{comment}{    public:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00204}00204 \textcolor{comment}{        mcmc\_statistic(std::size\_t mc\_id) : mc\_id(mc\_id) \{\}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00205}00205 \textcolor{comment}{\};}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00206}00206 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00207}00207 \textcolor{comment}{// able to fast reload application state}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00208}00208 \textcolor{comment}{class mcmc\_history}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00209}00209 \textcolor{comment}{\{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00210}00210 \textcolor{comment}{    private:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00211}00211 \textcolor{comment}{        std::size\_t mc\_id;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00212}00212 \textcolor{comment}{        std::fstream hfile;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00213}00213 \textcolor{comment}{        uint8\_t no\_counter = 0;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00214}00214 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00215}00215 \textcolor{comment}{Problem: do changes need consistent prn generator?}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00216}00216 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00217}00217 \textcolor{comment}{    full save:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00218}00218 \textcolor{comment}{        store "{}F"{}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00219}00219 \textcolor{comment}{        size of marcov\_chain\_state}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00220}00220 \textcolor{comment}{        marcov\_chain\_state}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00221}00221 \textcolor{comment}{            iteration}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00222}00222 \textcolor{comment}{            cfg\_vector}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00223}00223 \textcolor{comment}{            prn\_engine}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00224}00224 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00225}00225 \textcolor{comment}{        go to the start of the file and save last position of "{}F"{}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00226}00226 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00227}00227 \textcolor{comment}{    incremental save:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00228}00228 \textcolor{comment}{        accepted?}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00229}00229 \textcolor{comment}{            if yes:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00230}00230 \textcolor{comment}{                store "{}n"{} save no counter}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00231}00231 \textcolor{comment}{                store "{}y"{}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00232}00232 \textcolor{comment}{                save changes in cfg vector (size + changes)}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00233}00233 \textcolor{comment}{            if no:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00234}00234 \textcolor{comment}{                increment no counter}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00235}00235 \textcolor{comment}{                prevent overflow (i.e. store "{}n"{} and save no counter)}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00236}00236 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00237}00237 \textcolor{comment}{    restore:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00238}00238 \textcolor{comment}{        load last full save}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00239}00239 \textcolor{comment}{        restore current iteration cfg\_vector and prn\_engine state by fast forwarding}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00240}00240 \textcolor{comment}{        continue as from beginning}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00241}00241 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00242}00242 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00243}00243 \textcolor{comment}{        void save\_no() \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00244}00244 \textcolor{comment}{            hfile.put("{}n"{});}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00245}00245 \textcolor{comment}{            hfile.put(no\_counter);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00246}00246 \textcolor{comment}{            no\_counter = 0;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00247}00247 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00248}00248 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00249}00249 \textcolor{comment}{        void save\_full(marcov\_chain\_state \&mc\_state)}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00250}00250 \textcolor{comment}{        \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00251}00251 \textcolor{comment}{            const std::size\_t offset = hfile.tellp();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00252}00252 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00253}00253 \textcolor{comment}{            // write "{}F"{}, size, mc\_state}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00254}00254 \textcolor{comment}{            hfile.put("{}F"{});}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00255}00255 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00256}00256 \textcolor{comment}{            type\_abstraction\_adapter\_t bitsery\_taa;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00257}00257 \textcolor{comment}{            buffer\_t data = bitsery\_taa.serialize(mc\_state);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00258}00258 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00259}00259 \textcolor{comment}{            make\_generic\_serializeable<std::size\_t> gssize = data.size();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00260}00260 \textcolor{comment}{            buffer\_t size = bitsery\_taa.serialize(gssize);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00261}00261 \textcolor{comment}{            assert(size.size() == sizeof(std::size\_t)); // otherwise load won't work!}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00262}00262 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00263}00263 \textcolor{comment}{            assert(!hfile.write(size.data(), size.size()).fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00264}00264 \textcolor{comment}{            assert(!hfile.write(data.data(), data.size()).fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00265}00265 \textcolor{comment}{            hfile.flush();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00266}00266 \textcolor{comment}{            assert(!hfile.fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00267}00267 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00268}00268 \textcolor{comment}{            // write offset at start of file}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00269}00269 \textcolor{comment}{            const std::size\_t end = hfile.tellp();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00270}00270 \textcolor{comment}{            hfile.seekp(0, hfile.beg);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00271}00271 \textcolor{comment}{            make\_generic\_serializeable<std::size\_t> gsoffset = offset;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00272}00272 \textcolor{comment}{            buffer\_t offs = bitsery\_taa.serialize(gsoffset);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00273}00273 \textcolor{comment}{            assert(offs.size() == sizeof(std::size\_t));}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00274}00274 \textcolor{comment}{            assert(!hfile.write(offs.data(), offs.size()).fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00275}00275 \textcolor{comment}{            hfile.seekp(end, hfile.beg);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00276}00276 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00277}00277 \textcolor{comment}{            hfile.flush();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00278}00278 \textcolor{comment}{            assert(!hfile.fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00279}00279 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00280}00280 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00281}00281 \textcolor{comment}{        void load\_full(marcov\_chain\_state \&mc\_state)}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00282}00282 \textcolor{comment}{        \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00283}00283 \textcolor{comment}{            char c = 0;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00284}00284 \textcolor{comment}{            assert(hfile.get(c) \&\& c == 'F');}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00285}00285 \textcolor{comment}{            type\_abstraction\_adapter\_t bitsery\_taa;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00286}00286 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00287}00287 \textcolor{comment}{            // read size}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00288}00288 \textcolor{comment}{            make\_generic\_serializeable<std::size\_t> gssize = 0;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00289}00289 \textcolor{comment}{            std::vector inbuf(sizeof(std::size\_t));}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00290}00290 \textcolor{comment}{            assert(!hfile.read(inbuf.data(), inbuf.size()).fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00291}00291 \textcolor{comment}{            assert(bitsery\_taa.deserialize(inbuf.data(), gssize));}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00292}00292 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00293}00293 \textcolor{comment}{            // read mc\_state}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00294}00294 \textcolor{comment}{            inbuf.resize(gssize.data);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00295}00295 \textcolor{comment}{            assert(!hfile.read(inbuf.data(), inbuf.size()).fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00296}00296 \textcolor{comment}{            assert(bitsery\_taa.deserialize(inbuf.data(), mc\_state));}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00297}00297 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00298}00298 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00299}00299 \textcolor{comment}{    public:}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00300}00300 \textcolor{comment}{        void add\_changes(bool accepted, auto \&changes) \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00301}00301 \textcolor{comment}{            if (accepted) \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00302}00302 \textcolor{comment}{                if (0 < no\_counter) \{ save\_no(); \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00303}00303 \textcolor{comment}{                hfile.put("{}y"{});}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00304}00304 \textcolor{comment}{                // type\_abstraction\_adapter\_t bitsery\_taa;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00305}00305 \textcolor{comment}{                // buffer\_t data = bitsery\_taa.serialize(changes);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00306}00306 \textcolor{comment}{                // assert(!hfile.write(data.data(), data.size()).fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00307}00307 \textcolor{comment}{                changes.save\_to(hfile);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00308}00308 \textcolor{comment}{                hfile.flush();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00309}00309 \textcolor{comment}{            \} else \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00310}00310 \textcolor{comment}{                no\_counter++;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00311}00311 \textcolor{comment}{                if (std::numeric\_limits<decltype(no\_counter)>::max() == no\_counter) \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00312}00312 \textcolor{comment}{                    save\_no();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00313}00313 \textcolor{comment}{                    hfile.flush();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00314}00314 \textcolor{comment}{                \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00315}00315 \textcolor{comment}{            \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00316}00316 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00317}00317 \textcolor{comment}{            assert(!hfile.fail());          }}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00318}00318 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00319}00319 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00320}00320 \textcolor{comment}{        mcmc\_history(std::size\_t mc\_id, marcov\_chain\_state \&mc\_state) :}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00321}00321 \textcolor{comment}{            mc\_id(mc\_id)}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00322}00322 \textcolor{comment}{            hfile(data\_directory + "{}/"{} + std::to\_string(mc\_id) + "{}.mch"{},}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00323}00323 \textcolor{comment}{                std::ios::in | std::ios::out | ios::binary | std::ios::app),}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00324}00324 \textcolor{comment}{            no\_counter(0)}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00325}00325 \textcolor{comment}{        \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00326}00326 \textcolor{comment}{            assert(hfile.is\_open());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00327}00327 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00328}00328 \textcolor{comment}{            hfile.seekp(0, hfile.end);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00329}00329 \textcolor{comment}{            const auto fsize = hfile.tellp();}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00330}00330 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00331}00331 \textcolor{comment}{            if (0 == fsize) \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00332}00332 \textcolor{comment}{                // write offset and first full save}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00333}00333 \textcolor{comment}{                std::size\_t s = 0;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00334}00334 \textcolor{comment}{                assert(!hfile.write(\&s, sizeof(std::size\_t)).fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00335}00335 \textcolor{comment}{                save\_full(mc\_state);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00336}00336 \textcolor{comment}{            \} else \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00337}00337 \textcolor{comment}{                // read offset of last full save}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00338}00338 \textcolor{comment}{                hfile.seekg(0, hfile.beg);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00339}00339 \textcolor{comment}{                type\_abstraction\_adapter\_t bitsery\_taa;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00340}00340 \textcolor{comment}{                make\_generic\_serializeable<std::size\_t> gsoffset = 0;}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00341}00341 \textcolor{comment}{                std::vector inbuf(sizeof(std::size\_t));}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00342}00342 \textcolor{comment}{                assert(hfile.read(inbuf.data(), inbuf.size()).good());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00343}00343 \textcolor{comment}{                assert(bitsery\_taa.deserialize(inbuf.data(), gsoffset));}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00344}00344 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00345}00345 \textcolor{comment}{                // read first save}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00346}00346 \textcolor{comment}{                hfile.seekg(sizeof(std::size\_t), hfile.beg);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00347}00347 \textcolor{comment}{                marcov\_chain\_state\_t mc\_state\_(mc\_state.cfg\_vector.data.size(), prn\_engine\_t());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00348}00348 \textcolor{comment}{                load\_full(mc\_state\_);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00349}00349 \textcolor{comment}{                assert(mc\_state\_ == mc\_state \&\& "{}initial state must match!"{});}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00350}00350 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00351}00351 \textcolor{comment}{                // read last full save}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00352}00352 \textcolor{comment}{                hfile.seekg(gsoffset.data, seed\_file.beg);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00353}00353 \textcolor{comment}{                load\_full(mc\_state);}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00354}00354 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00355}00355 \textcolor{comment}{                // fast forward}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00356}00356 \textcolor{comment}{                while () \{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00357}00357 \textcolor{comment}{                    }}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00358}00358 \textcolor{comment}{                \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00359}00359 \textcolor{comment}{            \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00360}00360 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00361}00361 \textcolor{comment}{            assert(!hfile.fail());}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00362}00362 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00363}00363 \textcolor{comment}{\};}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00364}00364 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00365}00365 }
+\DoxyCodeLine{\Hypertarget{mcmc_8hpp_source_l00366}00366 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

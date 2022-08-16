@@ -1,0 +1,4 @@
+<map id="bitfield::operator[]" name="bitfield::operator[]">
+<area shape="rect" id="node1" title="access position index by returning a boolean reference" alt="" coords="5,5,145,32"/>
+<area shape="rect" id="node2" href="$classbitfield.html#a1e55e60163694f844257fb92c7186ba4" title="get bit at position index as bool" alt="" coords="193,5,289,32"/>
+</map>

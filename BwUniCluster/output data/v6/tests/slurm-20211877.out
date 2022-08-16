@@ -1,0 +1,36 @@
+$ run.sh log-n5.txt -n 5 -of 1 -l 10
+Mon Nov 22 04:08:24 CET 2021
+preparing environment & load modules
+
+Currently Loaded Modules:
+  1) compiler/gnu/11.1
+
+ 
+
+loading openmpi 4.1
+loading cmake 3.18
+
+Currently Loaded Modules:
+  1) compiler/gnu/11.1   2) mpi/openmpi/4.1   3) devel/cmake/3.18
+
+ 
+
+g++ (GCC) 11.1.0
+building
+running
+Mon Nov 22 04:08:31 CET 2021
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n361
+Job ID: 20211877
+Cluster: uc2
+User/Group: ul_jbw85/ul_student
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 80
+CPU Utilized: 00:56:26
+CPU Efficiency: 35.57% of 02:38:40 core-walltime
+Job Wall-clock time: 00:01:59
+Memory Utilized: 5.19 GB
+Memory Efficiency: 66.47% of 7.81 GB

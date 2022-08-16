@@ -1,0 +1,68 @@
+\hypertarget{structfunction__typeinfo}{}\doxysection{function\+\_\+typeinfo\texorpdfstring{$<$}{<} type\+\_\+abstraction\+\_\+adapter\+\_\+t \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structfunction__typeinfo}\index{function\_typeinfo$<$ type\_abstraction\_adapter\_t $>$@{function\_typeinfo$<$ type\_abstraction\_adapter\_t $>$}}
+
+
+helper struct to get type of function parameters and return value  
+
+
+
+
+{\ttfamily \#include $<$function\+\_\+abstraction.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structfunction__typeinfo_aac1838b269f92a06ab44798cfcb391ea}\label{structfunction__typeinfo_aac1838b269f92a06ab44798cfcb391ea}} 
+{\footnotesize template$<$typename return\+\_\+type $>$ }\\static \mbox{\hyperlink{classConcreteType}{Concrete\+Type}}$<$ \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} $>$ {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (return\+\_\+type($\ast$)())
+\begin{DoxyCompactList}\small\item\em get function argument type of function pointer without parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_a74955f0b9d975ff809a9e1da334357eb}\label{structfunction__typeinfo_a74955f0b9d975ff809a9e1da334357eb}} 
+{\footnotesize template$<$typename fobject , typename return\+\_\+type $>$ }\\static \mbox{\hyperlink{classConcreteType}{Concrete\+Type}}$<$ \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} $>$ {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (return\+\_\+type(fobject\+::$\ast$)())
+\begin{DoxyCompactList}\small\item\em get function argument type of function object without parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_ad1f8dac8ebcfb98d49862854569dfe06}\label{structfunction__typeinfo_ad1f8dac8ebcfb98d49862854569dfe06}} 
+{\footnotesize template$<$typename return\+\_\+type $>$ }\\static \mbox{\hyperlink{classConcreteType}{Concrete\+Type}}$<$ \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} $>$ {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (std\+::function$<$ return\+\_\+type()$>$ f)
+\begin{DoxyCompactList}\small\item\em get function argument type of std\+::function without parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_a03bcd4b7db77d050435f7e09484a6a49}\label{structfunction__typeinfo_a03bcd4b7db77d050435f7e09484a6a49}} 
+{\footnotesize template$<$typename first\+\_\+arg\+\_\+type , typename... tuple\+\_\+tail\+\_\+types$>$ }\\static auto {\bfseries create\+\_\+concrete\+\_\+type} (first\+\_\+arg\+\_\+type $\ast$first\+\_\+arg, std\+::tuple$<$ tuple\+\_\+tail\+\_\+types... $>$ \&tail)
+\begin{DoxyCompactList}\small\item\em helper function for recursive argument reduction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_ae34ad4e461ef983bbf706715cfd98db5}\label{structfunction__typeinfo_ae34ad4e461ef983bbf706715cfd98db5}} 
+{\footnotesize template$<$typename return\+\_\+type , typename first\+\_\+arg\+\_\+type , typename... arg\+\_\+types$>$ }\\static auto {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (return\+\_\+type($\ast$)(first\+\_\+arg\+\_\+type, arg\+\_\+types...))
+\begin{DoxyCompactList}\small\item\em recursive argument reduction to get argument type (fct pointer) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_ac4c9c4e6d411960f51c73c02f7a487e2}\label{structfunction__typeinfo_ac4c9c4e6d411960f51c73c02f7a487e2}} 
+{\footnotesize template$<$typename fobject , typename return\+\_\+type , typename first\+\_\+arg\+\_\+type , typename... arg\+\_\+types$>$ }\\static auto {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (return\+\_\+type(fobject\+::$\ast$)(first\+\_\+arg\+\_\+type, arg\+\_\+types...))
+\begin{DoxyCompactList}\small\item\em recursive argument reduction to get argument type (fct object) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_a9426c9c2893fae5bf58a2c28cb41d992}\label{structfunction__typeinfo_a9426c9c2893fae5bf58a2c28cb41d992}} 
+{\footnotesize template$<$typename return\+\_\+type , typename first\+\_\+arg\+\_\+type , typename... arg\+\_\+types$>$ }\\static auto {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (std\+::function$<$ return\+\_\+type(first\+\_\+arg\+\_\+type, arg\+\_\+types...)$>$ f)
+\begin{DoxyCompactList}\small\item\em recursive argument reduction to get argument type (std\+::function) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_a7c5e99a65ca97cd62a356f5510d11fc9}\label{structfunction__typeinfo_a7c5e99a65ca97cd62a356f5510d11fc9}} 
+{\footnotesize template$<$typename return\+\_\+type , typename first\+\_\+arg\+\_\+type , typename... arg\+\_\+types$>$ }\\static auto {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (return\+\_\+type($\ast$)(const first\+\_\+arg\+\_\+type \&, arg\+\_\+types...))
+\begin{DoxyCompactList}\small\item\em recursive argument reduction (const reference) to get argument type (fct pointer) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_ad09eaac6dcf6b76a240e70f82ea6e72b}\label{structfunction__typeinfo_ad09eaac6dcf6b76a240e70f82ea6e72b}} 
+{\footnotesize template$<$typename fobject , typename return\+\_\+type , typename first\+\_\+arg\+\_\+type , typename... arg\+\_\+types$>$ }\\static auto {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (return\+\_\+type(fobject\+::$\ast$)(const first\+\_\+arg\+\_\+type \&, arg\+\_\+types...))
+\begin{DoxyCompactList}\small\item\em recursive argument reduction (const reference) to get argument type (fct object) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_acab0d861550b6b0cc8b3ff6946cc73fb}\label{structfunction__typeinfo_acab0d861550b6b0cc8b3ff6946cc73fb}} 
+{\footnotesize template$<$typename return\+\_\+type , typename first\+\_\+arg\+\_\+type , typename... arg\+\_\+types$>$ }\\static auto {\bfseries get\+\_\+concrete\+\_\+argument\+\_\+type} (std\+::function$<$ return\+\_\+type(const first\+\_\+arg\+\_\+type \&, arg\+\_\+types...)$>$ f)
+\begin{DoxyCompactList}\small\item\em recursive argument reduction (const reference) to get argument type (fct object) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_a1493c96a0a18a5a100a79ec5179293d8}\label{structfunction__typeinfo_a1493c96a0a18a5a100a79ec5179293d8}} 
+{\footnotesize template$<$typename return\+\_\+type , typename... arg\+\_\+types$>$ }\\static auto {\bfseries get\+\_\+concrete\+\_\+return\+\_\+type} (return\+\_\+type($\ast$)(arg\+\_\+types...))
+\begin{DoxyCompactList}\small\item\em get function return type for function pointer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_ab6d0480e5ae3f5844eeb6626c94a3586}\label{structfunction__typeinfo_ab6d0480e5ae3f5844eeb6626c94a3586}} 
+{\footnotesize template$<$typename fobject , typename return\+\_\+type , typename... arg\+\_\+types$>$ }\\static auto {\bfseries get\+\_\+concrete\+\_\+return\+\_\+type} (return\+\_\+type(fobject\+::$\ast$)(arg\+\_\+types...))
+\begin{DoxyCompactList}\small\item\em get function return type for function object \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structfunction__typeinfo_ab41f7d7775f08306524f8ec666940bc6}\label{structfunction__typeinfo_ab41f7d7775f08306524f8ec666940bc6}} 
+{\footnotesize template$<$typename return\+\_\+type , typename... arg\+\_\+types$>$ }\\static \mbox{\hyperlink{classConcreteType}{Concrete\+Type}}$<$ \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} $>$ {\bfseries get\+\_\+concrete\+\_\+return\+\_\+type} (std\+::function$<$ return\+\_\+type(arg\+\_\+types...)$>$ f)
+\begin{DoxyCompactList}\small\item\em get function return type for std\+::function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}}$>$\newline
+requires (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::is\+\_\+\+Type\+Abstraction\+Adapter}})\newline
+struct function\+\_\+typeinfo$<$ type\+\_\+abstraction\+\_\+adapter\+\_\+t $>$}
+helper struct to get type of function parameters and return value 
+
+Definition at line \mbox{\hyperlink{function__abstraction_8hpp_source_l00011}{11}} of file \mbox{\hyperlink{function__abstraction_8hpp_source}{function\+\_\+abstraction.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/function\+\_\+abstraction.\+hpp\end{DoxyCompactItemize}

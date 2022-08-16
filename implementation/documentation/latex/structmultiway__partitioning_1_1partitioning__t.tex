@@ -1,0 +1,99 @@
+\hypertarget{structmultiway__partitioning_1_1partitioning__t}{}\doxysection{multiway\+\_\+partitioning\texorpdfstring{$<$}{<} data\+\_\+t, score\+\_\+t, sort\+\_\+func\+\_\+t \texorpdfstring{$>$}{>}\+::partitioning\+\_\+t Struct Reference}
+\label{structmultiway__partitioning_1_1partitioning__t}\index{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$::partitioning\_t@{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$::partitioning\_t}}
+
+
+a simple partition containing multiple subsets  
+
+
+
+
+{\ttfamily \#include $<$multiway\+\_\+partitioning.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a88f387f7d85803cd4ed6f48e6cba6ee9}{difference}} (std\+::size\+\_\+t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\+\_\+partitions}}) const
+\begin{DoxyCompactList}\small\item\em difference between minimum and maximum sum of scores in any subset contained \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_a48e0f886df732482134a3005d39abfe3}\label{structmultiway__partitioning_1_1partitioning__t_a48e0f886df732482134a3005d39abfe3}} 
+{\bfseries partitioning\+\_\+t} (std\+::size\+\_\+t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\+\_\+partitions}})
+\begin{DoxyCompactList}\small\item\em construct an empty partition \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_a76704ff0650c011179e6326a38289f5e}\label{structmultiway__partitioning_1_1partitioning__t_a76704ff0650c011179e6326a38289f5e}} 
+{\bfseries partitioning\+\_\+t} (std\+::size\+\_\+t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\+\_\+partitions}}, auto first\+\_\+subset)
+\begin{DoxyCompactList}\small\item\em construct a partition with one subset \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_ad0812145a00a8b64a236e3227f7a7231}\label{structmultiway__partitioning_1_1partitioning__t_ad0812145a00a8b64a236e3227f7a7231}} 
+void {\bfseries merge\+\_\+parts} (\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\+\_\+t}} \&other, std\+::size\+\_\+t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\+\_\+partitions}}, auto cmp\+\_\+function)
+\begin{DoxyCompactList}\small\item\em merge two partitions \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_aeee86291c83253c3326ac1becec9b406}\label{structmultiway__partitioning_1_1partitioning__t_aeee86291c83253c3326ac1becec9b406}} 
+void {\bfseries sort} (auto \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\+\_\+func}})
+\begin{DoxyCompactList}\small\item\em sort subsets in this partition by the sum of scores of their elements \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_a1bdd3463d674c838b1ec6e1c1c9a3557}\label{structmultiway__partitioning_1_1partitioning__t_a1bdd3463d674c838b1ec6e1c1c9a3557}} 
+void {\bfseries final\+\_\+sort} (auto \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\+\_\+func}})
+\begin{DoxyCompactList}\small\item\em modified sort to consider set size and sum of scores in each subset \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}\label{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}} 
+std\+::vector$<$ \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\+\_\+t}} $>$ {\bfseries subsets}
+\begin{DoxyCompactList}\small\item\em subsets of this partition \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}\label{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}} 
+score\+\_\+t {\bfseries min\+\_\+sum}
+\begin{DoxyCompactList}\small\item\em minimal sum of entry scores in any subset contained \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}\label{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}} 
+score\+\_\+t {\bfseries max\+\_\+sum}
+\begin{DoxyCompactList}\small\item\em maximum sum of entry scores in any subset contained \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_a5548c965351b7e21dee08d181b80cb62}\label{structmultiway__partitioning_1_1partitioning__t_a5548c965351b7e21dee08d181b80cb62}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\+\_\+t}} \&p)
+\begin{DoxyCompactList}\small\item\em print a partition to std\+::ostream \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename data\+\_\+t, typename score\+\_\+t = std\+::size\+\_\+t, class sort\+\_\+func\+\_\+t = std\+::greater$<$score\+\_\+t$>$$>$\newline
+struct multiway\+\_\+partitioning$<$ data\+\_\+t, score\+\_\+t, sort\+\_\+func\+\_\+t $>$\+::partitioning\+\_\+t}
+a simple partition containing multiple subsets 
+
+Definition at line \mbox{\hyperlink{multiway__partitioning_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{multiway__partitioning_8hpp_source}{multiway\+\_\+partitioning.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_a88f387f7d85803cd4ed6f48e6cba6ee9}\label{structmultiway__partitioning_1_1partitioning__t_a88f387f7d85803cd4ed6f48e6cba6ee9}} 
+\index{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$::partitioning\_t@{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$::partitioning\_t}!difference@{difference}}
+\index{difference@{difference}!multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$::partitioning\_t@{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$::partitioning\_t}}
+\doxysubsubsection{\texorpdfstring{difference()}{difference()}}
+{\footnotesize\ttfamily template$<$typename data\+\_\+t , typename score\+\_\+t  = std\+::size\+\_\+t, class sort\+\_\+func\+\_\+t  = std\+::greater$<$score\+\_\+t$>$$>$ \\
+auto \mbox{\hyperlink{classmultiway__partitioning}{multiway\+\_\+partitioning}}$<$ data\+\_\+t, score\+\_\+t, sort\+\_\+func\+\_\+t $>$\+::partitioning\+\_\+t\+::difference (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{num\+\_\+partitions }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+difference between minimum and maximum sum of scores in any subset contained 
+
+if partition size is less than the target number of partitions its required by the algorithm to assume subsets with size zero are contained 
+
+Definition at line \mbox{\hyperlink{multiway__partitioning_8hpp_source_l00101}{101}} of file \mbox{\hyperlink{multiway__partitioning_8hpp_source}{multiway\+\_\+partitioning.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_l00102}00102             \{}
+\DoxyCodeLine{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_l00103}00103                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.size() < \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}) \{}
+\DoxyCodeLine{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_l00104}00104                     \textcolor{keywordflow}{return} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}} -\/ std::min(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}}, (std::size\_t) 0);}
+\DoxyCodeLine{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_l00105}00105                 \}}
+\DoxyCodeLine{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_l00106}00106                 \textcolor{keywordflow}{return} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}} -\/ \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}};}
+\DoxyCodeLine{\Hypertarget{structmultiway__partitioning_1_1partitioning__t_l00107}00107             \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structmultiway__partitioning_1_1partitioning__t_a88f387f7d85803cd4ed6f48e6cba6ee9_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/multiway\+\_\+partitioning.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,95 @@
+\hypertarget{classmarcov__chain__state}{}\doxysection{marcov\+\_\+chain\+\_\+state\texorpdfstring{$<$}{<} cfg\+\_\+vector\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classmarcov__chain__state}\index{marcov\_chain\_state$<$ cfg\_vector\_t $>$@{marcov\_chain\_state$<$ cfg\_vector\_t $>$}}
+
+
+represents a single state of a markov chain  
+
+
+
+
+{\ttfamily \#include $<$mcmc.\+hpp$>$}
+
+
+
+Collaboration diagram for marcov\+\_\+chain\+\_\+state\texorpdfstring{$<$}{<} cfg\+\_\+vector\+\_\+t \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classmarcov__chain__state__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmarcov__chain__state_add183fa45895a753c6022b2719015552}\label{classmarcov__chain__state_add183fa45895a753c6022b2719015552}} 
+using {\bfseries cfg\+\_\+vector\+\_\+type} = \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em type of the config vector used \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a0f476344fe1092c81b91bbdd89e495fd}\label{classmarcov__chain__state_a0f476344fe1092c81b91bbdd89e495fd}} 
+{\bfseries marcov\+\_\+chain\+\_\+state} (std\+::size\+\_\+t cfg\+\_\+vector\+\_\+length=0)
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a50432859cc717b0d138cefac41581c8d}\label{classmarcov__chain__state_a50432859cc717b0d138cefac41581c8d}} 
+{\bfseries marcov\+\_\+chain\+\_\+state} (std\+::size\+\_\+t cfg\+\_\+vector\+\_\+length, auto \mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\+\_\+engine}})
+\begin{DoxyCompactList}\small\item\em normal constructor to set cfg vector length and random number engine \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a2c576942b6c679ba97c4ba5e85ac9cb7}\label{classmarcov__chain__state_a2c576942b6c679ba97c4ba5e85ac9cb7}} 
+{\bfseries marcov\+\_\+chain\+\_\+state} (std\+::size\+\_\+t \mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}, \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} \&\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\+\_\+vector}}, prn\+\_\+engine\+\_\+t \&\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\+\_\+engine}})
+\begin{DoxyCompactList}\small\item\em constructor to set all class members \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a827e5fd3b2a123d24f6571c94f023730}\label{classmarcov__chain__state_a827e5fd3b2a123d24f6571c94f023730}} 
+{\bfseries marcov\+\_\+chain\+\_\+state} (const \mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a8cde904bc87e829a6583f77bd0c5cad9}\label{classmarcov__chain__state_a8cde904bc87e829a6583f77bd0c5cad9}} 
+{\bfseries marcov\+\_\+chain\+\_\+state} (\mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}} \&\&other)
+\begin{DoxyCompactList}\small\item\em movement constructor using swap \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a54c7dcc8a347fe86282de842da25aaf8}\label{classmarcov__chain__state_a54c7dcc8a347fe86282de842da25aaf8}} 
+\mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}} \& {\bfseries operator=} (const \mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}}$<$ \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} $>$ \&other)
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_ad918acfa400cd30d51d431f285e9efb8}\label{classmarcov__chain__state_ad918acfa400cd30d51d431f285e9efb8}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}}$<$ \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} $>$ \&rhs) const
+\begin{DoxyCompactList}\small\item\em equality test \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a8682255f1a8d4f736f07f8708b7dca40}\label{classmarcov__chain__state_a8682255f1a8d4f736f07f8708b7dca40}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}}$<$ \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} $>$ \&rhs) const
+\begin{DoxyCompactList}\small\item\em inequality test \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a09602b3bda1b008ca4e1a008e2c63cde}\label{classmarcov__chain__state_a09602b3bda1b008ca4e1a008e2c63cde}} 
+std\+::string {\bfseries get\+\_\+prn\+\_\+engine\+\_\+as\+\_\+string} () const
+\begin{DoxyCompactList}\small\item\em function to convert pseudo random number into string \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a48cd3148382a06dc1e4da53c0526ad33}\label{classmarcov__chain__state_a48cd3148382a06dc1e4da53c0526ad33}} 
+void {\bfseries set\+\_\+prn\+\_\+engine\+\_\+from\+\_\+string} (auto prn\+\_\+state)
+\begin{DoxyCompactList}\small\item\em function to restore pseudo random number from string \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}\label{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}} 
+std\+::size\+\_\+t {\bfseries iteration}
+\begin{DoxyCompactList}\small\item\em current iteration \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}\label{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}} 
+\mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} {\bfseries cfg\+\_\+vector}
+\begin{DoxyCompactList}\small\item\em configuration vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}\label{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}} 
+prn\+\_\+engine\+\_\+t {\bfseries prn\+\_\+engine}
+\begin{DoxyCompactList}\small\item\em pseudo random number engine (state) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmarcov__chain__state_ac9493fa3f37bfd6ab0a8a6e993af273d}\label{classmarcov__chain__state_ac9493fa3f37bfd6ab0a8a6e993af273d}} 
+void {\bfseries swap} (\mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}}$<$ \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} $>$ \&l, \mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}}$<$ \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} $>$ \&r)
+\begin{DoxyCompactList}\small\item\em swap function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmarcov__chain__state_a96bb3b32f0a68442862dc09095701f17}\label{classmarcov__chain__state_a96bb3b32f0a68442862dc09095701f17}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classmarcov__chain__state}{marcov\+\_\+chain\+\_\+state}}$<$ \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} $>$ \&mcs)
+\begin{DoxyCompactList}\small\item\em ostream operator to print state \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}$>$\newline
+class marcov\+\_\+chain\+\_\+state$<$ cfg\+\_\+vector\+\_\+t $>$}
+represents a single state of a markov chain 
+
+Definition at line \mbox{\hyperlink{mcmc_8hpp_source_l00015}{15}} of file \mbox{\hyperlink{mcmc_8hpp_source}{mcmc.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/mcmc.\+hpp\end{DoxyCompactItemize}

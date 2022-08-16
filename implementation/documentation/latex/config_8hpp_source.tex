@@ -1,0 +1,49 @@
+\hypertarget{config_8hpp_source}{}\doxysection{config.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef CONFIG\_HPP}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define CONFIG\_HPP}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00010}00010 \textcolor{keyword}{using} prec\_t = double;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00011}00011 \textcolor{keyword}{static\_assert}(std::numeric\_limits<prec\_t>::has\_quiet\_NaN);}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00013}00013 \textcolor{comment}{// typedef std::mt19937 prn\_engine\_t;}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00014}00014 \textcolor{comment}{// using seed\_t = seed\_type<prn\_engine\_t::state\_size, uint32\_t>;}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00017}00017 \textcolor{keyword}{typedef} std::mt19937 prn\_engine\_t;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00018}00018 \textcolor{comment}{// using seed\_t = seed\_type<prn\_engine\_t::state\_size, uint32\_t>;}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00019}00019 \textcolor{comment}{// using seed\_type\_generator\_t = seed\_type\_generator<typename seed\_t::base\_t>;}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00022}00022 \textcolor{comment}{// regarding probsat}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00024}00024 \textcolor{comment}{}\textcolor{keyword}{const} std::string probsat\_cmd}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00025}00025     = \textcolor{stringliteral}{"{}./probSAT/probSAT -\/-\/fct 0 -\/-\/eps 0.9 -\/-\/cb 2.06 -\/-\/runs 1"{}};}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00028}00028 \textcolor{keyword}{constexpr} uint64\_t probsat\_max\_flips = 20'000'000;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00031}00031 \textcolor{keyword}{constexpr} \textcolor{keyword}{const} std::chrono::minutes probsat\_max\_exec\_time\{1\};}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00034}00034 \textcolor{keyword}{constexpr} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} interpret\_timeout\_as\_max\_flips\_reached = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00037}00037 \textcolor{keyword}{using} probsat\_seed\_t = int32\_t;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00039}00039 \textcolor{comment}{// regarding the statistical acceptance computation}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00041}00041 \textcolor{comment}{}\textcolor{keyword}{extern} \textcolor{keywordtype}{double} cfg\_sac\_confidence\_interval\_scaling\_factor;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00044}00044 \textcolor{keyword}{extern} \textcolor{keywordtype}{double} cfg\_sac\_testniveau;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00047}00047 \textcolor{keyword}{extern} std::size\_t cfg\_sac\_num\_initial\_values;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00050}00050 \textcolor{keyword}{extern} std::size\_t cfg\_sac\_num\_additional\_values\_per\_iteration;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00053}00053 \textcolor{keyword}{extern} std::size\_t cfg\_sac\_max\_iterations;}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00055}00055 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{config_8hpp_source_l00056}00056 }
+
+\end{DoxyCode}

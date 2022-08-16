@@ -1,0 +1,376 @@
+\hypertarget{multiway__partitioning_8hpp_source}{}\doxysection{multiway\+\_\+partitioning.\+hpp}
+\label{multiway__partitioning_8hpp_source}\index{distributed\_computation/multiway\_partitioning.hpp@{distributed\_computation/multiway\_partitioning.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef MULTIWAY\_PARTITIONING\_HPP}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define MULTIWAY\_PARTITIONING\_HPP}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00019}00019 \textcolor{keyword}{template}<}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00020}00020     \textcolor{keyword}{typename} data\_t,}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00021}00021     \textcolor{keyword}{typename} score\_t = std::size\_t,}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00022}00022     \textcolor{keyword}{class }sort\_func\_t = std::greater<score\_t>>}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00023}\mbox{\hyperlink{classmultiway__partitioning}{00023}} \textcolor{keyword}{class }\mbox{\hyperlink{classmultiway__partitioning}{multiway\_partitioning}}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00025}00025     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00028}\mbox{\hyperlink{structmultiway__partitioning_1_1entry__t}{00028}}         \textcolor{keyword}{struct }\mbox{\hyperlink{structmultiway__partitioning_1_1entry__t}{entry\_t}} \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00030}\mbox{\hyperlink{structmultiway__partitioning_1_1entry__t_a7132295b99466f25a1930c73ec21cf03}{00030}}             score\_t \mbox{\hyperlink{structmultiway__partitioning_1_1entry__t_a7132295b99466f25a1930c73ec21cf03}{score}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00033}\mbox{\hyperlink{structmultiway__partitioning_1_1entry__t_a437d3fe3d63ad72ea1119fb61977b473}{00033}}             data\_t \mbox{\hyperlink{structmultiway__partitioning_1_1entry__t_a437d3fe3d63ad72ea1119fb61977b473}{data}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00034}00034         \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00038}\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{00038}}         \textcolor{keyword}{struct }\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00041}\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{00041}}             score\_t \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00042}00042             }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00044}\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{00044}}             std::list<entry\_t> \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00047}\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_ac4af1db98dc26c6b1e8d04dbfda940a0}{00047}}             \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_ac4af1db98dc26c6b1e8d04dbfda940a0}{subset\_t}}() : \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}}(0), \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}() \{\}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00050}\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a69dbe026dd6be32d9b962da7b987e795}{00050}}             \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a69dbe026dd6be32d9b962da7b987e795}{subset\_t}}(\mbox{\hyperlink{structmultiway__partitioning_1_1entry__t}{entry\_t}} first\_entry) :}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00051}00051                 \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}}(first\_entry.score), \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}(\{first\_entry\}) \{\}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00054}\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a2b4f4bac307a240b144889bf76bb6bbe}{00054}}             \textcolor{keywordtype}{void} \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a2b4f4bac307a240b144889bf76bb6bbe}{merge\_subsets}}(\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \&other, \textcolor{keyword}{auto} cmp\_function)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00055}00055             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00056}00056                 \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}} += other.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00057}00057                 \textcolor{comment}{// merge\_two\_lists(elements, other.elements);}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00058}00058                 \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.sort(cmp\_function);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00059}00059                 other.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.sort(cmp\_function);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00060}00060                 \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.merge(other.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}, cmp\_function);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00061}00061             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00064}\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a725befd994c2c19968fefd7b209543f9}{00064}}             \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a725befd994c2c19968fefd7b209543f9}{operator<<}}(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00065}00065                 std::ostream \&os, \textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \&s)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00066}00066             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00067}00067                 os << \textcolor{stringliteral}{"{}\{"{}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00068}00068                 \textcolor{keywordflow}{if} (!s.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.empty()) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00069}00069                     \textcolor{keywordtype}{bool} first = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00070}00070                     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} el : s.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00071}00071                         \textcolor{keywordflow}{if} (!first) \{ os << \textcolor{stringliteral}{"{}, "{}}; \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00072}00072                         os << el.score;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00073}00073                         first = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00074}00074                     \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00075}00075                 \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00076}00076                 os << \textcolor{stringliteral}{"{}\} [S: "{}} << s.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00077}00077                     << \textcolor{stringliteral}{"{}, l: "{}} << s.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.size() << \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00078}00078                 \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00079}00079             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00080}00080         \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00084}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{00084}}         \textcolor{keyword}{struct }\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00086}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{00086}}             std::vector<subset\_t> \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}; \textcolor{comment}{// number of partitions = subset.size}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00089}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{00089}}             score\_t \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00092}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{00092}}             score\_t \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00101}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a88f387f7d85803cd4ed6f48e6cba6ee9}{00101}}             \textcolor{keyword}{auto} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a88f387f7d85803cd4ed6f48e6cba6ee9}{difference}}(std::size\_t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}})\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00102}00102 \textcolor{keyword}{            }\{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00103}00103                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.size() < \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00104}00104                     \textcolor{keywordflow}{return} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}} -\/ std::min(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}}, (std::size\_t) 0);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00105}00105                 \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00106}00106                 \textcolor{keywordflow}{return} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}} -\/ \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00107}00107             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00110}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a48e0f886df732482134a3005d39abfe3}{00110}}             \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a48e0f886df732482134a3005d39abfe3}{partitioning\_t}}(std::size\_t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}})}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00111}00111                 : \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}(), \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}}(0), \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}}(0)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00112}00112             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00113}00113                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.reserve(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}});}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00114}00114             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00117}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a76704ff0650c011179e6326a38289f5e}{00117}}             \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a76704ff0650c011179e6326a38289f5e}{partitioning\_t}}(std::size\_t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}, \textcolor{keyword}{auto} first\_subset) :}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00118}00118                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}(),}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00119}00119                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}}(std::min((score\_t) 0, first\_subset.sum)),}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00120}00120                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}}(std::max((score\_t) 0, first\_subset.sum))}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00121}00121             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00122}00122                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.reserve(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}});}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00123}00123                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.push\_back(first\_subset);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00124}00124             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00127}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ad0812145a00a8b64a236e3227f7a7231}{00127}}             \textcolor{keywordtype}{void} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ad0812145a00a8b64a236e3227f7a7231}{merge\_parts}}(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00128}00128                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} \&other,}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00129}00129                 std::size\_t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}},}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00130}00130                 \textcolor{keyword}{auto} cmp\_function)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00131}00131             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00132}00132                 \textcolor{comment}{// simulate balanced partitioning, might be suboptimal!}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00133}00133                 \textcolor{keyword}{auto} subset\_cmp\_f = [](\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \&l, \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \&r) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00134}00134                     \textcolor{keywordflow}{if} (l.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.size() != r.elements.size()) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00135}00135                         \textcolor{keywordflow}{return} l.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.size() > r.elements.size();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00136}00136                     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00137}00137                         \textcolor{keywordflow}{return} l.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}} < r.sum;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00138}00138                     \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00139}00139                 \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00141}00141                 std::sort(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.begin(), \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.end(), subset\_cmp\_f);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00142}00142                 std::sort(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00143}00143                     other.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.begin(),}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00144}00144                     other.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.end(),}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00145}00145                     subset\_cmp\_f);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00146}00146 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00147}00147                 std::size\_t ossize = other.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.size();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00148}00148                 std::size\_t tssize = \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.size();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00149}00149                 std::size\_t end =}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00150}00150                     std::min(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}, \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.size() + ossize);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00151}00151                 std::size\_t start = end -\/ ossize;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00152}00152                 std::size\_t border = std::min(end, tssize);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00154}00154                 assert(other.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.size() <= end);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00155}00155                 assert(other.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.size() >= end-\/start);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00156}00156                 assert(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.size() >= border);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00158}00158                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.resize(end);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00159}00159                 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00160}00160                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}} = std::numeric\_limits<score\_t>::max();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00161}00161                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}} = std::numeric\_limits<score\_t>::min();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00163}00163                 \textcolor{keywordflow}{for} (std::size\_t i = 0; i < start; i++) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00164}00164                     \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}} = std::min(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}}, \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[i].sum);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00165}00165                     \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}} = std::max(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}}, \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[i].sum);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00166}00166                 \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00168}00168                 \textcolor{keywordflow}{for} (std::size\_t i = start; i < border; i++) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00169}00169                     std::size\_t other\_i = end -\/ i -\/ 1;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00170}00170                     \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[i].merge\_subsets(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00171}00171                         other.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[other\_i], cmp\_function);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00172}00172                     \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}} = std::min(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}}, \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[i].sum);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00173}00173                     \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}} = std::max(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}}, \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[i].sum);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00174}00174                 \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00176}00176                 \textcolor{keywordflow}{for} (std::size\_t i = border; i < end; i++) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00177}00177                     std::size\_t other\_i = end -\/ i -\/ 1;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00178}00178                     \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[i] = other.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[other\_i];}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00179}00179                     \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}} = std::min(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a973b41b52915340c97e09bb5aeeed77e}{min\_sum}}, \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[i].sum);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00180}00180                     \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}} = std::max(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ae4ddd9a59a36040397db2114b7039066}{max\_sum}}, \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}[i].sum);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00181}00181                 \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00182}00182             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00185}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_aeee86291c83253c3326ac1becec9b406}{00185}}             \textcolor{keywordtype}{void} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_aeee86291c83253c3326ac1becec9b406}{sort}}(\textcolor{keyword}{auto} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}})}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00186}00186             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00187}00187                 \textcolor{keyword}{auto} cmp\_f =}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00188}00188                     [\mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}](\textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \&l, \textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \&r)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00189}00189                 \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00190}00190                     \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}(l.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}}, r.sum);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00191}00191                 \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00193}00193                 std::sort(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.begin(), \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.end(), cmp\_f);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00194}00194             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00197}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a1bdd3463d674c838b1ec6e1c1c9a3557}{00197}}             \textcolor{keywordtype}{void} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a1bdd3463d674c838b1ec6e1c1c9a3557}{final\_sort}}(\textcolor{keyword}{auto} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}})}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00198}00198             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00199}00199                 \textcolor{keyword}{auto} cmp\_f =}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00200}00200                     [\mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}](\textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \&l, \textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}} \&r)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00201}00201                 \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00202}00202                     \textcolor{keywordflow}{if} (l.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.size() != r.elements.size()) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00203}00203                         \textcolor{keywordflow}{return} l.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}{elements}}.size() < r.elements.size();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00204}00204                     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00205}00205                         \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}(l.\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}{sum}}, r.sum);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00206}00206                     \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00207}00207                 \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00209}00209                 std::sort(\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.begin(), \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.end(), cmp\_f);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00210}00210             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00213}\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a5548c965351b7e21dee08d181b80cb62}{00213}}             \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a5548c965351b7e21dee08d181b80cb62}{operator<<}}(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00214}00214                 std::ostream \&os, \textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} \&p)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00215}00215             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00216}00216                 os << \textcolor{stringliteral}{"{}("{}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00217}00217                 \textcolor{keywordtype}{bool} first = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00218}00218                 \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} s : p.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00219}00219                     \textcolor{keywordflow}{if} (!first) \{ os << \textcolor{stringliteral}{"{}; "{}}; \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00220}00220                     os << s;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00221}00221                     first = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00222}00222                 \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00223}00223                 \textcolor{comment}{// warning: capacity should be correct,}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00224}00224                 \textcolor{comment}{// but num\_partitions is not available}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00225}00225                 os << \textcolor{stringliteral}{"{}) [D: "{}}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00226}00226                     << p.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a88f387f7d85803cd4ed6f48e6cba6ee9}{difference}}(p.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a780f99a0af0b3d745bc5af057693ef87}{subsets}}.capacity()) << \textcolor{stringliteral}{"{}?]"{}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00227}00227                 \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00228}00228             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00229}00229         \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00232}\mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{00232}}         std::list<partitioning\_t> \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00235}\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{00235}}         std::size\_t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00238}\mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{00238}}         sort\_func\_t \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00239}00239 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00241}\mbox{\hyperlink{classmultiway__partitioning_aea32551bd6b86d43c0a29f5a8e64ad92}{00241}}         \mbox{\hyperlink{classmultiway__partitioning_aea32551bd6b86d43c0a29f5a8e64ad92}{multiway\_partitioning}}(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00242}00242             std::size\_t \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}},}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00243}00243             \textcolor{keyword}{auto} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}} = std::greater<score\_t>()}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00244}00244         ) :}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00245}00245             \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}(),}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00246}00246             \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}),}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00247}00247             \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}(\mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}})}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00248}00248         \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00249}00249             assert(1 < \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}});}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00250}00250         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00251}00251 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00253}\mbox{\hyperlink{classmultiway__partitioning_a218865d6ef3f0648b7760a92f959ea84}{00253}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmultiway__partitioning_a218865d6ef3f0648b7760a92f959ea84}{reset}}(std::size\_t n\_partitions) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00254}00254             \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}} = n\_partitions;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00255}00255             \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.clear();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00256}00256         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00257}00257 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00259}\mbox{\hyperlink{classmultiway__partitioning_acf8333cb2916d8cd1ac1cab4e1346dc9}{00259}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmultiway__partitioning_acf8333cb2916d8cd1ac1cab4e1346dc9}{add}}(\textcolor{keyword}{auto} score, \textcolor{keyword}{auto} data) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00260}00260             \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.push\_back(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00261}00261                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}}(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}, \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\_t}}(\{score, data\})));}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00262}00262         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00265}\mbox{\hyperlink{classmultiway__partitioning_af5edd535aa8780729463ed68bdee89cc}{00265}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmultiway__partitioning_af5edd535aa8780729463ed68bdee89cc}{sort}}()}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00266}00266         \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00267}00267             \textcolor{keyword}{auto} cmp\_f =}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00268}00268                 [\textcolor{keyword}{this}](\textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} \&l, \textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} \&r)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00269}00269             \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00270}00270                 \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00271}00271                     l.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_a88f387f7d85803cd4ed6f48e6cba6ee9}{difference}}(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}),}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00272}00272                     r.difference(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}));}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00273}00273             \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00274}00274 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00275}00275             \textcolor{comment}{// std::sort(dataset.begin(), dataset.end(), cmp\_f);}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00276}00276             \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.sort(cmp\_f);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00277}00277         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00278}00278         }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00280}\mbox{\hyperlink{classmultiway__partitioning_a6a3c0f9fdc3dde72d4e10a38de711325}{00280}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmultiway__partitioning_a6a3c0f9fdc3dde72d4e10a38de711325}{is\_finished}}() \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00281}00281             \textcolor{keywordflow}{return} 1 == \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.size();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00282}00282         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00283}00283 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00289}\mbox{\hyperlink{classmultiway__partitioning_a6b21f8bbf8cb0220f71721a056919978}{00289}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmultiway__partitioning_a6b21f8bbf8cb0220f71721a056919978}{iterate}}()}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00290}00290         \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00291}00291             \textcolor{keywordflow}{if} (1 < \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.size()) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00292}00292                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} s1 = \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.front();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00293}00293                 \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.pop\_front();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00294}00294                 \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} s2 = \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.front();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00295}00295                 \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.pop\_front();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00296}00296 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00297}00297                 \textcolor{keyword}{auto} cmp\_entry\_f =}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00298}00298                     [\textcolor{keyword}{this}](\textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1entry__t}{entry\_t}} \&l, \textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1entry__t}{entry\_t}} \&r)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00299}00299                 \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00300}00300                     \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}(l.\mbox{\hyperlink{structmultiway__partitioning_1_1entry__t_a7132295b99466f25a1930c73ec21cf03}{score}}, r.score);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00301}00301                 \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00303}00303                 s1.\mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t_ad0812145a00a8b64a236e3227f7a7231}{merge\_parts}}(s2, \mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}, cmp\_entry\_f);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00304}00304                 std::list<partitioning\_t> nel = \{ s1 \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00305}00305 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00306}00306                 \textcolor{keyword}{auto} cmp\_f =}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00307}00307                 [\textcolor{keyword}{this}](\textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} \&l, \textcolor{keyword}{const} \mbox{\hyperlink{structmultiway__partitioning_1_1partitioning__t}{partitioning\_t}} \&r)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00308}00308                 \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00309}00309                     \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6bc947e60c56181d1936558d960d454d}{sort\_func}}(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00310}00310                         l.difference(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}),}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00311}00311                         r.difference(\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}}));}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00312}00312                 \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00313}00313                 \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.merge(nel, cmp\_f);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00314}00314             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00315}00315 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00316}00316             \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_a6a3c0f9fdc3dde72d4e10a38de711325}{is\_finished}}();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00317}00317         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00318}00318         }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00320}\mbox{\hyperlink{classmultiway__partitioning_a5bbd1f46f7d8c5ecf5ddcf45fb13c959}{00320}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmultiway__partitioning_a5bbd1f46f7d8c5ecf5ddcf45fb13c959}{partitionate}}() \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00321}00321             \textcolor{keywordflow}{while} (\textcolor{keyword}{false} == \mbox{\hyperlink{classmultiway__partitioning_a6b21f8bbf8cb0220f71721a056919978}{iterate}}()) \{\}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00322}00322         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00323}00323         }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00325}\mbox{\hyperlink{classmultiway__partitioning_a193820becbf10a5ff1987ba9522b0ebe}{00325}}         \textcolor{keyword}{auto} \mbox{\hyperlink{classmultiway__partitioning_a193820becbf10a5ff1987ba9522b0ebe}{result}}() \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00326}00326             assert(\mbox{\hyperlink{classmultiway__partitioning_a6a3c0f9fdc3dde72d4e10a38de711325}{is\_finished}}());}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00327}00327             \textcolor{keywordflow}{return} \mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}.front();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00328}00328         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00329}00329 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00331}\mbox{\hyperlink{classmultiway__partitioning_a3b6cab159090a1070637d5384d7205d7}{00331}}         \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{classmultiway__partitioning_a3b6cab159090a1070637d5384d7205d7}{operator<<}}(}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00332}00332             std::ostream \&os, \textcolor{keyword}{const} \mbox{\hyperlink{classmultiway__partitioning}{multiway\_partitioning}} \&mp)}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00333}00333         \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00334}00334             os << \textcolor{stringliteral}{"{}multiway\_partitioning for "{}}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00335}00335                 << mp.\mbox{\hyperlink{classmultiway__partitioning_a8ccf96317bdb3a44b4bfcf09ff0bf825}{num\_partitions}} << \textcolor{stringliteral}{"{} partitions: "{}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00336}00336 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00337}00337             os << \textcolor{stringliteral}{"{}\{\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00338}00338             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} p : mp.\mbox{\hyperlink{classmultiway__partitioning_ac22d86e8eb17e2264df5e15540e23fa1}{dataset}}) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00339}00339                 os << \textcolor{stringliteral}{"{}\(\backslash\)t"{}} << p << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00340}00340             \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00341}00341             os << \textcolor{stringliteral}{"{}\}"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00342}00342 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00343}00343             \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00344}00344         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00345}00345 \};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00346}00346 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00348}00348 \textcolor{keywordtype}{void} test\_multiway\_partitioning()}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00349}00349 \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00350}00350     \textcolor{keyword}{const} \textcolor{keywordtype}{bool} print\_steps\_in\_between = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00351}00351 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00352}00352     \textcolor{comment}{// config for first example}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00353}00353     std::size\_t num\_elements = 11;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00354}00354     std::size\_t num\_partitions = 3;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00355}00355 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00356}00356     \textcolor{comment}{// followed by iterations-\/1 random tests}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00357}00357     std::size\_t iterations = 1; }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00358}00358 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00359}00359     \textcolor{comment}{// random test configuration}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00360}00360     std::mt19937 prng(42);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00361}00361     std::uniform\_int\_distribution<std::size\_t> udistr(1, 9);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00362}00362     std::uniform\_int\_distribution<std::size\_t> nedistr(10, 100);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00363}00363     std::uniform\_int\_distribution<std::size\_t> npdistr(2, 8);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00364}00364 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00365}00365     \textcolor{keywordflow}{for} (std::size\_t it = 0; it < iterations; it++) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00366}00366         \textcolor{keywordflow}{if} (0 < it) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00367}00367             num\_elements = nedistr(prng);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00368}00368             num\_partitions = npdistr(prng);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00369}00369         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00370}00370 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00371}00371         std::cout << \textcolor{stringliteral}{"{}sorting: "{}}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00372}00372             << num\_elements << \textcolor{stringliteral}{"{} elements into "{}}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00373}00373             << num\_partitions << \textcolor{stringliteral}{"{} partitions"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00374}00374         \textcolor{keyword}{using} sort\_t = std::greater<std::size\_t>;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00375}00375         \textcolor{comment}{// using sort\_t = std::less<std::size\_t>;}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00376}00376         \mbox{\hyperlink{classmultiway__partitioning}{multiway\_partitioning<std::size\_t, std::size\_t, sort\_t>}}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00377}00377             mp(num\_partitions, sort\_t());}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00378}00378 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00379}00379         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < num\_elements; i++) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00380}00380             std::size\_t s = udistr(prng);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00381}00381             mp.add(s, i);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00382}00382         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00383}00383 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00384}00384         mp.sort();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00385}00385 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00386}00386         std::cout << mp;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00387}00387 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00388}00388         \textcolor{keywordflow}{if} \textcolor{keyword}{constexpr} (print\_steps\_in\_between) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00389}00389             \textcolor{keywordtype}{bool} is\_finished;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00390}00390             \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00391}00391                 is\_finished = mp.iterate();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00392}00392                 std::cout << mp;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00393}00393             \} \textcolor{keywordflow}{while} (!is\_finished);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00394}00394             \textcolor{comment}{// std::cout << mp;}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00395}00395         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00396}00396             mp.partitionate();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00397}00397         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00398}00398 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00399}00399         \textcolor{keyword}{auto} result = mp.result();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00400}00400         \textcolor{comment}{// result.sort(sort\_t());}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00401}00401         }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00402}00402         result.final\_sort(sort\_t());}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00403}00403         std::cout << result << std::endl;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00404}00404 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00405}00405         std::size\_t min\_length = std::numeric\_limits<std::size\_t>::max();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00406}00406         std::size\_t max\_length = std::numeric\_limits<std::size\_t>::min();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00407}00407         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&sset : result.subsets) \{}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00408}00408             std::size\_t length = sset.elements.size();}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00409}00409             max\_length = std::max(max\_length, length);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00410}00410             min\_length = std::min(min\_length, length);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00411}00411         \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00412}00412 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00413}00413         std::cout << \textcolor{stringliteral}{"{}lengths ["{}} << min\_length << \textcolor{stringliteral}{"{}, "{}}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00414}00414             << max\_length << \textcolor{stringliteral}{"{}]"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00415}00415         assert(max\_length >= min\_length);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00416}00416         assert(1 >= max\_length -\/ min\_length);}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00417}00417 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00418}00418         \textcolor{comment}{// result.improve\_partitioning();}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00419}00419     \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00420}00420 \}}
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00421}00421 }
+\DoxyCodeLine{\Hypertarget{multiway__partitioning_8hpp_source_l00422}00422 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,137 @@
+\hypertarget{classon__demand__scheduler}{}\doxysection{on\+\_\+demand\+\_\+scheduler\texorpdfstring{$<$}{<} remote\+\_\+execution\+\_\+context\+\_\+t, type\+\_\+abstraction\+\_\+adapter\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classon__demand__scheduler}\index{on\_demand\_scheduler$<$ remote\_execution\_context\_t, type\_abstraction\_adapter\_t $>$@{on\_demand\_scheduler$<$ remote\_execution\_context\_t, type\_abstraction\_adapter\_t $>$}}
+
+
+scheduler for load balancing of probsat computations inside a workgroup  
+
+
+
+
+{\ttfamily \#include $<$on\+\_\+demand\+\_\+scheduler.\+hpp$>$}
+
+
+
+Collaboration diagram for on\+\_\+demand\+\_\+scheduler\texorpdfstring{$<$}{<} remote\+\_\+execution\+\_\+context\+\_\+t, type\+\_\+abstraction\+\_\+adapter\+\_\+t \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classon__demand__scheduler__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a293403db2631c4a1917b1769bbc2680b}\label{classon__demand__scheduler_a293403db2631c4a1917b1769bbc2680b}} 
+using {\bfseries rpc\+\_\+message\+\_\+t} = \mbox{\hyperlink{classremote__execution__context_a0c4faddd4beacda59e7cf8fe828f8055}{remote\+\_\+execution\+\_\+context\+\_\+t\+::rpc\+\_\+message\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em task type\+: remote procedure call message \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a1cec19f47764d0aea07150c8e6a477b4}\label{classon__demand__scheduler_a1cec19f47764d0aea07150c8e6a477b4}} 
+using {\bfseries buffer\+\_\+t} = \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::abstract\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em communication buffer type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classon__demand__scheduler_adcf9bf8aa00cadfe9972e4a4a80b601a}\label{classon__demand__scheduler_adcf9bf8aa00cadfe9972e4a4a80b601a}} 
+{\bfseries on\+\_\+demand\+\_\+scheduler} (MPI\+\_\+\+Comm \mbox{\hyperlink{classon__demand__scheduler_a8c8af6a8afd999113b28217272a124b2}{env\+\_\+comm}}, int \mbox{\hyperlink{classon__demand__scheduler_a4e00dc97c2631f16bea4f77453c83eec}{mpi\+\_\+tag}}, \mbox{\hyperlink{classremote__execution__context}{remote\+\_\+execution\+\_\+context\+\_\+t}} \&\mbox{\hyperlink{classon__demand__scheduler_aa7ac549c080dbbb65f7c043a1cce7f4d}{rec}})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a6784664ca608a5c10e845c2896b98944}\label{classon__demand__scheduler_a6784664ca608a5c10e845c2896b98944}} 
+void {\bfseries schedule} (auto task, int target=0)
+\begin{DoxyCompactList}\small\item\em schedule a task or add it to the waiting queue \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a06e9042242c536311dc16e433bb2942a}\label{classon__demand__scheduler_a06e9042242c536311dc16e433bb2942a}} 
+std\+::size\+\_\+t {\bfseries num\+\_\+tasks\+\_\+waiting} () const
+\begin{DoxyCompactList}\small\item\em number of waiting tasks in queue \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a4894c268f71f391295605530314d0c56}\label{classon__demand__scheduler_a4894c268f71f391295605530314d0c56}} 
+std\+::size\+\_\+t {\bfseries num\+\_\+tasks\+\_\+pending} () const
+\begin{DoxyCompactList}\small\item\em number of already scheduled but pending tasks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_aa9a18a247e7a5d3cb430d43db4527a16}\label{classon__demand__scheduler_aa9a18a247e7a5d3cb430d43db4527a16}} 
+bool {\bfseries is\+\_\+work\+\_\+outstanding} () const
+\begin{DoxyCompactList}\small\item\em check if any work is left or everything completed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a865d4e72758662d46e4723ddeb424f7a}\label{classon__demand__scheduler_a865d4e72758662d46e4723ddeb424f7a}} 
+size\+\_\+t {\bfseries do\+\_\+work} (bool wait\+\_\+for\+\_\+work=false)
+\begin{DoxyCompactList}\small\item\em do available work and optionally wait for work if nothing todo \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a8c8af6a8afd999113b28217272a124b2}\label{classon__demand__scheduler_a8c8af6a8afd999113b28217272a124b2}} 
+MPI\+\_\+\+Comm {\bfseries env\+\_\+comm}
+\begin{DoxyCompactList}\small\item\em communicator this scheduler manages \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a37258431a5415f6986436fe1b8f44888}\label{classon__demand__scheduler_a37258431a5415f6986436fe1b8f44888}} 
+const int {\bfseries env\+\_\+comm\+\_\+id}
+\begin{DoxyCompactList}\small\item\em id of node in communicator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a6a3d12dd164d1f34e35290c7e56702b8}\label{classon__demand__scheduler_a6a3d12dd164d1f34e35290c7e56702b8}} 
+const int {\bfseries env\+\_\+comm\+\_\+size}
+\begin{DoxyCompactList}\small\item\em number of nodes in communicator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a4e00dc97c2631f16bea4f77453c83eec}\label{classon__demand__scheduler_a4e00dc97c2631f16bea4f77453c83eec}} 
+const int {\bfseries mpi\+\_\+tag}
+\begin{DoxyCompactList}\small\item\em tag used for scheduler communication \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_aa7ac549c080dbbb65f7c043a1cce7f4d}\label{classon__demand__scheduler_aa7ac549c080dbbb65f7c043a1cce7f4d}} 
+\mbox{\hyperlink{classremote__execution__context}{remote\+\_\+execution\+\_\+context\+\_\+t}} \& {\bfseries rec}
+\begin{DoxyCompactList}\small\item\em remote execution context \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a0621d7a308b8589ac6c1beb9e622536d}\label{classon__demand__scheduler_a0621d7a308b8589ac6c1beb9e622536d}} 
+using {\bfseries scheduler\+\_\+t} = \mbox{\hyperlink{classlazy__round__robin__scheduler}{lazy\+\_\+round\+\_\+robin\+\_\+scheduler}}$<$ \mbox{\hyperlink{classon__demand__scheduler_a78ee675fe189aac64bb13946911124b6}{workload\+\_\+capacity}} $>$
+\begin{DoxyCompactList}\small\item\em scheduler base type \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a0b433c97abe36cd894aa73f154768735}\label{classon__demand__scheduler_a0b433c97abe36cd894aa73f154768735}} 
+using {\bfseries uptr\+\_\+scheduler\+\_\+t} = std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classon__demand__scheduler_a0621d7a308b8589ac6c1beb9e622536d}{scheduler\+\_\+t}} $>$
+\begin{DoxyCompactList}\small\item\em scheduler type, unique ptr only on head node used \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a28dbb2d143b88e0a4435770e9ecb1ece}\label{classon__demand__scheduler_a28dbb2d143b88e0a4435770e9ecb1ece}} 
+void {\bfseries process\+\_\+msg} (MPI\+\_\+\+Status \&status)
+\begin{DoxyCompactList}\small\item\em process a result message \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a16912607bc6bf503b0c74322055f7434}\label{classon__demand__scheduler_a16912607bc6bf503b0c74322055f7434}} 
+\mbox{\hyperlink{classon__demand__scheduler_a293403db2631c4a1917b1769bbc2680b}{rpc\+\_\+message\+\_\+t}} {\bfseries get\+\_\+msg} (MPI\+\_\+\+Status \&status)
+\begin{DoxyCompactList}\small\item\em recieve a pending message \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_abe55a62eba95a7a8df8a25de9e3a6bf6}\label{classon__demand__scheduler_abe55a62eba95a7a8df8a25de9e3a6bf6}} 
+\mbox{\hyperlink{classon__demand__scheduler_a293403db2631c4a1917b1769bbc2680b}{rpc\+\_\+message\+\_\+t}} {\bfseries wait\+\_\+for\+\_\+msg} ()
+\begin{DoxyCompactList}\small\item\em wait until a message arrives \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a5602b0c08663eca976ddf9dd1c9fa18e}\label{classon__demand__scheduler_a5602b0c08663eca976ddf9dd1c9fa18e}} 
+void {\bfseries execute} (auto msg)
+\begin{DoxyCompactList}\small\item\em execute a message using the remote execution context \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_acf82a7e1eefe7b221c4acc40e482fe37}\label{classon__demand__scheduler_acf82a7e1eefe7b221c4acc40e482fe37}} 
+void {\bfseries feed\+\_\+hungry\+\_\+workers} ()
+\begin{DoxyCompactList}\small\item\em only schedule queued tasks to workers in idle state \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a32dd6a651bb6d3a1f2061fa6f241bdc6}\label{classon__demand__scheduler_a32dd6a651bb6d3a1f2061fa6f241bdc6}} 
+\mbox{\hyperlink{classon__demand__scheduler_a0b433c97abe36cd894aa73f154768735}{uptr\+\_\+scheduler\+\_\+t}} {\bfseries scheduler}
+\begin{DoxyCompactList}\small\item\em lazy round robin scheduler \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a2d36d13327f19621945914bd485ce01a}\label{classon__demand__scheduler_a2d36d13327f19621945914bd485ce01a}} 
+std\+::deque$<$ \mbox{\hyperlink{classon__demand__scheduler_a293403db2631c4a1917b1769bbc2680b}{rpc\+\_\+message\+\_\+t}} $>$ {\bfseries tasks}
+\begin{DoxyCompactList}\small\item\em queue of waiting tasks (available to process or schedule) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a9c8f54e111b715757a5739edaade1d40}\label{classon__demand__scheduler_a9c8f54e111b715757a5739edaade1d40}} 
+\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} {\bfseries taa}
+\begin{DoxyCompactList}\small\item\em serialization of abstract types \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a6e259f8ea7dc508f055df17ec8ecf29f}\label{classon__demand__scheduler_a6e259f8ea7dc508f055df17ec8ecf29f}} 
+std\+::size\+\_\+t {\bfseries num\+\_\+waiting\+\_\+for\+\_\+reply}
+\begin{DoxyCompactList}\small\item\em number of pending (already scheduled) tasks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a9d40410dd90c08878375df9f0d8f71c7}\label{classon__demand__scheduler_a9d40410dd90c08878375df9f0d8f71c7}} 
+\mbox{\hyperlink{classasync__comm__out}{async\+\_\+comm\+\_\+out}} {\bfseries background\+\_\+comm}
+\begin{DoxyCompactList}\small\item\em asynchronous background communication \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classon__demand__scheduler_a78ee675fe189aac64bb13946911124b6}\label{classon__demand__scheduler_a78ee675fe189aac64bb13946911124b6}} 
+static constexpr const std\+::size\+\_\+t {\bfseries workload\+\_\+capacity} = 2
+\begin{DoxyCompactList}\small\item\em least workload capacity to keep workers busy \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{classremote__execution__context}{remote\+\_\+execution\+\_\+context\+\_\+t}}, class \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} = remote\+\_\+execution\+\_\+context\+\_\+t\+::type\+\_\+abstraction\+\_\+adapter\+\_\+t$>$\newline
+requires (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::is\+\_\+\+Type\+Abstraction\+Adapter}})\newline
+class on\+\_\+demand\+\_\+scheduler$<$ remote\+\_\+execution\+\_\+context\+\_\+t, type\+\_\+abstraction\+\_\+adapter\+\_\+t $>$}
+scheduler for load balancing of probsat computations inside a workgroup 
+
+uses internally the lazy round robin scheduler with up to two jobs per worker 
+
+Definition at line \mbox{\hyperlink{on__demand__scheduler_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{on__demand__scheduler_8hpp_source}{on\+\_\+demand\+\_\+scheduler.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/on\+\_\+demand\+\_\+scheduler.\+hpp\end{DoxyCompactItemize}

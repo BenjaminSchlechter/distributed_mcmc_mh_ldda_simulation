@@ -1,0 +1,74 @@
+\hypertarget{statistics_8hpp_source}{}\doxysection{statistics.\+hpp}
+\label{statistics_8hpp_source}\index{util/statistics.hpp@{util/statistics.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef STATISTICS\_HPP}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define STATISTICS\_HPP}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00016}00016 \textcolor{keyword}{template}<\textcolor{keyword}{typename} prec\_t>}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00017}\mbox{\hyperlink{classbasic__statistical__metrics}{00017}} \textcolor{keyword}{class }\mbox{\hyperlink{classbasic__statistical__metrics}{basic\_statistical\_metrics}}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00019}00019     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00021}\mbox{\hyperlink{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}{00021}}         std::size\_t \mbox{\hyperlink{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}{n}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00024}\mbox{\hyperlink{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}{00024}}         prec\_t \mbox{\hyperlink{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}{sum\_xi}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00027}\mbox{\hyperlink{classbasic__statistical__metrics_acc9790889db131dca732f3c6877a7b7f}{00027}}         prec\_t \mbox{\hyperlink{classbasic__statistical__metrics_acc9790889db131dca732f3c6877a7b7f}{sum\_xi\_sq}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00030}\mbox{\hyperlink{classbasic__statistical__metrics_ae001a58914eb6d1818400cd58c5330f5}{00030}}         prec\_t \mbox{\hyperlink{classbasic__statistical__metrics_ae001a58914eb6d1818400cd58c5330f5}{varianz}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00033}\mbox{\hyperlink{classbasic__statistical__metrics_abd02bad75d1ae7d321554b044ce7d85c}{00033}}         prec\_t \mbox{\hyperlink{classbasic__statistical__metrics_abd02bad75d1ae7d321554b044ce7d85c}{stddev}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00036}\mbox{\hyperlink{classbasic__statistical__metrics_a15c17a0e9f96992bcf3782ab65a15960}{00036}}         prec\_t \mbox{\hyperlink{classbasic__statistical__metrics_a15c17a0e9f96992bcf3782ab65a15960}{average}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00039}\mbox{\hyperlink{classbasic__statistical__metrics_a60462e9563eca5460ef440071673b1ed}{00039}}         prec\_t \mbox{\hyperlink{classbasic__statistical__metrics_a60462e9563eca5460ef440071673b1ed}{min}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00042}\mbox{\hyperlink{classbasic__statistical__metrics_ae51c4b487862b22917eede0dace4df7b}{00042}}         prec\_t \mbox{\hyperlink{classbasic__statistical__metrics_ae51c4b487862b22917eede0dace4df7b}{max}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00045}\mbox{\hyperlink{classbasic__statistical__metrics_acc15eeecc3b530819e8b9b66683d0ac4}{00045}}         std::size\_t \mbox{\hyperlink{classbasic__statistical__metrics_acc15eeecc3b530819e8b9b66683d0ac4}{not\_finite}}; }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00046}00046         }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00048}\mbox{\hyperlink{classbasic__statistical__metrics_a7ea7793366aff4238ce8f8b64d5a9baa}{00048}}         \mbox{\hyperlink{classbasic__statistical__metrics_a7ea7793366aff4238ce8f8b64d5a9baa}{basic\_statistical\_metrics}}() :}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00049}00049             \mbox{\hyperlink{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}{n}}(0),}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00050}00050             \mbox{\hyperlink{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}{sum\_xi}}(0),}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00051}00051             \mbox{\hyperlink{classbasic__statistical__metrics_acc9790889db131dca732f3c6877a7b7f}{sum\_xi\_sq}}(0),}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00052}00052             \mbox{\hyperlink{classbasic__statistical__metrics_ae001a58914eb6d1818400cd58c5330f5}{varianz}}(0),}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00053}00053             \mbox{\hyperlink{classbasic__statistical__metrics_abd02bad75d1ae7d321554b044ce7d85c}{stddev}}(0),}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00054}00054             \mbox{\hyperlink{classbasic__statistical__metrics_a15c17a0e9f96992bcf3782ab65a15960}{average}}(0),}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00055}00055             \mbox{\hyperlink{classbasic__statistical__metrics_a60462e9563eca5460ef440071673b1ed}{min}}(std::numeric\_limits<prec\_t>::\mbox{\hyperlink{classbasic__statistical__metrics_ae51c4b487862b22917eede0dace4df7b}{max}}()),}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00056}00056             \mbox{\hyperlink{classbasic__statistical__metrics_ae51c4b487862b22917eede0dace4df7b}{max}}(std::numeric\_limits<prec\_t>::\mbox{\hyperlink{classbasic__statistical__metrics_a60462e9563eca5460ef440071673b1ed}{min}}()),}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00057}00057             \mbox{\hyperlink{classbasic__statistical__metrics_acc15eeecc3b530819e8b9b66683d0ac4}{not\_finite}}(0) \{\}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00058}00058         }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00060}\mbox{\hyperlink{classbasic__statistical__metrics_abf6b7bbb5ef330cc5e64e8b50746cf69}{00060}}         std::size\_t \mbox{\hyperlink{classbasic__statistical__metrics_abf6b7bbb5ef330cc5e64e8b50746cf69}{counted}}() \{}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00061}00061             \textcolor{keywordflow}{return} \mbox{\hyperlink{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}{n}} + \mbox{\hyperlink{classbasic__statistical__metrics_acc15eeecc3b530819e8b9b66683d0ac4}{not\_finite}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00062}00062         \}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00063}00063         }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00065}00065         \textcolor{keyword}{template} <\textcolor{keyword}{typename} it\_t>}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00066}\mbox{\hyperlink{classbasic__statistical__metrics_ac0b31fec054f0b3d0d31877ff03ab557}{00066}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbasic__statistical__metrics_ac0b31fec054f0b3d0d31877ff03ab557}{operator ()}}(it\_t begin, it\_t end)}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00067}00067         \{}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00068}00068             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = begin; i != end; i++)}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00069}00069             \{}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00070}00070                 \textcolor{keywordflow}{if} (std::isfinite(*i)) \{}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00071}00071                     \mbox{\hyperlink{classbasic__statistical__metrics_a60462e9563eca5460ef440071673b1ed}{min}} = std::min(\mbox{\hyperlink{classbasic__statistical__metrics_a60462e9563eca5460ef440071673b1ed}{min}}, *i);}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00072}00072                     \mbox{\hyperlink{classbasic__statistical__metrics_ae51c4b487862b22917eede0dace4df7b}{max}} = std::max(\mbox{\hyperlink{classbasic__statistical__metrics_ae51c4b487862b22917eede0dace4df7b}{max}}, *i);}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00073}00073                     \mbox{\hyperlink{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}{n}}++;}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00074}00074                     prec\_t x = *i;}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00075}00075                     \mbox{\hyperlink{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}{sum\_xi}} += x;}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00076}00076                     \mbox{\hyperlink{classbasic__statistical__metrics_acc9790889db131dca732f3c6877a7b7f}{sum\_xi\_sq}} += x*x;}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00077}00077                 \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00078}00078                     \mbox{\hyperlink{classbasic__statistical__metrics_acc15eeecc3b530819e8b9b66683d0ac4}{not\_finite}}++;}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00079}00079                 \}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00080}00080             \}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00082}00082             \mbox{\hyperlink{classbasic__statistical__metrics_a15c17a0e9f96992bcf3782ab65a15960}{average}} = \mbox{\hyperlink{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}{sum\_xi}} / \mbox{\hyperlink{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}{n}};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00083}00083             \mbox{\hyperlink{classbasic__statistical__metrics_ae001a58914eb6d1818400cd58c5330f5}{varianz}} = (\mbox{\hyperlink{classbasic__statistical__metrics_acc9790889db131dca732f3c6877a7b7f}{sum\_xi\_sq}} -\/ \mbox{\hyperlink{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}{sum\_xi}}*\mbox{\hyperlink{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}{sum\_xi}} / \mbox{\hyperlink{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}{n}}) / (\mbox{\hyperlink{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}{n}} -\/ 1);}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00084}00084             \mbox{\hyperlink{classbasic__statistical__metrics_abd02bad75d1ae7d321554b044ce7d85c}{stddev}} = sqrt(\mbox{\hyperlink{classbasic__statistical__metrics_ae001a58914eb6d1818400cd58c5330f5}{varianz}});}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00085}00085         \}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00086}00086 \};}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00088}00088 \textcolor{comment}{// prec\_t mean = std::accumulate(list.begin(), list.end(), (prec\_t) 0.0) / list.size();}}
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{statistics_8hpp_source_l00090}00090 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

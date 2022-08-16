@@ -1,0 +1,34 @@
+
+This directory contains different versions of the prototype, as
+they have been used and enhanced over time
+
+The script can be run using GNU octave https://octave.org/
+Example images for each version are also available in the respective directory
+
+The alignment-test demonstrates how noise distributions scaled with an
+unknown factor can be glued together based on a model
+
+Details can be found in my final thesis
+
+The lines of code show the continuous development of the prototype:
+
+  LOC file
+---------------------------
+  167 prototype_version_1.m
+  267 prototype_version_2.m
+  568 prototype_version_3.m
+  547 prototype_version_4.m
+  839 prototype_version_5.m
+---------------------------
+ 2388 prototype
+  250 alignment-test.m
+---------------------------
+ 2638 overall
+
+However note that these are prototype scripts and code quality was
+therefore a minor concern. Also it is mixed language between german and
+english and the technical terms might not have been used correctly.
+
+This is intended as archivation and documentation of the work that was
+done and not for further use. Therefore the code has not been thoroughly
+commented and the readability is improveable.

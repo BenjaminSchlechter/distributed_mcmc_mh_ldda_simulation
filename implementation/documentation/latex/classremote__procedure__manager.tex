@@ -1,0 +1,62 @@
+\hypertarget{classremote__procedure__manager}{}\doxysection{remote\+\_\+procedure\+\_\+manager\texorpdfstring{$<$}{<} type\+\_\+abstraction\+\_\+adapter\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classremote__procedure__manager}\index{remote\_procedure\_manager$<$ type\_abstraction\_adapter\_t $>$@{remote\_procedure\_manager$<$ type\_abstraction\_adapter\_t $>$}}
+
+
+class to manager remote procedure calls  
+
+
+
+
+{\ttfamily \#include $<$rpc.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__procedure__manager_a2565e46173caccc6f82ac2333697ace6}\label{classremote__procedure__manager_a2565e46173caccc6f82ac2333697ace6}} 
+using {\bfseries rpc\+\_\+message\+\_\+t} = \mbox{\hyperlink{classrpc__message}{rpc\+\_\+message}}$<$ typename \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::abstract\+\_\+type}} $>$
+\begin{DoxyCompactList}\small\item\em remote procedure call message type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__procedure__manager_aab60d6fc1fc8adc06d00b58d071975ed}\label{classremote__procedure__manager_aab60d6fc1fc8adc06d00b58d071975ed}} 
+{\footnotesize template$<$typename function\+\_\+t $>$ }\\void {\bfseries add\+\_\+function} (std\+::string name, function\+\_\+t function)
+\begin{DoxyCompactList}\small\item\em make function available for remote procedure calls \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__procedure__manager_a25eec272d68e59fa5743db57ccaf044b}\label{classremote__procedure__manager_a25eec272d68e59fa5743db57ccaf044b}} 
+{\footnotesize template$<$typename... param\+\_\+types$>$ }\\auto {\bfseries prepare\+\_\+call} (std\+::string name, param\+\_\+types... params)
+\begin{DoxyCompactList}\small\item\em create a remote procedure call message for a function call \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__procedure__manager_aa5a75e06647427766e1cbd8ea7ae50a0}\label{classremote__procedure__manager_aa5a75e06647427766e1cbd8ea7ae50a0}} 
+auto {\bfseries execute\+\_\+rpc} (const \mbox{\hyperlink{classremote__procedure__manager_a2565e46173caccc6f82ac2333697ace6}{rpc\+\_\+message\+\_\+t}} \&msg)
+\begin{DoxyCompactList}\small\item\em call function by passing a remote procedure call message \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__procedure__manager_af5575e76575079b46b6d2478e87036af}\label{classremote__procedure__manager_af5575e76575079b46b6d2478e87036af}} 
+std\+::map$<$ std\+::string, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classremote__procedure__manager_af9c23aeaf2fc517b7a4e7d1416d5c0c8}{abstract\+\_\+function\+\_\+t}} $>$ $>$ {\bfseries function\+\_\+map}
+\begin{DoxyCompactList}\small\item\em functions available for call \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__procedure__manager_af9c23aeaf2fc517b7a4e7d1416d5c0c8}\label{classremote__procedure__manager_af9c23aeaf2fc517b7a4e7d1416d5c0c8}} 
+using {\bfseries abstract\+\_\+function\+\_\+t} = \mbox{\hyperlink{classAbstractFunction}{Abstract\+Function}}$<$ \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} $>$
+\begin{DoxyCompactList}\small\item\em function abstraction \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__procedure__manager_a9b65c36dddb5d99cbc52ce654a778aef}\label{classremote__procedure__manager_a9b65c36dddb5d99cbc52ce654a778aef}} 
+\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} {\bfseries type\+\_\+abstraction}
+\begin{DoxyCompactList}\small\item\em used for parameter abstraction \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}}$>$\newline
+requires (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::is\+\_\+\+Type\+Abstraction\+Adapter}})\newline
+class remote\+\_\+procedure\+\_\+manager$<$ type\+\_\+abstraction\+\_\+adapter\+\_\+t $>$}
+class to manager remote procedure calls 
+
+Definition at line \mbox{\hyperlink{rpc_8hpp_source_l00146}{146}} of file \mbox{\hyperlink{rpc_8hpp_source}{rpc.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/rpc.\+hpp\end{DoxyCompactItemize}

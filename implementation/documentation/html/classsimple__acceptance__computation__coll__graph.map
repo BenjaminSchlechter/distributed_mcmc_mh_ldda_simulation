@@ -1,0 +1,4 @@
+<map id="simple_acceptance_computation&lt; prng_t, cfg_vector_t, prec_t, value_comp_t, acc_prob_comp_t &gt;" name="simple_acceptance_computation&lt; prng_t, cfg_vector_t, prec_t, value_comp_t, acc_prob_comp_t &gt;">
+<area shape="rect" id="node1" title="decides over acceptance of a new state in a markov chain using a exact value" alt="" coords="369,13,639,69"/>
+<area shape="rect" id="node2" href="$structsimple__acceptance__computation_1_1state__data__t.html" title="compute and represent a state of a markov chain" alt="" coords="5,5,248,76"/>
+</map>

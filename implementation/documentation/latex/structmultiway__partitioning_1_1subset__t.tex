@@ -1,0 +1,52 @@
+\hypertarget{structmultiway__partitioning_1_1subset__t}{}\doxysection{multiway\+\_\+partitioning\texorpdfstring{$<$}{<} data\+\_\+t, score\+\_\+t, sort\+\_\+func\+\_\+t \texorpdfstring{$>$}{>}\+::subset\+\_\+t Struct Reference}
+\label{structmultiway__partitioning_1_1subset__t}\index{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$::subset\_t@{multiway\_partitioning$<$ data\_t, score\_t, sort\_func\_t $>$::subset\_t}}
+
+
+subset of a partition  
+
+
+
+
+{\ttfamily \#include $<$multiway\+\_\+partitioning.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1subset__t_ac4af1db98dc26c6b1e8d04dbfda940a0}\label{structmultiway__partitioning_1_1subset__t_ac4af1db98dc26c6b1e8d04dbfda940a0}} 
+{\bfseries subset\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1subset__t_a69dbe026dd6be32d9b962da7b987e795}\label{structmultiway__partitioning_1_1subset__t_a69dbe026dd6be32d9b962da7b987e795}} 
+{\bfseries subset\+\_\+t} (\mbox{\hyperlink{structmultiway__partitioning_1_1entry__t}{entry\+\_\+t}} first\+\_\+entry)
+\begin{DoxyCompactList}\small\item\em construct subset of size one by passing one entry \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1subset__t_a2b4f4bac307a240b144889bf76bb6bbe}\label{structmultiway__partitioning_1_1subset__t_a2b4f4bac307a240b144889bf76bb6bbe}} 
+void {\bfseries merge\+\_\+subsets} (\mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\+\_\+t}} \&other, auto cmp\+\_\+function)
+\begin{DoxyCompactList}\small\item\em merge two subsets \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}\label{structmultiway__partitioning_1_1subset__t_a70b9335cd624da3f6d3e343483b7c35b}} 
+score\+\_\+t {\bfseries sum}
+\begin{DoxyCompactList}\small\item\em sum of scores of all elements \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}\label{structmultiway__partitioning_1_1subset__t_a8718c003919ff447c712309bb9b8a722}} 
+std\+::list$<$ \mbox{\hyperlink{structmultiway__partitioning_1_1entry__t}{entry\+\_\+t}} $>$ {\bfseries elements}
+\begin{DoxyCompactList}\small\item\em list of elements in this subset \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structmultiway__partitioning_1_1subset__t_a725befd994c2c19968fefd7b209543f9}\label{structmultiway__partitioning_1_1subset__t_a725befd994c2c19968fefd7b209543f9}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{structmultiway__partitioning_1_1subset__t}{subset\+\_\+t}} \&s)
+\begin{DoxyCompactList}\small\item\em std\+::ostream operator to print a subset \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename data\+\_\+t, typename score\+\_\+t = std\+::size\+\_\+t, class sort\+\_\+func\+\_\+t = std\+::greater$<$score\+\_\+t$>$$>$\newline
+struct multiway\+\_\+partitioning$<$ data\+\_\+t, score\+\_\+t, sort\+\_\+func\+\_\+t $>$\+::subset\+\_\+t}
+subset of a partition 
+
+Definition at line \mbox{\hyperlink{multiway__partitioning_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{multiway__partitioning_8hpp_source}{multiway\+\_\+partitioning.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/multiway\+\_\+partitioning.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,75 @@
+\hypertarget{classremote__execution__context}{}\doxysection{remote\+\_\+execution\+\_\+context\texorpdfstring{$<$}{<} taa\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classremote__execution__context}\index{remote\_execution\_context$<$ taa\_t $>$@{remote\_execution\_context$<$ taa\_t $>$}}
+
+
+context for remote function execution including on\+\_\+result functions  
+
+
+
+
+{\ttfamily \#include $<$remote\+\_\+execution\+\_\+context.\+hpp$>$}
+
+
+
+Collaboration diagram for remote\+\_\+execution\+\_\+context\texorpdfstring{$<$}{<} taa\+\_\+t \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classremote__execution__context__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__execution__context_afeca01b55eefcd45323ef8519082f271}\label{classremote__execution__context_afeca01b55eefcd45323ef8519082f271}} 
+using {\bfseries type\+\_\+abstraction\+\_\+adapter\+\_\+t} = taa\+\_\+t
+\begin{DoxyCompactList}\small\item\em type of data type abstraction adapter \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__execution__context_a147627bb6c50916b4a1156935fd8d90e}\label{classremote__execution__context_a147627bb6c50916b4a1156935fd8d90e}} 
+using {\bfseries data\+\_\+t} = \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::abstract\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em abstract data type \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__execution__context_a0c4faddd4beacda59e7cf8fe828f8055}\label{classremote__execution__context_a0c4faddd4beacda59e7cf8fe828f8055}} 
+using {\bfseries rpc\+\_\+message\+\_\+t} = \mbox{\hyperlink{classrpc__message}{rpc\+\_\+message}}$<$ \mbox{\hyperlink{classremote__execution__context_a147627bb6c50916b4a1156935fd8d90e}{data\+\_\+t}} $>$
+\begin{DoxyCompactList}\small\item\em remote procedure call message type \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__execution__context_ab05472fe6bd739991251b3b38050cc69}\label{classremote__execution__context_ab05472fe6bd739991251b3b38050cc69}} 
+using {\bfseries remote\+\_\+procedure\+\_\+manager\+\_\+t} = \mbox{\hyperlink{classremote__procedure__manager}{remote\+\_\+procedure\+\_\+manager}}$<$ \mbox{\hyperlink{classremote__execution__context_afeca01b55eefcd45323ef8519082f271}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} $>$
+\begin{DoxyCompactList}\small\item\em remote procedure call manager type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__execution__context_a5f79c69e2eaffcd42779969c5ae5aa6d}\label{classremote__execution__context_a5f79c69e2eaffcd42779969c5ae5aa6d}} 
+{\bfseries remote\+\_\+execution\+\_\+context} (\mbox{\hyperlink{classremote__execution__context_ab05472fe6bd739991251b3b38050cc69}{remote\+\_\+procedure\+\_\+manager\+\_\+t}} \&\mbox{\hyperlink{classremote__execution__context_ac59c44ac035e1f464d6e21bf46a8c47e}{rpmanager}})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__execution__context_abca6cd870a9d471e1469478ddabfe394}\label{classremote__execution__context_abca6cd870a9d471e1469478ddabfe394}} 
+{\footnotesize template$<$typename function\+\_\+t $>$ }\\\mbox{\hyperlink{classremote__execution__context_a0c4faddd4beacda59e7cf8fe828f8055}{rpc\+\_\+message\+\_\+t}} {\bfseries on\+\_\+result} (auto msg, function\+\_\+t function)
+\begin{DoxyCompactList}\small\item\em adding an on\+\_\+result function to a remote procedure call message \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__execution__context_aa78afa69e949d48eb9f884e9050f067c}\label{classremote__execution__context_aa78afa69e949d48eb9f884e9050f067c}} 
+auto {\bfseries execute\+\_\+rpc} (\mbox{\hyperlink{classremote__execution__context_a0c4faddd4beacda59e7cf8fe828f8055}{rpc\+\_\+message\+\_\+t}} \&msg)
+\begin{DoxyCompactList}\small\item\em execute a function by passing a remote prodedure call message \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__execution__context_ac59c44ac035e1f464d6e21bf46a8c47e}\label{classremote__execution__context_ac59c44ac035e1f464d6e21bf46a8c47e}} 
+\mbox{\hyperlink{classremote__execution__context_ab05472fe6bd739991251b3b38050cc69}{remote\+\_\+procedure\+\_\+manager\+\_\+t}} \& {\bfseries rpmanager}
+\begin{DoxyCompactList}\small\item\em remote procedure call manager \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__execution__context_aa40cb488516891e5b37a14ef69bea99a}\label{classremote__execution__context_aa40cb488516891e5b37a14ef69bea99a}} 
+using {\bfseries uuid\+\_\+t} = \mbox{\hyperlink{classuuid}{uuid}}$<$ \mbox{\hyperlink{classremote__execution__context}{remote\+\_\+execution\+\_\+context}}$<$ \mbox{\hyperlink{classremote__execution__context_afeca01b55eefcd45323ef8519082f271}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} $>$ $>$
+\begin{DoxyCompactList}\small\item\em uuid data type for function call tracking \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename taa\+\_\+t$>$\newline
+requires (taa\+\_\+t\+::is\+\_\+\+Type\+Abstraction\+Adapter)\newline
+class remote\+\_\+execution\+\_\+context$<$ taa\+\_\+t $>$}
+context for remote function execution including on\+\_\+result functions 
+
+Definition at line \mbox{\hyperlink{remote__execution__context_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{remote__execution__context_8hpp_source}{remote\+\_\+execution\+\_\+context.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/remote\+\_\+execution\+\_\+context.\+hpp\end{DoxyCompactItemize}

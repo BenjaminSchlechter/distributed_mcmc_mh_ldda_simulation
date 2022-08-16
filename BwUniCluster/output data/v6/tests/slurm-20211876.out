@@ -1,0 +1,36 @@
+$ run.sh log-t15.txt -n 10 -o 0 -l 40
+Mon Nov 22 03:52:59 CET 2021
+preparing environment & load modules
+
+Currently Loaded Modules:
+  1) compiler/gnu/11.1
+
+ 
+
+loading openmpi 4.1
+loading cmake 3.18
+
+Currently Loaded Modules:
+  1) compiler/gnu/11.1   2) mpi/openmpi/4.1   3) devel/cmake/3.18
+
+ 
+
+g++ (GCC) 11.1.0
+building
+running
+Mon Nov 22 03:53:00 CET 2021
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n362
+Job ID: 20211876
+Cluster: uc2
+User/Group: ul_jbw85/ul_student
+State: FAILED (exit code 134)
+Nodes: 1
+Cores per node: 80
+CPU Utilized: 00:11:22
+CPU Efficiency: 1.19% of 15:57:20 core-walltime
+Job Wall-clock time: 00:11:58
+Memory Utilized: 5.31 GB
+Memory Efficiency: 67.95% of 7.81 GB

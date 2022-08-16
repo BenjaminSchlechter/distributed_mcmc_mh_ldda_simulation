@@ -1,0 +1,92 @@
+\hypertarget{classrpc__message}{}\doxysection{rpc\+\_\+message\texorpdfstring{$<$}{<} data\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classrpc__message}\index{rpc\_message$<$ data\_t $>$@{rpc\_message$<$ data\_t $>$}}
+
+
+message to code a (remote) procedure call  
+
+
+
+
+{\ttfamily \#include $<$rpc.\+hpp$>$}
+
+
+
+Collaboration diagram for rpc\+\_\+message\texorpdfstring{$<$}{<} data\+\_\+t \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{classrpc__message__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpc__message_a484da6faecd011879623568675d898eb}\label{classrpc__message_a484da6faecd011879623568675d898eb}} 
+using {\bfseries data\+\_\+type} = data\+\_\+t
+\begin{DoxyCompactList}\small\item\em message type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpc__message_ad57ccce5a26ac8436fc3b821f5b862f2}\label{classrpc__message_ad57ccce5a26ac8436fc3b821f5b862f2}} 
+{\bfseries rpc\+\_\+message} ()
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_a6c1ed437bb36638989dca3517dc99c4b}\label{classrpc__message_a6c1ed437bb36638989dca3517dc99c4b}} 
+{\bfseries rpc\+\_\+message} (const \mbox{\hyperlink{classrpc__message}{rpc\+\_\+message}} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_ab30cdf4a4a313ec297a095c10aaeb8d0}\label{classrpc__message_ab30cdf4a4a313ec297a095c10aaeb8d0}} 
+\mbox{\hyperlink{classrpc__message}{rpc\+\_\+message}} \& {\bfseries operator=} (const \mbox{\hyperlink{classrpc__message}{rpc\+\_\+message}} \&other)
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_af729a60b8abb46a6761e2086517b0ef8}\label{classrpc__message_af729a60b8abb46a6761e2086517b0ef8}} 
+{\bfseries rpc\+\_\+message} (\mbox{\hyperlink{classrpc__message}{rpc\+\_\+message}} \&\&other)
+\begin{DoxyCompactList}\small\item\em move semantics by using swap \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_ad2ab845f684b67538794d407f720c7b6}\label{classrpc__message_ad2ab845f684b67538794d407f720c7b6}} 
+uint8\+\_\+t {\bfseries compute\+\_\+crc} ()
+\begin{DoxyCompactList}\small\item\em compute and set checksum \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_acf6309b12a6bf7325196849c37f9d9e0}\label{classrpc__message_acf6309b12a6bf7325196849c37f9d9e0}} 
+bool {\bfseries check\+\_\+crc} () const
+\begin{DoxyCompactList}\small\item\em test for correct checksum \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpc__message_a630e6830cb7505385862a896596399aa}\label{classrpc__message_a630e6830cb7505385862a896596399aa}} 
+std\+::size\+\_\+t {\bfseries id}
+\begin{DoxyCompactList}\small\item\em message id \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}\label{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}} 
+std\+::string {\bfseries function\+\_\+name}
+\begin{DoxyCompactList}\small\item\em function name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}\label{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}} 
+bool {\bfseries answer\+\_\+required}
+\begin{DoxyCompactList}\small\item\em wheter an answer is awaited \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}\label{classrpc__message_a6ff4738c83c1c9cd6847665ae547ac46}} 
+data\+\_\+t {\bfseries data}
+\begin{DoxyCompactList}\small\item\em function parameter data (abstract representation) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}\label{classrpc__message_a90ab1d437fe879b81a53fd38a0dcaf84}} 
+uint8\+\_\+t {\bfseries crc}
+\begin{DoxyCompactList}\small\item\em checksum (optional, used for debugging and error detection) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpc__message_a564955932a640c4218fe7df8fc9b8515}\label{classrpc__message_a564955932a640c4218fe7df8fc9b8515}} 
+uint8\+\_\+t {\bfseries compute\+\_\+crc\+\_\+} () const
+\begin{DoxyCompactList}\small\item\em actual checksum computation (helper function) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrpc__message_aba18c9c1cd3d4b2b3c607bd3832bf01f}\label{classrpc__message_aba18c9c1cd3d4b2b3c607bd3832bf01f}} 
+void {\bfseries swap} (\mbox{\hyperlink{classrpc__message}{rpc\+\_\+message}} \&l, \mbox{\hyperlink{classrpc__message}{rpc\+\_\+message}} \&r)
+\begin{DoxyCompactList}\small\item\em swap function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename data\+\_\+t = std\+::vector$<$uint8\+\_\+t$>$$>$\newline
+class rpc\+\_\+message$<$ data\+\_\+t $>$}
+message to code a (remote) procedure call 
+
+Definition at line \mbox{\hyperlink{rpc_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{rpc_8hpp_source}{rpc.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/rpc.\+hpp\end{DoxyCompactItemize}

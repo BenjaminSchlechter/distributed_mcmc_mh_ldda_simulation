@@ -1,0 +1,81 @@
+\hypertarget{remote__execution__context_8hpp_source}{}\doxysection{remote\+\_\+execution\+\_\+context.\+hpp}
+\label{remote__execution__context_8hpp_source}\index{distributed\_computation/remote\_execution\_context.hpp@{distributed\_computation/remote\_execution\_context.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef REMOTE\_EXECUTION\_CONTEXT\_HPP}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define REMOTE\_EXECUTION\_CONTEXT\_HPP}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}rpc.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}../util/uuid.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00008}00008 \textcolor{keyword}{template}<\textcolor{keyword}{typename} taa\_t> \textcolor{keyword}{requires} (taa\_t::is\_TypeAbstractionAdapter)}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00009}\mbox{\hyperlink{classremote__execution__context}{00009}} \textcolor{keyword}{class} \mbox{\hyperlink{classremote__execution__context}{remote\_execution\_context}}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00011}00011     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00013}\mbox{\hyperlink{classremote__execution__context_afeca01b55eefcd45323ef8519082f271}{00013}}         \textcolor{keyword}{using} \mbox{\hyperlink{classremote__execution__context_afeca01b55eefcd45323ef8519082f271}{type\_abstraction\_adapter\_t}} = taa\_t;}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00015}00015     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00017}\mbox{\hyperlink{classremote__execution__context_aa40cb488516891e5b37a14ef69bea99a}{00017}}         \textcolor{keyword}{using} \mbox{\hyperlink{classuuid}{uuid\_t}} =}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00018}00018             \mbox{\hyperlink{classuuid}{uuid<remote\_execution\_context<type\_abstraction\_adapter\_t>}}>;}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00020}00020     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00022}\mbox{\hyperlink{classremote__execution__context_a147627bb6c50916b4a1156935fd8d90e}{00022}}         \textcolor{keyword}{using} \mbox{\hyperlink{classremote__execution__context_a147627bb6c50916b4a1156935fd8d90e}{data\_t}} = \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\_abstraction\_adapter\_t::abstract\_type}};}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00025}\mbox{\hyperlink{classremote__execution__context_a0c4faddd4beacda59e7cf8fe828f8055}{00025}}         \textcolor{keyword}{using} \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} = \mbox{\hyperlink{classrpc__message}{rpc\_message<data\_t>}};}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00028}\mbox{\hyperlink{classremote__execution__context_ab05472fe6bd739991251b3b38050cc69}{00028}}         \textcolor{keyword}{using} \mbox{\hyperlink{classremote__procedure__manager}{remote\_procedure\_manager\_t}} =}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00029}00029             \mbox{\hyperlink{classremote__procedure__manager}{remote\_procedure\_manager<type\_abstraction\_adapter\_t>}};}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00032}\mbox{\hyperlink{classremote__execution__context_ac59c44ac035e1f464d6e21bf46a8c47e}{00032}}         \mbox{\hyperlink{classremote__procedure__manager}{remote\_procedure\_manager\_t}} \&\mbox{\hyperlink{classremote__execution__context_ac59c44ac035e1f464d6e21bf46a8c47e}{rpmanager}};}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00036}\mbox{\hyperlink{classremote__execution__context_a5f79c69e2eaffcd42779969c5ae5aa6d}{00036}}         \mbox{\hyperlink{classremote__execution__context_a5f79c69e2eaffcd42779969c5ae5aa6d}{remote\_execution\_context}}(\mbox{\hyperlink{classremote__procedure__manager}{remote\_procedure\_manager\_t}} \&rpmanager) :}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00037}00037             rpmanager(rpmanager) \{\}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00041}00041         \textcolor{keyword}{template}<\textcolor{keyword}{typename} function\_t>}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00042}\mbox{\hyperlink{classremote__execution__context_abca6cd870a9d471e1469478ddabfe394}{00042}}         \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} \mbox{\hyperlink{classremote__execution__context_abca6cd870a9d471e1469478ddabfe394}{on\_result}}(\textcolor{keyword}{auto} msg, function\_t \textcolor{keyword}{function})}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00043}00043         \{}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00044}00044             assert(0 == msg.id);}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00046}00046             std::size\_t \textcolor{keywordtype}{id} = 1 + uuid\_t::get();}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00047}00047             assert(0 != \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00049}00049             std::string rfname = msg.function\_name}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00050}00050                 + FCT\_NAME\_RESULT\_TAG + \textcolor{stringliteral}{"{}\_"{}} + std::to\_string(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00051}00051             rpmanager.\mbox{\hyperlink{classremote__procedure__manager_aab60d6fc1fc8adc06d00b58d071975ed}{add\_function}}(rfname, \textcolor{keyword}{function});}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00053}00053             msg.id = id;}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00054}00054             msg.answer\_required = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00056}00056             \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00057}00057         \}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00061}\mbox{\hyperlink{classremote__execution__context_aa78afa69e949d48eb9f884e9050f067c}{00061}}         \textcolor{keyword}{auto} \mbox{\hyperlink{classremote__execution__context_aa78afa69e949d48eb9f884e9050f067c}{execute\_rpc}}(\mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} \&msg)}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00062}00062         \{}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00063}00063             \textcolor{keywordtype}{bool} is\_result =}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00064}00064                 (\textcolor{keyword}{false} == msg.\mbox{\hyperlink{classrpc__message_aa4682d4743ad24c4b7041a670c40bd75}{answer\_required}}) \&\& (0 != msg.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}});}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00066}00066             \textcolor{keywordflow}{if} (is\_result) \{}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00067}00067                 msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} =}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00068}00068                     msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} + \textcolor{stringliteral}{"{}\_"{}} + std::to\_string(msg.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}});}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00069}00069             \}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00071}00071             \mbox{\hyperlink{classrpc__message}{rpc\_message\_t}} result\_msg = rpmanager.\mbox{\hyperlink{classremote__procedure__manager_aa5a75e06647427766e1cbd8ea7ae50a0}{execute\_rpc}}(msg);}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00073}00073             \textcolor{keywordflow}{if} (is\_result) \{}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00074}00074                 assert(1 == rpmanager.\mbox{\hyperlink{classremote__procedure__manager_af5575e76575079b46b6d2478e87036af}{function\_map}}.erase(msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}}));}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00075}00075                 uuid\_t::free(msg.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}} -\/ 1);}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00076}00076                 result\_msg.\mbox{\hyperlink{classrpc__message_a630e6830cb7505385862a896596399aa}{id}} = 0;}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00077}00077                 result\_msg.\mbox{\hyperlink{classrpc__message_a7e4835b8f2340932cd26b8486d2dc98a}{function\_name}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00078}00078             \}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00080}00080             \textcolor{keywordflow}{return} result\_msg;}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00081}00081         \}}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00082}00082 \};}
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{remote__execution__context_8hpp_source_l00085}00085 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

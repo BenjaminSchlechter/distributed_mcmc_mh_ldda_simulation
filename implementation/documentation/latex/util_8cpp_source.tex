@@ -1,0 +1,105 @@
+\hypertarget{util_8cpp_source}{}\doxysection{util.\+cpp}
+\label{util_8cpp_source}\index{util/util.cpp@{util/util.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <fcntl.h>}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}util.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00008}00008 std::ptrdiff\_t slurp\_file(std::string \&content\_str, \textcolor{keyword}{const} std::string filename) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00009}00009     \textcolor{keyword}{auto} fd = open(filename.c\_str(), O\_RDONLY);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00010}00010     \textcolor{keywordflow}{if} (0 > fd) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00011}00011         std::string errmsg = std::string(\textcolor{stringliteral}{"{}can't get file descriptor for "{}}) + filename;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00012}00012         perror(errmsg.c\_str());}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00013}00013         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00014}00014     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00016}00016     \textcolor{keyword}{struct }stat stat\_buf;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00017}00017     \textcolor{keyword}{auto} r = fstat(fd, \&stat\_buf);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00018}00018     \textcolor{keywordflow}{if} (0 != r) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00019}00019         std::string errmsg = std::string(\textcolor{stringliteral}{"{}can't get file size with fstat on "{}}) + filename;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00020}00020         perror(errmsg.c\_str());}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00021}00021         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00022}00022     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00024}00024     content\_str.resize(stat\_buf.st\_size);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00025}00025     \textcolor{keywordflow}{if} (stat\_buf.st\_size != read(fd, content\_str.data(), stat\_buf.st\_size)) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00026}00026         std::string errmsg = std::string(\textcolor{stringliteral}{"{}error reading "{}}) + std::to\_string(stat\_buf.st\_size) + std::string(\textcolor{stringliteral}{"{} bytes from "{}}) + filename;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00027}00027         perror(errmsg.c\_str());}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00028}00028         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00029}00029     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00031}00031     close(fd);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00032}00032     \textcolor{keywordflow}{return} stat\_buf.st\_size;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00033}00033 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00036}00036 \textcolor{keywordtype}{void} print\_vector(std::string msg, \textcolor{keyword}{const} std::vector<uint8\_t> \&v)}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00038}00038     std::cout << msg;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00039}00039     \textcolor{keywordflow}{for} (uint8\_t i : v) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00040}00040         std::cout << \textcolor{stringliteral}{"{} "{}} << (int) i;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00041}00041     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00042}00042     std::cout << std::endl;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00043}00043 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00046}00046 uint8\_t crc8(\textcolor{keyword}{const} uint8\_t *data, \textcolor{keyword}{const} uint32\_t length, uint8\_t crc)}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00047}00047 \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00048}00048     \textcolor{keyword}{constexpr} \textcolor{keyword}{const} uint16\_t polynom = 0b100110001;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00049}00049     \textcolor{keyword}{constexpr} \textcolor{keyword}{const} uint8\_t p\_mask = polynom \& 0xFF;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00051}00051     \textcolor{keywordflow}{for} (uint32\_t i = 0; i < length; i++) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00052}00052         \textcolor{keyword}{const} uint8\_t d = data[i];}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00053}00053         \textcolor{keywordflow}{for} (int8\_t j = 7; j >= 0; j-\/-\/) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00054}00054             uint8\_t e = ((crc >> 7)\string^(d >> j)) \& 1;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00055}00055             crc = (crc << 1) \string^ p\_mask*e;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00056}00056         \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00057}00057     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00059}00059     \textcolor{keywordflow}{return} crc;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00060}00060 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00064}00064 \textcolor{keyword}{auto} vector\_to\_string(\textcolor{keyword}{const} std::vector<bool> \&v)}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00065}00065 \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00066}00066     std::stringstream isstr;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00067}00067     isstr << v.size();}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00068}00068     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} b : v) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00069}00069         isstr << \textcolor{stringliteral}{"{} "{}} << b;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00071}00071     assert(!isstr.fail());}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00072}00072     \textcolor{keywordflow}{return} isstr.str();}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00073}00073 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00077}00077 \textcolor{keyword}{auto} vector\_from\_string(\textcolor{keyword}{auto} content)}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00078}00078 \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00079}00079     std::stringstream osstr(content);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00080}00080     std::size\_t size;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00081}00081     osstr >> size;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00083}00083     std::vector<bool> v(size);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00085}00085     \textcolor{keywordflow}{for} (std::size\_t i = 0; i < size; i++) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00086}00086         \textcolor{keywordtype}{bool} value;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00087}00087         osstr >> value;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00088}00088         v[i] = value;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00089}00089     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00091}00091     assert(!osstr.fail());}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00092}00092     assert(osstr.eof());}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00093}00093     \textcolor{keywordflow}{return} v;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00094}00094 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00097}00097 \textcolor{keywordtype}{bool} fd\_is\_valid(\textcolor{keywordtype}{int} fd)}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00098}00098 \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00099}00099     \textcolor{keywordflow}{return} fcntl(fd, F\_GETFD) != -\/1 || errno != EBADF;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00100}00100 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00101}00101 }
+
+\end{DoxyCode}

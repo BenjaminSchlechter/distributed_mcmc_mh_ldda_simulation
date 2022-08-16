@@ -1,0 +1,44 @@
+\hypertarget{mpi__util_8hpp_source}{}\doxysection{mpi\+\_\+util.\+hpp}
+\label{mpi__util_8hpp_source}\index{util/mpi/mpi\_util.hpp@{util/mpi/mpi\_util.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef MPI\_UTIL\_HPP}}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define MPI\_UTIL\_HPP}}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <mpi.h>}}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00008}00008 \textcolor{keywordtype}{int} mpi\_get\_comm\_rank(\textcolor{keyword}{const} MPI\_Comm \&comm);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00011}00011 \textcolor{keywordtype}{int} mpi\_get\_comm\_size(\textcolor{keyword}{const} MPI\_Comm \&comm);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00014}00014 \textcolor{keywordtype}{bool} is\_message\_available(}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00015}00015     \textcolor{keyword}{const} MPI\_Comm \&comm,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00016}00016     MPI\_Status *status,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00017}00017     \textcolor{keywordtype}{int} tag = MPI\_ANY\_TAG);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00020}00020 \textcolor{keywordtype}{void} wait\_for\_message(}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00021}00021     \textcolor{keyword}{const} MPI\_Comm \&comm,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00022}00022     MPI\_Status *status,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00023}00023     \textcolor{keywordtype}{int} tag = MPI\_ANY\_TAG);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00026}00026 \textcolor{keywordtype}{int} get\_message\_size(MPI\_Status *status);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00029}00029 \textcolor{keywordtype}{void} get\_message(}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00030}00030     \textcolor{keyword}{const} MPI\_Comm \&comm,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00031}00031     MPI\_Status *status,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00032}00032     std::vector<uint8\_t> \&content);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00035}00035 \textcolor{keywordtype}{void} send\_message(}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00036}00036     \textcolor{keyword}{const} MPI\_Comm \&comm,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00037}00037     \textcolor{keywordtype}{int} dest,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00038}00038     \textcolor{keywordtype}{int} tag,}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00039}00039     \textcolor{keyword}{const} std::vector<uint8\_t> \&content);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00042}00042 \textcolor{keywordtype}{void} ping(\textcolor{keyword}{const} MPI\_Comm \&comm, \textcolor{keywordtype}{int} dest, \textcolor{keywordtype}{int} tag);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00045}00045 \textcolor{keywordtype}{void} accept\_ping(\textcolor{keyword}{const} MPI\_Comm \&comm, MPI\_Status *status);}
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{mpi__util_8hpp_source_l00047}00047 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

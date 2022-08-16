@@ -1,0 +1,69 @@
+\hypertarget{classbasic__statistical__metrics}{}\doxysection{basic\+\_\+statistical\+\_\+metrics\texorpdfstring{$<$}{<} prec\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classbasic__statistical__metrics}\index{basic\_statistical\_metrics$<$ prec\_t $>$@{basic\_statistical\_metrics$<$ prec\_t $>$}}
+
+
+calculate multiple statistic metrics efficiently at once  
+
+
+
+
+{\ttfamily \#include $<$statistics.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_a7ea7793366aff4238ce8f8b64d5a9baa}\label{classbasic__statistical__metrics_a7ea7793366aff4238ce8f8b64d5a9baa}} 
+{\bfseries basic\+\_\+statistical\+\_\+metrics} ()
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_abf6b7bbb5ef330cc5e64e8b50746cf69}\label{classbasic__statistical__metrics_abf6b7bbb5ef330cc5e64e8b50746cf69}} 
+std\+::size\+\_\+t {\bfseries counted} ()
+\begin{DoxyCompactList}\small\item\em overall counted numbers, finite and non finite \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_ac0b31fec054f0b3d0d31877ff03ab557}\label{classbasic__statistical__metrics_ac0b31fec054f0b3d0d31877ff03ab557}} 
+{\footnotesize template$<$typename it\+\_\+t $>$ }\\void {\bfseries operator()} (it\+\_\+t begin, it\+\_\+t end)
+\begin{DoxyCompactList}\small\item\em Iterator to add numbers in range to the statistic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}\label{classbasic__statistical__metrics_acddd025dc640fc6793d035aa4653f7f4}} 
+std\+::size\+\_\+t {\bfseries n}
+\begin{DoxyCompactList}\small\item\em number of finite numbers counted \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}\label{classbasic__statistical__metrics_ad5684aebbacbf42183ce76cb2e75f890}} 
+prec\+\_\+t {\bfseries sum\+\_\+xi}
+\begin{DoxyCompactList}\small\item\em sum if all numbers \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_acc9790889db131dca732f3c6877a7b7f}\label{classbasic__statistical__metrics_acc9790889db131dca732f3c6877a7b7f}} 
+prec\+\_\+t {\bfseries sum\+\_\+xi\+\_\+sq}
+\begin{DoxyCompactList}\small\item\em sum if all squared numbers \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_ae001a58914eb6d1818400cd58c5330f5}\label{classbasic__statistical__metrics_ae001a58914eb6d1818400cd58c5330f5}} 
+prec\+\_\+t {\bfseries varianz}
+\begin{DoxyCompactList}\small\item\em variance \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_abd02bad75d1ae7d321554b044ce7d85c}\label{classbasic__statistical__metrics_abd02bad75d1ae7d321554b044ce7d85c}} 
+prec\+\_\+t {\bfseries stddev}
+\begin{DoxyCompactList}\small\item\em standard deviation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_a15c17a0e9f96992bcf3782ab65a15960}\label{classbasic__statistical__metrics_a15c17a0e9f96992bcf3782ab65a15960}} 
+prec\+\_\+t {\bfseries average}
+\begin{DoxyCompactList}\small\item\em arithmetic mean (average) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_a60462e9563eca5460ef440071673b1ed}\label{classbasic__statistical__metrics_a60462e9563eca5460ef440071673b1ed}} 
+prec\+\_\+t {\bfseries min}
+\begin{DoxyCompactList}\small\item\em minimum \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_ae51c4b487862b22917eede0dace4df7b}\label{classbasic__statistical__metrics_ae51c4b487862b22917eede0dace4df7b}} 
+prec\+\_\+t {\bfseries max}
+\begin{DoxyCompactList}\small\item\em maximum \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbasic__statistical__metrics_acc15eeecc3b530819e8b9b66683d0ac4}\label{classbasic__statistical__metrics_acc15eeecc3b530819e8b9b66683d0ac4}} 
+std\+::size\+\_\+t {\bfseries not\+\_\+finite}
+\begin{DoxyCompactList}\small\item\em count of excluded non finite numbers \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename prec\+\_\+t$>$\newline
+class basic\+\_\+statistical\+\_\+metrics$<$ prec\+\_\+t $>$}
+calculate multiple statistic metrics efficiently at once 
+
+Calculates minimum, maximum, average, standard deviation, variance, sum and count in O(n). Non finite numbers are counted separately and are excluded in the metrics. Updates are efficiently possible! The math for standard deviation and variance is from\+: \href{https://coderodde.wordpress.com/2016/04/12/computing-standard-deviation-in-one-pass/}{\texttt{ https\+://coderodde.\+wordpress.\+com/2016/04/12/computing-\/standard-\/deviation-\/in-\/one-\/pass/}} 
+
+Definition at line \mbox{\hyperlink{statistics_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{statistics_8hpp_source}{statistics.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+util/statistics.\+hpp\end{DoxyCompactItemize}

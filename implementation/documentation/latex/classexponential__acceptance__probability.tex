@@ -1,0 +1,40 @@
+\hypertarget{classexponential__acceptance__probability}{}\doxysection{exponential\+\_\+acceptance\+\_\+probability\texorpdfstring{$<$}{<} prec\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classexponential__acceptance__probability}\index{exponential\_acceptance\_probability$<$ prec\_t $>$@{exponential\_acceptance\_probability$<$ prec\_t $>$}}
+
+
+compute an acceptance probability used by the metropolis hastings algorithm  
+
+
+
+
+{\ttfamily \#include $<$acceptance\+\_\+probability.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classexponential__acceptance__probability_a6087350a1d6fd9b57a5143abc913eb9e}\label{classexponential__acceptance__probability_a6087350a1d6fd9b57a5143abc913eb9e}} 
+{\bfseries exponential\+\_\+acceptance\+\_\+probability} (prec\+\_\+t T\+\_\+)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classexponential__acceptance__probability_ada98e6645121900e672b961f6d2f8a88}\label{classexponential__acceptance__probability_ada98e6645121900e672b961f6d2f8a88}} 
+prec\+\_\+t {\bfseries operator()} (prec\+\_\+t old\+\_\+value, prec\+\_\+t new\+\_\+value) const
+\begin{DoxyCompactList}\small\item\em compute acceptance probability given a new and old value \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classexponential__acceptance__probability_a13ef4a9282a23e517e2173a30764aab5}\label{classexponential__acceptance__probability_a13ef4a9282a23e517e2173a30764aab5}} 
+prec\+\_\+t {\bfseries T}
+\begin{DoxyCompactList}\small\item\em exponential falloff (new -\/ old = T (old was better) =\texorpdfstring{$>$}{>} P(accept) = 1/e) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename prec\+\_\+t$>$\newline
+class exponential\+\_\+acceptance\+\_\+probability$<$ prec\+\_\+t $>$}
+compute an acceptance probability used by the metropolis hastings algorithm 
+
+Definition at line \mbox{\hyperlink{acceptance__probability_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{acceptance__probability_8hpp_source}{acceptance\+\_\+probability.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/acceptance\+\_\+computation/acceptance\+\_\+probability.\+hpp\end{DoxyCompactItemize}

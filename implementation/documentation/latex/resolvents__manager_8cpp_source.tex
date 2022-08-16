@@ -1,0 +1,46 @@
+\hypertarget{resolvents__manager_8cpp_source}{}\doxysection{resolvents\+\_\+manager.\+cpp}
+\label{resolvents__manager_8cpp_source}\index{metropolis\_hastings/value\_computation/utility/resolvents\_manager.cpp@{metropolis\_hastings/value\_computation/utility/resolvents\_manager.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}resolvents\_manager.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00010}\mbox{\hyperlink{classresolvents__manager_ab8892111a77511e6b8c1208c7b13c608}{00010}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classresolvents__manager_ab8892111a77511e6b8c1208c7b13c608}{resolvents\_manager::load}}(std::string filename) \{}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00011}00011     std::ifstream file(filename, std::ifstream::in);}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00013}00013     \textcolor{keywordflow}{if} (\textcolor{keyword}{false} == file.is\_open() ) \{}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00014}00014         std::string errmsg = std::string(\textcolor{stringliteral}{"{}can't open "{}}) + filename;}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00015}00015         perror(errmsg.c\_str());}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00016}00016         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00017}00017     \}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00018}00018     }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00019}00019     \textcolor{keywordflow}{while} (file.good()) \{}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00020}00020         std::string line;}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00021}00021         std::getline(file, line);}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00022}00022         \textcolor{keywordflow}{if} ((\textcolor{keyword}{false} == line.starts\_with(\textcolor{stringliteral}{"{}c "{}})) \&\& (!line.empty())) \{}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00023}00023             assert(line.ends\_with(\textcolor{stringliteral}{"{} 0"{}}));}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00024}00024             \mbox{\hyperlink{classresolvents__manager_a0eaf8c78868619fd35c8eff6fffc5e94}{resolvent}}.push\_back(line);}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00025}00025         \}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00026}00026     \}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00027}00027     }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00028}00028     file.close();}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00029}00029     }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00030}00030     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00031}00031 \}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00033}\mbox{\hyperlink{classresolvents__manager_a66d9fa957a65e97ca0991f895706a438}{00033}} std::size\_t \mbox{\hyperlink{classresolvents__manager_a66d9fa957a65e97ca0991f895706a438}{resolvents\_manager::get\_num\_resolvents}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00034}00034     \textcolor{keywordflow}{return} \mbox{\hyperlink{classresolvents__manager_a0eaf8c78868619fd35c8eff6fffc5e94}{resolvent}}.size();}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00037}\mbox{\hyperlink{classresolvents__manager_a3b0b02f3cf3b86ff4bc3ef3b50af2e2f}{00037}} std::string \mbox{\hyperlink{classresolvents__manager_a3b0b02f3cf3b86ff4bc3ef3b50af2e2f}{resolvents\_manager::get\_resolvent}}(std::size\_t i)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00038}00038     \textcolor{keywordflow}{return} \mbox{\hyperlink{classresolvents__manager_a0eaf8c78868619fd35c8eff6fffc5e94}{resolvent}}[i];}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00039}00039 \}}
+\DoxyCodeLine{\Hypertarget{resolvents__manager_8cpp_source_l00040}00040 }
+
+\end{DoxyCode}

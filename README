@@ -1,0 +1,146 @@
+
+This repository contains a distributed, highly parallel Metropolis Hasting
+Monte Carlo Markov Chain simulation with the large deviation distribution
+algorithm from [2] at its core. It enables sampling from the runtime
+distribution of ProbSAT [1] (1), measured in flips, on boolean fomulas,
+in conjunctive normal form that are satisfiable, under the addition of
+resolvents to the original formula.
+
+Corresponding input data for the algorithm, i.e. boolean formulas and
+resolvents of them, can e.g. be found in [3]. One formula with resolvents
+under implementation/run/data/ is included as an example and is from [3].
+
+The implementation was developed by Benjamin Schlechter as part of his master thesis
+"Metropolis Hastings algorithm applied to runtime distribution tails of ProbSAT"
+
+Further information can be found in this thesis. While documentation for
+an overview over the code is in implementation/documentation as html or pdf.
+Either use the pdf version or it is recommended to start from:
+implementation/documentation/html/classes.html
+
+Note that this software was tested on the BwUniCluster 2.0, so the author
+acknowledges support by the state of Baden-Württemberg through bwHPC {1}.
+
+========================================================================
+FOLDER STRUCTURE
+========================================================================
+
+implementation
+	this contains the simulation software, usage is described below
+
+BwUniCluster
+	output data from earlier versions of the implementation that were
+	executed on the BwUniCluster
+
+prototype
+	prototype used during development, has its own Readme
+
+========================================================================
+HOW TO BUILD
+========================================================================
+
+To build the software Bitsery (2) has to be available as dependency in
+implementation/lib/bitsery/
+And OpenMPI (3) needs to be available on the system
+
+Then CMake (4) can be used to obtain an executable:
+mkdir implementation/build
+cd implementation/build
+cmake ..
+make
+
+The build configuration can be tweaked in implementation/CMakeLists.txt
+Some configuration options require changes in the source code under
+implementation/src/ and the files config.hpp config.cpp main.cpp
+E.g. in config.hpp the ProbSAT call can be customized,
+in config.cpp values for the statistical acceptance computation can be
+tweaked and in main.cpp default values for command line parameters are set
+
+Documentation can be generated with the following script if Doxygen (5)
+is available. For optional statistics GNU parallel (6) [4] is required
+implementation/generate_documentation.sh
+Execute it from the implementation/ directory
+
+Build process was successfully tested on 16.8.2022 under Linux 5.18.8 using
+	c++ (GCC) 12.1.0
+	OpenMPI Version 4.1.4
+
+However when building the documentation the current doxygen version
+fails, due to a change in cairo to 1.17.6, downgrading it to 1.17.4 works:
+https://github.com/doxygen/doxygen/issues/9319
+
+========================================================================
+HOW TO RUN
+========================================================================
+
+For the execution ProbSAT (1) (or any other Statistic Local Search Solver
+after corresponding configuration in the source code) is required under:
+implementation/run/probSAT/
+
+Make sure to apply this patch, otherwise things may go wrong as it did for me:
+https://github.com/adrianopolus/probSAT/pull/2/commits/93b4169a28c57350c450e7bd3d7b280419c118ff
+
+copy the main executable from the build in the run directory
+cd run
+cp ../build/main .
+
+Depending on the number of cpu cores available (e.g. -np 4 for home usage)
+one can execute the provided example stated below.
+mpirun -np 4 --use-hwthread-cpus --oversubscribe main
+	-c data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.cnf
+	-r data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.resolvents
+	-d out/three_color_gnp_50vertices_p0.092_seed37_cnfgen/
+	-o 0 -l 10 -n 4 -t 30 |tee example-output.log
+
+Note that the output directory must exist!
+This generates the first four Markov chains with length 10
+
+All the other shell, matlab and perl scripts in the run directory are
+not required, they were used on the BwUniCluster and are there for reference
+
+The example was successfully tested on 16.8.2022 under Linux 5.18.8 using
+	mpirun (Open MPI) 4.1.4
+
+========================================================================
+
+Note that the author is not responsible for the content of any links.
+
+(Software) links:
+	(1) https://github.com/adrianopolus/probSAT
+	(2) https://github.com/fraillt/bitsery
+	(3) https://www.open-mpi.org/
+	(4) https://cmake.org/
+	(5) https://doxygen.nl/
+	(6) https://www.gnu.org/software/parallel/
+
+Other links:
+	{1} https://www.bwhpc.de/
+
+References:
+
+[1] BALINT, Adrian; SCHÖNING, Uwe. Choosing probability distributions for
+stochastic local search and the role of make versus break.
+In: International Conference on Theory and Applications of
+Satisfiability Testing. Springer, Berlin, Heidelberg, 2012. S. 16-29.
+
+[2] HARTMANN, Alexander K.: High-precision work distributions for extreme
+nonequilibrium processes in large systems. In: Physical Review E 89 (2014),
+Nr. 5, S. 052103
+
+[3] Florian Wörz, & Jan-Hendrik Lorenz. (2021, April 23).
+Supplementary Data for 'Evidence for Long-Tails in SLS Algorithms'.
+https://doi.org/10.5281/zenodo.4715893
+
+[4] O. Tange (2011): GNU Parallel - The Command-Line Power Tool,
+;login: The USENIX Magazine, February 2011:42-47.
+
+========================================================================
+LICENSE
+
+This implementation is available under a modified MIT License,
+which can be found in the LICENSE file
+
+Other work which have been cited here, e.g. tools or dependencies that are 
+required to build this software, example input data, etc. are of course
+under copyright of the respective owners and are available under the
+corresponding licenses they published it

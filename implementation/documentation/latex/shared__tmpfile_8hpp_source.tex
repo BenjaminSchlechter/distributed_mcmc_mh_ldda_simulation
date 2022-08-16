@@ -1,0 +1,43 @@
+\hypertarget{shared__tmpfile_8hpp_source}{}\doxysection{shared\+\_\+tmpfile.\+hpp}
+\label{shared__tmpfile_8hpp_source}\index{util/shared\_tmpfile.hpp@{util/shared\_tmpfile.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef SHARED\_TMPFILE}}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define SHARED\_TMPFILE}}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00013}\mbox{\hyperlink{classshared__tmpfile}{00013}} \textcolor{keyword}{class }\mbox{\hyperlink{classshared__tmpfile}{shared\_tmpfile}}}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00015}00015     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00017}\mbox{\hyperlink{classshared__tmpfile_a778a36a3f6068937c834bb1989a619f8}{00017}}         std::size\_t \mbox{\hyperlink{classshared__tmpfile_a778a36a3f6068937c834bb1989a619f8}{id}};}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00019}00019     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00021}\mbox{\hyperlink{classshared__tmpfile_ad8cd6d95bd4fa150f7f381f59f39ed3e}{00021}}         std::string \mbox{\hyperlink{classshared__tmpfile_ad8cd6d95bd4fa150f7f381f59f39ed3e}{fname}};}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00024}\mbox{\hyperlink{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}{00024}}         FILE *\mbox{\hyperlink{classshared__tmpfile_a6d5607f94ab7ec4a9eacbe0215f56030}{fptr}};}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00027}00027         \mbox{\hyperlink{classshared__tmpfile_a0527925b2822016b9fa438f8836332ba}{shared\_tmpfile}}();}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00034}00034         \mbox{\hyperlink{classshared__tmpfile_a0527925b2822016b9fa438f8836332ba}{shared\_tmpfile}}(std::string purpose);}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00035}00035         }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00037}\mbox{\hyperlink{classshared__tmpfile_a70bf2edb448db268c12635a0bc3f6d19}{00037}}         \mbox{\hyperlink{classshared__tmpfile_a70bf2edb448db268c12635a0bc3f6d19}{shared\_tmpfile}}(\textcolor{keyword}{const} \mbox{\hyperlink{classshared__tmpfile}{shared\_tmpfile}} \&other) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00039}00039         \textcolor{comment}{// copy \& swap idiom}}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00042}00042         \textcolor{keyword}{friend} \textcolor{keywordtype}{void} \mbox{\hyperlink{classshared__tmpfile_af19c039626eab57c4ac8bce50cb798b6}{swap}}(\mbox{\hyperlink{classshared__tmpfile}{shared\_tmpfile}} \&a, \mbox{\hyperlink{classshared__tmpfile}{shared\_tmpfile}} \&b);}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00045}00045         \mbox{\hyperlink{classshared__tmpfile_a0527925b2822016b9fa438f8836332ba}{shared\_tmpfile}}(\mbox{\hyperlink{classshared__tmpfile}{shared\_tmpfile}} \&\&other) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00048}00048         \mbox{\hyperlink{classshared__tmpfile}{shared\_tmpfile}} \&\mbox{\hyperlink{classshared__tmpfile_a898e66761c1b54b20ea0eea2b3bba116}{operator=}}(\mbox{\hyperlink{classshared__tmpfile}{shared\_tmpfile}} other);}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00051}00051         \textcolor{keywordtype}{void} \mbox{\hyperlink{classshared__tmpfile_a13a20a183f546e60c505473cc98121d8}{remove}}();}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00054}00054         \mbox{\hyperlink{classshared__tmpfile_a08e06b1cd95fac78ad5e807beeb11f62}{\string~shared\_tmpfile}}();}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00055}00055 \};}
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{shared__tmpfile_8hpp_source_l00057}00057 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,55 @@
+\hypertarget{mpi__async__communication_8hpp_source}{}\doxysection{mpi\+\_\+async\+\_\+communication.\+hpp}
+\label{mpi__async__communication_8hpp_source}\index{util/mpi/mpi\_async\_communication.hpp@{util/mpi/mpi\_async\_communication.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef MPI\_ASYNC\_COMMUNICATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define MPI\_ASYNC\_COMMUNICATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <mpi.h>}}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00008}\mbox{\hyperlink{classasync__comm}{00008}} \textcolor{keyword}{class }\mbox{\hyperlink{classasync__comm}{async\_comm}}}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00009}00009 \{}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00010}00010     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00012}\mbox{\hyperlink{classasync__comm_ac43d3f2e34c40de6c97eb2ca9bd2bb8d}{00012}}         \textcolor{keyword}{using} \mbox{\hyperlink{classasync__comm_ac43d3f2e34c40de6c97eb2ca9bd2bb8d}{data\_t}} = std::vector<uint8\_t>;}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00015}\mbox{\hyperlink{classasync__comm_a7fe5250c825d71ceb9e79175109eb7be}{00015}}         std::vector<MPI\_Request> \mbox{\hyperlink{classasync__comm_a7fe5250c825d71ceb9e79175109eb7be}{outstanding\_requests}};}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00018}\mbox{\hyperlink{classasync__comm_a25838c52dfc12875957906a52c08f2a5}{00018}}         std::vector<data\_t> \mbox{\hyperlink{classasync__comm_a25838c52dfc12875957906a52c08f2a5}{outstanding\_data}};}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00020}00020     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00022}00022         \textcolor{keywordtype}{void} \mbox{\hyperlink{classasync__comm_afb5c3b686560341e4013a20ecbd3d9b7}{wait\_for\_one\_message}}();}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00025}00025         \textcolor{keywordtype}{void} \mbox{\hyperlink{classasync__comm_a5d3e6058ca6a2d285c01bc251e1db1d8}{wait\_for\_all\_messages}}();}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00028}00028         \textcolor{keywordtype}{void} \mbox{\hyperlink{classasync__comm_a3651921f09630c6c9297cc83daea026d}{wait\_for\_some\_messages}}();}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00031}00031         \textcolor{keywordtype}{void} \mbox{\hyperlink{classasync__comm_a5e74e9f1a8323d3e30bef4314ee58b01}{test\_for\_one\_message}}();}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00034}00034         \textcolor{keywordtype}{void} \mbox{\hyperlink{classasync__comm_a9c10468e193957872c33fdf4266c7ec2}{test\_for\_messages}}();}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00037}00037         \textcolor{keyword}{auto} \mbox{\hyperlink{classasync__comm_abdcc2ff2de2e58044e2812d24c49c404}{communications\_in\_queue}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00040}00040         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classasync__comm_afac3f9e2ad35148b627958ba5860f79a}{communication\_is\_done}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00043}00043         \mbox{\hyperlink{classasync__comm_a86bcaae93c2766519136fc958cd494e6}{\string~async\_comm}}();}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00044}00044 \};}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00047}\mbox{\hyperlink{classasync__comm__out}{00047}} \textcolor{keyword}{class }\mbox{\hyperlink{classasync__comm__out}{async\_comm\_out}} : \textcolor{keyword}{public} \mbox{\hyperlink{classasync__comm}{async\_comm}}}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00048}00048 \{}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00049}00049     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00051}00051         \textcolor{keywordtype}{void} \mbox{\hyperlink{classasync__comm__out_a5b942bd597c82f9f8fa5e7ba1ef6e71c}{send\_message}}(}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00052}00052             \textcolor{keyword}{const} MPI\_Comm \&comm, \textcolor{keywordtype}{int} dest, \textcolor{keywordtype}{int} tag, \mbox{\hyperlink{classasync__comm_ac43d3f2e34c40de6c97eb2ca9bd2bb8d}{data\_t}} \&\&content);}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00053}00053 \};}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00056}\mbox{\hyperlink{classfake__async__comm__out}{00056}} \textcolor{keyword}{class }\mbox{\hyperlink{classfake__async__comm__out}{fake\_async\_comm\_out}} : \textcolor{keyword}{public} \mbox{\hyperlink{classasync__comm}{async\_comm}}}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00057}00057 \{}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00058}00058     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00059}00059         \textcolor{keywordtype}{void} send\_message(}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00060}00060             \textcolor{keyword}{const} MPI\_Comm \&comm, \textcolor{keywordtype}{int} dest, \textcolor{keywordtype}{int} tag, \textcolor{keyword}{auto} content);}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00061}00061 \};}
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{mpi__async__communication_8hpp_source_l00064}00064 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

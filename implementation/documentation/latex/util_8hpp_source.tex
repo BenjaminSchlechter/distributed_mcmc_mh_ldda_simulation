@@ -1,0 +1,82 @@
+\hypertarget{util_8hpp_source}{}\doxysection{util.\+hpp}
+\label{util_8hpp_source}\index{util/util.hpp@{util/util.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef UTIL\_HPP}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define UTIL\_HPP}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <unistd.h>} }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include <fcntl.h>} }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00018}00018 \textcolor{keyword}{template}<\textcolor{keyword}{typename} t, \textcolor{keyword}{typename}... args>}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00019}00019 \textcolor{keywordtype}{void} ignore(\textcolor{keyword}{const} t\&, args...) \{ \}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00023}00023 std::ptrdiff\_t slurp\_file(}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00024}00024     std::string \&content\_str, \textcolor{keyword}{const} std::string filename);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00028}00028 \textcolor{keyword}{template}<\textcolor{keyword}{typename} t>}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00029}00029 t from\_string(std::string s) \{}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00030}00030     t value;}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00031}00031     std::istringstream iss(s);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00032}00032     iss >> value;}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00034}00034     \textcolor{keywordflow}{if} (!iss) \{}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00035}00035         std::string errmsg = \textcolor{stringliteral}{"{}can't parse '"{}} + s + \textcolor{stringliteral}{"{}'"{}};}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00036}00036         \textcolor{keywordflow}{throw} std::runtime\_error(errmsg);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00037}00037     \}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00039}00039     \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00044}00044 \textcolor{keywordtype}{void} print\_vector(std::string msg, \textcolor{keyword}{const} std::vector<uint8\_t> \&v);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00053}00053 \textcolor{keyword}{template} <\textcolor{keyword}{typename} head\_t, \textcolor{keyword}{typename}... tail\_t>}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00054}00054 \textcolor{keyword}{auto} tail(\textcolor{keyword}{const} std::tuple<head\_t, tail\_t...> \&tuple) \{}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00055}00055     \textcolor{keywordflow}{return} apply([](\textcolor{keyword}{auto} \&head, \textcolor{keyword}{auto} \&... tail) \{ ignore(head); \textcolor{keywordflow}{return} std::make\_tuple(tail...); \}, tuple);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00059}00059 \textcolor{keywordtype}{bool} perror\_(\textcolor{keyword}{auto} msg) \{}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00060}00060     perror(msg);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00061}00061     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00062}00062 \}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00076}00076 uint8\_t crc8(\textcolor{keyword}{const} uint8\_t *data, \textcolor{keyword}{const} uint32\_t length, uint8\_t crc = 0);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00080}00080 \textcolor{keyword}{auto} vector\_to\_string(\textcolor{keyword}{const} std::vector<bool> \&v);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00084}00084 \textcolor{keyword}{auto} vector\_from\_string(\textcolor{keyword}{auto} content);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00091}00091 \textcolor{keywordtype}{bool} fd\_is\_valid(\textcolor{keywordtype}{int} fd);}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00094}00094 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00095}00095 \textcolor{comment}{// https://stackoverflow.com/questions/41301536/get-\/function-\/return-\/type-\/in-\/template}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00096}00096 \textcolor{comment}{template<typename R, typename... A>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00097}00097 \textcolor{comment}{R get\_return\_type(R(*)(A...));}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00098}00098 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00099}00099 \textcolor{comment}{template<typename C, typename R, typename... A>}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00100}00100 \textcolor{comment}{R get\_return\_type(R(C::*)(A...));}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00101}00101 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{util_8hpp_source_l00104}00104 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

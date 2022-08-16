@@ -1,0 +1,7 @@
+<map id="remote_computation_group&lt; remote_execution_context_t, type_abstraction_adapter_t &gt;" name="remote_computation_group&lt; remote_execution_context_t, type_abstraction_adapter_t &gt;">
+<area shape="rect" id="node1" title="manager class to execute functions on remote nodes using a remote execution context" alt="" coords="65,213,271,284"/>
+<area shape="rect" id="node2" href="$classasync__comm__out.html" title="derived helper class providing async message sending" alt="" coords="5,117,141,143"/>
+<area shape="rect" id="node3" href="$classasync__comm.html" title="base helper class for async MPI communcation" alt="" coords="18,13,126,39"/>
+<area shape="rect" id="node4" href="$classremote__execution__context.html" title="context for remote function execution including on_result functions" alt="" coords="167,109,361,151"/>
+<area shape="rect" id="node5" href="$classremote__procedure__manager.html" title="class to manager remote procedure calls" alt="" coords="150,5,381,47"/>
+</map>

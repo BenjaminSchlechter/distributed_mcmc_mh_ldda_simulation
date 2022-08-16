@@ -1,0 +1,87 @@
+\hypertarget{rtti_8hpp_source}{}\doxysection{rtti.\+hpp}
+\label{rtti_8hpp_source}\index{distributed\_computation/rtti.hpp@{distributed\_computation/rtti.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef RTTI\_HPP}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define RTTI\_HPP}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}../util/util.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00010}00010 \textcolor{keyword}{template}<\textcolor{keyword}{typename} type\_abstraction\_adapter\_t> \textcolor{keyword}{requires}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00011}00011     (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\_abstraction\_adapter\_t::is\_TypeAbstractionAdapter}})}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00012}\mbox{\hyperlink{classGenericType}{00012}} \textcolor{keyword}{class} \mbox{\hyperlink{classGenericType}{GenericType}}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00014}00014     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00016}\mbox{\hyperlink{classGenericType_aacfc5bbe2250b60c5beb53580c43ffb5}{00016}}         \textcolor{keyword}{virtual} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\_abstraction\_adapter\_t::abstract\_type}} \mbox{\hyperlink{classGenericType_aacfc5bbe2250b60c5beb53580c43ffb5}{serialize}}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00017}00017             (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}} \&adapter)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00018}00018 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00019}00019             ignore(adapter);}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00020}00020             \textcolor{keywordflow}{return} \textcolor{keyword}{typename} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\_abstraction\_adapter\_t::abstract\_type}}();}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00021}00021         \}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00024}\mbox{\hyperlink{classGenericType_a330eccda55c0edde295083a5eed156eb}{00024}}         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classGenericType_a330eccda55c0edde295083a5eed156eb}{deserialize}}(}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00025}00025             \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}} \&adapter,}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00026}00026             \textcolor{keyword}{const} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\_abstraction\_adapter\_t::abstract\_type}} \&v)}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00027}00027         \{}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00028}00028             ignore(adapter, v);}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00029}00029             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00030}00030         \}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00033}\mbox{\hyperlink{classGenericType_a476c828bd3959faa5aadca9c378e9975}{00033}}         \textcolor{keyword}{virtual} \mbox{\hyperlink{classGenericType_a476c828bd3959faa5aadca9c378e9975}{\string~GenericType}}() \{\}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00034}00034 \};}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00037}00037 \textcolor{keyword}{template}<\textcolor{keyword}{typename} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}}, \textcolor{keyword}{typename}... arg\_types>}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00038}00038     \textcolor{keyword}{requires} (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\_abstraction\_adapter\_t::is\_TypeAbstractionAdapter}})}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00039}\mbox{\hyperlink{classConcreteType}{00039}} \textcolor{keyword}{class} \mbox{\hyperlink{classConcreteType}{ConcreteType}} : \textcolor{keyword}{public} \mbox{\hyperlink{classGenericType}{GenericType<type\_abstraction\_adapter\_t>}}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00040}00040 \{}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00041}00041     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00043}\mbox{\hyperlink{classConcreteType_a67040b4ca9b948a4e248dfd971432449}{00043}}         \textcolor{keyword}{using} \mbox{\hyperlink{classConcreteType_a67040b4ca9b948a4e248dfd971432449}{tuple\_t}} = std::tuple<arg\_types ...>;}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00046}\mbox{\hyperlink{classConcreteType_a862f881b7627c49eb1e6a7f2f5ee7a4e}{00046}}         \mbox{\hyperlink{classConcreteType_a67040b4ca9b948a4e248dfd971432449}{tuple\_t}} \mbox{\hyperlink{classConcreteType_a862f881b7627c49eb1e6a7f2f5ee7a4e}{values}};}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00049}\mbox{\hyperlink{classConcreteType_a019b9955df6b29becd7084cd68928e00}{00049}}         \mbox{\hyperlink{classConcreteType_a019b9955df6b29becd7084cd68928e00}{ConcreteType}}() : values() \{\}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00052}\mbox{\hyperlink{classConcreteType_a89aa41cd8d4c5fbbf3f8133acd774d0b}{00052}}         \mbox{\hyperlink{classConcreteType_a89aa41cd8d4c5fbbf3f8133acd774d0b}{ConcreteType}}(}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00053}00053             arg\_types... args,}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00054}00054             \textcolor{keywordtype}{bool} use\_value\_constructor = \textcolor{keyword}{true}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00055}00055         ) :}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00056}00056             values(args...)}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00057}00057         \{}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00058}00058             ignore(use\_value\_constructor);}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00059}00059         \}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00062}\mbox{\hyperlink{classConcreteType_a239da147ec3eb32d83d55cba58ebf41b}{00062}}         \mbox{\hyperlink{classConcreteType_a239da147ec3eb32d83d55cba58ebf41b}{ConcreteType}}(std::tuple<arg\_types ...> \&values) : values(values) \{\}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00065}\mbox{\hyperlink{classConcreteType_a4b66af2bb43874659204cf40b85bf16c}{00065}}         \mbox{\hyperlink{classConcreteType_a4b66af2bb43874659204cf40b85bf16c}{ConcreteType}}(\textcolor{keyword}{const} \mbox{\hyperlink{classConcreteType}{ConcreteType}} \&other) : values(other.values) \{\}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00068}00068         \textcolor{keyword}{template}<\textcolor{keyword}{typename} other\_type\_abstraction\_adapter\_t>}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00069}\mbox{\hyperlink{classConcreteType_a9db25efcda4eea5c935eb1058cfd9bfa}{00069}}         \textcolor{keyword}{operator} \mbox{\hyperlink{classConcreteType}{ConcreteType}}<}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00070}00070             other\_type\_abstraction\_adapter\_t, arg\_types...>() \textcolor{keyword}{const}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00071}00071         \{}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00072}00072             \textcolor{keywordflow}{return} \mbox{\hyperlink{classConcreteType}{ConcreteType}}<}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00073}00073                 other\_type\_abstraction\_adapter\_t, arg\_types...>(values);}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00077}00077         \textcolor{keyword}{virtual} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\_abstraction\_adapter\_t::abstract\_type}}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00078}\mbox{\hyperlink{classConcreteType_aaf94113b522b8bd451bce7b766a1cdeb}{00078}}             \mbox{\hyperlink{classConcreteType_aaf94113b522b8bd451bce7b766a1cdeb}{serialize}}(\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}} \&adapter)\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00079}00079 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00080}00080             \textcolor{keywordflow}{return} adapter.\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_ab76d04229530de5add9614514363bd45}{serialize}}(values);}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00081}00081         \}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00084}\mbox{\hyperlink{classConcreteType_aac7e3274b5147275797134ee59c93186}{00084}}         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classConcreteType_aac7e3274b5147275797134ee59c93186}{deserialize}}(}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00085}00085             \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\_abstraction\_adapter\_t}} \&adapter,}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00086}00086             \textcolor{keyword}{const} \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\_abstraction\_adapter\_t::abstract\_type}} \&v)\textcolor{keyword}{ override}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00087}00087 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00088}00088             \textcolor{keywordflow}{return} adapter.\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_aee1cacc94c877f694630120c921cbd1f}{deserialize}}(v, values);}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00089}00089         \}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00090}00090 \};}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00093}00093 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{rtti_8hpp_source_l00095}00095 }
+
+\end{DoxyCode}

@@ -1,0 +1,279 @@
+\hypertarget{probsat-execution_8cpp_source}{}\doxysection{probsat-\/execution.cpp}
+\label{probsat-execution_8cpp_source}\index{metropolis\_hastings/value\_computation/utility/probsat-\/execution.cpp@{metropolis\_hastings/value\_computation/utility/probsat-\/execution.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cstdio>}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <sys/select.h>}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include "{}probsat-\/execution.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}../../../config.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}../../../util/util.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00016}00016 uint8\_t execute\_probsat\_(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00017}00017     uint64\_t \&num\_flips,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00018}00018     \textcolor{keyword}{const} std::string \&filename,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00019}00019     \textcolor{keyword}{const} probsat\_seed\_t seed,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00020}00020     \textcolor{keyword}{const} uint64\_t max\_flips,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00021}00021     \textcolor{keyword}{const} std::chrono::seconds \&max\_exec\_time,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00022}00022     std::string *debug\_probsat\_output)}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00024}00024     uint8\_t \mbox{\hyperlink{namespaceprobsat__return__cause_a71c44000e3464f5e6330f7d9ecf7dff6}{reason}} = 0;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00026}00026     \textcolor{keyword}{const} std::string cmd =}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00027}00027         probsat\_cmd +}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00028}00028         ((0 < max\_flips) ?}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00029}00029             \textcolor{stringliteral}{"{} -\/-\/maxflips "{}} + std::to\_string(max\_flips) : \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00030}00030         + \textcolor{stringliteral}{"{} "{}} + filename + \textcolor{stringliteral}{"{} "{}} + std::to\_string(seed) + \textcolor{stringliteral}{"{} 2>\&1"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00032}00032     num\_flips = std::numeric\_limits<uint64\_t>::max();}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00034}00034     FILE *pipe\_fh = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00035}00035     pipe\_fh = popen(cmd.c\_str(), \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00036}00036     \textcolor{keywordflow}{if} (!pipe\_fh) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00037}00037         perror(\textcolor{stringliteral}{"{}popen failed"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00038}00038         \textcolor{keywordflow}{return} \mbox{\hyperlink{namespaceprobsat__return__cause_a71c44000e3464f5e6330f7d9ecf7dff6}{reason}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00039}00039     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00041}00041     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00042}00042         \textcolor{keyword}{auto} start = std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00044}00044         \textcolor{keywordtype}{int} piped = fileno(pipe\_fh);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00045}00045         \textcolor{keywordflow}{if} (-\/1 == piped) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00046}00046             perror(\textcolor{stringliteral}{"{}fileno(pipe\_fh)"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00047}00047             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}fileno failed"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00048}00048         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00050}00050         fcntl(piped, F\_SETFL, O\_NONBLOCK);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00051}00051         \textcolor{keywordflow}{if} (-\/1 == piped) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00052}00052             perror(\textcolor{stringliteral}{"{}fcntl(piped, F\_SETFL, O\_NONBLOCK);"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00053}00053             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}fcntl failed"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00054}00054         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00056}00056         \textcolor{keyword}{const} std::string marker = \textcolor{stringliteral}{"{}c numFlips"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00057}00057         \textcolor{keywordtype}{size\_t} bsize = 4096;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00058}00058         assert(bsize <= std::numeric\_limits<ssize\_t>::max());}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00059}00059         \textcolor{keywordtype}{char} buffer[bsize];}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00060}00060         std::string bstr = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00062}00062         fd\_set readfds;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00063}00063         FD\_ZERO(\&readfds);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00064}00064         FD\_SET(piped, \&readfds);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00066}00066         timespec timeout;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00067}00067         timespec *timeout\_ptr =}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00068}00068             (std::chrono::seconds::zero() == max\_exec\_time) ?}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00069}00069                 \textcolor{keyword}{nullptr} : \&timeout;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00070}00070         assert(std::chrono::ceil<std::chrono::seconds>(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00071}00071             max\_exec\_time -\/ std::chrono::seconds::zero()).count()}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00072}00072             <= std::numeric\_limits<\textcolor{keyword}{decltype}(timeout.tv\_sec)>::max());}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00074}00074         \textcolor{keywordtype}{bool} running = fd\_is\_valid(piped);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00075}00075         \textcolor{keywordflow}{while} (running)}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00076}00076         \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00077}00077             \textcolor{keyword}{auto} now = std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00078}00078             \textcolor{keyword}{auto} current\_execution\_time = now -\/ start;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00080}00080             \textcolor{keywordflow}{if} (\textcolor{keyword}{nullptr} != timeout\_ptr) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00081}00081                 timeout.tv\_sec = (\textcolor{keyword}{decltype}(timeout.tv\_sec)) std::max(0l,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00082}00082                     std::chrono::ceil<std::chrono::seconds>(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00083}00083                         max\_exec\_time -\/ current\_execution\_time).count());}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00084}00084                 timeout.tv\_nsec = 1;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00085}00085             \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00087}00087             \textcolor{keywordtype}{int} rval = pselect(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00088}00088                 piped+1, \&readfds, \textcolor{keyword}{nullptr}, \textcolor{keyword}{nullptr}, timeout\_ptr, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00089}00089             \textcolor{keywordflow}{switch} (rval) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00090}00090                 \textcolor{keywordflow}{case} 0: \textcolor{comment}{// timeout}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00091}00091                     now = std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00092}00092                     current\_execution\_time =}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00093}00093                         std::chrono::duration\_cast<std::chrono::seconds>}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00094}00094                         (now -\/ start);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00095}00095                     \textcolor{keywordflow}{if} (max\_exec\_time <= current\_execution\_time) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00096}00096                         std::cerr << \textcolor{stringliteral}{"{}timeout after "{}}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00097}00097                             << current\_execution\_time.count()}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00098}00098                             << \textcolor{stringliteral}{"{} seconds"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00099}00099                         running = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00100}00100                         \mbox{\hyperlink{namespaceprobsat__return__cause_a71c44000e3464f5e6330f7d9ecf7dff6}{reason}} = 1;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00101}00101                     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00102}00102                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00103}00103                     }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00104}00104                 \textcolor{keywordflow}{case} 1: \textcolor{comment}{// data available}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00105}00105                     \textcolor{keywordflow}{while} (running)}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00106}00106                     \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00107}00107                         ssize\_t num\_chars\_read =}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00108}00108                             read(piped, \&buffer[0], bsize);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00109}00109                         buffer[num\_chars\_read] = 0; \textcolor{comment}{// null terminate}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00111}00111                         \textcolor{keywordflow}{if} (0 > num\_chars\_read)}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00112}00112                         \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00113}00113                             \textcolor{keywordflow}{if} ((errno != EAGAIN)}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00114}00114                                 and (errno != EWOULDBLOCK))}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00115}00115                             \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00116}00116                                 perror(\textcolor{stringliteral}{"{}read"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00117}00117                                 \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}read failed"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00118}00118                                 running = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00119}00119                             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00120}00120                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00121}00121                             \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00122}00122                         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00123}00123                             \textcolor{keywordflow}{if} (\textcolor{keyword}{nullptr} != debug\_probsat\_output) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00124}00124                                 *debug\_probsat\_output +=}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00125}00125                                     std::string(\&buffer[0]) + \textcolor{stringliteral}{"{}|BLOCK|"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00126}00126                             \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00127}00127                         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00129}00129                         \textcolor{keywordflow}{if} (0 < num\_chars\_read)}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00130}00130                         \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00131}00131                             std::size\_t offset = bstr.length();}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00132}00132                             std::string bfs = std::string(\&buffer[0]);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00133}00133                             bstr += bfs;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00134}00134                             assert(bfs.length()}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00135}00135                                 == (std::size\_t) num\_chars\_read);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00137}00137                             \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00138}00138                                 \textcolor{keywordtype}{size\_t} pos = bstr.find(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}, offset);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00139}00139                                 \textcolor{keywordflow}{if} (pos == std::string::npos) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00140}00140                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00141}00141                                 \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00143}00143                                 std::string line = bstr.substr(0, pos);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00144}00144                                 bstr =}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00145}00145                                     bstr.substr(pos+1, std::string::npos);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00146}00146                                 offset = 0;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00148}00148                                 \textcolor{comment}{// std::cout << "{}c probsat: "{}}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00149}00149                                     \textcolor{comment}{// << line << std::endl;}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00151}00151                                 \textcolor{keywordflow}{if} (line.starts\_with(marker)) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00152}00152                                     \textcolor{keywordtype}{size\_t} pos =}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00153}00153                                         line.find(\textcolor{stringliteral}{"{}: "{}}, marker.length());}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00154}00154                                     assert(pos != std::string::npos);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00156}00156                                     std::string num\_flips\_str =}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00157}00157                                         line.substr(pos + 2);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00158}00158                                     assert(!num\_flips\_str.empty());}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00160}00160                                     num\_flips = from\_string<std::size\_t>}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00161}00161                                         (num\_flips\_str);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00162}00162                                     running = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00163}00163                                     \mbox{\hyperlink{namespaceprobsat__return__cause_a71c44000e3464f5e6330f7d9ecf7dff6}{reason}} = 255;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00164}00164                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00165}00165                                 \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00166}00166                             \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00167}00167                         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00168}00168                     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00169}00169                     }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00170}00170                     \textcolor{keywordflow}{if} (running) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00171}00171                         running = fd\_is\_valid(piped);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00172}00172                     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00173}00173                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00174}00174                     }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00175}00175                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00176}00176                     perror(\textcolor{stringliteral}{"{}pselect"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00177}00177                     \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}pselect failed"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00178}00178                     running = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00179}00179                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00180}00180             \};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00181}00181         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00182}00182     \} \textcolor{keywordflow}{catch}(std::exception \&ex) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00183}00183         std::cerr << \textcolor{stringliteral}{"{}exception executing probsat:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00184}00184         \textcolor{keywordflow}{if} (!cmd.empty()) \{ std::cerr << cmd << \textcolor{stringliteral}{"{}\(\backslash\)n"{}}; \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00185}00185         std::cerr << ex.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00186}00186     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00187}00187     }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00188}00188     \textcolor{keywordflow}{if} (pipe\_fh) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00189}00189         \textcolor{keywordflow}{if} (\textcolor{keyword}{nullptr} != debug\_probsat\_output) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00190}00190             *debug\_probsat\_output += \textcolor{stringliteral}{"{}|CLOSE|"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00191}00191         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00193}00193         \textcolor{keyword}{auto} rval = pclose(pipe\_fh);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00194}00194         \textcolor{keywordflow}{if} (-\/1 == rval) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00195}00195             perror(\textcolor{stringliteral}{"{}pclose(pipe\_fh)"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00196}00196         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00197}00197         pipe\_fh = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00198}00198     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00199}00199     }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00200}00200     \textcolor{keywordflow}{return} \mbox{\hyperlink{namespaceprobsat__return__cause_a71c44000e3464f5e6330f7d9ecf7dff6}{reason}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00201}00201 \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00204}00204 std::string execute\_cmd(std::string cmd)}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00205}00205 \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00206}00206     FILE *pipe\_fh = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00207}00207     pipe\_fh = popen(cmd.c\_str(), \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00208}00208     \textcolor{keywordflow}{if} (!pipe\_fh) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00209}00209         perror(\textcolor{stringliteral}{"{}popen failed"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00210}00210         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}popen failed"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00211}00211     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00213}00213     std::string content;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00214}00214     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00215}00215         \textcolor{keywordtype}{char} c;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00216}00216         \textcolor{keywordflow}{while} ((c = fgetc(pipe\_fh)) != EOF) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00217}00217             content += c;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00218}00218         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00219}00219     \} \textcolor{keywordflow}{catch}(std::exception \&ex) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00220}00220         std::cerr << \textcolor{stringliteral}{"{}exception executing probsat:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00221}00221         \textcolor{keywordflow}{if} (!cmd.empty()) \{ std::cerr << cmd << \textcolor{stringliteral}{"{}\(\backslash\)n"{}}; \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00222}00222         std::cerr << ex.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00223}00223         \textcolor{keywordflow}{return} content + ex.what();}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00224}00224     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00225}00225 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00226}00226     \textcolor{keywordflow}{if} (pipe\_fh) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00227}00227         \textcolor{keyword}{auto} rval = pclose(pipe\_fh);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00228}00228         \textcolor{keywordflow}{if} (-\/1 == rval) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00229}00229             perror(\textcolor{stringliteral}{"{}pclose(pipe\_fh)"{}});}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00230}00230         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00231}00231         pipe\_fh = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00232}00232     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00233}00233     }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00234}00234     \textcolor{keywordflow}{return} content;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00235}00235 \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00237}00237 std::pair<uint64\_t, probsat\_return\_cause::reason> execute\_probsat}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00238}00238     (std::string filename, probsat\_seed\_t seed)}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00239}00239 \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00240}00240     \textcolor{keyword}{using} reason\_t = \mbox{\hyperlink{namespaceprobsat__return__cause_a71c44000e3464f5e6330f7d9ecf7dff6}{probsat\_return\_cause::reason}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00241}00241     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00242}00242         uint64\_t num\_flips = std::numeric\_limits<uint64\_t>::max();}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00244}00244         uint8\_t \mbox{\hyperlink{namespaceprobsat__return__cause_a71c44000e3464f5e6330f7d9ecf7dff6}{reason}} = execute\_probsat\_(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00245}00245             num\_flips,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00246}00246             filename,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00247}00247             seed,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00248}00248             probsat\_max\_flips,}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00249}00249             probsat\_max\_exec\_time);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00250}00250 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00251}00251         \textcolor{keywordflow}{if} (1 == reason) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00252}00252             \textcolor{keywordflow}{return} std::make\_pair<uint64\_t, reason\_t>(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00253}00253                 std::move(num\_flips), probsat\_return\_cause::TIMEOUT);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00254}00254         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (255 == reason) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00255}00255             \textcolor{keywordflow}{if} ((0 < num\_flips) \&\& (num\_flips == probsat\_max\_flips)) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00256}00256                 \textcolor{keywordflow}{return} std::make\_pair<uint64\_t, reason\_t>(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00257}00257                     std::move(num\_flips), probsat\_return\_cause::MAX\_FLIPS);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00258}00258             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00259}00259                 \textcolor{keywordflow}{return} std::make\_pair<uint64\_t, reason\_t>(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00260}00260                     std::move(num\_flips), probsat\_return\_cause::SUCCESS);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00261}00261             \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00262}00262         \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00263}00263     \} \textcolor{keywordflow}{catch}(std::exception \&ex) \{}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00264}00264         std::cerr << \textcolor{stringliteral}{"{}exception executing probsat:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00265}00265         std::cerr << ex.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00266}00266     \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00267}00267 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00268}00268     \textcolor{keywordflow}{return} std::make\_pair<uint64\_t, reason\_t>(}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00269}00269         std::numeric\_limits<uint64\_t>::max(), probsat\_return\_cause::ERROR);}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00270}00270 \}}
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00272}00272 }
+\DoxyCodeLine{\Hypertarget{probsat-execution_8cpp_source_l00273}00273 }
+
+\end{DoxyCode}

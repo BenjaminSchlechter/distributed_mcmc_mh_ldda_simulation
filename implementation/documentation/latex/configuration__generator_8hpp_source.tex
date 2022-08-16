@@ -1,0 +1,83 @@
+\hypertarget{configuration__generator_8hpp_source}{}\doxysection{configuration\+\_\+generator.\+hpp}
+\label{configuration__generator_8hpp_source}\index{metropolis\_hastings/configuration/configuration\_generator.hpp@{metropolis\_hastings/configuration/configuration\_generator.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef CONFIGURATION\_MANAGER\_HPP}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define CONFIGURATION\_MANAGER\_HPP}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00011}00011 \textcolor{keyword}{template} <\textcolor{keyword}{typename} cfg\_vector\_t>}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00012}\mbox{\hyperlink{classconstant__configuration__generator}{00012}} \textcolor{keyword}{class }\mbox{\hyperlink{classconstant__configuration__generator}{constant\_configuration\_generator}}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00014}00014     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00015}00015         \textcolor{keyword}{constexpr} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} is\_configuration\_generator = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00017}00017     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00018}00018         \textcolor{keyword}{using} value\_t = \mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{cfg\_vector\_t::value\_type}};}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00021}\mbox{\hyperlink{classconstant__configuration__generator_a15034ff97ec4926dd92e7e97e8f58324}{00021}}         value\_t \mbox{\hyperlink{classconstant__configuration__generator_a15034ff97ec4926dd92e7e97e8f58324}{cvalue}};}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00023}00023     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00024}00024         std::string get\_description() \{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00025}00025             \textcolor{keywordflow}{return} std::string(\textcolor{stringliteral}{"{}ci-\/"{}}) + std::to\_string(\mbox{\hyperlink{classconstant__configuration__generator_a15034ff97ec4926dd92e7e97e8f58324}{cvalue}});}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00026}00026         \}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00029}\mbox{\hyperlink{classconstant__configuration__generator_a72f35fe3102cf3438d03a9511d33c0d2}{00029}}         \mbox{\hyperlink{classconstant__configuration__generator_a72f35fe3102cf3438d03a9511d33c0d2}{constant\_configuration\_generator}}(value\_t constant\_value)}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00030}00030             : \mbox{\hyperlink{classconstant__configuration__generator_a15034ff97ec4926dd92e7e97e8f58324}{cvalue}}(constant\_value)}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00031}00031         \{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00032}00032             assert(\mbox{\hyperlink{structbinary__configuration__vector_af1720c1598dc0e47f1e54554e300715f}{cfg\_vector\_t::min\_value}} <= constant\_value);}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00033}00033             assert(\mbox{\hyperlink{structbinary__configuration__vector_a6a89955592dbe58c3bca419657242909}{cfg\_vector\_t::max\_value}} >= constant\_value);}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00034}00034         \}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00037}\mbox{\hyperlink{classconstant__configuration__generator_a88a9bdea6e3a1ff87b49c107b6f56632}{00037}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classconstant__configuration__generator_a88a9bdea6e3a1ff87b49c107b6f56632}{operator()}}(\textcolor{keyword}{auto} \&prng, \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} \&v)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00038}00038             ignore(prng);}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00040}00040             \textcolor{keywordflow}{for} (\textcolor{keyword}{typename} \mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{cfg\_vector\_t::size\_type}} i = 0;}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00041}00041                 i < v.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size(); i++)}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00042}00042             \{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00043}00043                 v.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[i] = \mbox{\hyperlink{classconstant__configuration__generator_a15034ff97ec4926dd92e7e97e8f58324}{cvalue}};}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00044}00044             \}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00045}00045         \}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00046}00046 \};}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00050}00050 \textcolor{keyword}{template} <\textcolor{keyword}{typename} cfg\_vector\_t>}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00051}\mbox{\hyperlink{classuniform__configuration__generator}{00051}} \textcolor{keyword}{class }\mbox{\hyperlink{classuniform__configuration__generator}{uniform\_configuration\_generator}}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00052}00052 \{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00053}00053     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00054}00054         \textcolor{keyword}{using} value\_t = std::conditional<}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00055}00055             std::is\_same<bool, typename cfg\_vector\_t::value\_type>::value,}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00056}00056             short,}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00057}00057             \textcolor{keyword}{typename} \mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{cfg\_vector\_t::value\_type}}>::type;}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00059}00059     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00060}00060         \textcolor{keyword}{constexpr} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} is\_configuration\_generator = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00062}00062         std::string get\_description() \{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00063}00063             \textcolor{keywordflow}{return} std::string(\textcolor{stringliteral}{"{}ui"{}});}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00064}00064         \}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00067}\mbox{\hyperlink{classuniform__configuration__generator_ac65cc6d82c0f96c4bf236e9029ee0ecd}{00067}}         \mbox{\hyperlink{classuniform__configuration__generator_ac65cc6d82c0f96c4bf236e9029ee0ecd}{uniform\_configuration\_generator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00070}00070         \textcolor{keyword}{template} <\textcolor{keyword}{typename} rng\_t>}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00071}\mbox{\hyperlink{classuniform__configuration__generator_ae121143a9b8a305887b18a6895fedbb2}{00071}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classuniform__configuration__generator_ae121143a9b8a305887b18a6895fedbb2}{operator()}}(rng\_t \&prng, \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} \&v)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00072}00072             std::uniform\_int\_distribution<value\_t>}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00073}00073                 distr(\mbox{\hyperlink{structbinary__configuration__vector_af1720c1598dc0e47f1e54554e300715f}{cfg\_vector\_t::min\_value}}, \mbox{\hyperlink{structbinary__configuration__vector_a6a89955592dbe58c3bca419657242909}{cfg\_vector\_t::max\_value}});}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00074}00074             \textcolor{keywordflow}{for} (\textcolor{keyword}{typename} \mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{cfg\_vector\_t::size\_type}} i = 0;}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00075}00075                 i < v.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size(); i++)}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00076}00076             \{}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00077}00077                 value\_t value = distr(prng);}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00078}00078                 v.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[i] = \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{cfg\_vector\_t::value\_type}}\textcolor{keyword}{>}(value);}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00079}00079             \}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00080}00080         \}}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00081}00081 \};}
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{configuration__generator_8hpp_source_l00084}00084 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

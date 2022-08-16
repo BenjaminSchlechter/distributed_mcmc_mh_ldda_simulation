@@ -1,0 +1,45 @@
+\hypertarget{classuuid}{}\doxysection{uuid\texorpdfstring{$<$}{<} crtp, uuid\+\_\+type, reserved\+\_\+ids \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classuuid}\index{uuid$<$ crtp, uuid\_type, reserved\_ids $>$@{uuid$<$ crtp, uuid\_type, reserved\_ids $>$}}
+
+
+uuid using crtp  
+
+
+
+
+{\ttfamily \#include $<$uuid.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classuuid_aa7dcfe752d4170da027b0f25527ca071}\label{classuuid_aa7dcfe752d4170da027b0f25527ca071}} 
+static uuid\+\_\+type {\bfseries get} ()
+\begin{DoxyCompactList}\small\item\em get an unused uuid \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classuuid_ae013a096324ec389a86d3960faaaaa3c}\label{classuuid_ae013a096324ec389a86d3960faaaaa3c}} 
+static void {\bfseries free} (const uuid\+\_\+type id)
+\begin{DoxyCompactList}\small\item\em return an uuid for reuse \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classuuid_a37e80333bea8510d6a332597137838c7}\label{classuuid_a37e80333bea8510d6a332597137838c7}} 
+static uuid\+\_\+type {\bfseries new\+\_\+uuid} = 0
+\begin{DoxyCompactList}\small\item\em next new uuid \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classuuid_a27b62ddc05866739c8b81deaa4344a65}\label{classuuid_a27b62ddc05866739c8b81deaa4344a65}} 
+static std\+::vector$<$ uuid\+\_\+type $>$ {\bfseries unused}
+\begin{DoxyCompactList}\small\item\em list of unused/free ids smaller new\+\_\+uuid \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class crtp, typename uuid\+\_\+type = std\+::size\+\_\+t, uuid\+\_\+type reserved\+\_\+ids = 1$>$\newline
+class uuid$<$ crtp, uuid\+\_\+type, reserved\+\_\+ids $>$}
+uuid using crtp 
+
+A Universally Unique Identifier Implementation using the curiously recurring template pattern. UUID Type can be specified as template parameter. Also some id\textquotesingle{}s can be reserved. 
+
+Definition at line \mbox{\hyperlink{uuid_8hpp_source_l00015}{15}} of file \mbox{\hyperlink{uuid_8hpp_source}{uuid.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+util/uuid.\+hpp\end{DoxyCompactItemize}

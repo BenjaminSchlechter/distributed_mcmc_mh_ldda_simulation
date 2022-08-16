@@ -1,0 +1,77 @@
+\hypertarget{classseed__type}{}\doxysection{seed\+\_\+type\texorpdfstring{$<$}{<} size, base\+\_\+type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classseed__type}\index{seed\_type$<$ size, base\_type $>$@{seed\_type$<$ size, base\_type $>$}}
+
+
+generic seed sequence for random generators  
+
+
+
+
+{\ttfamily \#include $<$seed.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classseed__type_add86c1fa38a1f3a6710250454237942b}\label{classseed__type_add86c1fa38a1f3a6710250454237942b}} 
+using {\bfseries base\+\_\+t} = base\+\_\+type
+\begin{DoxyCompactList}\small\item\em seed sequence number type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classseed__type_aba29070bb9849a8003a5f7ba46ed67dd}\label{classseed__type_aba29070bb9849a8003a5f7ba46ed67dd}} 
+auto {\bfseries get\+\_\+seed\+\_\+seq} ()
+\begin{DoxyCompactList}\small\item\em provides access to the seed sequence \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classseed__type_a249d28c5f26bec0f40e58167112ea42f}\label{classseed__type_a249d28c5f26bec0f40e58167112ea42f}} 
+{\bfseries seed\+\_\+type} (bool generate\+\_\+random\+\_\+seed=false)
+\begin{DoxyCompactList}\small\item\em (default) constructor with unitialized or random seed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classseed__type_abad037d3ad1e03be4c743ce8620a7c8a}\label{classseed__type_abad037d3ad1e03be4c743ce8620a7c8a}} 
+{\bfseries seed\+\_\+type} (std\+::string seed\+\_\+str)
+\begin{DoxyCompactList}\small\item\em construct seed from string \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classseed__type_a4679e7057900c71f246c7eb2e4791d81}\label{classseed__type_a4679e7057900c71f246c7eb2e4791d81}} 
+base\+\_\+type {\bfseries short\+\_\+rep} ()
+\begin{DoxyCompactList}\small\item\em short representation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classseed__type_ace47292a8dc4b8bf2508b2f0d20bdb09}\label{classseed__type_ace47292a8dc4b8bf2508b2f0d20bdb09}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classseed__type}{seed\+\_\+type}}$<$ size, base\+\_\+type $>$ \&rhs) const
+\begin{DoxyCompactList}\small\item\em compare operator for seeds \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classseed__type_a55e0bb4218979bd4f43d9610f7c37ecd}\label{classseed__type_a55e0bb4218979bd4f43d9610f7c37ecd}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classseed__type}{seed\+\_\+type}}$<$ size, base\+\_\+type $>$ \&rhs) const
+\begin{DoxyCompactList}\small\item\em compare operator for seeds ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classseed__type_a9fb7697913b9dd9265333a5332d124e6}\label{classseed__type_a9fb7697913b9dd9265333a5332d124e6}} 
+std\+::array$<$ base\+\_\+type, size $>$ {\bfseries seed\+\_\+data}
+\begin{DoxyCompactList}\small\item\em seed sequence data \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classseed__type_a15de8d319e0f1547e32d18d050b9c6ff}\label{classseed__type_a15de8d319e0f1547e32d18d050b9c6ff}} 
+{\footnotesize template$<$typename rdev\+\_\+t $>$ }\\{\bfseries \+\_\+\+\_\+pad0\+\_\+\+\_\+}\+: \mbox{\hyperlink{classseed__type_a9fb7697913b9dd9265333a5332d124e6}{seed\+\_\+data}}() \{ \mbox{\hyperlink{classseed__type_aee023445691947cb95f68036048716de}{init}}(rng\+\_\+dev
+\begin{DoxyCompactList}\small\item\em construct using a random number generator and a \mbox{\hyperlink{structseed__type__generator}{seed\+\_\+type\+\_\+generator}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classseed__type_aee023445691947cb95f68036048716de}\label{classseed__type_aee023445691947cb95f68036048716de}} 
+{\footnotesize template$<$typename rdev\+\_\+t $>$ }\\void {\bfseries init} (rdev\+\_\+t \&rng\+\_\+dev, \mbox{\hyperlink{structseed__type__generator}{seed\+\_\+type\+\_\+generator}}$<$ base\+\_\+type $>$ $\ast$sgen\+\_\+ptr=nullptr)
+\begin{DoxyCompactList}\small\item\em initialize this seed from a random device using a distribution \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classseed__type_a3e4f29db74b71a8604af32f7b07f282d}\label{classseed__type_a3e4f29db74b71a8604af32f7b07f282d}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classseed__type}{seed\+\_\+type}} \&st)
+\begin{DoxyCompactList}\small\item\em std\+::ostream output operator for seeds \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classseed__type_a08db778a6e83d4fb4453ee86e8d2ea25}\label{classseed__type_a08db778a6e83d4fb4453ee86e8d2ea25}} 
+std\+::istream \& {\bfseries operator$>$$>$} (std\+::istream \&is, \mbox{\hyperlink{classseed__type}{seed\+\_\+type}} \&st)
+\begin{DoxyCompactList}\small\item\em std\+::istream input operator for seeds \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$std\+::size\+\_\+t size, typename base\+\_\+type$>$\newline
+class seed\+\_\+type$<$ size, base\+\_\+type $>$}
+generic seed sequence for random generators 
+
+Definition at line \mbox{\hyperlink{seed_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{seed_8hpp_source}{seed.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+util/seed.\+hpp\end{DoxyCompactItemize}

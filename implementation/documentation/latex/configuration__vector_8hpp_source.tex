@@ -1,0 +1,141 @@
+\hypertarget{configuration__vector_8hpp_source}{}\doxysection{configuration\+\_\+vector.\+hpp}
+\label{configuration__vector_8hpp_source}\index{metropolis\_hastings/configuration/configuration\_vector.hpp@{metropolis\_hastings/configuration/configuration\_vector.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef CONFIGURATION\_VECTOR\_HPP}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define CONFIGURATION\_VECTOR\_HPP}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <type\_traits>}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}../../util/bitfield.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}../../util/basic\_serialization.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00013}00013 \textcolor{keyword}{template}<\textcolor{keywordtype}{bool} use\_bitfield = false>}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00014}\mbox{\hyperlink{structbinary__configuration__vector}{00014}} \textcolor{keyword}{struct }\mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector}}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00016}00016     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00018}\mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{00018}}         \textcolor{keyword}{using} \mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{value\_type}} = bool;}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00021}\mbox{\hyperlink{structbinary__configuration__vector_af1720c1598dc0e47f1e54554e300715f}{00021}}         \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{value\_type}} \mbox{\hyperlink{structbinary__configuration__vector_af1720c1598dc0e47f1e54554e300715f}{min\_value}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00024}\mbox{\hyperlink{structbinary__configuration__vector_a6a89955592dbe58c3bca419657242909}{00024}}         \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \mbox{\hyperlink{structbinary__configuration__vector_ad98eb7982e4bfc0f0fdd89335a4344ea}{value\_type}} \mbox{\hyperlink{structbinary__configuration__vector_a6a89955592dbe58c3bca419657242909}{max\_value}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00027}\mbox{\hyperlink{structbinary__configuration__vector_a29e6339578ae8317e71c8c629d5c0215}{00027}}         \textcolor{keyword}{using} \mbox{\hyperlink{structbinary__configuration__vector_a29e6339578ae8317e71c8c629d5c0215}{vector\_type}} =}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00028}00028             std::conditional< use\_bitfield,}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00029}00029                 \mbox{\hyperlink{classbitfield}{bitfield<std::size\_t>}},}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00030}00030                 std::vector<value\_type>}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00031}00031             >::type;}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00032}00032         \textcolor{comment}{// using vector\_type = std::vector<value\_type>;}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00035}\mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{00035}}         \textcolor{keyword}{using} \mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{size\_type}} = \textcolor{keyword}{decltype}(\mbox{\hyperlink{structbinary__configuration__vector_a29e6339578ae8317e71c8c629d5c0215}{vector\_type}}().size());}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00038}\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{00038}}         \mbox{\hyperlink{structbinary__configuration__vector_a29e6339578ae8317e71c8c629d5c0215}{vector\_type}} \mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00043}\mbox{\hyperlink{structbinary__configuration__vector_aa0d30ad7cd74736f6b1616aa46107129}{00043}}         \mbox{\hyperlink{structbinary__configuration__vector_aa0d30ad7cd74736f6b1616aa46107129}{binary\_configuration\_vector}}() : \mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}(0) \{\}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00046}\mbox{\hyperlink{structbinary__configuration__vector_a9fc12cc16091dfc399d0aa2f2e7e7839}{00046}}         \mbox{\hyperlink{structbinary__configuration__vector_a9fc12cc16091dfc399d0aa2f2e7e7839}{binary\_configuration\_vector}}(\mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{size\_type}} length) : \mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}(length) \{\}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00050}\mbox{\hyperlink{structbinary__configuration__vector_ab32cdb93215020b39fa01eaa75ec85fe}{00050}}         \mbox{\hyperlink{structbinary__configuration__vector_ab32cdb93215020b39fa01eaa75ec85fe}{binary\_configuration\_vector}}(}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00051}00051             \textcolor{keyword}{const} \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector}} \&other)}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00052}00052         \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00053}00053             \mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}} = other.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00054}00054         \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00058}\mbox{\hyperlink{structbinary__configuration__vector_aeac3996db3dfc3cf3ab600cf20cf84b6}{00058}}         \textcolor{keyword}{friend} \textcolor{keywordtype}{void} \mbox{\hyperlink{structbinary__configuration__vector_aeac3996db3dfc3cf3ab600cf20cf84b6}{swap}}(}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00059}00059             \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector<use\_bitfield>}} \&l,}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00060}00060             \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector<use\_bitfield>}} \&r)}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00061}00061         \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00062}00062             std::swap(l.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}, r.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}});}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00063}00063         \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00067}\mbox{\hyperlink{structbinary__configuration__vector_ac6b31f0157b9dddd41d941a3d4bf1c97}{00067}}         \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector}} \&\mbox{\hyperlink{structbinary__configuration__vector_ac6b31f0157b9dddd41d941a3d4bf1c97}{operator=}}(}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00068}00068             \textcolor{keyword}{const} \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector<use\_bitfield>}} \&other)}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00069}00069         \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00070}00070             \mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}} = other.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00071}00071             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00072}00072         \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00074}00074         \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00076}00076 \textcolor{comment}{        binary\_configuration\_vector \&operator=(}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00077}00077 \textcolor{comment}{            const binary\_configuration\_vector<use\_bitfield> \&other)}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00078}00078 \textcolor{comment}{        \{}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00079}00079 \textcolor{comment}{            swap(*this, other);}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00080}00080 \textcolor{comment}{            return *this;}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00081}00081 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00082}00082 \textcolor{comment}{        */}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00086}\mbox{\hyperlink{structbinary__configuration__vector_a78157785857e272dc9e2509be33902f8}{00086}}         \mbox{\hyperlink{structbinary__configuration__vector_a78157785857e272dc9e2509be33902f8}{binary\_configuration\_vector}}(\mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector}} \&\&other)}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00087}00087         \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00088}00088             \mbox{\hyperlink{structbinary__configuration__vector_aeac3996db3dfc3cf3ab600cf20cf84b6}{swap}}(*\textcolor{keyword}{this}, other);}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00089}00089         \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00093}\mbox{\hyperlink{structbinary__configuration__vector_a106665bf72dcf440f589f4fa443008d1}{00093}}         \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{structbinary__configuration__vector_a106665bf72dcf440f589f4fa443008d1}{operator<<}}(}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00094}00094             std::ostream \&os,}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00095}00095             \textcolor{keyword}{const} \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector<use\_bitfield>}} \&bf)}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00096}00096         \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00097}00097             os << \textcolor{stringliteral}{"{}binary\_configuration\_vector:"{}};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00098}00098             \textcolor{keywordflow}{for} (\mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{size\_type}} i = 0; i < bf.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00099}00099                 os << \textcolor{stringliteral}{"{} "{}} << (bf.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[i] ? \textcolor{stringliteral}{"{}1"{}} : \textcolor{stringliteral}{"{}0"{}});}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00100}00100             \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00101}00101             \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00102}00102         \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00106}\mbox{\hyperlink{structbinary__configuration__vector_a66c03c4541d36ac4fbe77d9c040dad6c}{00106}}         std::size\_t \mbox{\hyperlink{structbinary__configuration__vector_a66c03c4541d36ac4fbe77d9c040dad6c}{count\_ones}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00107}00107 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00108}00108             std::size\_t ones = 0;}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00110}00110             \textcolor{keywordflow}{for} (\mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{size\_type}} i = 0; i < \mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00111}00111                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[i]) \{ ones++; \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00112}00112             \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00114}00114             \textcolor{keywordflow}{return} ones;}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00115}00115         \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00118}\mbox{\hyperlink{structbinary__configuration__vector_af8a9506a83edfe7bb4eaf1f74b76cf65}{00118}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{structbinary__configuration__vector_af8a9506a83edfe7bb4eaf1f74b76cf65}{operator==}}(}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00119}00119             \textcolor{keyword}{const} \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector<use\_bitfield>}} \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00120}00120 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00121}00121             \textcolor{keywordflow}{if} (\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size() == rhs.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size()) \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00122}00122                 \textcolor{keywordflow}{for} (\mbox{\hyperlink{structbinary__configuration__vector_a89ab02ceefc7415d223608a6a41dda29}{size\_type}} i = 0; i < \mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00123}00123                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[i] != rhs.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[i]) \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00124}00124                 \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00125}00125                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00126}00126             \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00127}00127             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00128}00128         \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00129}00129         }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00131}\mbox{\hyperlink{structbinary__configuration__vector_ae626703adc969074c41f8c5c1287ba76}{00131}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{structbinary__configuration__vector_ae626703adc969074c41f8c5c1287ba76}{operator!=}}(}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00132}00132             \textcolor{keyword}{const} \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector<use\_bitfield>}} \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00133}00133 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00134}00134             \textcolor{keywordflow}{return} !(*\textcolor{keyword}{this} == rhs);}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00135}00135         \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00136}00136 \};}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00140}00140 \textcolor{keyword}{template}<\textcolor{keyword}{typename} S, \textcolor{keywordtype}{bool} use\_bitfield>}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00141}00141 \textcolor{keywordtype}{void} serialize(}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00142}00142     S \&s, \mbox{\hyperlink{structbinary__configuration__vector}{binary\_configuration\_vector<use\_bitfield>}} \&cfg\_vector)}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00143}00143 \{}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00144}00144     serialize\_marker(s, \textcolor{stringliteral}{"{}bcv"{}}, 4);}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00146}00146     \textcolor{keywordtype}{bool} ub = use\_bitfield;}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00147}00147     s.value1b(ub);}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00148}00148     assert(use\_bitfield == ub);}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00150}00150     serialize(s, cfg\_vector.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}});}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00151}00151 \}}
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{configuration__vector_8hpp_source_l00154}00154 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

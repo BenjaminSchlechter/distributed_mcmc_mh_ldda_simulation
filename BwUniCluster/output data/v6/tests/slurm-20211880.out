@@ -1,0 +1,36 @@
+$ run.sh log-n20.txt -n 20 -of 1 -l 5
+Mon Nov 22 04:14:42 CET 2021
+preparing environment & load modules
+
+Currently Loaded Modules:
+  1) compiler/gnu/11.1
+
+ 
+
+loading openmpi 4.1
+loading cmake 3.18
+
+Currently Loaded Modules:
+  1) compiler/gnu/11.1   2) mpi/openmpi/4.1   3) devel/cmake/3.18
+
+ 
+
+g++ (GCC) 11.1.0
+building
+running
+Mon Nov 22 04:14:43 CET 2021
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n361
+Job ID: 20211880
+Cluster: uc2
+User/Group: ul_jbw85/ul_student
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 80
+CPU Utilized: 02:46:56
+CPU Efficiency: 45.20% of 06:09:20 core-walltime
+Job Wall-clock time: 00:04:37
+Memory Utilized: 5.22 GB
+Memory Efficiency: 66.78% of 7.81 GB

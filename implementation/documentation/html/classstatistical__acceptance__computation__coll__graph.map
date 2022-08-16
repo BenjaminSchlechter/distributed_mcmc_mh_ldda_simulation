@@ -1,0 +1,4 @@
+<map id="statistical_acceptance_computation&lt; prng_t, cfg_vector_t, prec_t, value_comp_t, acc_prob_comp_t &gt;" name="statistical_acceptance_computation&lt; prng_t, cfg_vector_t, prec_t, value_comp_t, acc_prob_comp_t &gt;">
+<area shape="rect" id="node1" title="decides over acceptance of a new markov chain state based on a coincidence intervall" alt="" coords="309,5,492,91"/>
+<area shape="rect" id="node2" href="$structstatistical__acceptance__computation_1_1state__data__t.html" title="compute a state of a markov chain" alt="" coords="5,5,188,91"/>
+</map>

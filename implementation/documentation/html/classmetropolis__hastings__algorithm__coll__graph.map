@@ -1,0 +1,11 @@
+<map id="metropolis_hastings_algorithm&lt; marcov_chain_state_t, change_generator_t, acceptance_computation_t, computation_modell_t, acc_prob_comp_t, result_statistics_t, result_function_t, enforce_change, skip_unchanged_vectors &gt;" name="metropolis_hastings_algorithm&lt; marcov_chain_state_t, change_generator_t, acceptance_computation_t, computation_modell_t, acc_prob_comp_t, result_statistics_t, result_function_t, enforce_change, skip_unchanged_vectors &gt;">
+<area shape="rect" id="node1" title="generic implementation of the metropolis hastings algorithm for one markov chain" alt="" coords="965,85,1224,215"/>
+<area shape="rect" id="node2" href="$structbinary__configuration__vector.html" title="wrapper for a binary configuration vector used in the MCMC simulation" alt="" coords="589,5,763,47"/>
+<area shape="rect" id="node3" href="$classstatistical__acceptance__computation.html" title=" " alt="" coords="573,71,779,157"/>
+<area shape="rect" id="node4" href="$structstatistical__acceptance__computation_1_1state__data__t.html" title="compute a state of a markov chain" alt="" coords="193,71,376,157"/>
+<area shape="rect" id="node5" href="$classprobsat__resolvents.html" title="wrapper to create and solve probsat instances with resolvents" alt="" coords="599,181,753,237"/>
+<area shape="rect" id="node6" title=" " alt="" coords="241,187,328,214"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,180,144,221"/>
+<area shape="rect" id="node8" href="$classresolvents__manager.html" title="class to manage resolvents" alt="" coords="207,238,362,265"/>
+<area shape="rect" id="node9" href="$classexponential__acceptance__probability.html" title="compute an acceptance probability used by the metropolis hastings algorithm" alt="" coords="586,261,766,303"/>
+</map>

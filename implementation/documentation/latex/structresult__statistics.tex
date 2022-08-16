@@ -1,0 +1,49 @@
+\hypertarget{structresult__statistics}{}\doxysection{result\+\_\+statistics\texorpdfstring{$<$}{<} prec\+\_\+t \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structresult__statistics}\index{result\_statistics$<$ prec\_t $>$@{result\_statistics$<$ prec\_t $>$}}
+
+
+class to gather statistics about probsat executions per markov chain  
+
+
+
+
+{\ttfamily \#include $<$probsat-\/execution.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structresult__statistics_a66cb8b2f056f7cc2c239603dde5465ba}\label{structresult__statistics_a66cb8b2f056f7cc2c239603dde5465ba}} 
+prec\+\_\+t {\bfseries operator()} (std\+::pair$<$ uint64\+\_\+t, \mbox{\hyperlink{namespaceprobsat__return__cause_a71c44000e3464f5e6330f7d9ecf7dff6}{probsat\+\_\+return\+\_\+cause\+::reason}} $>$ result)
+\begin{DoxyCompactList}\small\item\em add a result to the statistic \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structresult__statistics_a1d167126713822eddc3e078420873714}\label{structresult__statistics_a1d167126713822eddc3e078420873714}} 
+std\+::size\+\_\+t {\bfseries probsat\+\_\+executions} = 0
+\begin{DoxyCompactList}\small\item\em number of executions \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structresult__statistics_a34cb2c750d2a9023705a3501a90557b2}\label{structresult__statistics_a34cb2c750d2a9023705a3501a90557b2}} 
+std\+::size\+\_\+t {\bfseries reasons} \mbox{[}probsat\+\_\+return\+\_\+cause\+::\+NUM\+\_\+\+REASONS\mbox{]} = \{0\}
+\begin{DoxyCompactList}\small\item\em count return reasons \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structresult__statistics_aea5edff5ac0ae74c6773efabf91c7c7b}\label{structresult__statistics_aea5edff5ac0ae74c6773efabf91c7c7b}} 
+double {\bfseries total\+\_\+flips\+\_\+executed} = 0
+\begin{DoxyCompactList}\small\item\em number of total flips executed \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structresult__statistics_a4aed1b12f46a009fa581a61d7376cbad}\label{structresult__statistics_a4aed1b12f46a009fa581a61d7376cbad}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{structresult__statistics}{result\+\_\+statistics}} \&rs)
+\begin{DoxyCompactList}\small\item\em print statistics \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename prec\+\_\+t = prec\+\_\+t$>$\newline
+struct result\+\_\+statistics$<$ prec\+\_\+t $>$}
+class to gather statistics about probsat executions per markov chain 
+
+Definition at line \mbox{\hyperlink{probsat-execution_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{probsat-execution_8hpp_source}{probsat-\/execution.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/value\+\_\+computation/utility/probsat-\/execution.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,71 @@
+\hypertarget{classrescheduling__manager}{}\doxysection{rescheduling\+\_\+manager Class Reference}
+\label{classrescheduling__manager}\index{rescheduling\_manager@{rescheduling\_manager}}
+
+
+class is used to reschedule workload between workgroups  
+
+
+
+
+{\ttfamily \#include $<$rescheduling.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrescheduling__manager_ac623e70790a1b353526b45061e24e931}\label{classrescheduling__manager_ac623e70790a1b353526b45061e24e931}} 
+{\bfseries rescheduling\+\_\+manager} (int \mbox{\hyperlink{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}{num\+\_\+workgroups}}, std\+::size\+\_\+t num\+\_\+mcs, bool use\+\_\+mc\+\_\+limit, bool \mbox{\hyperlink{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}{rescheduling\+\_\+required}}=false)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_ad05615fcdd4c8af99efe22192b7a0b77}\label{classrescheduling__manager_ad05615fcdd4c8af99efe22192b7a0b77}} 
+void {\bfseries start\+\_\+rescheduling} ()
+\begin{DoxyCompactList}\small\item\em start a new scheduling by reseting internal state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_a6c11a00548145f93a4607cf27a42c21a}\label{classrescheduling__manager_a6c11a00548145f93a4607cf27a42c21a}} 
+bool {\bfseries is\+\_\+rescheduling\+\_\+in\+\_\+progress} () const
+\begin{DoxyCompactList}\small\item\em checks rescheduling state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_a803a527ae1c9665d21a6515780fb3424}\label{classrescheduling__manager_a803a527ae1c9665d21a6515780fb3424}} 
+void {\bfseries add\+\_\+progress\+\_\+for\+\_\+id} (std\+::size\+\_\+t id, std\+::size\+\_\+t progress, int wg\+\_\+id)
+\begin{DoxyCompactList}\small\item\em add progress of a markov chain on a workgroup after start of rescheduling \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_a7e553f6705b5ae0315aa1f6ebcf0a01a}\label{classrescheduling__manager_a7e553f6705b5ae0315aa1f6ebcf0a01a}} 
+void {\bfseries remove\+\_\+mc} (std\+::size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em remove a markov chain from the scheduling if finished \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_a67dc3e1bd57c4b78c5e322ee9e798005}\label{classrescheduling__manager_a67dc3e1bd57c4b78c5e322ee9e798005}} 
+bool {\bfseries information\+\_\+complete} () const
+\begin{DoxyCompactList}\small\item\em check if all progress information for rescheduling is available \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_a66d1464a91bcd84a34793539f0ac351a}\label{classrescheduling__manager_a66d1464a91bcd84a34793539f0ac351a}} 
+bool {\bfseries is\+\_\+rescheduling\+\_\+unnecessary} (std\+::size\+\_\+t reschedule\+\_\+requires\+\_\+absolute\+\_\+difference) const
+\begin{DoxyCompactList}\small\item\em check if rescheduling is appropriate \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_adca53c1e04aa3ccc2a8a429953872eb4}\label{classrescheduling__manager_adca53c1e04aa3ccc2a8a429953872eb4}} 
+void {\bfseries cancel\+\_\+rescheduling} (auto do\+\_\+rescheduling)
+\begin{DoxyCompactList}\small\item\em cancel a rescheduling (i.\+e. if unnecessary) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_a5dcad50146c2004f65f81c4c2cb60190}\label{classrescheduling__manager_a5dcad50146c2004f65f81c4c2cb60190}} 
+void {\bfseries reschedule} (auto do\+\_\+rescheduling)
+\begin{DoxyCompactList}\small\item\em perform a rescheduling \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}\label{classrescheduling__manager_acfa9f014d73623bbcfa963a40208e558}} 
+bool {\bfseries rescheduling\+\_\+required}
+\begin{DoxyCompactList}\small\item\em rescheduling state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}\label{classrescheduling__manager_a705b2023dd5ad34542eef93f1c3acc5b}} 
+int {\bfseries num\+\_\+workgroups}
+\begin{DoxyCompactList}\small\item\em number of workgroups \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_ac53c9132a498af4b0e11625aea00ab57}\label{classrescheduling__manager_ac53c9132a498af4b0e11625aea00ab57}} 
+std\+::size\+\_\+t {\bfseries number\+\_\+of\+\_\+active\+\_\+mcs}
+\begin{DoxyCompactList}\small\item\em number of markov chains which are to be scheduled \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}\label{classrescheduling__manager_ad8b01b61c65f79058be02c5839f47cf0}} 
+\mbox{\hyperlink{classmultiway__partitioning}{multiway\+\_\+partitioning}}$<$ std\+::pair$<$ std\+::size\+\_\+t, int $>$, std\+::size\+\_\+t, std\+::function$<$ bool(std\+::size\+\_\+t, std\+::size\+\_\+t)$>$ $>$ {\bfseries mwpart}
+\begin{DoxyCompactList}\small\item\em use multiway partitioning (largest differencing method) for rescheduling \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}\label{classrescheduling__manager_a50fd4dc32004450604992b4c0fbd847f}} 
+std\+::vector$<$ std\+::size\+\_\+t $>$ {\bfseries workload}
+\begin{DoxyCompactList}\small\item\em current workload on each workgroup \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class is used to reschedule workload between workgroups 
+
+Definition at line \mbox{\hyperlink{rescheduling_8hpp_source_l00014}{14}} of file \mbox{\hyperlink{rescheduling_8hpp_source}{rescheduling.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/rescheduling.\+hpp\end{DoxyCompactItemize}

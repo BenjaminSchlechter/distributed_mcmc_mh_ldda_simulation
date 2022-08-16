@@ -1,0 +1,8 @@
+<map id="on_demand_scheduler&lt; remote_execution_context_t, type_abstraction_adapter_t &gt;" name="on_demand_scheduler&lt; remote_execution_context_t, type_abstraction_adapter_t &gt;">
+<area shape="rect" id="node1" title="scheduler for load balancing of probsat computations inside a workgroup" alt="" coords="204,213,439,269"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,117,229,143"/>
+<area shape="rect" id="node3" href="$classasync__comm__out.html" title="derived helper class providing async message sending" alt="" coords="253,117,389,143"/>
+<area shape="rect" id="node4" href="$classasync__comm.html" title="base helper class for async MPI communcation" alt="" coords="266,13,374,39"/>
+<area shape="rect" id="node5" href="$classremote__execution__context.html" title="context for remote function execution including on_result functions" alt="" coords="415,109,609,151"/>
+<area shape="rect" id="node6" href="$classremote__procedure__manager.html" title="class to manager remote procedure calls" alt="" coords="398,5,629,47"/>
+</map>

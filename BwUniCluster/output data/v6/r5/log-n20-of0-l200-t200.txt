@@ -1,0 +1,442 @@
+c MPI Version 3.1
+cfg filename_cnf_formula: data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.cnf
+cfg filename_resolvents: data/three_color_gnp_50vertices_p0.092_seed37_cnfgen.resolvents
+cfg data_directory: out/three_color_gnp_50vertices_p0.092_seed37_cnfgen/
+cfg num_reference_chains: 10
+cfg num_markov_chains: 5
+cfg markov_chain_offset: 0
+cfg markov_chain_target_length: 20
+cfg mcmc_T: 200
+c parent node 19 / 160 has workgroup rank 19 / 40 in workgoup 1 / 4
+c parent node 24 / 160 has workgroup rank 24 / 40 in workgoup 1 / 4
+c parent node 33 / 160 has workgroup rank 33 / 40 in workgoup 1 / 4
+c parent node 1 / 160 has workgroup rank 1 / 40 in workgoup 1 / 4
+c parent node 3 / 160 has workgroup rank 3 / 40 in workgoup 1 / 4
+c parent node 11 / 160 has workgroup rank 11 / 40 in workgoup 1 / 4
+c parent node 16 / 160 has workgroup rank 16 / 40 in workgoup 1 / 4
+c parent node 17 / 160 has workgroup rank 17 / 40 in workgoup 1 / 4
+c parent node 35 / 160 has workgroup rank 35 / 40 in workgoup 1 / 4
+c parent node 37 / 160 has workgroup rank 37 / 40 in workgoup 1 / 4
+c parent node 39 / 160 has workgroup rank 39 / 40 in workgoup 1 / 4
+c parent node 2 / 160 has workgroup rank 2 / 40 in workgoup 1 / 4
+c parent node 4 / 160 has workgroup rank 4 / 40 in workgoup 1 / 4
+c parent node 5 / 160 has workgroup rank 5 / 40 in workgoup 1 / 4
+c parent node 7 / 160 has workgroup rank 7 / 40 in workgoup 1 / 4
+c parent node 9 / 160 has workgroup rank 9 / 40 in workgoup 1 / 4
+c parent node 10 / 160 has workgroup rank 10 / 40 in workgoup 1 / 4
+c parent node 18 / 160 has workgroup rank 18 / 40 in workgoup 1 / 4
+c parent node 20 / 160 has workgroup rank 20 / 40 in workgoup 1 / 4
+c parent node 21 / 160 has workgroup rank 21 / 40 in workgoup 1 / 4
+c parent node 23 / 160 has workgroup rank 23 / 40 in workgoup 1 / 4
+c parent node 25 / 160 has workgroup rank 25 / 40 in workgoup 1 / 4
+c parent node 26 / 160 has workgroup rank 26 / 40 in workgoup 1 / 4
+c parent node 27 / 160 has workgroup rank 27 / 40 in workgoup 1 / 4
+c parent node 34 / 160 has workgroup rank 34 / 40 in workgoup 1 / 4
+c parent node 36 / 160 has workgroup rank 36 / 40 in workgoup 1 / 4
+c parent node 38 / 160 has workgroup rank 38 / 40 in workgoup 1 / 4
+c parent node 40 / 160 has workgroup rank 40 / 40 in workgoup 1 / 4
+c parent node 31 / 160 has workgroup rank 31 / 40 in workgoup 1 / 4
+c parent node 6 / 160 has workgroup rank 6 / 40 in workgoup 1 / 4
+c parent node 8 / 160 has workgroup rank 8 / 40 in workgoup 1 / 4
+c parent node 12 / 160 has workgroup rank 12 / 40 in workgoup 1 / 4
+c parent node 15 / 160 has workgroup rank 15 / 40 in workgoup 1 / 4
+c parent node 28 / 160 has workgroup rank 28 / 40 in workgoup 1 / 4
+c parent node 14 / 160 has workgroup rank 14 / 40 in workgoup 1 / 4
+c parent node 29 / 160 has workgroup rank 29 / 40 in workgoup 1 / 4
+c parent node 30 / 160 has workgroup rank 30 / 40 in workgoup 1 / 4
+c parent node 13 / 160 has workgroup rank 13 / 40 in workgoup 1 / 4
+c parent node 32 / 160 has workgroup rank 32 / 40 in workgoup 1 / 4
+c parent node 109 / 160 has workgroup rank 29 / 40 in workgoup 3 / 4
+c parent node 133 / 160 has workgroup rank 13 / 40 in workgoup 4 / 4
+c parent node 111 / 160 has workgroup rank 31 / 40 in workgoup 3 / 4
+c parent node 112 / 160 has workgroup rank 32 / 40 in workgoup 3 / 4
+c parent node 138 / 160 has workgroup rank 18 / 40 in workgoup 4 / 4
+c parent node 139 / 160 has workgroup rank 19 / 40 in workgoup 4 / 4
+c parent node 113 / 160 has workgroup rank 33 / 40 in workgoup 3 / 4
+c parent node 140 / 160 has workgroup rank 20 / 40 in workgoup 4 / 4
+c parent node 50 / 160 has workgroup rank 10 / 40 in workgoup 2 / 4
+c parent node 22 / 160 has workgroup rank 22 / 40 in workgoup 1 / 4
+c parent node 114 / 160 has workgroup rank 34 / 40 in workgoup 3 / 4
+c parent node 51 / 160 has workgroup rank 11 / 40 in workgoup 2 / 4
+c parent node 115 / 160 has workgroup rank 35 / 40 in workgoup 3 / 4
+c parent node 141 / 160 has workgroup rank 21 / 40 in workgoup 4 / 4
+c parent node 53 / 160 has workgroup rank 13 / 40 in workgoup 2 / 4
+c parent node 116 / 160 has workgroup rank 36 / 40 in workgoup 3 / 4
+c parent node 142 / 160 has workgroup rank 22 / 40 in workgoup 4 / 4
+c parent node 54 / 160 has workgroup rank 14 / 40 in workgoup 2 / 4
+c parent node 117 / 160 has workgroup rank 37 / 40 in workgoup 3 / 4
+c parent node 143 / 160 has workgroup rank 23 / 40 in workgoup 4 / 4
+c parent node 55 / 160 has workgroup rank 15 / 40 in workgoup 2 / 4
+c parent node 119 / 160 has workgroup rank 39 / 40 in workgoup 3 / 4
+c parent node 145 / 160 has workgroup rank 25 / 40 in workgoup 4 / 4
+c parent node 56 / 160 has workgroup rank 16 / 40 in workgoup 2 / 4
+c parent node 120 / 160 has workgroup rank 40 / 40 in workgoup 3 / 4
+c parent node 146 / 160 has workgroup rank 26 / 40 in workgoup 4 / 4
+c parent node 57 / 160 has workgroup rank 17 / 40 in workgoup 2 / 4
+c parent node 88 / 160 has workgroup rank 8 / 40 in workgoup 3 / 4
+c parent node 147 / 160 has workgroup rank 27 / 40 in workgoup 4 / 4
+c parent node 58 / 160 has workgroup rank 18 / 40 in workgoup 2 / 4
+c parent node 91 / 160 has workgroup rank 11 / 40 in workgoup 3 / 4
+c parent node 148 / 160 has workgroup rank 28 / 40 in workgoup 4 / 4
+c parent node 59 / 160 has workgroup rank 19 / 40 in workgoup 2 / 4
+c parent node 99 / 160 has workgroup rank 19 / 40 in workgoup 3 / 4
+c parent node 149 / 160 has workgroup rank 29 / 40 in workgoup 4 / 4
+c parent node 60 / 160 has workgroup rank 20 / 40 in workgoup 2 / 4
+c parent node 100 / 160 has workgroup rank 20 / 40 in workgoup 3 / 4
+c parent node 151 / 160 has workgroup rank 31 / 40 in workgoup 4 / 4
+c parent node 61 / 160 has workgroup rank 21 / 40 in workgoup 2 / 4
+c parent node 101 / 160 has workgroup rank 21 / 40 in workgoup 3 / 4
+c parent node 152 / 160 has workgroup rank 32 / 40 in workgoup 4 / 4
+c parent node 62 / 160 has workgroup rank 22 / 40 in workgoup 2 / 4
+c parent node 103 / 160 has workgroup rank 23 / 40 in workgoup 3 / 4
+c parent node 153 / 160 has workgroup rank 33 / 40 in workgoup 4 / 4
+c parent node 63 / 160 has workgroup rank 23 / 40 in workgoup 2 / 4
+c parent node 104 / 160 has workgroup rank 24 / 40 in workgoup 3 / 4
+c parent node 154 / 160 has workgroup rank 34 / 40 in workgoup 4 / 4
+c parent node 64 / 160 has workgroup rank 24 / 40 in workgoup 2 / 4
+c parent node 107 / 160 has workgroup rank 27 / 40 in workgoup 3 / 4
+c parent node 155 / 160 has workgroup rank 35 / 40 in workgoup 4 / 4
+c parent node 65 / 160 has workgroup rank 25 / 40 in workgoup 2 / 4
+c parent node 108 / 160 has workgroup rank 28 / 40 in workgoup 3 / 4
+c parent node 156 / 160 has workgroup rank 36 / 40 in workgoup 4 / 4
+c parent node 66 / 160 has workgroup rank 26 / 40 in workgoup 2 / 4
+c parent node 105 / 160 has workgroup rank 25 / 40 in workgoup 3 / 4
+c parent node 157 / 160 has workgroup rank 37 / 40 in workgoup 4 / 4
+c parent node 67 / 160 has workgroup rank 27 / 40 in workgoup 2 / 4
+c parent node 106 / 160 has workgroup rank 26 / 40 in workgoup 3 / 4
+c parent node 158 / 160 has workgroup rank 38 / 40 in workgoup 4 / 4
+c parent node 68 / 160 has workgroup rank 28 / 40 in workgoup 2 / 4
+c parent node 81 / 160 has workgroup rank 1 / 40 in workgoup 3 / 4
+c parent node 159 / 160 has workgroup rank 39 / 40 in workgoup 4 / 4
+c parent node 69 / 160 has workgroup rank 29 / 40 in workgoup 2 / 4
+c parent node 82 / 160 has workgroup rank 2 / 40 in workgoup 3 / 4
+c parent node 122 / 160 has workgroup rank 2 / 40 in workgoup 4 / 4
+c parent node 70 / 160 has workgroup rank 30 / 40 in workgoup 2 / 4
+c parent node 83 / 160 has workgroup rank 3 / 40 in workgoup 3 / 4
+c parent node 123 / 160 has workgroup rank 3 / 40 in workgoup 4 / 4
+c parent node 71 / 160 has workgroup rank 31 / 40 in workgoup 2 / 4
+c parent node 84 / 160 has workgroup rank 4 / 40 in workgoup 3 / 4
+c parent node 124 / 160 has workgroup rank 4 / 40 in workgoup 4 / 4
+c parent node 72 / 160 has workgroup rank 32 / 40 in workgoup 2 / 4
+c parent node 85 / 160 has workgroup rank 5 / 40 in workgoup 3 / 4
+c parent node 126 / 160 has workgroup rank 6 / 40 in workgoup 4 / 4
+c parent node 73 / 160 has workgroup rank 33 / 40 in workgoup 2 / 4
+c parent node 87 / 160 has workgroup rank 7 / 40 in workgoup 3 / 4
+c parent node 130 / 160 has workgroup rank 10 / 40 in workgoup 4 / 4
+c parent node 74 / 160 has workgroup rank 34 / 40 in workgoup 2 / 4
+c parent node 89 / 160 has workgroup rank 9 / 40 in workgoup 3 / 4
+c parent node 132 / 160 has workgroup rank 12 / 40 in workgoup 4 / 4
+c parent node 75 / 160 has workgroup rank 35 / 40 in workgoup 2 / 4
+c parent node 90 / 160 has workgroup rank 10 / 40 in workgoup 3 / 4
+c parent node 134 / 160 has workgroup rank 14 / 40 in workgoup 4 / 4
+c parent node 76 / 160 has workgroup rank 36 / 40 in workgoup 2 / 4
+c parent node 92 / 160 has workgroup rank 12 / 40 in workgoup 3 / 4
+c parent node 135 / 160 has workgroup rank 15 / 40 in workgoup 4 / 4
+c parent node 77 / 160 has workgroup rank 37 / 40 in workgoup 2 / 4
+c parent node 93 / 160 has workgroup rank 13 / 40 in workgoup 3 / 4
+c parent node 136 / 160 has workgroup rank 16 / 40 in workgoup 4 / 4
+c parent node 78 / 160 has workgroup rank 38 / 40 in workgoup 2 / 4
+c parent node 95 / 160 has workgroup rank 15 / 40 in workgoup 3 / 4
+c parent node 137 / 160 has workgroup rank 17 / 40 in workgoup 4 / 4
+c parent node 79 / 160 has workgroup rank 39 / 40 in workgoup 2 / 4
+c parent node 96 / 160 has workgroup rank 16 / 40 in workgoup 3 / 4
+c parent node 144 / 160 has workgroup rank 24 / 40 in workgoup 4 / 4
+c parent node 80 / 160 has workgroup rank 40 / 40 in workgoup 2 / 4
+c parent node 97 / 160 has workgroup rank 17 / 40 in workgoup 3 / 4
+c parent node 160 / 160 has workgroup rank 40 / 40 in workgoup 4 / 4
+c parent node 41 / 160 has workgroup rank 1 / 40 in workgoup 2 / 4
+c parent node 98 / 160 has workgroup rank 18 / 40 in workgoup 3 / 4
+c parent node 121 / 160 has workgroup rank 1 / 40 in workgoup 4 / 4
+c parent node 43 / 160 has workgroup rank 3 / 40 in workgoup 2 / 4
+c parent node 86 / 160 has workgroup rank 6 / 40 in workgoup 3 / 4
+c parent node 125 / 160 has workgroup rank 5 / 40 in workgoup 4 / 4
+c parent node 42 / 160 has workgroup rank 2 / 40 in workgoup 2 / 4
+c parent node 44 / 160 has workgroup rank 4 / 40 in workgoup 2 / 4
+c parent node 110 / 160 has workgroup rank 30 / 40 in workgoup 3 / 4
+c parent node 127 / 160 has workgroup rank 7 / 40 in workgoup 4 / 4
+c parent node 118 / 160 has workgroup rank 38 / 40 in workgoup 3 / 4
+c parent node 128 / 160 has workgroup rank 8 / 40 in workgoup 4 / 4
+c parent node 45 / 160 has workgroup rank 5 / 40 in workgoup 2 / 4
+c parent node 94 / 160 has workgroup rank 14 / 40 in workgoup 3 / 4
+c parent node 129 / 160 has workgroup rank 9 / 40 in workgoup 4 / 4
+c parent node 46 / 160 has workgroup rank 6 / 40 in workgoup 2 / 4
+c parent node 102 / 160 has workgroup rank 22 / 40 in workgoup 3 / 4
+c parent node 131 / 160 has workgroup rank 11 / 40 in workgoup 4 / 4
+c parent node 47 / 160 has workgroup rank 7 / 40 in workgoup 2 / 4
+c parent node 150 / 160 has workgroup rank 30 / 40 in workgoup 4 / 4
+c parent node 48 / 160 has workgroup rank 8 / 40 in workgoup 2 / 4
+c parent node 49 / 160 has workgroup rank 9 / 40 in workgoup 2 / 4
+c parent node 52 / 160 has workgroup rank 12 / 40 in workgoup 2 / 4
+c reading seed
+c global seed: 2261783262...
+c work group 0 has 2 markov chains at id 0 (offset 0)
+c markov chain 0 with seed    3456462235...	(on workgroup 0)
+c markov chain 1 with seed    3273686477...	(on workgroup 0)
+c work group 3 has 1 markov chains at id 4 (offset 4)
+c work group 2 has 1 markov chains at id 3 (offset 3)
+c markov chain 4 with seed     755970239...	(on workgroup 3)
+c work group 1 has 1 markov chains at id 2 (offset 2)
+c markov chain 2 with seed    3056390389...	(on workgroup 1)
+c markov chain 3 with seed    1453189013...	(on workgroup 2)
+mc 2 iteration 1 value 1316.22 accepted 1316.22
+mc 2 iteration 2 value 1338.71 accepted 1338.71
+mc 3 iteration 1 value 1333.47 accepted 1333.47
+mc 3 iteration 2 value 1341.17 accepted 1341.17
+mc 2 iteration 3 value 1387.3 accepted 1387.3
+mc 3 iteration 3 value 1341.7 accepted 1341.7
+mc 0 iteration 1 value 1303.6 accepted 1303.6
+mc 0 iteration 2 value 1323.83 accepted 1323.83
+mc 4 iteration 1 value 1331.59 accepted 1331.59
+mc 4 iteration 2 value 1333.55 accepted 1333.55
+mc 1 iteration 1 value 1297.45 accepted 1297.45
+mc 1 iteration 2 value 1289.59 accepted 1289.59
+mc 2 iteration 4 value 1357.37 accepted 1357.37
+mc 3 iteration 4 value 1321.77 accepted 1321.77
+mc 4 iteration 3 value 1320.39 accepted 1320.39
+mc 2 iteration 5 value 1302.22 accepted 1302.22
+mc 3 iteration 5 value 1325.87 accepted 1325.87
+mc 1 iteration 3 value 1313.43 accepted 1313.43
+mc 4 iteration 4 value 1332.06 accepted 1332.06
+mc 0 iteration 3 value 1308.29 declined 1351.78
+mc 3 iteration 6 value 1333.01 accepted 1333.01
+mc 4 iteration 5 value 1333.67 accepted 1333.67
+mc 3 iteration 7 value 1342.57 accepted 1342.57
+mc 4 iteration 6 value 1295.62 accepted 1295.62
+mc 1 iteration 4 value 1348.64 accepted 1348.64
+mc 0 iteration 4 value 1324.61 accepted 1324.61
+mc 3 iteration 8 value 1337.12 accepted 1337.12
+mc 2 iteration 6 value 1355.42 accepted 1355.42
+mc 4 iteration 7 value 1322.89 accepted 1322.89
+mc 3 iteration 9 value 1275.64 accepted 1275.64
+mc 2 iteration 7 value 1314.83 accepted 1314.83
+mc 4 iteration 8 value 1341.66 accepted 1341.66
+mc 1 iteration 5 value 1314.34 accepted 1314.34
+mc 0 iteration 5 value 1317.34 accepted 1317.34
+mc 3 iteration 10 value 1331.16 accepted 1331.16
+mc 4 iteration 9 value 1342.28 accepted 1342.28
+mc 2 iteration 8 value 1322.73 accepted 1322.73
+mc 4 iteration 10 value 1315.48 accepted 1315.48
+mc 3 iteration 11 value 1265.17 accepted 1265.17
+mc 2 iteration 9 value 1305.29 accepted 1305.29
+mc 1 iteration 6 value 1334.99 accepted 1334.99
+mc 0 iteration 6 value 1272.21 accepted 1272.21
+mc 4 iteration 11 value 1370.24 accepted 1370.24
+mc 2 iteration 10 value 1352.97 accepted 1352.97
+mc 3 iteration 12 value 1290.2 accepted 1290.2
+mc 4 iteration 12 value 1322.93 accepted 1322.93
+mc 1 iteration 7 value 1309.13 accepted 1309.13
+mc 2 iteration 11 value 1351.97 accepted 1351.97
+mc 0 iteration 7 value 1353.22 accepted 1353.22
+mc 3 iteration 13 value 1298.34 accepted 1298.34
+mc 4 iteration 13 value 1378.18 accepted 1378.18
+mc 2 iteration 12 value 1332.95 accepted 1332.95
+mc 3 iteration 14 value 1303.15 accepted 1303.15
+mc 1 iteration 8 value 1298.18 accepted 1298.18
+mc 0 iteration 8 value 1261.64 accepted 1261.64
+mc 4 iteration 14 value 1329.97 accepted 1329.97
+mc 2 iteration 13 value 1345.9 accepted 1345.9
+mc 3 iteration 15 value 1334.44 accepted 1334.44
+mc 4 iteration 15 value 1291.39 accepted 1291.39
+mc 2 iteration 14 value 1345.21 accepted 1345.21
+mc 1 iteration 9 value 1300.07 accepted 1300.07
+mc 3 iteration 16 value 1333.03 accepted 1333.03
+mc 0 iteration 9 value 1321.85 accepted 1321.85
+mc 4 iteration 16 value 1318.11 accepted 1318.11
+mc 2 iteration 15 value 1378.14 accepted 1378.14
+mc 3 iteration 17 value 1310.1 accepted 1310.1
+mc 4 iteration 17 value 1305.66 accepted 1305.66
+mc 2 iteration 16 value 1373.85 accepted 1373.85
+mc 1 iteration 10 value 1277.13 accepted 1277.13
+mc 0 iteration 10 value 1288.17 accepted 1288.17
+mc 4 iteration 18 value 1339.45 accepted 1339.45
+mc 3 iteration 18 value 1330.83 accepted 1330.83
+mc 4 iteration 19 value 1321.25 accepted 1321.25
+mc 3 iteration 19 value 1318.66 accepted 1318.66
+mc 2 iteration 17 value 1345.66 accepted 1345.66
+mc 1 iteration 11 value 1327.51 accepted 1327.51
+mc 0 iteration 11 value 1304.88 accepted 1304.88
+mc 4 iteration 20 value 1309.98 accepted 1309.98
+wg 3 is done running
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.36 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.58 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.37 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.62 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 91.77 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 91.84 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 91.79 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.09 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 91.60 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.15 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 91.61 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.04 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.22 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 91.96 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.39 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.15 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.49 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.58 % efficiency
+c duration: 27697 milliseconds
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 91.96 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.40 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.06 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.25 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.19 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 91.92 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.01 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.12 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 91.93 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.20 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.35 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 91.87 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.50 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.42 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.47 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.27 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.82 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.47 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.89 % efficiency
+c duration: 27698 milliseconds
+c init: 3518 ms, work: 24180 ms with 92.76 % efficiency
+c duration: 27697 milliseconds
+c init: 3517 ms, work: 24180 ms with 92.67 % efficiency
+mc 2 iteration 18 value 1340.86 accepted 1340.86
+mc 3 iteration 20 value 1341.79 accepted 1341.79
+wg 2 is done running
+mc 2 iteration 19 value 1301.54 accepted 1301.54
+mc 1 iteration 12 value 1321.05 accepted 1321.05
+mc 0 iteration 12 value 1276.97 accepted 1276.97
+mc 2 iteration 20 value 1326.59 accepted 1326.59
+wg 1 is done running
+mc 1 iteration 13 value 1293.89 accepted 1293.89
+mc 0 iteration 13 value 1342.49 accepted 1342.49
+mc 1 iteration 14 value 1304.01 declined 1352.25
+mc 0 iteration 14 value 1322.16 accepted 1322.16
+mc 1 iteration 15 value 1316.36 accepted 1316.36
+mc 0 iteration 15 value 1297.97 accepted 1297.97
+mc 1 iteration 16 value 1351.48 accepted 1351.48
+mc 1 iteration 17 value 1306.72 accepted 1306.72
+mc 0 iteration 16 value 1296.59 declined 1302.63
+mc 1 iteration 18 value 1311.94 accepted 1311.94
+mc 0 iteration 17 value 1329.83 accepted 1329.83
+mc 1 iteration 19 value 1268.37 accepted 1268.37
+mc 0 iteration 18 value 1312.54 accepted 1312.54
+mc 0 iteration 19 value 1290.47 accepted 1290.47
+mc 1 iteration 20 value 1280.53 declined 1329.82
+mc 0 iteration 20 value 1308.38 accepted 1308.38
+wg 0 is done running
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.73 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.67 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.78 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.76 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.58 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.58 % efficiency
+c duration: 52663 milliseconds
+c duration: 52663 milliseconds
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.88 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.81 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.62 % efficiency
+c init: 3517 ms, work: 49146 ms with 95.55 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.75 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.94 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.42 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.52 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.71 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.56 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.60 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.65 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.53 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.49 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.67 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.45 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.52 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.44 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.54 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.53 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.62 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.53 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.58 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.67 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.47 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.48 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.58 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.59 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.63 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.65 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.65 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.46 % efficiency
+c duration: 52663 milliseconds
+c init: 3517 ms, work: 49146 ms with 95.76 % efficiency

@@ -1,0 +1,96 @@
+\hypertarget{classmpi__shared__tmp__dir__workgroup}{}\doxysection{mpi\+\_\+shared\+\_\+tmp\+\_\+dir\+\_\+workgroup Class Reference}
+\label{classmpi__shared__tmp__dir__workgroup}\index{mpi\_shared\_tmp\_dir\_workgroup@{mpi\_shared\_tmp\_dir\_workgroup}}
+
+
+creates workgroups based on an available shared tmp directory  
+
+
+
+
+{\ttfamily \#include $<$mpi\+\_\+shared\+\_\+tmp\+\_\+workgroup.\+hpp$>$}
+
+
+
+Collaboration diagram for mpi\+\_\+shared\+\_\+tmp\+\_\+dir\+\_\+workgroup\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classmpi__shared__tmp__dir__workgroup__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a5a3ea3176739d66e220fa5623297a8cc}\label{classmpi__shared__tmp__dir__workgroup_a5a3ea3176739d66e220fa5623297a8cc}} 
+bool {\bfseries is\+\_\+workgroup\+\_\+head} () const
+\begin{DoxyCompactList}\small\item\em checks if this node is head of a workgroup \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_abbe08f43f8e8d1ba489458993db1dc2e}\label{classmpi__shared__tmp__dir__workgroup_abbe08f43f8e8d1ba489458993db1dc2e}} 
+{\bfseries mpi\+\_\+shared\+\_\+tmp\+\_\+dir\+\_\+workgroup} (MPI\+\_\+\+Comm \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a4e776f4a6f43f7353d749b634899ee19}{parent\+\_\+comm}}=MPI\+\_\+\+COMM\+\_\+\+WORLD, std\+::string app\+\_\+name=\char`\"{}main\char`\"{})
+\begin{DoxyCompactList}\small\item\em constructor (parent communicator, application name) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_ae3e3c10b774f81ced8039330bdf2da97}\label{classmpi__shared__tmp__dir__workgroup_ae3e3c10b774f81ced8039330bdf2da97}} 
+{\bfseries $\sim$mpi\+\_\+shared\+\_\+tmp\+\_\+dir\+\_\+workgroup} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a4e776f4a6f43f7353d749b634899ee19}\label{classmpi__shared__tmp__dir__workgroup_a4e776f4a6f43f7353d749b634899ee19}} 
+MPI\+\_\+\+Comm {\bfseries parent\+\_\+comm}
+\begin{DoxyCompactList}\small\item\em parent MPI communicator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a34a6569e130352a8a30583e370c9ffac}\label{classmpi__shared__tmp__dir__workgroup_a34a6569e130352a8a30583e370c9ffac}} 
+int {\bfseries parent\+\_\+comm\+\_\+id}
+\begin{DoxyCompactList}\small\item\em node id in parent comm \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_ac4d9e103c315d7a833bda757b9f10c56}\label{classmpi__shared__tmp__dir__workgroup_ac4d9e103c315d7a833bda757b9f10c56}} 
+int {\bfseries parent\+\_\+comm\+\_\+size}
+\begin{DoxyCompactList}\small\item\em number of nodes in parent comm \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a33bac9e4905a0ad9938e7fbede370c6e}\label{classmpi__shared__tmp__dir__workgroup_a33bac9e4905a0ad9938e7fbede370c6e}} 
+int {\bfseries parent\+\_\+comm\+\_\+workgroup\+\_\+head\+\_\+id}
+\begin{DoxyCompactList}\small\item\em workgroup head id \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_aed236ab5ba659a2d783f6e5683f81d54}\label{classmpi__shared__tmp__dir__workgroup_aed236ab5ba659a2d783f6e5683f81d54}} 
+MPI\+\_\+\+Comm {\bfseries workgroup\+\_\+comm}
+\begin{DoxyCompactList}\small\item\em intra workgroup communicator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_aa66618b3ca1a413413de6b350b185d3a}\label{classmpi__shared__tmp__dir__workgroup_aa66618b3ca1a413413de6b350b185d3a}} 
+int {\bfseries workgroup\+\_\+comm\+\_\+id}
+\begin{DoxyCompactList}\small\item\em node if in intra workgroup comm \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_ae105588c73977b42f1c49bdd9bd081e1}\label{classmpi__shared__tmp__dir__workgroup_ae105588c73977b42f1c49bdd9bd081e1}} 
+int {\bfseries workgroup\+\_\+comm\+\_\+size}
+\begin{DoxyCompactList}\small\item\em number of nodes in workgroup \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a06aeaa8e4575a21322e13e84f45f3773}\label{classmpi__shared__tmp__dir__workgroup_a06aeaa8e4575a21322e13e84f45f3773}} 
+MPI\+\_\+\+Comm {\bfseries mpi\+\_\+comm\+\_\+leaders}
+\begin{DoxyCompactList}\small\item\em inter workgroup communicator, workgroup heads only \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a4f5c81262f09c6d31954611548b2b6dd}\label{classmpi__shared__tmp__dir__workgroup_a4f5c81262f09c6d31954611548b2b6dd}} 
+int {\bfseries workgroup\+\_\+count}
+\begin{DoxyCompactList}\small\item\em number of workgroups \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a7fd49180ea3fa8178261bf3aeb11deef}\label{classmpi__shared__tmp__dir__workgroup_a7fd49180ea3fa8178261bf3aeb11deef}} 
+int {\bfseries workgroup\+\_\+id}
+\begin{DoxyCompactList}\small\item\em id of this workgroup \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a7475ff65b99ee5ce3d27ac52abd0f895}\label{classmpi__shared__tmp__dir__workgroup_a7475ff65b99ee5ce3d27ac52abd0f895}} 
+std\+::string {\bfseries build\+\_\+tmp\+\_\+dir\+\_\+path} (std\+::string app\+\_\+name)
+\begin{DoxyCompactList}\small\item\em create tmp path to partition workgroups \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_aa0d31476d6d2bb72326224ee539b7f9f}\label{classmpi__shared__tmp__dir__workgroup_aa0d31476d6d2bb72326224ee539b7f9f}} 
+int {\bfseries identify\+\_\+workgroup\+\_\+head} ()
+\begin{DoxyCompactList}\small\item\em helper function to get id of workgroup head in parent communicator \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmpi__shared__tmp__dir__workgroup_a3e140790fd215d78fe2911588897c13a}\label{classmpi__shared__tmp__dir__workgroup_a3e140790fd215d78fe2911588897c13a}} 
+std\+::string {\bfseries tmp\+\_\+path}
+\begin{DoxyCompactList}\small\item\em tmp path to check \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+creates workgroups based on an available shared tmp directory 
+
+Creates subworkgroups of a MPI communicator based on an available shared tmp directory. Provides inter and intra workgroup communicators. 
+
+Definition at line \mbox{\hyperlink{mpi__shared__tmp__workgroup_8hpp_source_l00012}{12}} of file \mbox{\hyperlink{mpi__shared__tmp__workgroup_8hpp_source}{mpi\+\_\+shared\+\_\+tmp\+\_\+workgroup.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+util/mpi/mpi\+\_\+shared\+\_\+tmp\+\_\+workgroup.\+hpp\item 
+util/mpi/mpi\+\_\+shared\+\_\+tmp\+\_\+workgroup.\+cpp\end{DoxyCompactItemize}

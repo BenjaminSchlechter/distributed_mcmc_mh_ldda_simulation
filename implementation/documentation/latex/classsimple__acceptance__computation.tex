@@ -1,0 +1,104 @@
+\hypertarget{classsimple__acceptance__computation}{}\doxysection{simple\+\_\+acceptance\+\_\+computation\texorpdfstring{$<$}{<} prng\+\_\+t, cfg\+\_\+vector\+\_\+t, prec\+\_\+t, value\+\_\+comp\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classsimple__acceptance__computation}\index{simple\_acceptance\_computation$<$ prng\_t, cfg\_vector\_t, prec\_t, value\_comp\_t, acc\_prob\_comp\_t $>$@{simple\_acceptance\_computation$<$ prng\_t, cfg\_vector\_t, prec\_t, value\_comp\_t, acc\_prob\_comp\_t $>$}}
+
+
+decides over acceptance of a new state in a markov chain using a exact value  
+
+
+
+
+{\ttfamily \#include $<$simple\+\_\+acceptance\+\_\+computation.\+hpp$>$}
+
+
+
+Collaboration diagram for simple\+\_\+acceptance\+\_\+computation\texorpdfstring{$<$}{<} prng\+\_\+t, cfg\+\_\+vector\+\_\+t, prec\+\_\+t, value\+\_\+comp\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsimple__acceptance__computation__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t}{state\+\_\+data\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em compute and represent a state of a markov chain \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_aefbbd9d0a80a52768b86648f34ac3453}\label{classsimple__acceptance__computation_aefbbd9d0a80a52768b86648f34ac3453}} 
+{\bfseries simple\+\_\+acceptance\+\_\+computation} ()
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a249b8be959d13738429377d1d496c870}\label{classsimple__acceptance__computation_a249b8be959d13738429377d1d496c870}} 
+void {\bfseries skip\+\_\+computation} (prng\+\_\+t \&main\+\_\+prng)
+\begin{DoxyCompactList}\small\item\em skip one step for fast state recovery of random number generator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_ae65ece76916cbb56edbdb7565cebdc0f}\label{classsimple__acceptance__computation_ae65ece76916cbb56edbdb7565cebdc0f}} 
+{\footnotesize template$<$typename scheduler\+\_\+t , typename result\+\_\+projection\+\_\+t  = std\+::identity, typename result\+\_\+function\+\_\+t  = std\+::function$<$void(prec\+\_\+t)$>$$>$ }\\void {\bfseries start\+\_\+computation} (prng\+\_\+t \&main\+\_\+prng, const \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} \&v, scheduler\+\_\+t \&scheduler, value\+\_\+comp\+\_\+t \&value\+\_\+comp, result\+\_\+projection\+\_\+t \&result\+\_\+projection=\{\})
+\begin{DoxyCompactList}\small\item\em schedule computation of new state value \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a3697df1c82d9b6de11b3a079218d1385}\label{classsimple__acceptance__computation_a3697df1c82d9b6de11b3a079218d1385}} 
+bool {\bfseries still\+\_\+waiting\+\_\+for\+\_\+computation} ()
+\begin{DoxyCompactList}\small\item\em check whether this computation is still outstanding \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a03094a68046046cb0feb7d759bd3b571}\label{classsimple__acceptance__computation_a03094a68046046cb0feb7d759bd3b571}} 
+{\footnotesize template$<$typename scheduler\+\_\+t $>$ }\\bool {\bfseries continue\+\_\+computation} (scheduler\+\_\+t \&scheduler, value\+\_\+comp\+\_\+t \&value\+\_\+comp, \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} \&acc\+\_\+prob\+\_\+fct)
+\begin{DoxyCompactList}\small\item\em call this function to continue the computation until it returns true \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a4fe6b7f32f9fb82d4b75f7976aa2b333}\label{classsimple__acceptance__computation_a4fe6b7f32f9fb82d4b75f7976aa2b333}} 
+bool {\bfseries finish\+\_\+computation} (value\+\_\+comp\+\_\+t \&value\+\_\+comp, \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} \&acc\+\_\+prob\+\_\+fct)
+\begin{DoxyCompactList}\small\item\em finish the computation to know wheter to accept the new state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_ac4e95f401cc50b6d07c6d7a68f72187f}\label{classsimple__acceptance__computation_ac4e95f401cc50b6d07c6d7a68f72187f}} 
+void {\bfseries cleanup} (value\+\_\+comp\+\_\+t \&value\+\_\+comp)
+\begin{DoxyCompactList}\small\item\em finish any outstanding computations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a841f597695294bf117b7f0f1aa37ff02}\label{classsimple__acceptance__computation_a841f597695294bf117b7f0f1aa37ff02}} 
+prec\+\_\+t {\bfseries get\+\_\+current\+\_\+value} ()
+\begin{DoxyCompactList}\small\item\em get the value of the current state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a1c75b1f15d3655807db9b2464532530e}\label{classsimple__acceptance__computation_a1c75b1f15d3655807db9b2464532530e}} 
+prec\+\_\+t {\bfseries get\+\_\+last\+\_\+computed\+\_\+value} ()
+\begin{DoxyCompactList}\small\item\em get the value of the last computed state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_aa7e4bc4a84742e85952050e3e87ffd37}\label{classsimple__acceptance__computation_aa7e4bc4a84742e85952050e3e87ffd37}} 
+prec\+\_\+t {\bfseries get\+\_\+previous\+\_\+computed\+\_\+value} ()
+\begin{DoxyCompactList}\small\item\em get the value of the previous state \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_aac04c1445f47ade72d924fc39ac5c659}\label{classsimple__acceptance__computation_aac04c1445f47ade72d924fc39ac5c659}} 
+auto {\bfseries derive\+\_\+prng} (prng\+\_\+t \&main\+\_\+prng)
+\begin{DoxyCompactList}\small\item\em derive a pseudo random number generator for each step \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a2b81b00ad2f6a5445d1b8be4fe610d7e}\label{classsimple__acceptance__computation_a2b81b00ad2f6a5445d1b8be4fe610d7e}} 
+std\+::uniform\+\_\+real\+\_\+distribution$<$ prec\+\_\+t $>$ {\bfseries prob\+\_\+distribution}
+\begin{DoxyCompactList}\small\item\em probability distribution to get cutoff values for acceptance \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a38f62093f9f26ca107957643d415cd2c}\label{classsimple__acceptance__computation_a38f62093f9f26ca107957643d415cd2c}} 
+\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t}{state\+\_\+data\+\_\+t}} {\bfseries state\+\_\+data} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em markov chain state information of current and next state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_abed89911189067532dd3467b7e01954e}\label{classsimple__acceptance__computation_abed89911189067532dd3467b7e01954e}} 
+bool {\bfseries is\+\_\+first\+\_\+cfg\+\_\+vector}
+\begin{DoxyCompactList}\small\item\em application state to accept the first state anyway \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a0575666c803c11895d90e1e5a13b759c}\label{classsimple__acceptance__computation_a0575666c803c11895d90e1e5a13b759c}} 
+bool {\bfseries accept}
+\begin{DoxyCompactList}\small\item\em last result \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a57b79f2279c2ac4539a294e58bbf3ab1}\label{classsimple__acceptance__computation_a57b79f2279c2ac4539a294e58bbf3ab1}} 
+uint8\+\_\+t {\bfseries new\+\_\+index}
+\begin{DoxyCompactList}\small\item\em index into state\+\_\+data of the next/new state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a7fda41e3ef1f471ec0f5955bd683ef7b}\label{classsimple__acceptance__computation_a7fda41e3ef1f471ec0f5955bd683ef7b}} 
+bool {\bfseries computation\+\_\+scheduled\+\_\+state}
+\begin{DoxyCompactList}\small\item\em application state whether a value computation is scheduled \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsimple__acceptance__computation_a1bb327e603b1eac0d8b4683c53c59747}\label{classsimple__acceptance__computation_a1bb327e603b1eac0d8b4683c53c59747}} 
+std\+::size\+\_\+t {\bfseries remaining\+\_\+computations}
+\begin{DoxyCompactList}\small\item\em number of remaining computations \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename prng\+\_\+t, typename \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}, typename prec\+\_\+t, typename value\+\_\+comp\+\_\+t, typename \mbox{\hyperlink{classexponential__acceptance__probability}{acc\+\_\+prob\+\_\+comp\+\_\+t}} = exponential\+\_\+acceptance\+\_\+probability$<$prec\+\_\+t$>$$>$\newline
+requires ( value\+\_\+comp\+\_\+t\+::is\+\_\+value\+\_\+computation\+\_\+implementation \&\& acc\+\_\+prob\+\_\+comp\+\_\+t\+::is\+\_\+acceptance\+\_\+probability\+\_\+implementation )\newline
+class simple\+\_\+acceptance\+\_\+computation$<$ prng\+\_\+t, cfg\+\_\+vector\+\_\+t, prec\+\_\+t, value\+\_\+comp\+\_\+t, acc\+\_\+prob\+\_\+comp\+\_\+t $>$}
+decides over acceptance of a new state in a markov chain using a exact value 
+
+Definition at line \mbox{\hyperlink{simple__acceptance__computation_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{simple__acceptance__computation_8hpp_source}{simple\+\_\+acceptance\+\_\+computation.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/acceptance\+\_\+computation/simple\+\_\+acceptance\+\_\+computation.\+hpp\end{DoxyCompactItemize}

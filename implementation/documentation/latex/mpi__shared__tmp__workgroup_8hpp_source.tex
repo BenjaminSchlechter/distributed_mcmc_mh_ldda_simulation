@@ -1,0 +1,55 @@
+\hypertarget{mpi__shared__tmp__workgroup_8hpp_source}{}\doxysection{mpi\+\_\+shared\+\_\+tmp\+\_\+workgroup.\+hpp}
+\label{mpi__shared__tmp__workgroup_8hpp_source}\index{util/mpi/mpi\_shared\_tmp\_workgroup.hpp@{util/mpi/mpi\_shared\_tmp\_workgroup.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef MPI\_SHARED\_WORKGROUP\_HPP}}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define MPI\_SHARED\_WORKGROUP\_HPP}}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <mpi.h>}}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00012}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup}{00012}} \textcolor{keyword}{class }\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup}{mpi\_shared\_tmp\_dir\_workgroup}}}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00014}00014     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00016}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a4e776f4a6f43f7353d749b634899ee19}{00016}}         MPI\_Comm \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a4e776f4a6f43f7353d749b634899ee19}{parent\_comm}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00019}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a34a6569e130352a8a30583e370c9ffac}{00019}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a34a6569e130352a8a30583e370c9ffac}{parent\_comm\_id}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00022}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_ac4d9e103c315d7a833bda757b9f10c56}{00022}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_ac4d9e103c315d7a833bda757b9f10c56}{parent\_comm\_size}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00025}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a33bac9e4905a0ad9938e7fbede370c6e}{00025}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a33bac9e4905a0ad9938e7fbede370c6e}{parent\_comm\_workgroup\_head\_id}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00029}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_aed236ab5ba659a2d783f6e5683f81d54}{00029}}         MPI\_Comm \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_aed236ab5ba659a2d783f6e5683f81d54}{workgroup\_comm}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00032}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_aa66618b3ca1a413413de6b350b185d3a}{00032}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_aa66618b3ca1a413413de6b350b185d3a}{workgroup\_comm\_id}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00035}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_ae105588c73977b42f1c49bdd9bd081e1}{00035}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_ae105588c73977b42f1c49bdd9bd081e1}{workgroup\_comm\_size}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00039}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a06aeaa8e4575a21322e13e84f45f3773}{00039}}         MPI\_Comm \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a06aeaa8e4575a21322e13e84f45f3773}{mpi\_comm\_leaders}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00042}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a4f5c81262f09c6d31954611548b2b6dd}{00042}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a4f5c81262f09c6d31954611548b2b6dd}{workgroup\_count}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00045}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a7fd49180ea3fa8178261bf3aeb11deef}{00045}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a7fd49180ea3fa8178261bf3aeb11deef}{workgroup\_id}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00047}00047     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00049}\mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a3e140790fd215d78fe2911588897c13a}{00049}}         std::string \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a3e140790fd215d78fe2911588897c13a}{tmp\_path}};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00052}00052         std::string \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a7475ff65b99ee5ce3d27ac52abd0f895}{build\_tmp\_dir\_path}}(std::string app\_name);}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00053}00053         }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00055}00055         \textcolor{keywordtype}{int} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_aa0d31476d6d2bb72326224ee539b7f9f}{identify\_workgroup\_head}}();}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00057}00057     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00059}00059         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a5a3ea3176739d66e220fa5623297a8cc}{is\_workgroup\_head}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00062}00062         \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_abbe08f43f8e8d1ba489458993db1dc2e}{mpi\_shared\_tmp\_dir\_workgroup}}(}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00063}00063             MPI\_Comm \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_a4e776f4a6f43f7353d749b634899ee19}{parent\_comm}} = MPI\_COMM\_WORLD,}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00064}00064             std::string app\_name = \textcolor{stringliteral}{"{}main"{}});}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00065}00065         }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00067}00067         \mbox{\hyperlink{classmpi__shared__tmp__dir__workgroup_ae3e3c10b774f81ced8039330bdf2da97}{\string~mpi\_shared\_tmp\_dir\_workgroup}}();}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00068}00068 \};}
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{mpi__shared__tmp__workgroup_8hpp_source_l00070}00070 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

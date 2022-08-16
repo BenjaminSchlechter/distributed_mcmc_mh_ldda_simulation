@@ -1,0 +1,92 @@
+\hypertarget{classprobsat__resolvents}{}\doxysection{probsat\+\_\+resolvents\texorpdfstring{$<$}{<} cfg\+\_\+vector\+\_\+t, prec\+\_\+t, use\+\_\+bitfield \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classprobsat__resolvents}\index{probsat\_resolvents$<$ cfg\_vector\_t, prec\_t, use\_bitfield $>$@{probsat\_resolvents$<$ cfg\_vector\_t, prec\_t, use\_bitfield $>$}}
+
+
+wrapper to create and solve probsat instances with resolvents  
+
+
+
+
+{\ttfamily \#include $<$probsat-\/with-\/resolvents.\+hpp$>$}
+
+
+
+Collaboration diagram for probsat\+\_\+resolvents\texorpdfstring{$<$}{<} cfg\+\_\+vector\+\_\+t, prec\+\_\+t, use\+\_\+bitfield \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{classprobsat__resolvents__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structprobsat__resolvents_1_1prepared__computation}{prepared\+\_\+computation}}
+\begin{DoxyCompactList}\small\item\em represents a prepared probsat computation for a given configuration \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a8700acd243a5bda733329110b1dfcf3e}\label{classprobsat__resolvents_a8700acd243a5bda733329110b1dfcf3e}} 
+{\bfseries probsat\+\_\+resolvents} (std\+::string cnf\+\_\+filename, std\+::string resolvents\+\_\+fn)
+\begin{DoxyCompactList}\small\item\em constructor loading cnf formula and resolvents \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a647f380d8b11a6c406aecfff00bebfc1}\label{classprobsat__resolvents_a647f380d8b11a6c406aecfff00bebfc1}} 
+{\bfseries probsat\+\_\+resolvents} (const \mbox{\hyperlink{classprobsat__resolvents}{probsat\+\_\+resolvents}} \&other)=delete
+\begin{DoxyCompactList}\small\item\em disable copy constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classprobsat__resolvents_ab737f9c8d639ced4b1e74144de307683}\label{classprobsat__resolvents_ab737f9c8d639ced4b1e74144de307683}} 
+void {\bfseries prepare\+\_\+computation\+\_\+with\+\_\+cfg\+\_\+vector} (const \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} \&v, \mbox{\hyperlink{structprobsat__resolvents_1_1prepared__computation}{prepared\+\_\+computation}} \&pcom)
+\begin{DoxyCompactList}\small\item\em prepare probsat computations for a given config vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classprobsat__resolvents_accb9aa0288fc60a6b06f892400346f12}\label{classprobsat__resolvents_accb9aa0288fc60a6b06f892400346f12}} 
+{\footnotesize template$<$typename prng\+\_\+t , typename rpmanager\+\_\+t $>$ }\\auto {\bfseries operator()} (prng\+\_\+t \&prng, rpmanager\+\_\+t \&rpmanager, \mbox{\hyperlink{structprobsat__resolvents_1_1prepared__computation}{prepared\+\_\+computation}} \&pcom) const
+\begin{DoxyCompactList}\small\item\em create a remote function call for one execution \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classprobsat__resolvents_aa5c7afa5cab1431fc7a9cd9201b9a01a}\label{classprobsat__resolvents_aa5c7afa5cab1431fc7a9cd9201b9a01a}} 
+std\+::string {\bfseries workgroup\+\_\+description}
+\begin{DoxyCompactList}\small\item\em string to adapt workgroup description for parallel execution \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a77b73cf765efd81be2c5818548025d26}\label{classprobsat__resolvents_a77b73cf765efd81be2c5818548025d26}} 
+\mbox{\hyperlink{classresolvents__manager}{resolvents\+\_\+manager}} {\bfseries resolvents}
+\begin{DoxyCompactList}\small\item\em resolvents manager \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a453389fb7947be36066177ee0c187404}\label{classprobsat__resolvents_a453389fb7947be36066177ee0c187404}} 
+using {\bfseries seed\+\_\+distr\+\_\+t} = std\+::uniform\+\_\+int\+\_\+distribution$<$ probsat\+\_\+seed\+\_\+t $>$
+\begin{DoxyCompactList}\small\item\em seed distribution type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a48f9af5a8053ac5bfadf07a5ccaca0d2}\label{classprobsat__resolvents_a48f9af5a8053ac5bfadf07a5ccaca0d2}} 
+FILE $\ast$ {\bfseries create\+\_\+cnf\+\_\+file\+\_\+from\+\_\+cfg\+\_\+vector} (const \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}} \&v, FILE $\ast$fptr) const
+\begin{DoxyCompactList}\small\item\em add resolvents to the cnf formula based on a given config vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a3aad574a6529489080a150fcf5ced413}\label{classprobsat__resolvents_a3aad574a6529489080a150fcf5ced413}} 
+std\+::size\+\_\+t {\bfseries cnf\+\_\+num\+\_\+vars}
+\begin{DoxyCompactList}\small\item\em number of variables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a73f8588ce6335056c8cbb2e045be5cb2}\label{classprobsat__resolvents_a73f8588ce6335056c8cbb2e045be5cb2}} 
+std\+::size\+\_\+t {\bfseries cnf\+\_\+num\+\_\+clauses}
+\begin{DoxyCompactList}\small\item\em number of clauses \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a9f6aaa5291486a0d86e36fabd41ad3e3}\label{classprobsat__resolvents_a9f6aaa5291486a0d86e36fabd41ad3e3}} 
+std\+::string {\bfseries cnf\+\_\+file}
+\begin{DoxyCompactList}\small\item\em cnf formula \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classprobsat__resolvents_a0a91eb14ec15e1c225f2bd907f669010}\label{classprobsat__resolvents_a0a91eb14ec15e1c225f2bd907f669010}} 
+std\+::string {\bfseries cnf\+\_\+file\+\_\+header}
+\begin{DoxyCompactList}\small\item\em header of the cnf formula \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}, typename prec\+\_\+t, bool use\+\_\+bitfield$>$\newline
+requires ( std\+::is\+\_\+same$<$\mbox{\hyperlink{structbinary__configuration__vector}{binary\+\_\+configuration\+\_\+vector}}$<$use\+\_\+bitfield$>$, \mbox{\hyperlink{structbinary__configuration__vector}{cfg\+\_\+vector\+\_\+t}}$>$\+::value )\newline
+class probsat\+\_\+resolvents$<$ cfg\+\_\+vector\+\_\+t, prec\+\_\+t, use\+\_\+bitfield $>$}
+wrapper to create and solve probsat instances with resolvents 
+
+Definition at line \mbox{\hyperlink{probsat-with-resolvents_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{probsat-with-resolvents_8hpp_source}{probsat-\/with-\/resolvents.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+metropolis\+\_\+hastings/value\+\_\+computation/probsat-\/with-\/resolvents.\+hpp\end{DoxyCompactItemize}

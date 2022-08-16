@@ -1,0 +1,55 @@
+\hypertarget{classlazy__round__robin__scheduler}{}\doxysection{lazy\+\_\+round\+\_\+robin\+\_\+scheduler\texorpdfstring{$<$}{<} workload\+\_\+capacity \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classlazy__round__robin__scheduler}\index{lazy\_round\_robin\_scheduler$<$ workload\_capacity $>$@{lazy\_round\_robin\_scheduler$<$ workload\_capacity $>$}}
+
+
+round robin load balancing of up to workload\+\_\+capacity computations inside a workgroup  
+
+
+
+
+{\ttfamily \#include $<$lazy\+\_\+round\+\_\+robin\+\_\+scheduler.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classlazy__round__robin__scheduler_a5eb246478b6c9a111f1dd48fd755f30d}\label{classlazy__round__robin__scheduler_a5eb246478b6c9a111f1dd48fd755f30d}} 
+bool {\bfseries is\+\_\+process\+\_\+without\+\_\+work} ()
+\begin{DoxyCompactList}\small\item\em check if any worker is without work \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classlazy__round__robin__scheduler_aac1f227f113cffdb3d76919be0f7d3c6}\label{classlazy__round__robin__scheduler_aac1f227f113cffdb3d76919be0f7d3c6}} 
+bool {\bfseries worker\+\_\+available} ()
+\begin{DoxyCompactList}\small\item\em check if any worker has less than workload\+\_\+capacity jobs \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classlazy__round__robin__scheduler_a2e533d06918ff59efde00fc5b6ffc18b}\label{classlazy__round__robin__scheduler_a2e533d06918ff59efde00fc5b6ffc18b}} 
+int {\bfseries get\+\_\+id\+\_\+to\+\_\+schedule\+\_\+task\+\_\+on} ()
+\begin{DoxyCompactList}\small\item\em get a worker id (or -\/1 if none available) for an task \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classlazy__round__robin__scheduler_afba4b5f2dd40945018c9b80d7ce289f6}\label{classlazy__round__robin__scheduler_afba4b5f2dd40945018c9b80d7ce289f6}} 
+void {\bfseries task\+\_\+finished} (int id)
+\begin{DoxyCompactList}\small\item\em mark one task on a worker with the given id as finished \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classlazy__round__robin__scheduler_a1084ba6b271de250e945d460419a4a05}\label{classlazy__round__robin__scheduler_a1084ba6b271de250e945d460419a4a05}} 
+{\bfseries lazy\+\_\+round\+\_\+robin\+\_\+scheduler} (int \mbox{\hyperlink{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}{size}})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}\label{classlazy__round__robin__scheduler_a6cf0c17907216fb76c0135aebea227b0}} 
+const int {\bfseries size}
+\begin{DoxyCompactList}\small\item\em number of workers \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}\label{classlazy__round__robin__scheduler_a037623e03826b00d558fbbcfaddf20aa}} 
+std\+::vector$<$ std\+::size\+\_\+t $>$ {\bfseries num\+\_\+tasks\+\_\+scheduled}
+\begin{DoxyCompactList}\small\item\em number of tasks on each worker \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}\label{classlazy__round__robin__scheduler_ab9890cab233e3b0c70f3e891cee01608}} 
+std\+::multimap$<$ std\+::size\+\_\+t, int $>$ {\bfseries ids\+\_\+for\+\_\+scheduled}
+\begin{DoxyCompactList}\small\item\em lookup table for worker id based upon number of currently scheduled tasks \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$std\+::size\+\_\+t workload\+\_\+capacity$>$\newline
+class lazy\+\_\+round\+\_\+robin\+\_\+scheduler$<$ workload\+\_\+capacity $>$}
+round robin load balancing of up to workload\+\_\+capacity computations inside a workgroup 
+
+Definition at line \mbox{\hyperlink{lazy__round__robin__scheduler_8hpp_source_l00011}{11}} of file \mbox{\hyperlink{lazy__round__robin__scheduler_8hpp_source}{lazy\+\_\+round\+\_\+robin\+\_\+scheduler.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/lazy\+\_\+round\+\_\+robin\+\_\+scheduler.\+hpp\end{DoxyCompactItemize}

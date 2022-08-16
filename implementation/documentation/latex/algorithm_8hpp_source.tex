@@ -1,0 +1,267 @@
+\hypertarget{algorithm_8hpp_source}{}\doxysection{algorithm.\+hpp}
+\label{algorithm_8hpp_source}\index{metropolis\_hastings/algorithm.hpp@{metropolis\_hastings/algorithm.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef ALGORITHM\_HPP}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define ALGORITHM\_HPP}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}../config.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00013}00013 \textcolor{keyword}{template}<}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00014}00014     \textcolor{keyword}{typename} \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state\_t}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00015}00015     \textcolor{keyword}{typename} \mbox{\hyperlink{classsimple__change__generator}{change\_generator\_t}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00016}00016     \textcolor{keyword}{typename} \mbox{\hyperlink{classstatistical__acceptance__computation}{acceptance\_computation\_t}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00017}00017     \textcolor{keyword}{typename} \mbox{\hyperlink{classprobsat__resolvents}{computation\_modell\_t}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00018}00018     \textcolor{keyword}{typename} \mbox{\hyperlink{classexponential__acceptance__probability}{acc\_prob\_comp\_t}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00019}00019     \textcolor{keyword}{typename} result\_statistics\_t,}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00020}00020     \textcolor{keyword}{typename} result\_function\_t,}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00021}00021     \textcolor{keyword}{const} \textcolor{keywordtype}{bool} enforce\_change,}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00022}00022     \textcolor{keyword}{const} \textcolor{keywordtype}{bool} skip\_unchanged\_vectors}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00023}00023     >}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00024}\mbox{\hyperlink{classmetropolis__hastings__algorithm}{00024}} \textcolor{keyword}{class }\mbox{\hyperlink{classmetropolis__hastings__algorithm}{metropolis\_hastings\_algorithm}}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00025}00025 \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00026}00026     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00027}00027         \textcolor{keyword}{using} \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} = \mbox{\hyperlink{classmarcov__chain__state_add183fa45895a753c6022b2719015552}{marcov\_chain\_state\_t::cfg\_vector\_type}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00030}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a681e8bdc267d6e36fbaf66ec745837a7}{00030}}         std::size\_t \mbox{\hyperlink{classmetropolis__hastings__algorithm_a681e8bdc267d6e36fbaf66ec745837a7}{id}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00033}\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{00033}}         \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state\_t}} \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00036}\mbox{\hyperlink{classmetropolis__hastings__algorithm_ae48cbc67bb5ba61b107e032647b439fb}{00036}}         \textcolor{keyword}{decltype}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}) \mbox{\hyperlink{classmetropolis__hastings__algorithm_ae48cbc67bb5ba61b107e032647b439fb}{last\_prng}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00039}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a267f23eb3a183cffb57d88183630700c}{00039}}         \mbox{\hyperlink{classsimple__change__generator}{change\_generator\_t}} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a267f23eb3a183cffb57d88183630700c}{change\_gen}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00042}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{00042}}         \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00045}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{00045}}         \mbox{\hyperlink{classstatistical__acceptance__computation}{acceptance\_computation\_t}} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00048}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{00048}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00051}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{00051}}         \mbox{\hyperlink{classprobsat__resolvents}{computation\_modell\_t}} \&\mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\_modell}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00054}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}{00054}}         \mbox{\hyperlink{classexponential__acceptance__probability}{acc\_prob\_comp\_t}} \&\mbox{\hyperlink{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}{acc\_prob\_fct}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00057}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a5823f17a44538eb7c9fd4a5453065c0a}{00057}}         result\_statistics\_t \mbox{\hyperlink{classmetropolis__hastings__algorithm_a5823f17a44538eb7c9fd4a5453065c0a}{execution\_statistics}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00061}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a88619660f0b20b785a7444ca1b69fdbd}{00061}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a88619660f0b20b785a7444ca1b69fdbd}{generate\_next\_cfg\_vector}}()}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00062}00062         \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00063}00063             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}} = \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00064}00064             }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00065}00065             \textcolor{keywordtype}{bool} change\_happened = enforce\_change;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00066}00066             \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00067}00067                 \textcolor{keyword}{using} index\_t = \textcolor{keyword}{decltype}(}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00068}00068                     \mbox{\hyperlink{classmetropolis__hastings__algorithm_a267f23eb3a183cffb57d88183630700c}{change\_gen}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00069}00069                     \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}}).index);}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00071}00071                 \textcolor{comment}{// generate changes}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00072}00072                 std::set<index\_t> changed\_positions;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00074}00074                 \textcolor{keywordflow}{for} (\textcolor{keyword}{decltype}(mcmc\_num\_changes) i = 0;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00075}00075                     i < mcmc\_num\_changes; i++)}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00076}00076                 \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00077}00077                     \textcolor{keyword}{auto} cfg\_change =}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00078}00078                         \mbox{\hyperlink{classmetropolis__hastings__algorithm_a267f23eb3a183cffb57d88183630700c}{change\_gen}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}}, \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00079}00079                     \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}}.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[cfg\_change.index]}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00080}00080                         = cfg\_change.new\_value;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00082}00082                     \textcolor{keywordflow}{if} ((!change\_happened) \&\& (skip\_unchanged\_vectors))}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00083}00083                     \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00084}00084                         changed\_positions.insert(cfg\_change.index);}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00085}00085                     \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00086}00086                 \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00088}00088                 \textcolor{comment}{// check if config vector is changed}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00089}00089                 \textcolor{keywordflow}{if} ((!change\_happened) \&\& (skip\_unchanged\_vectors)) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00090}00090                     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} p : changed\_positions) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00091}00091                         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}}.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[p]}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00092}00092                             != \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}.\mbox{\hyperlink{structbinary__configuration__vector_a70b954e819ce63870f9bf44e9aec8737}{data}}[p])}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00093}00093                         \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00094}00094                             change\_happened = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00095}00095                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00096}00096                         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00097}00097                     \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00098}00098                 \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00099}00099             \} \textcolor{keywordflow}{while} ((!change\_happened) \&\& (skip\_unchanged\_vectors));}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00100}00100         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00102}00102     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00103}00103     }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00105}\mbox{\hyperlink{classmetropolis__hastings__algorithm_acae76933ffec478aa1b6430cf9d0ce60}{00105}}         \mbox{\hyperlink{classmetropolis__hastings__algorithm_acae76933ffec478aa1b6430cf9d0ce60}{metropolis\_hastings\_algorithm}}(}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00106}00106             std::size\_t \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00107}00107             \textcolor{keyword}{auto} mc\_state\_,}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00108}00108             \mbox{\hyperlink{classprobsat__resolvents}{computation\_modell\_t}} \&\mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\_modell}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00109}00109             \mbox{\hyperlink{classexponential__acceptance__probability}{acc\_prob\_comp\_t}} \&\mbox{\hyperlink{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}{acc\_prob\_fct}}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00110}00110         ) :}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00111}00111             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a681e8bdc267d6e36fbaf66ec745837a7}{id}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_a681e8bdc267d6e36fbaf66ec745837a7}{id}}),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00112}00112             \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}(mc\_state\_),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00113}00113             \mbox{\hyperlink{classmetropolis__hastings__algorithm_ae48cbc67bb5ba61b107e032647b439fb}{last\_prng}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.prn\_engine),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00114}00114             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a267f23eb3a183cffb57d88183630700c}{change\_gen}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.cfg\_vector),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00115}00115             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.cfg\_vector),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00116}00116             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}(\textcolor{comment}{/*mc\_state.prn\_engine*/}),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00117}00117             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}}(false),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00118}00118             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\_modell}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\_modell}}),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00119}00119             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}{acc\_prob\_fct}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}{acc\_prob\_fct}}),}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00120}00120             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a5823f17a44538eb7c9fd4a5453065c0a}{execution\_statistics}}()}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00121}00121         \{\}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00123}00123         \textcolor{comment}{// metropolis\_hastings\_algorithm(}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00124}00124             \textcolor{comment}{// metropolis\_hastings\_algorithm \&\&other) = default;}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00125}00125         \textcolor{comment}{// metropolis\_hastings\_algorithm(}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00126}00126             \textcolor{comment}{// const metropolis\_hastings\_algorithm \&other) = delete;}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00128}00128         \textcolor{comment}{// \string~metropolis\_hastings\_algorithm() \{\}}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00132}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a2dfa1e7b3e7e220e4238f56b5cd8ae57}{00132}}         \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state\_t}} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a2dfa1e7b3e7e220e4238f56b5cd8ae57}{get\_last\_state}}() \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00133}00133             assert(!\mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00135}00135             \textcolor{keywordflow}{return} \mbox{\hyperlink{classmarcov__chain__state}{marcov\_chain\_state\_t}}(}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00136}00136                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}} -\/ 1, \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}}, \mbox{\hyperlink{classmetropolis__hastings__algorithm_ae48cbc67bb5ba61b107e032647b439fb}{last\_prng}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00137}00137         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00141}00141         \textcolor{keyword}{template}<\textcolor{keyword}{typename} scheduler\_t>}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00142}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a3df57961d68afc331943308afd843549}{00142}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a3df57961d68afc331943308afd843549}{prepare\_iteration}}(scheduler\_t \&scheduler) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00143}00143             \textcolor{comment}{// std::cout << "{}prepare"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00144}00144             assert(!\mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00145}00145             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00146}00146 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00147}00147             \mbox{\hyperlink{classmetropolis__hastings__algorithm_ae48cbc67bb5ba61b107e032647b439fb}{last\_prng}} = \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00148}00148             \textcolor{comment}{// std::cout << "{}test prepare\_iteration "{}}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00149}00149                 \textcolor{comment}{// << mc\_state.iteration << "{}: "{} << last\_prng << std::endl;}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00150}00150             }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00152}00152             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.template start\_computation}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00153}00153                 <scheduler\_t, result\_statistics\_t, result\_function\_t>}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00154}00154                 (\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00155}00155                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00156}00156                 scheduler,}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00157}00157                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\_modell}},}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00158}00158                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_a5823f17a44538eb7c9fd4a5453065c0a}{execution\_statistics}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00159}00159         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00163}\mbox{\hyperlink{classmetropolis__hastings__algorithm_aa75437f694766b38a5f9c3350aa9a241}{00163}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmetropolis__hastings__algorithm_aa75437f694766b38a5f9c3350aa9a241}{still\_waiting\_for\_computation}}() \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00164}00164             \textcolor{keywordflow}{return} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_a89ead8437b07ff620b173b6c23c5eb5c}{still\_waiting\_for\_computation}}();}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00165}00165         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00169}00169         \textcolor{keyword}{template}<\textcolor{keyword}{typename} scheduler\_t>}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00170}\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab516401b65af4615e7146afbef6eb116}{00170}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab516401b65af4615e7146afbef6eb116}{continue\_iteration}}(scheduler\_t \&scheduler) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00171}00171             \textcolor{comment}{// std::cout << "{}continue"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00172}00172             assert(\mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00173}00173             \textcolor{keywordtype}{bool} is\_finished = \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_ade1821c2d1c5ea4c1a4aa1c34c0224f7}{continue\_computation}}(}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00174}00174                 scheduler, \mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\_modell}}, \mbox{\hyperlink{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}{acc\_prob\_fct}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00175}00175             \textcolor{comment}{// scheduler.do\_work();}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00176}00176             \textcolor{keywordflow}{return} is\_finished;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00177}00177         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00181}\mbox{\hyperlink{classmetropolis__hastings__algorithm_ac855cda69eded775e9d77f3a735b136f}{00181}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmetropolis__hastings__algorithm_ac855cda69eded775e9d77f3a735b136f}{finish\_iteration}}(\textcolor{keywordtype}{bool} last\_iteration = \textcolor{keyword}{false}) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00182}00182             \textcolor{comment}{// std::cout << "{}finish"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00183}00183             assert(\mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00184}00184             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00186}00186             \textcolor{keywordtype}{bool} accept = \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_a1f58aaf97fc5115ec181810cd62784e5}{finish\_computation}}(}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00187}00187                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\_modell}}, \mbox{\hyperlink{classmetropolis__hastings__algorithm_a28b15cee9c89f1bffe1822cc6c25b398}{acc\_prob\_fct}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00188}00188             \textcolor{keywordflow}{if} (accept) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00189}00189                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}} = \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00190}00190             \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00192}00192             \textcolor{keywordflow}{if} (1 == \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00193}00193                 \textcolor{keyword}{auto} initial\_value = accept ?}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00194}00194                     \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_a9ba79956e683e36367d8b8177ff9bc51}{get\_previous\_computed\_value}}() :}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00195}00195                     \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_a3c2e9df91460c03ba698a78b3234a8df}{get\_current\_value}}();}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00196}00196                 std::cout << \textcolor{stringliteral}{"{}mc "{}} << \textcolor{keywordtype}{id}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00197}00197                     << \textcolor{stringliteral}{"{} iteration "{}} << \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00198}00198                     << \textcolor{stringliteral}{"{} value "{}} << initial\_value}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00199}00199                     << \textcolor{stringliteral}{"{} accepted "{}} << initial\_value << std::endl;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00200}00200             \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00201}00201 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00202}00202             \textcolor{keywordflow}{if} (0 < \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00203}00203                 std::cout << \textcolor{stringliteral}{"{}mc "{}} << \textcolor{keywordtype}{id}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00204}00204                     << \textcolor{stringliteral}{"{} iteration "{}} << (\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}} + 1)}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00205}00205                     << \textcolor{stringliteral}{"{} value "{}} << \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_a3c2e9df91460c03ba698a78b3234a8df}{get\_current\_value}}()}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00206}00206                     << (accept ? \textcolor{stringliteral}{"{} accepted "{}} : \textcolor{stringliteral}{"{} declined "{}})}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00207}00207                     << \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_a12ffea4f98f7bf19dc9fab67f93affbc}{get\_last\_computed\_value}}()}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00208}00208                     << std::endl;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00209}00209             \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00211}00211 \textcolor{preprocessor}{            \#if DEBUG\_ASSERTIONS}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00212}00212             \textcolor{keywordflow}{if} (accept) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00213}00213                 assert(\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}} == \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00214}00214             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00215}00215                 assert((\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}} != \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}})}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00216}00216                     || !(skip\_unchanged\_vectors || enforce\_change));}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00217}00217             \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00218}00218 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00219}00219 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00220}00220             \textcolor{keywordflow}{if} (last\_iteration) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00221}00221                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}} = \textcolor{keyword}{true}; \textcolor{comment}{// prevent further execution}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00222}00222                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab3e09f57b874a8e26b3d86edcda776ca}{cleanup}}();}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00223}00223             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00224}00224                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_a88619660f0b20b785a7444ca1b69fdbd}{generate\_next\_cfg\_vector}}();}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00225}00225             \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00226}00226 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00227}00227             \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}++;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00228}00228         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00229}00229 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00232}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a6f0fb13072dfa7e97772d0506ffd7319}{00232}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmetropolis__hastings__algorithm_a6f0fb13072dfa7e97772d0506ffd7319}{skip\_computation}}(\textcolor{keywordtype}{bool} accept) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00233}00233             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_a3232a9c24c1a72140abf02b22e1256bf}{skip\_computation}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a8cf0d36e367e54422690d65cf4bf5fa8}{prn\_engine}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00234}00234             \textcolor{keywordflow}{if} (accept) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00235}00235                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_af67e6790b43e3d74e58391bd9bb1d552}{cfg\_vector}} = \mbox{\hyperlink{classmetropolis__hastings__algorithm_a0a76ed9dc60ed14af12300e488e86f40}{next\_cfg\_vector}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00236}00236             \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00237}00237             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a88619660f0b20b785a7444ca1b69fdbd}{generate\_next\_cfg\_vector}}();}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00238}00238             \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}}++;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00239}00239         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00240}00240 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00243}\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab3e09f57b874a8e26b3d86edcda776ca}{00243}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab3e09f57b874a8e26b3d86edcda776ca}{cleanup}}() \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00244}00244             \mbox{\hyperlink{classmetropolis__hastings__algorithm_a896c0355a7b028fdc5934859d1708cdb}{acc\_computation}}.\mbox{\hyperlink{classstatistical__acceptance__computation_ad9f8323bd26b489b77cd7995c47788e2}{cleanup}}(\mbox{\hyperlink{classmetropolis__hastings__algorithm_a7969be221f0b9ddf1778728b48d18a36}{computation\_modell}});}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00245}00245         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00246}00246 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00247}00247 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00249}\mbox{\hyperlink{classmetropolis__hastings__algorithm_ab7027f56b2b1c2cc7de1a52f169d4457}{00249}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab7027f56b2b1c2cc7de1a52f169d4457}{can\_start\_next\_iteration}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00250}00250             \textcolor{keywordflow}{return} !\mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00251}00251         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00252}00252 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00253}00253 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00255}\mbox{\hyperlink{classmetropolis__hastings__algorithm_ac66eeff82adc983b4dcdc094681039b0}{00255}}         std::size\_t \mbox{\hyperlink{classmetropolis__hastings__algorithm_ac66eeff82adc983b4dcdc094681039b0}{get\_iteration}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00256}00256             \textcolor{keywordflow}{return} \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00257}00257         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00261}\mbox{\hyperlink{classmetropolis__hastings__algorithm_ae5b83797a4fb3f2eb54fe428d19920b7}{00261}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classmetropolis__hastings__algorithm_ae5b83797a4fb3f2eb54fe428d19920b7}{print\_execution\_statistic}}() \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00262}00262             std::cout << \textcolor{stringliteral}{"{}mc "{}} << \textcolor{keywordtype}{id} << \textcolor{stringliteral}{"{} execution\_statistics: "{}}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00263}00263                 << \mbox{\hyperlink{classmetropolis__hastings__algorithm_a5823f17a44538eb7c9fd4a5453065c0a}{execution\_statistics}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00264}00264         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00266}00266 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00268}00268         \textcolor{keyword}{template}<\textcolor{keyword}{typename} scheduler\_t>}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00269}\mbox{\hyperlink{classmetropolis__hastings__algorithm_a376e17d9b18cbb66546d57bbf1912e4f}{00269}}         std::size\_t \mbox{\hyperlink{classmetropolis__hastings__algorithm_a376e17d9b18cbb66546d57bbf1912e4f}{operator()}}(}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00270}00270             scheduler\_t \&scheduler, \textcolor{keywordtype}{bool} last\_iteration = \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00271}00271         \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00272}00272             \textcolor{keywordflow}{if} (\textcolor{keyword}{false} == \mbox{\hyperlink{classmetropolis__hastings__algorithm_a53e6f236f4db129f3e479505656f07ba}{is\_processing}}) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00273}00273                 \mbox{\hyperlink{classmetropolis__hastings__algorithm_a3df57961d68afc331943308afd843549}{prepare\_iteration}}(scheduler);}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00274}00274             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00275}00275                 \textcolor{keywordtype}{bool} is\_finished = \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab516401b65af4615e7146afbef6eb116}{continue\_iteration}}(scheduler);}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00276}00276                 \textcolor{keywordflow}{if} (is\_finished) \{}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00277}00277                     \mbox{\hyperlink{classmetropolis__hastings__algorithm_ac855cda69eded775e9d77f3a735b136f}{finish\_iteration}}(last\_iteration);}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00278}00278                 \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00279}00279             \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00280}00280 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00281}00281             \textcolor{keywordflow}{return} \mbox{\hyperlink{classmetropolis__hastings__algorithm_ab4d22c90035e17a3bcd98de54eeeeb5d}{mc\_state}}.\mbox{\hyperlink{classmarcov__chain__state_a12b419ffd8b9c5d099c89e5ded7dc1ee}{iteration}};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00282}00282         \}}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00283}00283 \};}
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00284}00284 }
+\DoxyCodeLine{\Hypertarget{algorithm_8hpp_source_l00285}00285 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

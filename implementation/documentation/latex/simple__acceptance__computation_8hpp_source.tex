@@ -1,0 +1,204 @@
+\hypertarget{simple__acceptance__computation_8hpp_source}{}\doxysection{simple\+\_\+acceptance\+\_\+computation.\+hpp}
+\label{simple__acceptance__computation_8hpp_source}\index{metropolis\_hastings/acceptance\_computation/simple\_acceptance\_computation.hpp@{metropolis\_hastings/acceptance\_computation/simple\_acceptance\_computation.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef SIMPLE\_ACCEPTANCE\_COMPUTATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define SIMPLE\_ACCEPTANCE\_COMPUTATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}acceptance\_probability.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}../../util/seed.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}../../config.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00015}00015 \textcolor{keyword}{template} <}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00016}00016     \textcolor{keyword}{typename} prng\_t,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00017}00017     \textcolor{keyword}{typename} \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}},}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00018}00018     \textcolor{keyword}{typename} prec\_t,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00019}00019     \textcolor{keyword}{typename} value\_comp\_t,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00020}00020     \textcolor{keyword}{typename} \mbox{\hyperlink{classexponential__acceptance__probability}{acc\_prob\_comp\_t}}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00021}00021         = \mbox{\hyperlink{classexponential__acceptance__probability}{exponential\_acceptance\_probability<prec\_t>}}>}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00022}00022 \textcolor{keyword}{requires} (}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00023}00023     value\_comp\_t::is\_value\_computation\_implementation}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00024}00024     \&\& acc\_prob\_comp\_t::is\_acceptance\_probability\_implementation}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00025}00025 )}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00026}\mbox{\hyperlink{classsimple__acceptance__computation}{00026}} \textcolor{keyword}{class} \mbox{\hyperlink{classsimple__acceptance__computation}{simple\_acceptance\_computation}}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00027}00027 \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00028}00028     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00030}\mbox{\hyperlink{classsimple__acceptance__computation_a2b81b00ad2f6a5445d1b8be4fe610d7e}{00030}}         std::uniform\_real\_distribution<prec\_t> \mbox{\hyperlink{classsimple__acceptance__computation_a2b81b00ad2f6a5445d1b8be4fe610d7e}{prob\_distribution}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00033}\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t}{00033}}         \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00035}\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_ad1791dae3ffc33987f6e3b02ff660617}{00035}}             value\_comp\_t::prepared\_computation \mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_ad1791dae3ffc33987f6e3b02ff660617}{pcom}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00038}\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_acdd0a1b0ca7733176f12128b961b9c31}{00038}}             prng\_t \mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_acdd0a1b0ca7733176f12128b961b9c31}{prng}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00041}\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_a683fd67dd47870697d65cf3ad61ad289}{00041}}             prec\_t \mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_a683fd67dd47870697d65cf3ad61ad289}{value}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00042}00042         \} \mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t}{state\_data\_t}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00045}\mbox{\hyperlink{classsimple__acceptance__computation_a38f62093f9f26ca107957643d415cd2c}{00045}}         \mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t}{state\_data\_t}} state\_data[2];}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00048}\mbox{\hyperlink{classsimple__acceptance__computation_abed89911189067532dd3467b7e01954e}{00048}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classsimple__acceptance__computation_abed89911189067532dd3467b7e01954e}{is\_first\_cfg\_vector}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00051}\mbox{\hyperlink{classsimple__acceptance__computation_a0575666c803c11895d90e1e5a13b759c}{00051}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classsimple__acceptance__computation_a0575666c803c11895d90e1e5a13b759c}{accept}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00054}\mbox{\hyperlink{classsimple__acceptance__computation_a57b79f2279c2ac4539a294e58bbf3ab1}{00054}}         uint8\_t \mbox{\hyperlink{classsimple__acceptance__computation_a57b79f2279c2ac4539a294e58bbf3ab1}{new\_index}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00057}\mbox{\hyperlink{classsimple__acceptance__computation_a7fda41e3ef1f471ec0f5955bd683ef7b}{00057}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classsimple__acceptance__computation_a7fda41e3ef1f471ec0f5955bd683ef7b}{computation\_scheduled\_state}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00060}\mbox{\hyperlink{classsimple__acceptance__computation_a1bb327e603b1eac0d8b4683c53c59747}{00060}}         std::size\_t \mbox{\hyperlink{classsimple__acceptance__computation_a1bb327e603b1eac0d8b4683c53c59747}{remaining\_computations}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00064}\mbox{\hyperlink{classsimple__acceptance__computation_aac04c1445f47ade72d924fc39ac5c659}{00064}}         \textcolor{keyword}{auto} \mbox{\hyperlink{classsimple__acceptance__computation_aac04c1445f47ade72d924fc39ac5c659}{derive\_prng}}(prng\_t \&main\_prng) \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00065}00065             \mbox{\hyperlink{classseed__type}{seed\_t}} seed = \mbox{\hyperlink{classseed__type}{seed\_t}}(main\_prng);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00066}00066             \textcolor{keyword}{auto} sseq = seed.\mbox{\hyperlink{classseed__type_aba29070bb9849a8003a5f7ba46ed67dd}{get\_seed\_seq}}();}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00067}00067             \textcolor{keywordflow}{return} prng\_t(sseq);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00068}00068         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00069}00069         }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00070}00070     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00071}00071         \textcolor{keyword}{constexpr} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} is\_acceptance\_computation = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00073}00073         std::string get\_description() \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00074}00074             \textcolor{keywordflow}{return} std::string(\textcolor{stringliteral}{"{}sac"{}});}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00075}00075         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00078}\mbox{\hyperlink{classsimple__acceptance__computation_aefbbd9d0a80a52768b86648f34ac3453}{00078}}         \mbox{\hyperlink{classsimple__acceptance__computation_aefbbd9d0a80a52768b86648f34ac3453}{simple\_acceptance\_computation}}() :}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00079}00079             prob\_distribution(0.0, 1.0),}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00080}00080             state\_data(),}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00081}00081             is\_first\_cfg\_vector(true),}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00082}00082             accept(false),}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00083}00083             new\_index(0),}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00084}00084             computation\_scheduled\_state(false),}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00085}00085             remaining\_computations(0)}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00086}00086         \{\}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00090}\mbox{\hyperlink{classsimple__acceptance__computation_a249b8be959d13738429377d1d496c870}{00090}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classsimple__acceptance__computation_a249b8be959d13738429377d1d496c870}{skip\_computation}}(prng\_t \&main\_prng) \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00091}00091             derive\_prng(main\_prng);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00092}00092         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00096}00096         \textcolor{keyword}{template}<\textcolor{keyword}{typename} scheduler\_t,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00097}00097             \textcolor{keyword}{typename} result\_projection\_t = std::identity,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00098}00098             \textcolor{keyword}{typename} result\_function\_t = std::function<void(prec\_t)>>}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00099}\mbox{\hyperlink{classsimple__acceptance__computation_ae65ece76916cbb56edbdb7565cebdc0f}{00099}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classsimple__acceptance__computation_ae65ece76916cbb56edbdb7565cebdc0f}{start\_computation}}(}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00100}00100             prng\_t \&main\_prng,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00101}00101             \textcolor{keyword}{const} \mbox{\hyperlink{structbinary__configuration__vector}{cfg\_vector\_t}} \&v,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00102}00102             scheduler\_t \&scheduler,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00103}00103             value\_comp\_t \&value\_comp,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00104}00104             result\_projection\_t \&result\_projection = \{\})}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00105}00105         \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00106}00106             assert(!computation\_scheduled\_state);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00107}00107             computation\_scheduled\_state = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00109}00109             state\_data[new\_index].\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_acdd0a1b0ca7733176f12128b961b9c31}{prng}} = derive\_prng(main\_prng);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00111}00111             result\_function\_t result\_fct = [\&](\textcolor{keyword}{auto}... results)\{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00112}00112                 remaining\_computations-\/-\/;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00113}00113                 \textcolor{keyword}{auto} result = result\_projection(results...);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00114}00114                 \textcolor{keyword}{static\_assert}(}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00115}00115                     std::is\_same<prec\_t, \textcolor{keyword}{decltype}(result)>::value}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00116}00116                     \&\& \textcolor{stringliteral}{"{}result\_projection has wrong result type!"{}});}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00117}00117                 state\_data[new\_index].\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_a683fd67dd47870697d65cf3ad61ad289}{value}} = result;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00118}00118             \};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00120}00120             value\_comp.prepare\_computation\_with\_cfg\_vector(}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00121}00121                 v, state\_data[new\_index].pcom);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00123}00123             \textcolor{keyword}{auto} cmd = value\_comp(}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00124}00124                 state\_data[new\_index].prng,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00125}00125                 scheduler.rec.rpmanager,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00126}00126                 state\_data[new\_index].pcom);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00127}00127             cmd = scheduler.rec.on\_result(cmd, result\_fct);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00129}00129             remaining\_computations++;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00130}00130             scheduler.schedule(cmd);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00131}00131         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00135}\mbox{\hyperlink{classsimple__acceptance__computation_a3697df1c82d9b6de11b3a079218d1385}{00135}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classsimple__acceptance__computation_a3697df1c82d9b6de11b3a079218d1385}{still\_waiting\_for\_computation}}() \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00136}00136             \textcolor{keywordflow}{return} (0 < remaining\_computations);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00137}00137         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00141}00141         \textcolor{keyword}{template}<\textcolor{keyword}{typename} scheduler\_t>}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00142}\mbox{\hyperlink{classsimple__acceptance__computation_a03094a68046046cb0feb7d759bd3b571}{00142}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classsimple__acceptance__computation_a03094a68046046cb0feb7d759bd3b571}{continue\_computation}}(}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00143}00143             scheduler\_t \&scheduler,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00144}00144             value\_comp\_t \&value\_comp,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00145}00145             \mbox{\hyperlink{classexponential__acceptance__probability}{acc\_prob\_comp\_t}} \&acc\_prob\_fct)}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00146}00146         \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00147}00147             assert(computation\_scheduled\_state);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00148}00148             ignore(\&scheduler, \&value\_comp, \&acc\_prob\_fct);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00149}00149             \textcolor{keywordflow}{return} 0 == remaining\_computations;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00150}00150         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00154}\mbox{\hyperlink{classsimple__acceptance__computation_a4fe6b7f32f9fb82d4b75f7976aa2b333}{00154}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classsimple__acceptance__computation_a4fe6b7f32f9fb82d4b75f7976aa2b333}{finish\_computation}}(}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00155}00155             value\_comp\_t \&value\_comp, \mbox{\hyperlink{classexponential__acceptance__probability}{acc\_prob\_comp\_t}} \&acc\_prob\_fct)}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00156}00156         \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00157}00157             assert(0 == remaining\_computations);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00158}00158             assert(computation\_scheduled\_state);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00159}00159             computation\_scheduled\_state = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00161}00161             value\_comp.finish\_computation(state\_data[new\_index].pcom);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00163}00163             uint8\_t old\_index = 1 -\/ new\_index;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00164}00164             \textcolor{keywordflow}{if} (is\_first\_cfg\_vector) \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00165}00165                 is\_first\_cfg\_vector = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00166}00166                 new\_index = old\_index;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00167}00167                 accept = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00168}00168                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00169}00169             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00170}00170                 prec\_t z = prob\_distribution(state\_data[new\_index].prng);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00172}00172                 prec\_t p = acc\_prob\_fct(}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00173}00173                     state\_data[old\_index].value,}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00174}00174                     state\_data[new\_index].value);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00176}00176                 \textcolor{keywordtype}{bool} accept = (z <= p);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00177}00177                 \textcolor{keywordflow}{if} (accept) \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00178}00178                     new\_index = old\_index;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00179}00179                 \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00181}00181                 \textcolor{keywordflow}{return} accept;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00182}00182             \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00183}00183         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00187}\mbox{\hyperlink{classsimple__acceptance__computation_ac4e95f401cc50b6d07c6d7a68f72187f}{00187}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classsimple__acceptance__computation_ac4e95f401cc50b6d07c6d7a68f72187f}{cleanup}}(value\_comp\_t \&value\_comp) \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00188}00188             ignore(value\_comp);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00189}00189         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00193}\mbox{\hyperlink{classsimple__acceptance__computation_a841f597695294bf117b7f0f1aa37ff02}{00193}}         prec\_t \mbox{\hyperlink{classsimple__acceptance__computation_a841f597695294bf117b7f0f1aa37ff02}{get\_current\_value}}() \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00194}00194             assert(!computation\_scheduled\_state);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00195}00195             uint8\_t index = 1 -\/ new\_index;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00196}00196             \textcolor{keywordflow}{return} state\_data[index].\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_a683fd67dd47870697d65cf3ad61ad289}{value}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00197}00197         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00200}\mbox{\hyperlink{classsimple__acceptance__computation_a1c75b1f15d3655807db9b2464532530e}{00200}}         prec\_t \mbox{\hyperlink{classsimple__acceptance__computation_a1c75b1f15d3655807db9b2464532530e}{get\_last\_computed\_value}}() \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00201}00201             assert(!computation\_scheduled\_state);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00202}00202             uint8\_t index = accept ? 1 -\/ new\_index : new\_index;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00203}00203             \textcolor{keywordflow}{return} state\_data[index].\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_a683fd67dd47870697d65cf3ad61ad289}{value}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00204}00204         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00207}\mbox{\hyperlink{classsimple__acceptance__computation_aa7e4bc4a84742e85952050e3e87ffd37}{00207}}         prec\_t \mbox{\hyperlink{classsimple__acceptance__computation_aa7e4bc4a84742e85952050e3e87ffd37}{get\_previous\_computed\_value}}() \{}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00208}00208             assert(!computation\_scheduled\_state);}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00209}00209             uint8\_t index = new\_index;}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00210}00210             \textcolor{keywordflow}{return} state\_data[index].\mbox{\hyperlink{structsimple__acceptance__computation_1_1state__data__t_a683fd67dd47870697d65cf3ad61ad289}{value}};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00211}00211         \}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00213}00213 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00214}00214 \textcolor{comment}{        prec\_t get\_value() \{}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00215}00215 \textcolor{comment}{            assert(!computation\_scheduled\_state);}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00216}00216 \textcolor{comment}{            return state\_data[1 -\/ new\_index].value;}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00217}00217 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00218}00218 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00219}00219 \};}
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{simple__acceptance__computation_8hpp_source_l00221}00221 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

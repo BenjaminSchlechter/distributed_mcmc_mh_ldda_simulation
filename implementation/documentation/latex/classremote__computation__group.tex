@@ -1,0 +1,111 @@
+\hypertarget{classremote__computation__group}{}\doxysection{remote\+\_\+computation\+\_\+group\texorpdfstring{$<$}{<} remote\+\_\+execution\+\_\+context\+\_\+t, type\+\_\+abstraction\+\_\+adapter\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classremote__computation__group}\index{remote\_computation\_group$<$ remote\_execution\_context\_t, type\_abstraction\_adapter\_t $>$@{remote\_computation\_group$<$ remote\_execution\_context\_t, type\_abstraction\_adapter\_t $>$}}
+
+
+manager class to execute functions on remote nodes using a remote execution context  
+
+
+
+
+{\ttfamily \#include $<$remote\+\_\+computation\+\_\+group.\+hpp$>$}
+
+
+
+Collaboration diagram for remote\+\_\+computation\+\_\+group\texorpdfstring{$<$}{<} remote\+\_\+execution\+\_\+context\+\_\+t, type\+\_\+abstraction\+\_\+adapter\+\_\+t \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classremote__computation__group__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__computation__group_a27bc3a10678ac36aec68bfae92b2b12d}\label{classremote__computation__group_a27bc3a10678ac36aec68bfae92b2b12d}} 
+using {\bfseries rpc\+\_\+message\+\_\+t} = \mbox{\hyperlink{classremote__execution__context_a0c4faddd4beacda59e7cf8fe828f8055}{remote\+\_\+execution\+\_\+context\+\_\+t\+::rpc\+\_\+message\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em task type\+: remote procedure call message \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_ad3939cf342208e62e85db0ad26f037fd}\label{classremote__computation__group_ad3939cf342208e62e85db0ad26f037fd}} 
+using {\bfseries buffer\+\_\+t} = \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a5ed863076fb0646189a96d41d03311fe}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::abstract\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em communication buffer type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__computation__group_ae58da9dcdbbbe407f1450b093304b634}\label{classremote__computation__group_ae58da9dcdbbbe407f1450b093304b634}} 
+{\bfseries remote\+\_\+computation\+\_\+group} (MPI\+\_\+\+Comm \mbox{\hyperlink{classremote__computation__group_aaf606f2a001d6bcbf205ea6a5f3accb1}{env\+\_\+comm}}, int \mbox{\hyperlink{classremote__computation__group_a6d897a0da3dbbcf1ccdbeca870857b02}{mpi\+\_\+tag}}, \mbox{\hyperlink{classremote__execution__context}{remote\+\_\+execution\+\_\+context\+\_\+t}} \&\mbox{\hyperlink{classremote__computation__group_a3994750389269106124c5133cf927ebc}{rec}})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a6322258c439082bb9de7fb2c42f8b7cb}\label{classremote__computation__group_a6322258c439082bb9de7fb2c42f8b7cb}} 
+void {\bfseries schedule} (auto task, int target\+\_\+id)
+\begin{DoxyCompactList}\small\item\em schedule a task on a node \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a26541a3fcd9803d951d826c6a8061a2d}\label{classremote__computation__group_a26541a3fcd9803d951d826c6a8061a2d}} 
+std\+::size\+\_\+t {\bfseries num\+\_\+tasks\+\_\+waiting} () const
+\begin{DoxyCompactList}\small\item\em number tasks waiting to be executed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_adbe191ab5f97779d34c043e7c94c85f9}\label{classremote__computation__group_adbe191ab5f97779d34c043e7c94c85f9}} 
+std\+::size\+\_\+t {\bfseries num\+\_\+tasks\+\_\+pending} () const
+\begin{DoxyCompactList}\small\item\em number of pending tasks on remote nodes \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a2824d99aed2a1368b11b1bcea94f9558}\label{classremote__computation__group_a2824d99aed2a1368b11b1bcea94f9558}} 
+bool {\bfseries is\+\_\+work\+\_\+outstanding} () const
+\begin{DoxyCompactList}\small\item\em check if any work is left or everything completed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a4a92b64f41a4a762067439c07c2b53d5}\label{classremote__computation__group_a4a92b64f41a4a762067439c07c2b53d5}} 
+void {\bfseries do\+\_\+work} (bool wait\+\_\+for\+\_\+work=false)
+\begin{DoxyCompactList}\small\item\em communicate, do available work and optionally wait for work \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__computation__group_aaf606f2a001d6bcbf205ea6a5f3accb1}\label{classremote__computation__group_aaf606f2a001d6bcbf205ea6a5f3accb1}} 
+MPI\+\_\+\+Comm {\bfseries env\+\_\+comm}
+\begin{DoxyCompactList}\small\item\em communicator this scheduler manages \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_ac689e22d15bebdf9a0cee0d8dc7681a1}\label{classremote__computation__group_ac689e22d15bebdf9a0cee0d8dc7681a1}} 
+const int {\bfseries env\+\_\+comm\+\_\+id}
+\begin{DoxyCompactList}\small\item\em id of node in communicator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_adad1a1ffaed2166370868703311a0fa3}\label{classremote__computation__group_adad1a1ffaed2166370868703311a0fa3}} 
+const int {\bfseries env\+\_\+comm\+\_\+size}
+\begin{DoxyCompactList}\small\item\em number of nodes in communicator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a6d897a0da3dbbcf1ccdbeca870857b02}\label{classremote__computation__group_a6d897a0da3dbbcf1ccdbeca870857b02}} 
+const int {\bfseries mpi\+\_\+tag}
+\begin{DoxyCompactList}\small\item\em tag used for scheduler communication \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a3994750389269106124c5133cf927ebc}\label{classremote__computation__group_a3994750389269106124c5133cf927ebc}} 
+\mbox{\hyperlink{classremote__execution__context}{remote\+\_\+execution\+\_\+context\+\_\+t}} \& {\bfseries rec}
+\begin{DoxyCompactList}\small\item\em remote execution context \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__computation__group_a136fa691e94ca364271eecea92b4e8ce}\label{classremote__computation__group_a136fa691e94ca364271eecea92b4e8ce}} 
+std\+::pair$<$ int, \mbox{\hyperlink{classremote__computation__group_a27bc3a10678ac36aec68bfae92b2b12d}{rpc\+\_\+message\+\_\+t}} $>$ {\bfseries get\+\_\+msg} (MPI\+\_\+\+Status \&status)
+\begin{DoxyCompactList}\small\item\em recieve a pending message \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a04bfa08e8eb0c3a9112d48531a5b2c52}\label{classremote__computation__group_a04bfa08e8eb0c3a9112d48531a5b2c52}} 
+std\+::pair$<$ int, \mbox{\hyperlink{classremote__computation__group_a27bc3a10678ac36aec68bfae92b2b12d}{rpc\+\_\+message\+\_\+t}} $>$ {\bfseries wait\+\_\+for\+\_\+msg} ()
+\begin{DoxyCompactList}\small\item\em wait until a message arrives \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a73d2dd6183b302c2567aeafdda752c8f}\label{classremote__computation__group_a73d2dd6183b302c2567aeafdda752c8f}} 
+void {\bfseries execute} (const std\+::pair$<$ int, \mbox{\hyperlink{classremote__computation__group_a27bc3a10678ac36aec68bfae92b2b12d}{rpc\+\_\+message\+\_\+t}} $>$ \&task)
+\begin{DoxyCompactList}\small\item\em execute a message using the remote execution context \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classremote__computation__group_ae142cbc0b1002271a02bdb4e50af9389}\label{classremote__computation__group_ae142cbc0b1002271a02bdb4e50af9389}} 
+std\+::deque$<$ std\+::pair$<$ int, \mbox{\hyperlink{classremote__computation__group_a27bc3a10678ac36aec68bfae92b2b12d}{rpc\+\_\+message\+\_\+t}} $>$ $>$ {\bfseries tasks}
+\begin{DoxyCompactList}\small\item\em number of tasks waiting to be executed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a1f5c0a1a4242dbfb06121430eac84226}\label{classremote__computation__group_a1f5c0a1a4242dbfb06121430eac84226}} 
+\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} {\bfseries taa}
+\begin{DoxyCompactList}\small\item\em serialization of abstract types \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a45385004447630133853bb984382a556}\label{classremote__computation__group_a45385004447630133853bb984382a556}} 
+std\+::size\+\_\+t {\bfseries num\+\_\+waiting\+\_\+for\+\_\+reply}
+\begin{DoxyCompactList}\small\item\em number of pending (scheduled) tasks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classremote__computation__group_a17f56027745754f2aa9902c70c63a6da}\label{classremote__computation__group_a17f56027745754f2aa9902c70c63a6da}} 
+\mbox{\hyperlink{classasync__comm__out}{async\+\_\+comm\+\_\+out}} {\bfseries background\+\_\+comm}
+\begin{DoxyCompactList}\small\item\em asynchronous background communication \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename \mbox{\hyperlink{classremote__execution__context}{remote\+\_\+execution\+\_\+context\+\_\+t}}, class \mbox{\hyperlink{classBitsery__TypeAbstractionAdapter}{type\+\_\+abstraction\+\_\+adapter\+\_\+t}} = remote\+\_\+execution\+\_\+context\+\_\+t\+::type\+\_\+abstraction\+\_\+adapter\+\_\+t$>$\newline
+requires (\mbox{\hyperlink{classBitsery__TypeAbstractionAdapter_a313fb32b81b17e3db42b9e4bcc325ca7}{type\+\_\+abstraction\+\_\+adapter\+\_\+t\+::is\+\_\+\+Type\+Abstraction\+Adapter}})\newline
+class remote\+\_\+computation\+\_\+group$<$ remote\+\_\+execution\+\_\+context\+\_\+t, type\+\_\+abstraction\+\_\+adapter\+\_\+t $>$}
+manager class to execute functions on remote nodes using a remote execution context 
+
+Definition at line \mbox{\hyperlink{remote__computation__group_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{remote__computation__group_8hpp_source}{remote\+\_\+computation\+\_\+group.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distributed\+\_\+computation/remote\+\_\+computation\+\_\+group.\+hpp\end{DoxyCompactItemize}

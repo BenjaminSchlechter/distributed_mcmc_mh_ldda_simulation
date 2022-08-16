@@ -1,0 +1,251 @@
+\hypertarget{bitfield_8hpp_source}{}\doxysection{bitfield.\+hpp}
+\label{bitfield_8hpp_source}\index{util/bitfield.hpp@{util/bitfield.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef BITFIELD\_HPP}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define BITFIELD\_HPP}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstdint>}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <type\_traits>}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00013}00013 \textcolor{keyword}{template}<\textcolor{keyword}{typename} length\_t>}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00014}\mbox{\hyperlink{classbitfield}{00014}} \textcolor{keyword}{class }\mbox{\hyperlink{classbitfield}{bitfield}} \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00015}00015     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00017}\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{00017}}         length\_t \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00019}00019         \textcolor{comment}{// helper values to allow returning references to memory}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00022}\mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{00022}}         length\_t \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00025}\mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{00025}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00028}\mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{00028}}         uint8\_t *\mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00031}00031         \textcolor{comment}{// helper functions}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00032}00032         }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00034}\mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{00034}}         \textcolor{keyword}{static} \textcolor{keyword}{inline} length\_t \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\textcolor{keyword}{const} length\_t l) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00035}00035             \textcolor{keywordflow}{return} (l+7) >> 3; }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00036}00036         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00039}\mbox{\hyperlink{classbitfield_a1e55e60163694f844257fb92c7186ba4}{00039}}         \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbitfield_a1e55e60163694f844257fb92c7186ba4}{get}}(\textcolor{keyword}{const} length\_t index)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00040}00040 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00041}00041 \textcolor{preprocessor}{            \#if DEBUG\_ASSERTIONS}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00042}00042             assert(index < \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00043}00043 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00045}00045             \textcolor{keywordflow}{return} 1 \& (\mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}[index >> 3] >> (index \& 0b111));}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00046}00046         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00049}\mbox{\hyperlink{classbitfield_a972161138087d106e74a0a76da49c2a2}{00049}}         \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classbitfield_a972161138087d106e74a0a76da49c2a2}{set}}(\textcolor{keyword}{const} length\_t index, \textcolor{keyword}{const} \textcolor{keywordtype}{bool} value)}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00050}00050         \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00051}00051             update();}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00053}00053 \textcolor{preprocessor}{            \#if DEBUG\_ASSERTIONS}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00054}00054             assert(index < \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00055}00055 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00057}00057             \textcolor{keyword}{const} uint8\_t mask = 1 << (index \& 0b111);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00058}00058             \textcolor{keywordflow}{if} (value) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00059}00059                 \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}[index >> 3] |= mask;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00060}00060             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00061}00061                 \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}[index >> 3] \&= \string~mask;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00062}00062             \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00063}00063         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00065}00065         \textcolor{comment}{// apply changes by returned reference to array}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00066}00066         \textcolor{keyword}{inline} \textcolor{keywordtype}{void} update() \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00067}00067             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}} < \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00068}00068                 \textcolor{comment}{// std::cout << "{}a["{}<<(int)last\_mod\_index<<"{}] = "{}}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00069}00069                     \textcolor{comment}{// << (int)last\_mod\_value << std::endl;}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00070}00070                 \mbox{\hyperlink{classbitfield_a972161138087d106e74a0a76da49c2a2}{set}}(\mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}}, \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00071}00071                 \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}} = \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00072}00072             \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00073}00073         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00075}00075     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00076}00076         \textcolor{comment}{// constructors}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00079}\mbox{\hyperlink{classbitfield_a5af6221d2287cb628ed15e80bd5a56d3}{00079}}         \mbox{\hyperlink{classbitfield_a5af6221d2287cb628ed15e80bd5a56d3}{bitfield}}() :}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00080}00080             \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}(0),}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00081}00081             \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}),}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00082}00082             \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}}(false),}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00083}00083             \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}(nullptr) \{\}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00084}00084         }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00086}\mbox{\hyperlink{classbitfield_a5b6059befa8e108ec5d7868af751de1f}{00086}}         \mbox{\hyperlink{classbitfield_a5b6059befa8e108ec5d7868af751de1f}{bitfield}}(length\_t n) :}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00087}00087             \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}(n), \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}), \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}}(false),}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00088}00088             \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}} > 0 ? new uint8\_t[\mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}})] : nullptr) \{\}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00090}00090         \textcolor{comment}{// bitfield(const bitfield \&other) = delete;}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00093}\mbox{\hyperlink{classbitfield_a6829eea3f0395c0bb0c65294d2b2b415}{00093}}         \mbox{\hyperlink{classbitfield_a6829eea3f0395c0bb0c65294d2b2b415}{bitfield}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbitfield}{bitfield}} \&other) :}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00094}00094             \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}(other.\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}),}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00095}00095             \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}}(other.\mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}}),}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00096}00096             \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}}(other.\mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}}),}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00097}00097             \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}} > 0 ? new uint8\_t[\mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}})] : nullptr)}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00098}00098         \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00099}00099             \textcolor{keywordflow}{for} (length\_t i = 0; i < \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}); i++) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00100}00100                 \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}[i] = other.\mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}[i];}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00101}00101             \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00102}00102         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00103}00103         }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00105}\mbox{\hyperlink{classbitfield_aff2a821798b5fba3f154b0e8a184f7ba}{00105}}         \mbox{\hyperlink{classbitfield_aff2a821798b5fba3f154b0e8a184f7ba}{\string~bitfield}}() \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00106}00106             \textcolor{keywordflow}{if} (\textcolor{keyword}{nullptr} != \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00107}00107 \textcolor{preprocessor}{                \#if DEBUG\_ASSERTIONS}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00108}00108                     assert(0 < \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00109}00109 \textcolor{preprocessor}{                \#endif}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00110}00110                 \textcolor{keyword}{delete}[] \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00111}00111                 \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00112}00112             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00113}00113 \textcolor{preprocessor}{                \#if DEBUG\_ASSERTIONS}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00114}00114                     assert(0 == \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00115}00115 \textcolor{preprocessor}{                \#endif}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00116}00116             \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00117}00117         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00119}00119         \textcolor{comment}{// copy \& swap idiom}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00122}\mbox{\hyperlink{classbitfield_ab796f895ecec185247bffa29a42ea42f}{00122}}         \textcolor{keyword}{friend} \textcolor{keywordtype}{void} \mbox{\hyperlink{classbitfield_ab796f895ecec185247bffa29a42ea42f}{swap}}(\mbox{\hyperlink{classbitfield}{bitfield}} \&a, \mbox{\hyperlink{classbitfield}{bitfield}} \&b)}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00123}00123             \textcolor{keyword}{noexcept}(std::is\_nothrow\_swappable\_v<length\_t>}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00124}00124                 \&\&   std::is\_nothrow\_swappable\_v<bool>}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00125}00125                 \&\&   std::is\_nothrow\_swappable\_v<uint8\_t*>)}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00126}00126         \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00127}00127 \textcolor{preprocessor}{            \#if DEBUG\_ASSERTIONS}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00128}00128             assert(a.length == b.length);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00129}00129 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00130}00130             \textcolor{comment}{// or remove const from length}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00131}00131             \textcolor{comment}{// std::swap(a.length, b.length);}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00132}00132             std::swap(a.last\_mod\_index, b.last\_mod\_index);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00133}00133             std::swap(a.last\_mod\_value, b.last\_mod\_value);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00134}00134             std::swap(a.array, b.array);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00135}00135         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00138}\mbox{\hyperlink{classbitfield_a44c74430ffc6697325ff2c04be9152b0}{00138}}         \mbox{\hyperlink{classbitfield_a44c74430ffc6697325ff2c04be9152b0}{bitfield}}(\mbox{\hyperlink{classbitfield}{bitfield}} \&\&other) : \mbox{\hyperlink{classbitfield}{bitfield}}() \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00139}00139             \mbox{\hyperlink{classbitfield_ab796f895ecec185247bffa29a42ea42f}{swap}}(*\textcolor{keyword}{this}, other);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00140}00140         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00143}\mbox{\hyperlink{classbitfield_a1352a01d15a683882fb8f0d0702a7aeb}{00143}}         \mbox{\hyperlink{classbitfield}{bitfield}}\& \mbox{\hyperlink{classbitfield_a1352a01d15a683882fb8f0d0702a7aeb}{operator=}}(\mbox{\hyperlink{classbitfield}{bitfield}} other) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00144}00144             \mbox{\hyperlink{classbitfield_ab796f895ecec185247bffa29a42ea42f}{swap}}(*\textcolor{keyword}{this}, other);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00145}00145             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00146}00146         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00153}\mbox{\hyperlink{classbitfield_afde704b85a1a2f3b583085307c63fb5d}{00153}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classbitfield_afde704b85a1a2f3b583085307c63fb5d}{resize}}(length\_t new\_length)}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00154}00154         \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00155}00155             update();}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00157}00157             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(new\_length) > \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}})) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00158}00158                 assert(0 < \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(new\_length));}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00160}00160                 uint8\_t *old\_array = \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00162}00162                 \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}} = \textcolor{keyword}{new} uint8\_t[\mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(new\_length)];}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00163}00163                 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00164}00164                 \textcolor{keywordflow}{for} (length\_t i = 0; i < \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}); i++) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00165}00165                     \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}[i] = old\_array[i];}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00166}00166                 \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00168}00168                 \textcolor{keywordflow}{if} (old\_array) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00169}00169                     \textcolor{keyword}{delete}[] old\_array;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00170}00170                 \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00171}00171             \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00173}00173             \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}} = new\_length;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00174}00174             \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}} = \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00175}00175         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00176}00176 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00178}\mbox{\hyperlink{classbitfield_ab88121663c8025ec22b9f7a34fde4e42}{00178}}         length\_t \mbox{\hyperlink{classbitfield_ab88121663c8025ec22b9f7a34fde4e42}{get\_bytelength}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00179}00179             \textcolor{keywordflow}{return} \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00180}00180         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00183}\mbox{\hyperlink{classbitfield_a8311dabbec73dc399714e26a02f71d53}{00183}}         uint8\_t *\mbox{\hyperlink{classbitfield_a8311dabbec73dc399714e26a02f71d53}{data}}() \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00184}00184             update();}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00185}00185             \textcolor{keywordflow}{return} \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00186}00186         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00188}00188         \textcolor{comment}{// access operators}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00189}00189         }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00197}\mbox{\hyperlink{classbitfield_aa7e6b1703b750f19da997e22e81ac9bc}{00197}}         \textcolor{keyword}{inline} \textcolor{keywordtype}{bool}\& \mbox{\hyperlink{classbitfield_aa7e6b1703b750f19da997e22e81ac9bc}{operator[]}}(\textcolor{keyword}{const} length\_t index)}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00198}00198         \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00199}00199             update();}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00201}00201 \textcolor{preprocessor}{            \#if DEBUG\_ASSERTIONS}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00202}00202             assert(index < \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00203}00203 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00205}00205             \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}} = index;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00206}00206             \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}} = \mbox{\hyperlink{classbitfield_a1e55e60163694f844257fb92c7186ba4}{get}}(index);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00207}00207             \textcolor{keywordflow}{return} \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00208}00208         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00209}00209         }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00211}\mbox{\hyperlink{classbitfield_a49c39611d7f1dfac32faca5b1636ee2a}{00211}}         \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbitfield_a49c39611d7f1dfac32faca5b1636ee2a}{operator[]}}(\textcolor{keyword}{const} length\_t index)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00212}00212             \textcolor{comment}{// dont apply changes, so this function can be const}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00213}00213             \textcolor{keywordflow}{if} (index == \mbox{\hyperlink{classbitfield_a08a074464775c512155fcdeb95ec849c}{last\_mod\_index}}) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00214}00214                 \textcolor{keywordflow}{return} \mbox{\hyperlink{classbitfield_acea69ff9f8de90407fe78247e90775e4}{last\_mod\_value}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00215}00215             \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00216}00216 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00217}00217             \textcolor{keywordflow}{return} \mbox{\hyperlink{classbitfield_a1e55e60163694f844257fb92c7186ba4}{get}}(index);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00218}00218         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00219}00219         }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00221}\mbox{\hyperlink{classbitfield_ad67ab98fcae88e62d0f89975f6981b7b}{00221}}         length\_t \mbox{\hyperlink{classbitfield_ad67ab98fcae88e62d0f89975f6981b7b}{size}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00222}00222             \textcolor{keywordflow}{return} \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00223}00223         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00224}00224         }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00225}00225         \textcolor{comment}{// output}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00226}00226         }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00228}\mbox{\hyperlink{classbitfield_a195cd7e6dc27490dc84577648a177e22}{00228}}         std::ostream \&\mbox{\hyperlink{classbitfield_a195cd7e6dc27490dc84577648a177e22}{print}}(std::ostream \&os, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *separator = \textcolor{stringliteral}{"{} "{}})}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00229}00229         \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00230}00230             update();}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00231}00231             }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00232}00232             \textcolor{keyword}{const} length\_t bl = \mbox{\hyperlink{classbitfield_a82b4ea3d411a50a4eaa38e7166eb9afd}{to\_bytelength}}(\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00234}00234             \textcolor{keyword}{auto} sep = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00235}00235             \textcolor{keywordflow}{for} (length\_t i = 0; i < bl-\/1; i++) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00236}00236                 os << sep;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00237}00237                 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00238}00238                 uint8\_t d = \mbox{\hyperlink{classbitfield_a31296cdfecc43a53b34f09afe28402f5}{array}}[i];}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00239}00239                 \textcolor{keywordflow}{for} (uint8\_t j = 0; j < 8; j++) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00240}00240                     os << ((d \& 1) ? \textcolor{stringliteral}{"{}1"{}} : \textcolor{stringliteral}{"{}0"{}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00241}00241                     d >>= 1;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00242}00242                 \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00243}00243                 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00244}00244                 sep = separator;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00245}00245             \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00246}00246             }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00247}00247             \textcolor{keywordflow}{if} (0 < bl) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00248}00248                 os << sep;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00249}00249                 \textcolor{keywordflow}{for} (length\_t i = (bl-\/1)*8; i < \mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00250}00250                     os << (\mbox{\hyperlink{classbitfield_a1e55e60163694f844257fb92c7186ba4}{get}}(i) ? \textcolor{stringliteral}{"{}1"{}} : \textcolor{stringliteral}{"{}0"{}});}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00251}00251                 \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00252}00252             \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00253}00253             }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00254}00254             \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00255}00255         \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00256}00256 \};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00257}00257 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00259}00259 \textcolor{keyword}{template}<\textcolor{keyword}{typename} length\_t>}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00260}00260 std::ostream \&operator<<(std::ostream\& os, \mbox{\hyperlink{classbitfield}{bitfield<length\_t>}} bf) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00261}00261     \textcolor{keywordflow}{return} bf.\mbox{\hyperlink{classbitfield_a195cd7e6dc27490dc84577648a177e22}{print}}(os);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00262}00262 \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00265}00265 \textcolor{keyword}{template}<\textcolor{keyword}{typename} S, \textcolor{keyword}{typename} length\_t>}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00266}00266 \textcolor{keywordtype}{void} serialize(S \&s, \mbox{\hyperlink{classbitfield}{bitfield<length\_t>}} \&bf) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00267}00267     bf.update();}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00269}00269     length\_t size = bf.\mbox{\hyperlink{classbitfield_af88ce289df543dbce1dca2f88b95da13}{length}};}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00270}00270     serialize\_basic\_type<S, length\_t>(s, size);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00272}00272     bf.\mbox{\hyperlink{classbitfield_afde704b85a1a2f3b583085307c63fb5d}{resize}}(size);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00273}00273 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00274}00274     uint8\_t *dataptr = bf.\mbox{\hyperlink{classbitfield_a8311dabbec73dc399714e26a02f71d53}{data}}();}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00275}00275     \textcolor{keywordflow}{for} (std::size\_t i = 0; i < bf.\mbox{\hyperlink{classbitfield_ab88121663c8025ec22b9f7a34fde4e42}{get\_bytelength}}(); i++) \{}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00276}00276         s.value1b(dataptr[i]);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00277}00277     \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00278}00278 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00279}00279     assert(bf.\mbox{\hyperlink{classbitfield_ad67ab98fcae88e62d0f89975f6981b7b}{size}}() == size);}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00280}00280 \}}
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{bitfield_8hpp_source_l00282}00282 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

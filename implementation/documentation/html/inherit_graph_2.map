@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classasync__comm.html" title="base helper class for async MPI communcation" alt="" coords="5,31,113,57"/>
+<area shape="rect" id="node2" href="$classasync__comm__out.html" title="derived helper class providing async message sending" alt="" coords="179,5,315,32"/>
+<area shape="rect" id="node3" href="$classfake__async__comm__out.html" title="derived helper class for synchronous messaging (debug communication)" alt="" coords="161,56,332,83"/>
+</map>
